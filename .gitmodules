@@ -1,0 +1,6 @@
+[submodule "templates"]
+	path = templates
+	url = https://github.com/budnyjj/bsuir_templates.git
+[submodule "bibliography"]
+	path = bibliography
+	url = https://github.com/budnyjj/bibliography.git
