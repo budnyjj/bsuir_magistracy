@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Arch Linux) (preloaded format=pdflatex 2016.9.1)  27 SEP 2016 09:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Arch Linux) (preloaded format=pdflatex 2016.9.1)  28 SEP 2016 23:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1032,7 +1032,7 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 2.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 2.
-) (./text/posix.tex
+) (./text/pthreads.tex
 Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 3.
 Package babel Info: Redefining russian shorthand "~
@@ -1044,14 +1044,36 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 3.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 3.
-) (./text/cpp.tex
+LaTeX Font Info:    Try loading font information for T2A+fer on input line 18.
+ (/usr/share/texmf-dist/tex/latex/pscyr/t2afer.fd
+File: t2afer.fd 2004/09/21 Fontinst v1.914 font definitions for T2A/fer.
+)
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 22.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 22.
+(/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+(/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+)
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 52.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 52.
+ [4
+
+]
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 52.
+
+(./lst/pthreads_args.lst)) (./text/cpp.tex
 Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 7.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 7.
- [4
-
-]
+ [5]
 Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 7.
 Package babel Info: Redefining russian shorthand "~
@@ -1066,7 +1088,7 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 1.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 1.
- [5
+ [6
 
 ]
 Package babel Info: Redefining russian shorthand "|
@@ -1083,11 +1105,17 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 1.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 1.
- [6
+ [7
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 13--15
 []\T2A/ftm/m/n/14.4 ѕоток вы-пол-не-ни€ [Ёлек-трон-ный ре-сурс]. ^^V
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 18--22
+\T2A/ftm/m/n/14.4 –е-жим до-сту-па: []$\T2A/fer/m/n/14.4 https : / / computing 
+. llnl . gov / tutorials /
  []
 
 ))
@@ -1095,7 +1123,7 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 17.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 17.
- [7
+ [8
 
 ]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 18.
@@ -1104,24 +1132,26 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 18.
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 18.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 18.
 Package rerunfilecheck Info: File `lab.out' has not changed.
-(rerunfilecheck)             Checksum: B31CFE673AE6F3E33F5022A8B467E016;1607.
+(rerunfilecheck)             Checksum: F6587E624E853A77D61230F18EED46D3;1936.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 18.
  ) 
 Here is how much of TeX's memory you used:
- 25788 strings out of 493013
- 433073 string characters out of 6139318
- 507688 words of memory out of 5000000
- 28821 multiletter control sequences out of 15000+600000
- 11607 words of font info for 31 fonts, out of 8000000 for 9000
+ 26293 strings out of 493013
+ 438453 string characters out of 6139318
+ 605306 words of memory out of 5000000
+ 29272 multiletter control sequences out of 15000+600000
+ 14800 words of font info for 36 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,11n,54p,1110b,594s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 57i,11n,54p,1110b,1202s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/pscyr/t2a.enc}</usr/share/texmf-dist/f
-onts/type1/public/pscyr/times.pfb></usr/share/texmf-dist/fonts/type1/public/psc
-yr/timesbd.pfb>
-Output written on lab.pdf (7 pages, 51294 bytes).
+onts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/pub
+lic/pscyr/ercour.pfb></usr/share/texmf-dist/fonts/type1/public/pscyr/ercourb.pf
+b></usr/share/texmf-dist/fonts/type1/public/pscyr/times.pfb></usr/share/texmf-d
+ist/fonts/type1/public/pscyr/timesbd.pfb>
+Output written on lab.pdf (8 pages, 85648 bytes).
 PDF statistics:
- 85 PDF objects out of 1000 (max. 8388607)
- 67 compressed objects within 1 object stream
- 11 named destinations out of 1000 (max. 500000)
- 77 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 149 PDF objects out of 1000 (max. 8388607)
+ 126 compressed objects within 2 object streams
+ 43 named destinations out of 1000 (max. 500000)
+ 85 words of extra memory for PDF output out of 10000 (max. 10000000)
 

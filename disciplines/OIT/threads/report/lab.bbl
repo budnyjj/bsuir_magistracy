@@ -13,4 +13,11 @@
 Поток выполнения [{Электронный ресурс}]. "---
 \newblock https://en.wikipedia.org/wiki/Thread\_(computing)~: [{б.\ и.}].
 
+\bibitem{pthreads_programming}
+\selectlanguageifdefined{russian}
+POSIX Threads Programming [{Электронный ресурс}]. "---
+\newblock [{Б.\ м.}~: {б.\ и.}]. "---
+\newblock \cyr\CYRR\cyre\cyrzh\cyri\cyrm\ \cyrd\cyro\cyrs\cyrt\cyru\cyrp\cyra:
+  \BibUrl{https://computing.llnl.gov/tutorials/pthreads/}.
+
 \end{thebibliography}
