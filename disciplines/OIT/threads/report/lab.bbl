@@ -20,4 +20,13 @@ POSIX Threads Programming [{Электронный ресурс}]. "---
 \newblock \cyr\CYRR\cyre\cyrzh\cyri\cyrm\ \cyrd\cyro\cyrs\cyrt\cyru\cyrp\cyra:
   \BibUrl{https://computing.llnl.gov/tutorials/pthreads/}.
 
+\bibitem{Tanenbaum:2007:MOS:1410217}
+\selectlanguageifdefined{russian}
+\BibEmph{Tanenbaum,~Andrew~S.} Modern Operating Systems [{Текст}]~/
+  Andrew~S.~Tanenbaum. "---
+\newblock 3rd {изд.} "---
+\newblock Upper Saddle River, NJ, USA~: Prentice Hall Press, 2007. "---
+\newblock
+  ISBN:~\href{http://isbndb.com/search-all.html?kw=9780136006633}{9780136006633}.
+
 \end{thebibliography}

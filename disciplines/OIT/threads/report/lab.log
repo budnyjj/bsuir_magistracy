@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Arch Linux) (preloaded format=pdflatex 2016.9.1)  1 OCT 2016 09:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Arch Linux) (preloaded format=pdflatex 2016.9.1)  1 OCT 2016 12:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -93,6 +93,16 @@ Package ifvtex Info: VTeX not detected.
 (/usr/share/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
 )
+(/usr/share/texmf-dist/tex/latex/extsizes/extsizes.sty
+Package: extsizes 1996/10/08 v1.0 Non Standard LaTeX Package
+
+
+Package ExtSizes Warning: It is better to use one of the extsizes classes,
+ if you can.
+
+(/usr/share/texmf-dist/tex/latex/extsizes/size14.clo
+File: size14.clo 1999/11/11 v1.4a NON-Standard LaTeX file (size option)
+))
 (/usr/share/texmf-dist/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
 \ttl@box=\box26
@@ -164,6 +174,69 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 (/usr/share/texmf-dist/tex/latex/chngcntr/chngcntr.sty
 Package: chngcntr 2009/09/02 v1.0a change counter resetting
 )
+(/usr/share/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count94
+\calc@Bcount=\count95
+\calc@Adimen=\dimen118
+\calc@Bdimen=\dimen119
+\calc@Askip=\skip86
+\calc@Bskip=\skip87
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count96
+\calc@Cskip=\skip88
+)
+(/usr/share/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip10
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+(/usr/share/texmf-dist/tex/latex/pdfpages/pdfpages.sty
+Package: pdfpages 2016/04/19 v0.5f Insert pages of external PDF documents (AM)
+
+(/usr/share/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/share/texmf-dist/tex/latex/eso-pic/eso-pic.sty
+Package: eso-pic 2015/07/21 v2.0g eso-pic (RN)
+
+(/usr/share/texmf-dist/tex/generic/oberdiek/atbegshi.sty
+Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
+)
+(/usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/usr/share/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+))
+(/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+\Gin@req@height=\dimen120
+\Gin@req@width=\dimen121
+)
+\AM@pagewidth=\dimen122
+\AM@pageheight=\dimen123
+
+(/usr/share/texmf-dist/tex/latex/pdfpages/pppdftex.def
+File: pppdftex.def 2016/04/19 v0.5f Pdfpages driver for pdfTeX (AM)
+)
+\AM@pagebox=\box28
+\AM@global@opts=\toks18
+\AM@toc@title=\toks19
+\c@AM@survey=\count97
+\AM@templatesizebox=\box29
+)
 (/usr/share/texmf-dist/tex/latex/cmap/cmap.sty
 Package: cmap 2008/03/06 v1.0h CMap support: searchable PDF
 )
@@ -185,8 +258,8 @@ File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )<<t2a.cmap>>)
 (/usr/share/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2015/03/17 v1.2c Input encoding file
-\inpenc@prehook=\toks18
-\inpenc@posthook=\toks19
+\inpenc@prehook=\toks20
+\inpenc@posthook=\toks21
 
 (/usr/share/texmf-dist/tex/latex/ucs/utf8x.def
 File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
@@ -197,10 +270,10 @@ Package: ucs 2013/05/11 v2.2 UCS: Unicode input support
 (/usr/share/texmf-dist/tex/latex/ucs/data/uni-global.def
 File: uni-global.def 2013/05/13 UCS: Unicode global data
 )
-\uc@secondtry=\count94
-\uc@combtoks=\toks20
-\uc@combtoksb=\toks21
-\uc@temptokena=\toks22
+\uc@secondtry=\count98
+\uc@combtoks=\toks22
+\uc@combtoksb=\toks23
+\uc@temptokena=\toks24
 )
 (/usr/share/texmf-dist/tex/generic/babel/babel.sty
 Package: babel 2016/04/23 3.9r The Babel package
@@ -210,8 +283,8 @@ Language: english 2012/08/20 v3.3p English support from the babel system
 
 (/usr/share/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2016/04/23 3.9r Babel common definitions
-\babel@savecnt=\count95
-\U@D=\dimen118
+\babel@savecnt=\count99
+\U@D=\dimen124
 )
 \l@canadian = a dialect from \language\l@american 
 \l@australian = a dialect from \language\l@british 
@@ -221,27 +294,24 @@ File: babel.def 2016/04/23 3.9r Babel common definitions
 Language: russianb 2016/02/18 1.3h Russian support for the Babel system
 Package babel Info: Making " an active character on input line 111.
 ))
-(/usr/share/texmf-dist/tex/latex/psnfss/courier.sty
-Package: courier 2005/04/12 PSNFSS-v9.2a (WaS) 
-)
 (/usr/share/texmf-dist/tex/latex/pscyr/pscyr.sty
 Package: pscyr 2002/07/04 v0.4d Cyrillic Type1 fonts as default
 )
 (/usr/share/texmf-dist/tex/latex/amscls/amsthm.sty
 Package: amsthm 2015/03/04 v2.20.2
-\thm@style=\toks23
-\thm@bodyfont=\toks24
-\thm@headfont=\toks25
-\thm@notefont=\toks26
-\thm@headpunct=\toks27
-\thm@preskip=\skip86
-\thm@postskip=\skip87
-\thm@headsep=\skip88
-\dth@everypar=\toks28
+\thm@style=\toks25
+\thm@bodyfont=\toks26
+\thm@headfont=\toks27
+\thm@notefont=\toks28
+\thm@headpunct=\toks29
+\thm@preskip=\skip89
+\thm@postskip=\skip90
+\thm@headsep=\skip91
+\dth@everypar=\toks30
 )
 (/usr/share/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
-\@emptytoks=\toks29
+\@emptytoks=\toks31
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
@@ -249,7 +319,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 )
 (/usr/share/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2016/06/28 v2.15d AMS math features
-\@mathmargin=\skip89
+\@mathmargin=\skip92
 
 For additional information on amsmath, use the `?' option.
 (/usr/share/texmf-dist/tex/latex/amsmath/amstext.sty
@@ -257,51 +327,51 @@ Package: amstext 2000/06/29 v2.01 AMS text
 
 (/usr/share/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks30
-\ex@=\dimen119
+\@emptytoks=\toks32
+\ex@=\dimen125
 ))
 (/usr/share/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen120
+\pmbraise@=\dimen126
 )
 (/usr/share/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count96
+\inf@bad=\count100
 LaTeX Info: Redefining \frac on input line 199.
-\uproot@=\count97
-\leftroot@=\count98
+\uproot@=\count101
+\leftroot@=\count102
 LaTeX Info: Redefining \overline on input line 297.
-\classnum@=\count99
-\DOTSCASE@=\count100
+\classnum@=\count103
+\DOTSCASE@=\count104
 LaTeX Info: Redefining \ldots on input line 394.
 LaTeX Info: Redefining \dots on input line 397.
 LaTeX Info: Redefining \cdots on input line 518.
-\Mathstrutbox@=\box28
-\strutbox@=\box29
-\big@size=\dimen121
+\Mathstrutbox@=\box30
+\strutbox@=\box31
+\big@size=\dimen127
 LaTeX Font Info:    Redeclaring font encoding OML on input line 634.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
-\macc@depth=\count101
-\c@MaxMatrixCols=\count102
-\dotsspace@=\muskip10
-\c@parentequation=\count103
-\dspbrk@lvl=\count104
-\tag@help=\toks31
-\row@=\count105
-\column@=\count106
-\maxfields@=\count107
-\andhelp@=\toks32
-\eqnshift@=\dimen122
-\alignsep@=\dimen123
-\tagshift@=\dimen124
-\tagwidth@=\dimen125
-\totwidth@=\dimen126
-\lineht@=\dimen127
-\@envbody=\toks33
-\multlinegap=\skip90
-\multlinetaggap=\skip91
-\mathdisplay@stack=\toks34
+\macc@depth=\count105
+\c@MaxMatrixCols=\count106
+\dotsspace@=\muskip11
+\c@parentequation=\count107
+\dspbrk@lvl=\count108
+\tag@help=\toks33
+\row@=\count109
+\column@=\count110
+\maxfields@=\count111
+\andhelp@=\toks34
+\eqnshift@=\dimen128
+\alignsep@=\dimen129
+\tagshift@=\dimen130
+\tagwidth@=\dimen131
+\totwidth@=\dimen132
+\lineht@=\dimen133
+\@envbody=\toks35
+\multlinegap=\skip93
+\multlinetaggap=\skip94
+\mathdisplay@stack=\toks36
 LaTeX Info: Redefining \[ on input line 2739.
 LaTeX Info: Redefining \] on input line 2740.
 )
@@ -310,138 +380,159 @@ Package: amssymb 2013/01/14 v3.01 AMS font symbols
 )
 (/usr/share/texmf-dist/tex/latex/amsmath/amscd.sty
 Package: amscd 1999/11/29 v2.0 AMS Commutatitive Diagrams
-\athelp@=\toks35
-\minaw@=\dimen128
-\bigaw@=\dimen129
-\minCDarrowwidth=\dimen130
+\athelp@=\toks37
+\minaw@=\dimen134
+\bigaw@=\dimen135
+\minCDarrowwidth=\dimen136
 )
 (/usr/share/texmf-dist/tex/latex/tools/indentfirst.sty
 Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
 )
-(/usr/share/texmf-dist/tex/latex/graphics/color.sty
-Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
-
-(/usr/share/texmf-dist/tex/latex/graphics-cfg/color.cfg
-File: color.cfg 2016/01/02 v1.6 sample color configuration
-)
-Package color Info: Driver file: pdftex.def on input line 147.
-)
 (/usr/share/texmf-dist/tex/latex/tools/longtable.sty
 Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
-\LTleft=\skip92
-\LTright=\skip93
-\LTpre=\skip94
-\LTpost=\skip95
-\LTchunksize=\count108
-\LTcapwidth=\dimen131
-\LT@head=\box30
-\LT@firsthead=\box31
-\LT@foot=\box32
-\LT@lastfoot=\box33
-\LT@cols=\count109
-\LT@rows=\count110
-\c@LT@tables=\count111
-\c@LT@chunks=\count112
-\LT@p@ftn=\toks36
+\LTleft=\skip95
+\LTright=\skip96
+\LTpre=\skip97
+\LTpost=\skip98
+\LTchunksize=\count112
+\LTcapwidth=\dimen137
+\LT@head=\box32
+\LT@firsthead=\box33
+\LT@foot=\box34
+\LT@lastfoot=\box35
+\LT@cols=\count113
+\LT@rows=\count114
+\c@LT@tables=\count115
+\c@LT@chunks=\count116
+\LT@p@ftn=\toks38
 )
 (/usr/share/texmf-dist/tex/latex/tools/tabularx.sty
 Package: tabularx 2016/02/03 v2.11 `tabularx' package (DPC)
 
 (/usr/share/texmf-dist/tex/latex/tools/array.sty
 Package: array 2014/10/28 v2.4c Tabular extension package (FMi)
-\col@sep=\dimen132
-\extrarowheight=\dimen133
-\NC@list=\toks37
-\extratabsurround=\skip96
-\backup@length=\skip97
+\col@sep=\dimen138
+\extrarowheight=\dimen139
+\NC@list=\toks39
+\extratabsurround=\skip99
+\backup@length=\skip100
 )
-\TX@col@width=\dimen134
-\TX@old@table=\dimen135
-\TX@old@col=\dimen136
-\TX@target=\dimen137
-\TX@delta=\dimen138
-\TX@cols=\count113
-\TX@ftn=\toks38
+\TX@col@width=\dimen140
+\TX@old@table=\dimen141
+\TX@old@col=\dimen142
+\TX@target=\dimen143
+\TX@delta=\dimen144
+\TX@cols=\count117
+\TX@ftn=\toks40
 )
 (/usr/share/texmf-dist/tex/latex/tabulary/tabulary.sty
 Package: tabulary 2014/06/11 v0.10 tabulary package (DPC)
-\TY@count=\count114
-\TY@linewidth=\dimen139
-\tymin=\dimen140
-\tymax=\dimen141
-\TY@tablewidth=\dimen142
+\TY@count=\count118
+\TY@linewidth=\dimen145
+\tymin=\dimen146
+\tymax=\dimen147
+\TY@tablewidth=\dimen148
 )
 (/usr/share/texmf-dist/tex/latex/multirow/multirow.sty
-\bigstrutjot=\dimen143
+\bigstrutjot=\dimen149
 )
 (/usr/share/texmf-dist/tex/latex/makecell/makecell.sty
 Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
-\rotheadsize=\dimen144
-\c@nlinenum=\count115
-\TeXr@lab=\toks39
+\rotheadsize=\dimen150
+\c@nlinenum=\count119
+\TeXr@lab=\toks41
 )
-(/usr/share/texmf-dist/tex/latex/caption/caption.sty
+(/usr/share/texmf-dist/tex/latex/tablefootnote/tablefootnote.sty
+Package: tablefootnote 2014/01/26 v1.1c Table foot notes (HMM)
+
+(/usr/share/texmf-dist/tex/latex/oberdiek/letltxmacro.sty
+Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
+)
+(/usr/share/texmf-dist/tex/latex/xifthen/xifthen.sty
+Package: xifthen 2015/11/05 v1.4.0 Extended ifthen features
+
+(/usr/share/texmf-dist/tex/latex/ifmtarg/ifmtarg.sty
+Package: ifmtarg 2009/09/02 v1.2a check for an empty argument
+))
+(/usr/share/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2015/08/02 v2.2a e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count120
+))
+(/usr/share/texmf-dist/tex/latex/koma-script/scrextend.sty
+Package: scrextend 2016/06/14 v3.21 KOMA-Script package (extend other classes w
+ith features of KOMA-Script classes)
+
+(/usr/share/texmf-dist/tex/latex/koma-script/scrkbase.sty
+Package: scrkbase 2016/06/14 v3.21 KOMA-Script package (KOMA-Script-dependent b
+asics and keyval usage)
+
+(/usr/share/texmf-dist/tex/latex/koma-script/scrbase.sty
+Package: scrbase 2016/06/14 v3.21 KOMA-Script package (KOMA-Script-independent 
+basics and keyval usage)
+
+(/usr/share/texmf-dist/tex/latex/koma-script/scrlfile.sty
+Package: scrlfile 2016/06/14 v3.21 KOMA-Script package (loading files)
+
+Package scrlfile, 2016/06/14 v3.21 KOMA-Script package (loading files)
+                  Copyright (C) Markus Kohm
+
+)))
+LaTeX Info: Redefining \textsubscript on input line 1293.
+) (/usr/share/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
 
 (/usr/share/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 67.
-\captionmargin=\dimen145
-\captionmargin@=\dimen146
-\captionwidth=\dimen147
-\caption@tempdima=\dimen148
-\caption@indent=\dimen149
-\caption@parindent=\dimen150
-\caption@hangindent=\dimen151
+\captionmargin=\dimen151
+\captionmargin@=\dimen152
+\captionwidth=\dimen153
+\caption@tempdima=\dimen154
+\caption@indent=\dimen155
+\caption@parindent=\dimen156
+\caption@hangindent=\dimen157
 )
-\c@ContinuedFloat=\count116
+\c@ContinuedFloat=\count121
 Package caption Info: longtable package is loaded.
 
 (/usr/share/texmf-dist/tex/latex/caption/ltcaption.sty
 Package: ltcaption 2013/06/09 v1.4-94 longtable captions (AR)
 ))
-(/usr/share/texmf-dist/tex/latex/caption/subcaption.sty
-Package: subcaption 2016/05/22 v1.1-161 Sub-captions (AR)
-\c@subfigure=\count117
-\c@subtable=\count118
-)
 (/usr/share/texmf-dist/tex/latex/soul/soul.sty
 Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
-\SOUL@word=\toks40
-\SOUL@lasttoken=\toks41
-\SOUL@cmds=\toks42
-\SOUL@buffer=\toks43
-\SOUL@token=\toks44
-\SOUL@spaceskip=\skip98
-\SOUL@ttwidth=\dimen152
-\SOUL@uldp=\dimen153
-\SOUL@ulht=\dimen154
+\SOUL@word=\toks42
+\SOUL@lasttoken=\toks43
+\SOUL@cmds=\toks44
+\SOUL@buffer=\toks45
+\SOUL@token=\toks46
+\SOUL@spaceskip=\skip101
+\SOUL@ttwidth=\dimen158
+\SOUL@uldp=\dimen159
+\SOUL@ulht=\dimen160
 )
 (/usr/share/texmf-dist/tex/latex/tools/multicol.sty
 Package: multicol 2016/04/07 v1.8p multicolumn formatting (FMi)
-\c@tracingmulticols=\count119
-\mult@box=\box34
-\multicol@leftmargin=\dimen155
-\c@unbalance=\count120
-\c@collectmore=\count121
-\doublecol@number=\count122
-\multicoltolerance=\count123
-\multicolpretolerance=\count124
-\full@width=\dimen156
-\page@free=\dimen157
-\premulticols=\dimen158
-\postmulticols=\dimen159
-\multicolsep=\skip99
-\multicolbaselineskip=\skip100
-\partial@page=\box35
-\last@line=\box36
-\maxbalancingoverflow=\dimen160
-\mult@rightbox=\box37
-\mult@grightbox=\box38
-\mult@gfirstbox=\box39
-\mult@firstbox=\box40
-\@tempa=\box41
-\@tempa=\box42
+\c@tracingmulticols=\count122
+\mult@box=\box36
+\multicol@leftmargin=\dimen161
+\c@unbalance=\count123
+\c@collectmore=\count124
+\doublecol@number=\count125
+\multicoltolerance=\count126
+\multicolpretolerance=\count127
+\full@width=\dimen162
+\page@free=\dimen163
+\premulticols=\dimen164
+\postmulticols=\dimen165
+\multicolsep=\skip102
+\multicolbaselineskip=\skip103
+\partial@page=\box37
+\last@line=\box38
+\maxbalancingoverflow=\dimen166
+\mult@rightbox=\box39
+\mult@grightbox=\box40
+\mult@gfirstbox=\box41
+\mult@firstbox=\box42
 \@tempa=\box43
 \@tempa=\box44
 \@tempa=\box45
@@ -457,14 +548,16 @@ Package: multicol 2016/04/07 v1.8p multicolumn formatting (FMi)
 \@tempa=\box55
 \@tempa=\box56
 \@tempa=\box57
-\c@columnbadness=\count125
-\c@finalcolumnbadness=\count126
-\last@try=\dimen161
-\multicolovershoot=\dimen162
-\multicolundershoot=\dimen163
-\mult@nat@firstbox=\box58
-\colbreak@box=\box59
-\mc@col@check@num=\count127
+\@tempa=\box58
+\@tempa=\box59
+\c@columnbadness=\count128
+\c@finalcolumnbadness=\count129
+\last@try=\dimen167
+\multicolovershoot=\dimen168
+\multicolundershoot=\dimen169
+\mult@nat@firstbox=\box60
+\colbreak@box=\box61
+\mc@col@check@num=\count130
 )
 (/usr/share/texmf-dist/tex/latex/cite/cite.sty
 LaTeX Info: Redefining \cite on input line 302.
@@ -508,12 +601,11 @@ Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
 Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
 )
 Package hobsub Info: Skipping package `hobsub' (already loaded).
-Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
+Package hobsub Info: Skipping package `letltxmacro' (already loaded).
 Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
 Package: xcolor-patch 2016/05/16 xcolor patch
 Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
-Package atveryend Info: \enddocument detected (standard20110627).
-Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
+Package hobsub Info: Skipping package `atbegshi' (already loaded).
 Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
 Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
 )
@@ -523,14 +615,14 @@ Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 (/usr/share/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 )
-\@linkdim=\dimen164
-\Hy@linkcounter=\count128
-\Hy@pagecounter=\count129
+\@linkdim=\dimen170
+\Hy@linkcounter=\count131
+\Hy@pagecounter=\count132
 
 (/usr/share/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2016/06/24 v6.83q Hyperref: PDFDocEncoding definition (HO)
 )
-\Hy@SavedSpaceFactor=\count130
+\Hy@SavedSpaceFactor=\count133
 Package hyperref Info: Option `unicode' set `true' on input line 3453.
 
 (/usr/share/texmf-dist/tex/latex/hyperref/puenc.def
@@ -549,17 +641,12 @@ Package hyperref Info: Plain pages OFF on input line 4501.
 Package hyperref Info: Backreferencing OFF on input line 4506.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4735.
-\c@Hy@tempcnt=\count131
-
-(/usr/share/texmf-dist/tex/latex/url/url.sty
-\Urlmuskip=\muskip11
-Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
-)
+\c@Hy@tempcnt=\count134
 LaTeX Info: Redefining \url on input line 5088.
-\XeTeXLinkMargin=\dimen165
-\Fld@menulength=\count132
-\Field@Width=\dimen166
-\Fld@charsize=\dimen167
+\XeTeXLinkMargin=\dimen171
+\Fld@menulength=\count135
+\Field@Width=\dimen172
+\Fld@charsize=\dimen173
 Package hyperref Info: Hyper figures OFF on input line 6342.
 Package hyperref Info: Link nesting OFF on input line 6347.
 Package hyperref Info: Hyper index ON on input line 6350.
@@ -569,65 +656,60 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6367.
 Package hyperref Info: PDF/A mode OFF on input line 6372.
 LaTeX Info: Redefining \ref on input line 6412.
 LaTeX Info: Redefining \pageref on input line 6416.
-\c@Item=\count133
-\c@Hfootnote=\count134
+\c@Item=\count136
+\c@Hfootnote=\count137
 )
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
 (/usr/share/texmf-dist/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2016/06/24 v6.83q Hyperref driver for pdfTeX
-\Fld@listcount=\count135
-\c@bookmark@seq@number=\count136
+\Fld@listcount=\count138
+\c@bookmark@seq@number=\count139
 
 (/usr/share/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
 Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
-\Hy@SectionHShift=\skip101
-)
-(/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
-\Gin@req@height=\dimen168
-\Gin@req@width=\dimen169
+\Hy@SectionHShift=\skip104
 )
 (/usr/share/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count137
-\lst@gtempboxa=\box60
-\lst@token=\toks45
-\lst@length=\count138
-\lst@currlwidth=\dimen170
-\lst@column=\count139
-\lst@pos=\count140
-\lst@lostspace=\dimen171
-\lst@width=\dimen172
-\lst@newlines=\count141
-\lst@lineno=\count142
-\lst@maxwidth=\dimen173
+\lst@mode=\count140
+\lst@gtempboxa=\box62
+\lst@token=\toks47
+\lst@length=\count141
+\lst@currlwidth=\dimen174
+\lst@column=\count142
+\lst@pos=\count143
+\lst@lostspace=\dimen175
+\lst@width=\dimen176
+\lst@newlines=\count144
+\lst@lineno=\count145
+\lst@maxwidth=\dimen177
 
 (/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-\c@lstnumber=\count143
-\lst@skipnumbers=\count144
-\lst@framebox=\box61
+\c@lstnumber=\count146
+\lst@skipnumbers=\count147
+\lst@framebox=\box63
 )
 (/usr/share/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2015/06/04 1.6 listings configuration
 ))
 Package: listings 2015/06/04 1.6 (Carsten Heinz)
-
+)
 (/usr/share/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
 (/usr/share/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
 (/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
-\pgfutil@everybye=\toks46
-\pgfutil@tempdima=\dimen174
-\pgfutil@tempdimb=\dimen175
+\pgfutil@everybye=\toks48
+\pgfutil@tempdima=\dimen178
+\pgfutil@tempdimb=\dimen179
 
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.tex))
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box62
+\pgfutil@abb=\box64
 
 (/usr/share/texmf-dist/tex/latex/ms/everyshi.sty
 Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
@@ -643,29 +725,29 @@ Package: pgf 2015/08/07 v3.0.1a (rcs-revision 1.15)
 Package: pgfsys 2014/07/09 v3.0.1a (rcs-revision 1.48)
 
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks47
-\pgfkeys@temptoks=\toks48
+\pgfkeys@pathtoks=\toks49
+\pgfkeys@temptoks=\toks50
 
 (/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
-\pgfkeys@tmptoks=\toks49
+\pgfkeys@tmptoks=\toks51
 ))
-\pgf@x=\dimen176
-\pgf@y=\dimen177
-\pgf@xa=\dimen178
-\pgf@ya=\dimen179
-\pgf@xb=\dimen180
-\pgf@yb=\dimen181
-\pgf@xc=\dimen182
-\pgf@yc=\dimen183
+\pgf@x=\dimen180
+\pgf@y=\dimen181
+\pgf@xa=\dimen182
+\pgf@ya=\dimen183
+\pgf@xb=\dimen184
+\pgf@yb=\dimen185
+\pgf@xc=\dimen186
+\pgf@yc=\dimen187
 \w@pgf@writea=\write3
 \r@pgf@reada=\read1
-\c@pgf@counta=\count145
-\c@pgf@countb=\count146
-\c@pgf@countc=\count147
-\c@pgf@countd=\count148
-\t@pgf@toka=\toks50
-\t@pgf@tokb=\toks51
-\t@pgf@tokc=\toks52
+\c@pgf@counta=\count148
+\c@pgf@countb=\count149
+\c@pgf@countc=\count150
+\c@pgf@countd=\count151
+\t@pgf@toka=\toks52
+\t@pgf@tokb=\toks53
+\t@pgf@tokc=\toks54
 
 (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
@@ -680,30 +762,12 @@ File: pgfsys-common-pdf.def 2013/10/10  (rcs-revision 1.13)
 )))
 (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
-\pgfsyssoftpath@smallbuffer@items=\count149
-\pgfsyssoftpath@bigbuffer@items=\count150
+\pgfsyssoftpath@smallbuffer@items=\count152
+\pgfsyssoftpath@bigbuffer@items=\count153
 )
 (/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
 ))
-(/usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty
-Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
-
-(/usr/share/texmf-dist/tex/latex/graphics-cfg/color.cfg
-File: color.cfg 2016/01/02 v1.6 sample color configuration
-)
-Package xcolor Info: Driver file: pdftex.def on input line 225.
-LaTeX Info: Redefining \color on input line 709.
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
-Package xcolor Info: Model `RGB' extended on input line 1364.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
-)
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
 
@@ -711,12 +775,12 @@ Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
-\pgfmath@dimen=\dimen184
-\pgfmath@count=\count151
-\pgfmath@box=\box63
-\pgfmath@toks=\toks53
-\pgfmath@stack@operand=\toks54
-\pgfmath@stack@operation=\toks55
+\pgfmath@dimen=\dimen188
+\pgfmath@count=\count154
+\pgfmath@box=\box65
+\pgfmath@toks=\toks55
+\pgfmath@stack@operand=\toks56
+\pgfmath@stack@operation=\toks57
 )
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex)
@@ -729,50 +793,50 @@ x) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex)
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex)
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics
 .code.tex))) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count152
+\c@pgfmathroundto@lastzeros=\count155
 )) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2013/10/07  (rcs-revision 1.27)
-\pgf@picminx=\dimen185
-\pgf@picmaxx=\dimen186
-\pgf@picminy=\dimen187
-\pgf@picmaxy=\dimen188
-\pgf@pathminx=\dimen189
-\pgf@pathmaxx=\dimen190
-\pgf@pathminy=\dimen191
-\pgf@pathmaxy=\dimen192
-\pgf@xx=\dimen193
-\pgf@xy=\dimen194
-\pgf@yx=\dimen195
-\pgf@yy=\dimen196
-\pgf@zx=\dimen197
-\pgf@zy=\dimen198
+\pgf@picminx=\dimen189
+\pgf@picmaxx=\dimen190
+\pgf@picminy=\dimen191
+\pgf@picmaxy=\dimen192
+\pgf@pathminx=\dimen193
+\pgf@pathmaxx=\dimen194
+\pgf@pathminy=\dimen195
+\pgf@pathmaxy=\dimen196
+\pgf@xx=\dimen197
+\pgf@xy=\dimen198
+\pgf@yx=\dimen199
+\pgf@yy=\dimen256
+\pgf@zx=\dimen257
+\pgf@zy=\dimen258
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
 File: pgfcorepathconstruct.code.tex 2013/10/07  (rcs-revision 1.29)
-\pgf@path@lastx=\dimen199
-\pgf@path@lasty=\dimen256
+\pgf@path@lastx=\dimen259
+\pgf@path@lasty=\dimen260
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
 File: pgfcorepathusage.code.tex 2014/11/02  (rcs-revision 1.24)
-\pgf@shorten@end@additional=\dimen257
-\pgf@shorten@start@additional=\dimen258
+\pgf@shorten@end@additional=\dimen261
+\pgf@shorten@start@additional=\dimen262
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
 File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
-\pgfpic=\box64
-\pgf@hbox=\box65
-\pgf@layerbox@main=\box66
-\pgf@picture@serial@count=\count153
+\pgfpic=\box66
+\pgf@hbox=\box67
+\pgf@layerbox@main=\box68
+\pgf@picture@serial@count=\count156
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2014/11/02  (rcs-revision 1.12)
-\pgflinewidth=\dimen259
+\pgflinewidth=\dimen263
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.t
 ex
 File: pgfcoretransformations.code.tex 2015/08/07  (rcs-revision 1.20)
-\pgf@pt@x=\dimen260
-\pgf@pt@y=\dimen261
-\pgf@pt@temp=\dimen262
+\pgf@pt@x=\dimen264
+\pgf@pt@y=\dimen265
+\pgf@pt@temp=\dimen266
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
 File: pgfcorequick.code.tex 2008/10/09  (rcs-revision 1.3)
 )
@@ -784,19 +848,19 @@ x
 File: pgfcorepathprocessing.code.tex 2013/09/09  (rcs-revision 1.9)
 ) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
 File: pgfcorearrows.code.tex 2015/05/14  (rcs-revision 1.43)
-\pgfarrowsep=\dimen263
+\pgfarrowsep=\dimen267
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
-\pgf@max=\dimen264
-\pgf@sys@shading@range@num=\count154
+\pgf@max=\dimen268
+\pgf@sys@shading@range@num=\count157
 )
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
 
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
 File: pgfcoreexternal.code.tex 2014/07/09  (rcs-revision 1.21)
-\pgfexternal@startupbox=\box67
+\pgfexternal@startupbox=\box69
 ))
 (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
 File: pgfcorelayers.code.tex 2013/07/18  (rcs-revision 1.7)
@@ -808,15 +872,15 @@ File: pgfcorepatterns.code.tex 2013/11/07  (rcs-revision 1.5)
 )))
 (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
 File: pgfmoduleshapes.code.tex 2014/03/21  (rcs-revision 1.35)
-\pgfnodeparttextbox=\box68
+\pgfnodeparttextbox=\box70
 )
 (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
 File: pgfmoduleplot.code.tex 2015/08/03  (rcs-revision 1.13)
 )
 (/usr/share/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
 Package: pgfcomp-version-0-65 2007/07/03 v3.0.1a (rcs-revision 1.7)
-\pgf@nodesepstart=\dimen265
-\pgf@nodesepend=\dimen266
+\pgf@nodesepstart=\dimen269
+\pgf@nodesepend=\dimen270
 )
 (/usr/share/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
 Package: pgfcomp-version-1-18 2007/07/23 v3.0.1a (rcs-revision 1.1)
@@ -830,10 +894,10 @@ Package: pgfcomp-version-1-18 2007/07/23 v3.0.1a (rcs-revision 1.1)
 Package: pgffor 2013/12/13 v3.0.1a (rcs-revision 1.25)
 
 (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
-\pgffor@iter=\dimen267
-\pgffor@skip=\dimen268
-\pgffor@stack=\toks56
-\pgffor@toks=\toks57
+\pgffor@iter=\dimen271
+\pgffor@skip=\dimen272
+\pgffor@stack=\toks58
+\pgffor@toks=\toks59
 ))
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
@@ -841,40 +905,40 @@ Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
 (/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.te
 x
 File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
-\pgf@plot@mark@count=\count155
-\pgfplotmarksize=\dimen269
+\pgf@plot@mark@count=\count158
+\pgfplotmarksize=\dimen273
 )
-\tikz@lastx=\dimen270
-\tikz@lasty=\dimen271
-\tikz@lastxsaved=\dimen272
-\tikz@lastysaved=\dimen273
-\tikzleveldistance=\dimen274
-\tikzsiblingdistance=\dimen275
-\tikz@figbox=\box69
-\tikz@figbox@bg=\box70
-\tikz@tempbox=\box71
-\tikz@tempbox@bg=\box72
-\tikztreelevel=\count156
-\tikznumberofchildren=\count157
-\tikznumberofcurrentchild=\count158
-\tikz@fig@count=\count159
+\tikz@lastx=\dimen274
+\tikz@lasty=\dimen275
+\tikz@lastxsaved=\dimen276
+\tikz@lastysaved=\dimen277
+\tikzleveldistance=\dimen278
+\tikzsiblingdistance=\dimen279
+\tikz@figbox=\box71
+\tikz@figbox@bg=\box72
+\tikz@tempbox=\box73
+\tikz@tempbox@bg=\box74
+\tikztreelevel=\count159
+\tikznumberofchildren=\count160
+\tikznumberofcurrentchild=\count161
+\tikz@fig@count=\count162
  (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
-\pgfmatrixcurrentrow=\count160
-\pgfmatrixcurrentcolumn=\count161
-\pgf@matrix@numberofcolumns=\count162
+\pgfmatrixcurrentrow=\count163
+\pgfmatrixcurrentcolumn=\count164
+\pgf@matrix@numberofcolumns=\count165
 )
-\tikz@expandcount=\count163
+\tikz@expandcount=\count166
 
 (/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
 topaths.code.tex
 File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
-)))) (./sys/styles.tex
+))) (./sys/styles.tex
 (/usr/share/texmf-dist/tex/latex/titlesec/ttlkeys.def
 File: ttlkeys.def 2016/03/15
 )
-\c@reflisti=\count164
-\enitdp@reflist=\count165
+\c@reflisti=\count167
+\enitdp@reflist=\count168
 ) (./lab.aux)
 \openout1 = `lab.aux'.
 
@@ -903,17 +967,17 @@ File: t2aftm.fd 2004/10/14 Fontinst v1.914 font definitions for T2A/ftm.
 )
 (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count166
-\scratchdimen=\dimen276
-\scratchbox=\box73
-\nofMPsegments=\count167
-\nofMParguments=\count168
-\everyMPshowfont=\toks58
-\MPscratchCnt=\count169
-\MPscratchDim=\dimen277
-\MPnumerator=\count170
-\makeMPintoPDFobject=\count171
-\everyMPtoPDFconversion=\toks59
+\scratchcounter=\count169
+\scratchdimen=\dimen280
+\scratchbox=\box75
+\nofMPsegments=\count170
+\nofMParguments=\count171
+\everyMPshowfont=\toks60
+\MPscratchCnt=\count172
+\MPscratchDim=\dimen281
+\MPnumerator=\count173
+\makeMPintoPDFobject=\count174
+\everyMPtoPDFconversion=\toks61
 ) (/usr/share/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -939,19 +1003,19 @@ e
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(85.35826pt, 469.47049pt, 42.67912pt)
+* h-part:(L,W,R)=(88.20354pt, 466.62521pt, 42.67912pt)
 * v-part:(T,H,B)=(56.9055pt, 711.31891pt, 76.82243pt)
 * \paperwidth=597.50787pt
 * \paperheight=845.04684pt
-* \textwidth=469.47049pt
+* \textwidth=466.62521pt
 * \textheight=711.31891pt
-* \oddsidemargin=13.08827pt
-* \evensidemargin=13.08827pt
+* \oddsidemargin=15.93355pt
+* \evensidemargin=15.93355pt
 * \topmargin=-54.36449pt
-* \headheight=14.22636pt
+* \headheight=11.38109pt
 * \headsep=25.0pt
 * \topskip=14.0pt
-* \footskip=30.0pt
+* \footskip=31.29802pt
 * \marginparwidth=15.0pt
 * \marginparsep=10.0pt
 * \columnsep=10.0pt
@@ -965,6 +1029,7 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
+\AtBeginShipoutBox=\box76
 (/usr/share/texmf-dist/tex/latex/ucs/ucsencs.def
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 )
@@ -972,7 +1037,6 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\AtBeginShipoutBox=\box74
 Package hyperref Info: Link coloring OFF on input line 6.
 
 (/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -981,7 +1045,7 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/share/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count172
+\c@section@level=\count175
 )
 LaTeX Info: Redefining \ref on input line 6.
 LaTeX Info: Redefining \pageref on input line 6.
@@ -991,7 +1055,7 @@ LaTeX Info: Redefining \nameref on input line 6.
 \@outlinefile=\write4
 \openout4 = `lab.out'.
 
-\c@lstlisting=\count173
+\c@lstlisting=\count176
  ABD: EveryShipout initializing macros (./sys/names.tex)
 (./text/title.tex (/usr/share/texmf-dist/tex/latex/ucs/data/uni-4.def
 File: uni-4.def 2013/05/13 UCS: Unicode data U+0400..U+04FF
@@ -1049,51 +1113,59 @@ Package babel Info: Redefining russian shorthand "|
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 22.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 47.
+(babel)             in language  on input line 53.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 47.
+(babel)             in language  on input line 53.
  [4
 
 ]
-Underfull \hbox (badness 1629) in paragraph at lines 64--66
-[]\T2A/ftm/m/n/14.4 Функция \T2A/ftm/m/it/14.4 pthread_detach() \T2A/ftm/m/n/14
-.4 ис-поль-зу-ет-ся для пе-ре-во-да ука-зан-но-го
- []
-
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 94.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 94.
+ [5]
 (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 )
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 97.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 97.
- [5]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 97.
-LaTeX Font Info:    Try loading font information for T2A+fer on input line 97.
+nput line 99.
+LaTeX Font Info:    Try loading font information for T2A+fer on input line 99.
 
 (/usr/share/texmf-dist/tex/latex/pscyr/t2afer.fd
 File: t2afer.fd 2004/09/21 Fontinst v1.914 font definitions for T2A/fer.
 ) (./lst/pthreads_basic.c)
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 108.
+(babel)             in language  on input line 107.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 108.
+(babel)             in language  on input line 107.
 
 [6] (./lst/pthreads_basic_output.lst)
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 118.
+(babel)             in language  on input line 122.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 118.
-) (./text/cpp.tex
+(babel)             in language  on input line 122.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 124.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 124.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 149.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 149.
+ [7]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 203.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 203.
+ [8]) (./text/cpp.tex
 Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 7.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 7.
- [7]
+ [9]
 Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 7.
 Package babel Info: Redefining russian shorthand "~
@@ -1108,7 +1180,7 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 1.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 1.
- [8
+ [10
 
 ]
 Package babel Info: Redefining russian shorthand "|
@@ -1125,7 +1197,7 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 1.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 1.
- [9
+ [11
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 13--15
@@ -1133,47 +1205,57 @@ Underfull \hbox (badness 10000) in paragraph at lines 13--15
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 18--22
-\T2A/ftm/m/n/14.4 Ре-жим до-сту-па: []$\T2A/fer/m/n/14.4 https : / / computing 
-. llnl . gov / tutorials /
+Underfull \hbox (badness 10000) in paragraph at lines 25--31
+[]\T2A/ftm/m/n/14.4 Tanenbaum, Andrew S. Modern Operating Systems [Текст] /
  []
 
 ))
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 17.
+(babel)             in language  on input line 16.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 17.
- [10
+(babel)             in language  on input line 16.
+ [12
 
 ]
+
+Package caption Warning: Unused \captionsetup[figure] on input line 44.
+See the caption package documentation for explanation.
+
+
+Package caption Warning: Unused \captionsetup[table] on input line 162.
+See the caption package documentation for explanation.
+
+
+Package caption Warning: Unused \captionsetup[longtable] on input line 170.
+See the caption package documentation for explanation.
+
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 18.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 18.
- (./lab.aux)
+(./lab.aux)
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 18.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 18.
 Package rerunfilecheck Info: File `lab.out' has not changed.
-(rerunfilecheck)             Checksum: F0B7075392D4C556C759654D0FD60D32;2177.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 18.
+(rerunfilecheck)             Checksum: 2D9C7BA6A62008F9D075E9F4D62908AD;2308.
  ) 
 Here is how much of TeX's memory you used:
- 26384 strings out of 493013
- 439945 string characters out of 6139318
- 746658 words of memory out of 5000000
- 29322 multiletter control sequences out of 15000+600000
+ 28364 strings out of 493013
+ 472934 string characters out of 6139318
+ 795450 words of memory out of 5000000
+ 31240 multiletter control sequences out of 15000+600000
  16311 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,11n,54p,1110b,1226s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 64i,11n,60p,1111b,1231s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/pscyr/t2a.enc}</usr/share/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/pub
-lic/pscyr/ercour.pfb></usr/share/texmf-dist/fonts/type1/public/pscyr/ercourb.pf
-b></usr/share/texmf-dist/fonts/type1/public/pscyr/ercouri.pfb></usr/share/texmf
--dist/fonts/type1/public/pscyr/times.pfb></usr/share/texmf-dist/fonts/type1/pub
-lic/pscyr/timesbd.pfb></usr/share/texmf-dist/fonts/type1/public/pscyr/timesi.pf
-b>
-Output written on lab.pdf (10 pages, 113487 bytes).
+onts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/pscyr/ercou
+r.pfb></usr/share/texmf-dist/fonts/type1/public/pscyr/ercourb.pfb></usr/share/t
+exmf-dist/fonts/type1/public/pscyr/ercouri.pfb></usr/share/texmf-dist/fonts/typ
+e1/public/pscyr/times.pfb></usr/share/texmf-dist/fonts/type1/public/pscyr/times
+bd.pfb></usr/share/texmf-dist/fonts/type1/public/pscyr/timesi.pfb>
+Output written on lab.pdf (12 pages, 130578 bytes).
 PDF statistics:
- 207 PDF objects out of 1000 (max. 8388607)
- 180 compressed objects within 2 object streams
- 76 named destinations out of 1000 (max. 500000)
- 93 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 238 PDF objects out of 1000 (max. 8388607)
+ 207 compressed objects within 3 object streams
+ 89 named destinations out of 1000 (max. 500000)
+ 101 words of extra memory for PDF output out of 10000 (max. 10000000)
 
