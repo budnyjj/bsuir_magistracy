@@ -45,6 +45,7 @@ int main(int argc, char** argv) {
         }
         printf("INFO: thread %ld joined with result: %d\n", i, result_value);
     }
+    pthread_attr_destroy(&thread_attr);
     printf("INFO: completed\n");
     return 0;
 }
