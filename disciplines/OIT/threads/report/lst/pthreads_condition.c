@@ -18,14 +18,13 @@ void* task(void* arg) {
 }
 
 int main(int argc, char** argv) {
-    // init thread attributes
-    // ...
-    // start threads
-    // ...
-    // start work
+    // init thread attributes ...
+    // start threads ...
     pthread_mutex_lock(&mutex_task);
     pthread_cond_signal(&cond_task);
     pthread_mutex_unlock(&mutex_task);
-    // join threads
+    // join threads ...
+    pthread_mutex_destroy(&mutex_task);
+    pthread_cond_destroy(&cond_task);
     // ...
 }

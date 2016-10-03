@@ -1,23 +1,28 @@
+#include <semaphore.h>
+
 // ...
 
-static pthread_mutex_t mutex_task = PTHREAD_MUTEX_INITIALIZER;
+static sem_t sem_task;
 
 void* task(void* arg) {
     char c = *((char*)arg);
     for (size_t i = 0; i < NUM_ITERS; ++i) {
-        pthread_mutex_lock(&mutex_task);
+        sem_wait(&sem_task);
         for (size_t j = 0; j < NUM_REPEATS; ++j) {
             putchar(c);
         }
         putchar('\n');
-        pthread_mutex_unlock(&mutex_task);
+        sem_post(&sem_task);
     }
 }
 
 int main(int argc, char** argv) {
-    // init thread attributes ...
-    // start threads ...
-    // join threads ...
-    pthread_mutex_destroy(&mutex_task);
+    // init thread attributes
     // ...
+    sem_init(&sem_task, 0, 1);
+    // start threads
+    // ...
+    // join threads
+    // ...
+    sem_destroy(&sem_task);
 }

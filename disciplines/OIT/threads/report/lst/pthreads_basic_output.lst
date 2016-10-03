@@ -1,7 +1,9 @@
+...
 aabbaabbaabbaabbaabbaabbaabbbbbbbb
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaba
 bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbabaaaabbbbaaabbbbbbbaabbbaabb
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaba
+...
 INFO: thread 0 joined with result: 32765
 INFO: thread 1 joined with result: 32765
 INFO: completed

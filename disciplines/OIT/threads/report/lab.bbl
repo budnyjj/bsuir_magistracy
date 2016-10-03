@@ -29,4 +29,11 @@ POSIX Threads Programming [{Электронный ресурс}]. "---
 \newblock
   ISBN:~\href{http://isbndb.com/search-all.html?kw=9780136006633}{9780136006633}.
 
+\bibitem{wiki_semaphore}
+\selectlanguageifdefined{russian}
+Semaphore (programming) [{Электронный ресурс}]. "---
+\newblock [{Б.\ м.}~: {б.\ и.}]. "---
+\newblock \cyr\CYRR\cyre\cyrzh\cyri\cyrm\ \cyrd\cyro\cyrs\cyrt\cyru\cyrp\cyra:
+  \BibUrl{https://en.wikipedia.org/wiki/Semaphore_(programming)}.
+
 \end{thebibliography}
