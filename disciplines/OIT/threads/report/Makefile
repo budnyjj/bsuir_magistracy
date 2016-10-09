@@ -1,7 +1,7 @@
 default: compile
 
 compile:
-	pdflatex lab.tex
+	pdflatex report.tex
 
 clean:
 	rm -rf *.log

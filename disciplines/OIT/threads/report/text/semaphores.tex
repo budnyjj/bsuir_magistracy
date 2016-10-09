@@ -27,11 +27,11 @@ POSIX.1b, Real-time extensions (IEEE Std 1003.1b-1993).
 
 Семафор POSIX имеет тип \textit{sem\_t}. Для работы с ним предусмотрены следующие функции:
 \begin{itemize}
-\item \textit{sem\_init()} --- инициализация семафора;
-\item \textit{sem\_wait()} --- захват семафора;
-\item \textit{sem\_post()} --- освободение семафора;
-\item \textit{sem\_getvalue()} --- получение текущего значения счетчика семафора;
-\item \textit{sem\_destroy()} --- уничтожение семафора;
+\item \textit{sem\_init} --- инициализация семафора;
+\item \textit{sem\_wait} --- захват семафора;
+\item \textit{sem\_post} --- освободение семафора;
+\item \textit{sem\_getvalue} --- получение текущего значения счетчика семафора;
+\item \textit{sem\_destroy} --- уничтожение семафора;
 \end{itemize}
 
 На рисунке~\ref{lst:semaphore_basic} приведена модификация исходной версии программы,

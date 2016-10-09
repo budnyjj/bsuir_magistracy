@@ -1,10 +1,12 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Arch Linux) (preloaded format=pdflatex 2016.9.1)  3 OCT 2016 23:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Arch Linux) (preloaded format=pdflatex 2016.9.1)  9 OCT 2016 18:16
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
-**\input lab.tex
-(./lab.tex (/usr/share/texmf-dist/tex/latex/extsizes/extarticle.cls
+**report.tex
+(./report.tex
+LaTeX2e <2016/03/31> patch level 3
+Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
+(/usr/share/texmf-dist/tex/latex/extsizes/extarticle.cls
 Document Class: extarticle 1996/10/08 v1.0 Non Standard LaTeX document class
 (/usr/share/texmf-dist/tex/latex/extsizes/size14.clo
 File: size14.clo 1999/11/11 v1.4a NON-Standard LaTeX file (size option)
@@ -939,8 +941,8 @@ File: ttlkeys.def 2016/03/15
 )
 \c@reflisti=\count167
 \enitdp@reflist=\count168
-) (./lab.aux)
-\openout1 = `lab.aux'.
+) (./report.aux)
+\openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 6.
 LaTeX Font Info:    ... okay on input line 6.
@@ -1050,10 +1052,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 6.
 LaTeX Info: Redefining \pageref on input line 6.
 LaTeX Info: Redefining \nameref on input line 6.
- (./lab.out)
-(./lab.out)
+ (./report.out) (./report.out)
 \@outlinefile=\write4
-\openout4 = `lab.out'.
+\openout4 = `report.out'.
 
 \c@lstlisting=\count176
  ABD: EveryShipout initializing macros (./sys/names.tex)
@@ -1076,15 +1077,15 @@ Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 53.
  [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]) (./text/contents.tex (./l
-ab.toc
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]) (./text/contents.tex (./r
+eport.toc
 LaTeX Font Info:    Try loading font information for T1+ftm on input line 1.
 
 (/usr/share/texmf-dist/tex/latex/pscyr/t1ftm.fd
 File: t1ftm.fd 2004/03/23 Fontinst v1.914 font definitions for T1/ftm.
 )<<t1.cmap>>)
 \tf@toc=\write5
-\openout5 = `lab.toc'.
+\openout5 = `report.toc'.
 
 ) (./text/intro.tex
 Package babel Info: Redefining russian shorthand "|
@@ -1096,6 +1097,10 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 2.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 2.
+
+
+LaTeX Warning: Citation `wiki_thread' on page 3 undefined on input line 10.
+
 ) (./text/pthreads.tex
 Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 3.
@@ -1108,76 +1113,85 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 3.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 3.
+
+
+LaTeX Warning: Citation `pthreads_programming' on page 4 undefined on input lin
+e 16.
+
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 22.
+(babel)             in language  on input line 23.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 22.
+(babel)             in language  on input line 23.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 45.
+(babel)             in language  on input line 46.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 45.
- [4
+(babel)             in language  on input line 46.
+[4
 
 ]
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 95.
+(babel)             in language  on input line 96.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 95.
- [5]
-(/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
+(babel)             in language  on input line 96.
+ [5] (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
 (/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 100.
-LaTeX Font Info:    Try loading font information for T2A+fer on input line 100.
+nput line 101.
+LaTeX Font Info:    Try loading font information for T2A+fer on input line 101.
 
 
 (/usr/share/texmf-dist/tex/latex/pscyr/t2afer.fd
 File: t2afer.fd 2004/09/21 Fontinst v1.914 font definitions for T2A/fer.
 ) (./lst/pthreads_basic.c)
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 108.
+(babel)             in language  on input line 109.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 108.
+(babel)             in language  on input line 109.
 
 [6] (./lst/pthreads_basic_output.lst)
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 122.
+(babel)             in language  on input line 123.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 122.
+(babel)             in language  on input line 123.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 124.
+(babel)             in language  on input line 125.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 124.
+(babel)             in language  on input line 125.
+
+
+LaTeX Warning: Citation `Tanenbaum:2007:MOS:1410217' on page 7 undefined on inp
+ut line 132.
+
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 145.
+(babel)             in language  on input line 148.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 145.
- [7]
+(babel)             in language  on input line 148.
+[7]
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 206.
+(babel)             in language  on input line 209.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 206.
- [8] (./lst/pthreads_mutex.c)
-(./lst/pthreads_mutex_output.lst)
+(babel)             in language  on input line 209.
+ [8] (./lst/pthreads_mutex.c) (./lst/pthreads_mutex_output.lst)
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 235.
+(babel)             in language  on input line 230.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 235.
+(babel)             in language  on input line 230.
  [9]
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 236.
+(babel)             in language  on input line 239.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 236.
+(babel)             in language  on input line 239.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 271.
+(babel)             in language  on input line 274.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 271.
- [10] (./lst/pthreads_condition.c)
-(./lst/pthreads_condition_output.lst)) (./text/semaphores.tex
+(babel)             in language  on input line 274.
+ [10]
+(./lst/pthreads_condition.c) (./lst/pthreads_condition_output.lst))
+(./text/semaphores.tex
 Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 1.
 Package babel Info: Redefining russian shorthand "~
@@ -1187,11 +1201,16 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 1.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 1.
+
+
+LaTeX Warning: Citation `wiki_semaphore' on page 12 undefined on input line 21.
+
+
 Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 40.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 40.
- [12
+[12
 
 ]pdfTeX warning (ext4): destination with the same identifier (name{lstlisting.1
 }) has been already used, duplicate ignored
@@ -1220,14 +1239,57 @@ Package babel Info: Redefining russian shorthand "~
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\\' on input line 7.
 
-) (./text/conclusion.tex
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 9.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 9.
+
+LaTeX Warning: Citation `Stroustrup:1995:DEC:193198' on page 14 undefined on in
+put line 43.
+
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 54.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 54.
+[14
+
+]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 64.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 64.
+
+
+LaTeX Warning: Citation `cppreference_thread' on page 15 undefined on input lin
+e 68.
+
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 110.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 110.
+[15] (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)pdfTeX warning (ext4): destination with the same identifier (name{lstlisting.1
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.132 ]{lst/cpp_condition.cpp}
+                               (./lst/cpp_condition.cpp)
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 137.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 137.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 146.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 146.
+ [16])
+(./text/conclusion.tex
 Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 1.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 1.
- [14
-
-]
+ [17]
 Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 2.
 Package babel Info: Redefining russian shorthand "~
@@ -1237,29 +1299,14 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 1.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 1.
- (./lab.bbl
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 1.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 1.
- [15
 
-]
-Underfull \hbox (badness 10000) in paragraph at lines 13--15
-[]\T2A/ftm/m/n/14.4 Поток вы-пол-не-ния [Элек-трон-ный ре-сурс]. ^^V
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 25--31
-[]\T2A/ftm/m/n/14.4 Tanenbaum, Andrew S. Modern Operating Systems [Текст] /
- []
-
-))
+No file report.bbl.
+)
 Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 17.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 17.
- [16
+ [18
 
 ]
 
@@ -1276,20 +1323,24 @@ See the caption package documentation for explanation.
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 19.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 19.
-(./lab.aux)
+(./report.aux)
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 19.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 19.
-Package rerunfilecheck Info: File `lab.out' has not changed.
-(rerunfilecheck)             Checksum: 0632BBCDBAD63F6E2C7EF1A44E889A9F;2668.
+Package rerunfilecheck Info: File `report.out' has not changed.
+(rerunfilecheck)             Checksum: 3E9D7BE85062105EE0E71C60585197E3;3570.
+
+
+LaTeX Warning: There were undefined references.
+
  ) 
 Here is how much of TeX's memory you used:
- 28579 strings out of 493013
- 477140 string characters out of 6139318
- 798942 words of memory out of 5000000
- 31315 multiletter control sequences out of 15000+600000
+ 28700 strings out of 493013
+ 478907 string characters out of 6139318
+ 802270 words of memory out of 5000000
+ 31392 multiletter control sequences out of 15000+600000
  16311 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 64i,11n,60p,1111b,1231s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 64i,12n,60p,1107b,1231s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/pscyr/t2a.enc}</usr/share/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/pub
 lic/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/pscyr/ercou
@@ -1297,10 +1348,10 @@ r.pfb></usr/share/texmf-dist/fonts/type1/public/pscyr/ercourb.pfb></usr/share/t
 exmf-dist/fonts/type1/public/pscyr/ercouri.pfb></usr/share/texmf-dist/fonts/typ
 e1/public/pscyr/times.pfb></usr/share/texmf-dist/fonts/type1/public/pscyr/times
 bd.pfb></usr/share/texmf-dist/fonts/type1/public/pscyr/timesi.pfb>
-Output written on lab.pdf (16 pages, 147361 bytes).
+Output written on report.pdf (18 pages, 158686 bytes).
 PDF statistics:
- 416 PDF objects out of 1000 (max. 8388607)
- 380 compressed objects within 4 object streams
- 208 named destinations out of 1000 (max. 500000)
- 117 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 481 PDF objects out of 1000 (max. 8388607)
+ 442 compressed objects within 5 object streams
+ 248 named destinations out of 1000 (max. 500000)
+ 141 words of extra memory for PDF output out of 10000 (max. 10000000)
 
