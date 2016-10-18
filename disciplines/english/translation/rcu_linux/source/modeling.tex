@@ -1,0 +1,185 @@
+\section{Modeling RCU for CBMC} \label{sec:model_rcu}
+
+The C Bounded Model Checker
+(CBMC)\footnote{\url{http://www.cprover.org/cbmc/}} is a program analyzer
+that implements bit-precise bounded model checking for C programs~\cite{KroeningTACAS04CBMC}.
+CBMC can demonstrate violation of assertions in C programs, or prove their 
+safety under a given loop unwinding bound.
+%
+It translates an input C program into a formula, which is then passed to a
+modern SAT or SMT solver together with a constraint that specifies the set
+of error states.  If the solver determines the formula to be satisfiable, an
+error trace giving the exact sequence of events is extracted from the
+satisfying assignment.
+%
+Recently, support has been added for verifying concurrent programs over a
+wide range of memory models, including SC, TSO, and PSO~\cite{AlglaveCAV13}.
+
+In the remainder of this section we describe how to construct a model from
+the source code of the Tree RCU implementation in the Linux kernel version 4.3.6, 
+which can be verified by CBMC.  Model construction entailed stubbing
+out calls to other parts of the kernel, removing irrelevant functionality
+(such as idle-CPU detection), removing irrelevant data (such as statistics),
+and adding preprocessor directives to conditionally inject bugs (described
+in Section~\ref{sec:bug_cases}). %These changes were carried out manually,
+%but could potentially be scripted, or, better yet, carried out automatically
+%by CBMC.
+The Linux kernel environment and the majority of these changes to the source code 
+are made through macros in separate files that can be reused across different versions 
+of the Tree RCU implementation. The biggest change in the source files is to use arrays 
+to model per-CPU data, which could potentially be scripted.
+%
+The resulting model is C code with assertions that can be also run as a
+user program,
+%which imposes constraints discussed in the following subsections,
+%Lihao: it is not clear from the subsections below what constraints are imposed by the user program
+%Paul: Your deletion above makes sense!
+which provides important validation of the model itself.
+%
+%\comment{Lihao: move to the limitation section at the end}
+%We model only the fundamental components of Tree RCU. For example, CPU hotplug, 
+%dyntick-idle, quiescent-state forcing, grace-period expediting, and callback handling 
+%are excluded. 
+%\comment{Lihao: currently there isn't any code in the paper. Shall we 
+% try to add some code snippets in this section? Can't think of any good example though 
+% as it seems quite obvious to me from the text. Any suggestions?}
+%\comment{Lihao: add code snippets in PhD thesis}
+
+% \comment{Lihao: shall we write more on modeling RCU for CBMC, 
+% which is the most technical part of the paper and deserves more space.}
+% Paul: I added a small amount, but this close to the deadline I feel the
+% need to be -very- careful.
+
+\subsubsection*{Initialization}
+
+Our model first invokes \co{rcu_init()} which in turn invokes:
+(1)~\co{rcu_init_geometry()} to compute the \co{rcu_node} tree geometry;
+(2)~\co{rcu_init_one} to initialize the \co{rcu_state}
+structure; (3)~\co{rcu_cpu_notify()} to initialize each CPU's
+\co{rcu_data} structure.
+This boot initialization tunes the data-structure configuration
+to match that of the specific hardware at hand.
+For example, a large-system tree might resemble
+Figure~\ref{fig:tree_rcu_hierarchy}, while
+a small configuration has a single \co{rcu_node} ``tree''.
+The model then calls \co{rcu_spawn_gp_kthread()} 
+to spawn the grace-period kthreads discussed below.
+
+\subsubsection*{Per-CPU Variables and State}
+
+RCU uses per-CPU data to provide cache locality and to reduce 
+contention and synchronization overhead.
+For example, the per-CPU structure 
+\co{rcu_data} records quiescent states 
+and handles RCU callbacks (Section \ref{sec:rcu_data}). 
+We model this per-CPU data as an array, indexed by CPU ID.
+
+It is also necessary to model per-CPU state, including the currently
+running task and whether or not interrupts are enabled.
+Identifying the running task requires a (trivial)
+model of the Linux-kernel scheduler, which
+uses an integer array \co{cpu_lock}, indexed by CPU ID.
+Each element of this array models an exclusive lock.
+When a task schedules on a given CPU, it acquires the corresponding CPU lock,
+and releases it when scheduling away.
+We currently do not model preemption, so need model only voluntary context
+switches.
+
+A pair of integer arrays \co{local_irq_depth} and \co{irq_lock} is used
+to model CPUs enabling and disabling interrupts.
+Both arrays are indexed by CPU ID, with the first recording each CPU's
+interrupt-disable nesting depth and the second recording whether
+or not interrupts are disabled.
+% Lihao: for now comment out the following paragraph to save space
+%In theory, the \co{local_irq_depth} array suffices, but in practice
+%the addition of the \co{irq_lock} enables better detection of errors,
+%both in the code under test and in the model itself.
+
+\subsubsection*{Update-Side API \co{synchronize_sched()}}
+Because our model omits CPU hotplug and callback handling, we cannot use
+Tree RCU's normal callback mechanisms to detect the end of a grace period.
+We therefore use a global variable \co{wait_rcu_gp_flag}, which is
+initialized to~1 in \co{wait_rcu_gp()} before the grace period.
+Because \co{wait_rcu_gp()} blocks, it can result in a context switch,
+the model invokes \co{rcu_note_context_switch()}, followed by a call 
+to \co{rcu_process_callbacks()} to inform RCU of the resulting
+quiescent state.
+When the resulting quiescent states propagate to
+the root of the combining tree, the grace-period kthread is awakened.
+This kthread then invokes \co{rcu_gp_cleanup()}, the modeling of which 
+is described below. Then \co{rcu_gp_cleanup()} calls \co{rcu_advance_cbs()}, 
+which invokes \co{pass_rcu_gp()} to clear the \co{wait_rcu_gp_flag} flag.
+The \co{__CPROVER_assume(wait_rcu_gp_flag == 0)}
+~in~ \co{wait_rcu_gp()} prevents CBMC from continuing execution until
+\co{wait_rcu_gp_flag} is equal to~0, thus modeling the needed grace-period
+wait.
+%To get this upstream into mainline Linux, additional stub functions 
+%will be empty by default, and then different CBMC test scenarios can
+%substitute different functionality on a scenario-by-scenario basis.
+
+\subsubsection*{Scheduling-Clock Interrupt and Context Switch} \label{sec:model_irq}
+
+The \co{rcu_check_callbacks()} function detects
+idle execution, usermode execution, and to invoke RCU core processing
+in response to state changes.
+Because we model neither idle nor usermode execution,
+%\co{rcu_check_callbacks()} responds only to state changes.
+%Also, we do not model RCU diagnostics, so 
+the only state changes are quiescent states and the beginnings and ends of grace periods.
+We therefore dispense with \co{rcu_check_callbacks()} (Section \ref{sec:rcu_softirq}).
+Instead, we directly call \co{rcu_note_context_switch()} just after
+releasing a CPU, which in turn calls \co{rcu_sched_qs()} to record the
+quiescent state.
+Finally, we call \co{rcu_process_callbacks()},
+which notes grace-period beginnings and ends and reports quiescent states
+up RCU's combining tree.
+%To model \co{cond_sched()} that explicitly performs a rescheduling to reduce latency in 
+%the Linux kernel, we simply call \co{rcu_note_context_switch()} to note a context switch.
+%\comment{Paul: cond_resched() only causes rcu_note_context_switch() to be invoked 
+%when a real reschedule actually happened. Still OK to model it with rcu_note_context_switch(),
+%though. But also OK to model it as nothingness, which might reduce the verification overhead a bit}
+
+\subsubsection*{Grace-Period Kthread}
+As discussed in Section \ref{sec:rcu_gp_kthread}, \co{rcu_gp_kthread()}
+invokes \co{rcu_gp_init()}, \co{rcu_gp_fqs()}, and \co{rcu_gp_cleanup()}
+to initialize, wait for, and clean up after each grace period, respectively.
+To reduce the size of the formula generated by CBMC, instead of spawning a
+separate thread, we directly call \co{rcu_gp_init()} from
+\co{rcu_spawn_gp_kthread} and \co{rcu_gp_cleanup()} from
+\co{rcu_report_qs_rsp()}.
+Because we model neither idle nor usermode execution, we need not
+call \co{rcu_gp_fqs()}.
+%It stays in an infinite loop for each task until certain conditions 
+%are met, then moves to the next one. As CBMC is a bounded model checker, it unwinds 
+%loops of its input program to a fixed depth before performing verification. 
+%We use CBMC's built-in primitive \co{__CPROVER_assume()} to model function 
+%\co{wait_event_interruptible()} in each infinite loop. During the execution of CBMC, 
+%it will only perform the next task when the condition in \co{__CPROVER_assume(condition)} 
+%is true, even the loop is bounded.
+
+\subsubsection*{Kernel Spin Locks}
+CBMC's
+\co{__CPROVER_atomic_begin()}, \co{__CPROVER_atomic_end()}, and
+\co{__CPROVER_assume()} built-in primitives are used to construct atomic test-and-set
+for \co{spinlock_t} and \co{raw_spinlock_t} acquisition and
+atomic reset for release.
+%
+We use GCC atomic builtins for user-space execution:
+\co{while (__sync_lock_test_and_set(lock, 1))} acquires a
+lock and \co{__sync_lock_release(lock)} releases it.
+
+% \comment{Lihao: final version of the paper should refer the model source code online}
+% Done above.
+% The full source code of our RCU model can be found online at \url{}.
+
+\subsubsection*{Limitations}
+We model only the fundamental components of Tree RCU, excluding, for example,
+quiescent-state forcing, grace-period expediting, and callback handling.
+%
+In addition, we make the assumption that all CPUs are busy executing RCU related tasks. 
+As a result, we do not model the following scenarios: 1.~CPU hotplug and dyntick-idle; 
+2.~Thread-migration failure modes in the Linux kernel involving per-CPU variables; 
+3.~RCU priority boosting. Moreover, we model scheduling-clock interrupts as 
+direct function calls, which, as discussed later, results in failures to model one of 
+the bug-injection scenarios. Lastly, the test harness we use only passes through a 
+single grace period, so cannot detect failures involving multiple grace periods.

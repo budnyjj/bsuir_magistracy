@@ -1,0 +1,81 @@
+\section{Conclusion}
+This paper overviews the implementation of Tree RCU in the 
+Linux Kernel, and describes how to construct a model directly from
+its source code. It then shows how to use the CBMC model checker to 
+verify a significant part of the Tree RCU implementation automatically, 
+which to the best of our knowledge is unprecedented.
+%
+This work demonstrates that RCU is a rich example to drive research:
+it is small enough to provide models that can just
+barely be verified by existing tools, but it also has sufficient concurrency
+and complexity to drive significant advances in techniques and tooling.
+
+For future work, we plan to 
+add quiescent-state forcing and grace-period expediting into our model 
+and verify their safety and liveness properties, using more sophisticated 
+test harnesses that pass through multiple grace periods and operate on 
+a larger tree structure.
+%
+We also plan to model and verify the preemptible version of Tree RCU, 
+which we expect to be quite challenging. Moreover, there is much fertile ground 
+verifying uses of RCU in the Linux kernel, for example, the Virtual File
+System (VFS).
+%
+%In addition, we plan to remove some of the limitations of our model
+%listed at the end of Section~\ref{sec:model_rcu}.
+
+There are also potential improvements for CBMC to better support future
+RCU verification efforts. For instance, better support of lists is required
+to verify RCU's callback handling mechanism. A field-sensitive SSA encoding
+for structures and a thread-aware slicer will help reduce encoding size,
+and therefore improve scalability.
+% \comment{Paul: Would it make sense to list potential areas for
+% improvement of CBMC?  Were there any CBMC bugs that had to be fixed
+% for this work to proceed? Lihao: Daniel, could you review this paragraph?}
+
+This work demonstrates the nascent ability of SAT-based
+formal-verification tools to handle real-world pro\-duc\-tion-quality
+synchronization primitives, as exemplified by Linux-kernel
+Tree RCU on weakly ordered TSO and PSO systems.
+Although modeling weak ordering incurs a significant performance
+penalty, this penalty is not excessive.
+We therefore hypothesize that use of these tools for highly concurrent
+multithreaded software
+will reach mainstream within 3-5 years, especially given recent
+rates of improvement.
+%We expect early-adopter use to commence much sooner.
+% \comment{Lihao: as far as I know, they are already used 
+% in automoblie industry to verify relatively small and simple embedded 
+% software C code. Shall we emphasize this to be happening in the Linux kernel?
+% A small concern though: saying it in authority/certainty is likey to 
+% reveal the authorship in a double-blind review process...But we certainly
+% can do it in the final version of the paper.}
+% I avoided the auto-industry use by calling out highly concurrent etc.
+% I made the early adopter prediction less precise.
+
+%This work also confirms, in a very practical setting, the tractability and
+%practicality of the use of bug injection to validate both the model and the
+%tools.
+%We hypothesize that use of bug injection will do much to increase
+%practitioner confidence in these tools and techniques, particularly
+%in those situations where they fail to locate bugs.
+%We nevertheless anticipate that practitioner confidence will
+%increase most dramatically in those cases where these tools
+%and techniques locate real and relevant bugs in production code.
+% \comment{Lihao: bug-injection is very useful in model validation so
+% it is quite common in verification papers, especially when 
+% no real bugs were found. So this paragraph might not add too much value
+% to reviewers in the verfication field.}
+
+%\comment{Lihao: improve reference entries with more details since they don't have page limits}
+
+% Future work
+% Weak memory models
+% Start a new grace period
+% Force quiescent state 
+% Expedited grace period
+% Dyntick-idle
+% CPU hotplug
+
+% Parametrised verification
+% Inductive verification

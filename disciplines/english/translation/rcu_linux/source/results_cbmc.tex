@@ -1,0 +1,54 @@
+\begin{table*}[tbh]
+\centering
+\scalebox{0.85}{%
+\begin{tabular}{|l|c|c|r|r|r|r|c|} \hline
+\multicolumn{1}{|c|}{\textbf{Scenario}} &
+\multicolumn{1}{c|}{\textbf{\#Constraints}} &
+\multicolumn{1}{c|}{\textbf{\#Variables}} &
+\multicolumn{1}{c|}{\textbf{\#Clauses}} &
+\multicolumn{1}{c|}{\textbf{Max VM}} &
+\multicolumn{1}{c|}{\textbf{Solver Time}} &
+\multicolumn{1}{c|}{\textbf{Total Time}} &
+\multicolumn{1}{c|}{\textbf{Result}} \\ \hline
+Prove             &  5,279,600 & 30,085,337 & 149,758,548 & 23.27\,GB &  9h\,24mins &  9h\,36mins & Safe \\ \hline
+Prove-TSO         &  5,646,959 & 42,042,386 & 210,708,442 & 34.00\,GB & 10h\,51mins & 11h\,4mins  & Safe \\ \hline
+Prove-PSO         &  5,617,154 & 41,327,066 & 207,042,629 & 33.76\,GB & 11h\,23mins & 11h\,36mins & Safe \\ \hline
+Prove-GP          &  5,476,540 & 30,655,428 & 152,743,545 & 23.90\,GB &  3h\,52mins &  4h\,5mins  & End of GP Reachable \\ \hline
+Prove-GP-TSO      &  5,646,940 & 42,041,740 & 210,705,615 & 34.00\,GB & 13h\,1mins  & 13h\,14mins & End of GP Reachable \\ \hline
+Prove-GP-PSO      &  5,617,135 & 41,326,420 & 207,039,802 & 33.76\,GB &  8h\,24mins &  8h\,37mins & End of GP Reachable \\ \hline
+Bug 1             &  1,343,449 & 11,719,966 &  56,027,980 &  8.24\,GB &      31mins &      33mins & Assertion Violated \\ \hline
+Bug 1-TSO         &  1,540,645 & 17,120,555 &  83,392,397 & 12.60\,GB &      53mins &      56mins & Assertion Violated \\ \hline
+Bug 1-PSO         &  1,514,657 & 16,548,819 &  80,481,851 & 12.42\,GB &      46mins &      48mins & Assertion Violated \\ \hline
+Bug 2             &  5,279,584 & 30,056,615 & 149,643,492 & 23.26\,GB &  4h\,25mins &  4h\,37mins & End of GP Unreachable \\ \hline
+Bug 2-TSO         &  5,646,940 & 42,013,372 & 210,592,015 & 34.01\,GB &  9h\,57mins & 10h\,10mins & End of GP Unreachable \\ \hline
+Bug 2-PSO         &  5,617,135 & 41,298,052 & 206,926,202 & 33.75\,GB &  8h\,51mins &  9h\,4mins & End of GP Unreachable \\ \hline
+Bug 3             &  6,374,373 & 34,856,577 & 174,131,331 & 28.04\,GB &  7h\,11mins &  7h\,25mins & End of GP Unreachable \\ \hline
+Bug 3-TSO         &  6,805,631 & 48,788,433 & 245,157,184 & 41.18\,GB & 19h\,40mins & 19h\,55mins & End of GP Unreachable \\ \hline
+Bug 3-PSO         &  6,773,763 & 48,023,601 & 241,237,629 & 40.95\,GB & 19h\,19mins & 19h\,35mins & End of GP Unreachable \\ \hline
+Bug 4             &  4,847,980 & 27,804,363 & 138,197,043 & 22.18\,GB &  4h\,3mins  &  4h\,14mins & End of GP Unreachable \\ \hline
+Bug 4-TSO         &  5,170,928 & 38,480,891 & 192,605,939 & 31.49\,GB &  8h\,18mins &  8h\,30mins & End of GP Unreachable \\ \hline
+Bug 4-PSO         &  5,141,123 & 37,765,571 & 188,940,126 & 31.27\,GB &  8h\,14mins &  8h\,26mins & End of GP Unreachable \\ \hline
+Bug 5             &  5,161,874 & 29,510,828 & 146,787,005 & 23.02\,GB &  4h\,6mins  &  4h\,18mins & End of GP Unreachable \\ \hline
+Bug 5-TSO         &  5,522,168 & 41,239,083 & 206,569,643 & 33.65\,GB &  5h\,46mins &  5h\,59mins & End of GP Unreachable \\ \hline
+Bug 5-PSO         &  5,492,607 & 40,529,619 & 202,933,839 & 33.04\,GB &  5h\,42mins &  5h\,55mins & End of GP Unreachable \\ \hline
+Bug 6             &  1,410,495 & 13,165,176 &  63,302,559 &  9.03\,GB &      19mins &      21mins & End of GP Unreachable \\ \hline
+Bug 6-TSO         &  1,541,937 & 17,286,058 &  84,131,818 & 12.59\,GB &  1h\,32mins &  1h\,33mins & End of GP Unreachable \\ \hline
+Bug 6-PSO         &  1,518,307 & 16,766,198 &  81,485,361 & 12.44\,GB &  1h\,22mins &  1h\,24mins & End of GP Unreachable \\ \hline
+Bug 7             &  5,022,249 & 29,242,760 & 145,389,516 & 22.87\,GB &  8h\,48mins &  9h         & \mkcol{Safe (Bug Missed)} \\ \hline
+Bug 7-TSO         &  5,201,744 & 40,139,251 & 200,857,404 & 31.93\,GB & 11h\,6mins  & 11h\,18mins & Assertion Violated \\ \hline
+Bug 7-PSO         &  5,172,720 & 39,442,675 & 197,287,644 & 31.71\,GB & 11h\,32mins & 11h\,44mins & Assertion Violated \\ \hline
+Bug 7 (2 readers) $^*$
+                  & 15,165,557 & 71,205,400 & 359,021,922 & 59.07\,GB & 19h\,2mins  & 19h\,40mins & Assertion Violated \\ \hline
+Bug 7-TSO (2 readers) $^*$
+                  & 15,691,102 & 90,444,903 & 456,973,933 & 74.80\,GB & 78h\,12mins & 78h\,53mins & Assertion Violated \\ \hline
+Bug 7-PSO (2 readers) $^*$
+                  & 15,647,504 & 89,398,551 & 451,611,664 & 74.51\,GB & 84h\,21mins & 85h\,2mins  & \mkcol{Solver Out of Memory} \\ \hline
+\end{tabular}
+}
+\vspace*{0.03cm} \\
+\raggedright
+\centering\footnotesize * This experiment was performed on a 64-bit machine running Linux 3.19.8 with twelve Intel Xeon 2.40\,GHz cores and 96\,GB of main memory
+\vspace*{0.05cm}
+\caption{Experimental Results of CBMC}
+\label{tab:results_cbmc}
+\end{table*}

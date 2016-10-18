@@ -1,0 +1,146 @@
+%\documentclass{acm_proc_article-sp}
+%\documentclass{sig-alternate}
+\documentclass[preprint, 10pt, numbers]{sigplanconf}
+
+\usepackage{cmap}                    % Улучшенный поиск русских слов в полученном pdf-файле
+\usepackage[T1,T2A]{fontenc}	     % Поддержка русских букв
+\usepackage[utf8x]{inputenc}	     % Кодировка utf8
+\usepackage[english, russian]{babel} % Языки: русский, английский
+\usepackage{pscyr}				     % Красивые русские шрифты
+\renewcommand{\rmdefault}{ftm}       % Включаем Times New Roman
+
+\usepackage{tikz}         % for graphics
+\usepackage{caption}
+\usepackage{pgfplots}
+\usepackage{amssymb}      % some useful maths symbols
+\usepackage{pifont}       % to get dingbats
+\usepackage{url}          % for typesetting URLs
+\usepackage{fancyvrb}     % for code snippets
+\usepackage{listings}
+\usepackage{paralist}
+\usepackage{color}                % only for autor notes to each other
+%\def\comment#1{{\color{red}#1}}  % display comments/notes.
+%\def\comment#1{{\color{red}}}    % hide comments/notes.
+
+\lstset{language=C, basicstyle=\ttfamily, xleftmargin=2pc}
+\lstset{
+  literate={\_}{}{0\discretionary{\_}{}{\_}}%
+}
+\newcommand{\co}[1]{\lstinline[breaklines=true,breakatwhitespace=true]{#1}}
+\newcommand{\mkcol}[1]{\textcolor{red}{\textbf{#1}}}
+
+\begin{document}
+
+% ---------------------------------------------------------------------
+% Title and authors,  adherence to SIGS style
+% ---------------------------------------------------------------------
+\title{Верификация иерархического механизма Read-Copy~Update ядра Linux}
+\date{}
+
+% sigplan template
+%\authorinfo{\textit{Authors and affiliations omitted, for double-blind review.}}
+
+\authorinfo{Lihao Liang}
+           {University of Oxford}
+           {lihao.liang@cs.ox.ac.uk}
+
+\authorinfo{Paul E. McKenney}
+           {Linux Technology Center, IBM}
+           {paulmck@linux.vnet.ibm.com}
+
+\authorinfo{Daniel Kroening}
+           {University of Oxford}
+           {daniel.kroening@cs.ox.ac.uk}
+
+\authorinfo{Tom Melham}
+           {University of Oxford}
+           {tom.melham@cs.ox.ac.uk}
+
+% sig-alternate template
+%\numberofauthors{4}
+%\author{
+%%\textit{Authors and affiliations omitted, for double-blind review.}
+%%
+%  Lihao Liang \\
+%  \affaddr{University of Oxford} \\
+%  %\email{lihao.liang@cs.ox.ac.uk}
+%  \alignauthor
+%%
+%  Paul E. McKenney \\
+%  \affaddr{Linux Technology Center, IBM} \\
+%  %\email{paulmck@linux.vnet.ibm.com}
+%  \alignauthor
+%%
+%  Daniel Kroening \\
+%  \affaddr{University of Oxford} \\
+%  %\email{daniel.kroening@cs.ox.ac.uk}
+%  \alignauthor
+%%
+%  Tom Melham \\
+%  \affaddr{University of Oxford} \\
+%  %\email{tom.melham@cs.ox.ac.uk}
+%}
+
+% ---------------------------------------------------------------------
+% Start of text.
+% ---------------------------------------------------------------------
+
+
+\maketitle
+
+\begin{abstract}
+Read-Copy Update (RCU) --- это высокопроизводительный масштабируемый
+механизм синхронизации ядра операционной системы Linux,
+который позволяет выполнять нетребовательные к ресурсам запросы на
+чтение данных вместе с запросами на их изменение.
+Реализация качественного RCU для многоядерных систем является
+весьма сложной задачей. Учитывая распространенность Linux,
+даже самая редкая ошибка исходного кода реализации будет проявлятся недопустимо часто.
+В связи с этим, строгая валидация сложных сценариев поведения RCU является
+критически важной. В связи с тем, что исчерпывающее тестирование данного
+механизма невозможно из-за экпоненциального роста числа сценариев тестирования,
+имеет смысл использовать метод формальной верификации.
+
+Следует отметить, что прошлые попытки верификации RCU были направлены
+либо на более простые реализации, либо использовали языки моделирования,
+что требует процесса ручного перевода исходного текста ядра,
+который также подвержен ошибкам.
+Кроме этого, подобный перевод придется выполнять слишком часто, поскольку
+в реализацию RCU Linux регулярно вносятся правки.
+В этой статье мы опишем реализацию Tree RCU в ядре Linux,
+затем рассмотрим подход к построению модели верификации напрямую из
+исходного кода реализации и использованию верификатора CBMC для проверки ее инвариантов.
+По нашим сведениям, это первая попытка верификации существенной части
+исходного кода RCU и важный шаг на пути интеграции процедуры формальной верификации
+в набор регрессионных тестов ядра Linux.
+\end{abstract}
+
+\category{}{D.2.4}{Программное обеспечение/Верификация программ}[Верификация моделей]
+\category{}{D.1.3}{Многопоточное программирование}[Параллельное программирование]
+
+\keywords
+Верификация программного обеспечения, Параллельные вычисления, Read-Copy Update, ядро Linux
+
+% Include the sections of the paper.
+
+\input{intro.tex}                 % Introduction
+\input{background.tex}            % Background
+\input{tree_rcu.tex}              % Tree RCU Implementation
+\input{modeling.tex}              % Tree RCU Model
+\input{experiments.tex}           % Experimental Studies
+\input{related_work.tex}          % Related Work
+\input{concl.tex}                 % Summary and Furture Work
+%\input{ack.tex}                   % Acknowledgements
+
+%\newpage
+%\bibliographystyle{abbrv}    % sig-alternate
+% \bibliographystyle{abbrvnat} % sigplanconf
+% \raggedright
+% \bibliography{paper}
+
+%\clearpage
+%\appendix
+%\vskip5mm
+%\input{appendix.tex}
+
+\end{document}

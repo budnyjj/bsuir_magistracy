@@ -1,0 +1,71 @@
+\section{Related Work}
+%Formal verification has been applied to various aspects of RCU design 
+%and implementation. 
+%
+McKenney applied the SPIN model checker to verify RCU's \co{NO_HZ_FULL_SYSIDLE}
+functionality \cite{VerificationChallenges},
+and interactions between dyntick-idle and 
+non-maskable interrupts~\cite{ValDyntickNMI}. 
+%
+Desnoyers et al.~\cite{DesnoyersOSR13} propose a virtual architecture 
+to model out-of-order memory accesses and instruction scheduling.
+User-level RCU \cite{DesnoyersTPDS12UserRCU} is modeled and verified 
+in the proposed architecture using the SPIN model checker. 
+
+These efforts require an error-prone translation from C to SPIN's 
+modeling language, and therefore are not appropriate for regression testing. 
+By contrast, our work constructs an RCU model directly from its 
+source code from the Linux kernel, and verifies it using automated 
+verification tool. 
+
+Alglave et al.~\cite{AlglaveCAV13} introduce a symbolic encoding 
+for verifying concurrent software over a range of memory models 
+including SC, TSO and PSO.
+They implement the encoding in the CBMC bounded model checker and 
+use the tool to verify \co{rcu_assign_pointer()} and \co{rcu_dereference()}.
+
+McKenney used CBMC to verify Tiny
+RCU~\cite{VerificationChallenges}, a trivial Linux-kernel
+RCU implementation for uni-core systems.
+
+Groce et al.~\cite{GroceASE15RCU} introduce a falsification-driven
+verification methodology that is based on a variation of mutation 
+testing. By using CBMC, they were able to find two holes in 
+\co{rcutorture}--RCU's stress testing suite, one of which was hiding 
+a real bug in Tiny RCU.
+Further work on real hardware identified two more
+\co{rcutorture} holes, one of which was hiding a real bug in Tasks
+RCU~\cite{JonathanCorbet2014RCU-tasks} and the other of which was hiding
+a minor performance bug in Tree RCU.
+% \comment{Lihao: shall we add a reference to RCU-tasks. I found this one:
+% https://lwn.net/Articles/607117/}
+% Paul: Done!
+
+In this work, we use CBMC to verify the implementation of Linux-kernel
+Tree RCU for multi-core systems, which is more complex
+and sophisticated, over SC, TSO, and PSO.
+
+Gotsman et al.~\cite{YangESOP13RCU} use a extended concurrent separation logic 
+%extended with temporal operators 
+to formalise the concept 
+of grace period and prove an abstract implementation of RCU over SC.
+%
+Tassarotti et al.~\cite{DreyerPLDI15RCU} use GPS, a recently 
+developed program logic for the C/C++11 memory model, to carry out 
+a formal proof of a simple implementation of user-level 
+RCU for a singly-linked list assuming ``release-acquire'' semantics, 
+which is weaker than SC but stronger than memory models used by
+real-world RCU implementations.
+%
+These formal proofs were performed manually on simple implementations 
+of RCU. By contrast, our work applies an automated verification tool with a 
+test harness to verify the grace-period property of a real-world
+implementation of RCU over SC, TSO, and PSO.
+
+Formal verification has started to make its way into real-world practice 
+of verifying large non-trivial code bases. Cal\-ca\-gno et al.~\cite{CalcagnoNASA15} 
+describe integrating a static-analysis tool
+into Facebook's software development cycle.
+We believe that our work is an 
+important step towards integration of verification into Linux-kernel RCU's 
+regression test suite.

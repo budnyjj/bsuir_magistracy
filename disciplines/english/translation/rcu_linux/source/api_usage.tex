@@ -1,0 +1,73 @@
+\subsection{Core RCU API Usage} \label{sec:api_usage}
+The core RCU API is quite small and consists of only five primitives:
+\co{rcu_read_lock()}, \co{rcu_read_unlock()}, \co{synchronize_rcu()},
+\co{rcu_assign_pointer()}, and \co{rcu_dereference()}~\cite{McKenneyOSR08}.
+
+An RCU read-side critical section begins with \co{rcu_read_lock()}
+and ends with a corresponding \co{rcu_read_unlock()}.
+When nested, they are flattened into one large critical section.
+Within a critical section, it is illegal to block, but
+preemption is legal in a preemptible kernel.
+RCU-protected data accessed by a 
+read-side critical section will not be reclaimed until after that
+critical section completes.
+
+The function \co{synchronize_rcu()} marks the end of the updater code and 
+the beginning of the reclaimer code. It blocks until all pre-existing RCU
+read-side critical sections have completed. Note that \co{synchronize_rcu()} 
+does not necessarily wait for critical sections that begin after
+it does.
+
+%\comment{Lihao: add example, e.g. http://paulmck.livejournal.com/39343.html}
+
+\begin{figure}[tbp]
+\centering
+\footnotesize
+\begin{verbatim}
+               int x = 0;
+               int y = 0;
+               int r1, r2;
+               
+               void rcu_reader(void) {
+                 rcu_read_lock();
+                 r1 = x; 
+                 r2 = y; 
+                 rcu_read_unlock();
+               }
+               
+               void rcu_updater(void) {
+                 x = 1; 
+                 synchronize_rcu();
+                 y = 1; 
+               }
+
+               ...
+
+               // after both rcu_reader() 
+               // and rcu_updater() return
+               assert(r2 == 0 || r1 == 1);
+\end{verbatim}
+\caption{Verifying RCU Grace Periods}
+\label{fig:verify_rcu_gp}
+\end{figure}
+
+Consider the example given in
+Figure~\ref{fig:verify_rcu_gp}.
+If the RCU read-side critical section in function \co{rcu_reader()} begins
+before \co{synchronize_rcu()} in \co{rcu_updater()} is called, then it must 
+finish before \co{synchronize_rcu()} returns, so that the value of
+\co{r2} must be 0. If it ends after \co{synchronize_rcu()} returns, then 
+the value of \co{r1} must be 1.
+
+Finally, to assign a new value to an RCU-protected pointer, RCU updaters use 
+\co{rcu_assign_pointer()}, which returns the new value. RCU readers 
+can use \co{rcu_dereference()} to fetch an RCU-protected pointer, 
+which can then be safely dereferenced. 
+%Note that this API does not actually dereference the pointer.
+%Instead, it only fetches the pointer for later dereferencing.
+The returned value is only valid within the enclosing RCU read-side critical section.
+% Lihao: include this in PhD thesis and the technical report
+The \co{rcu_assign_pointer()} and \co{rcu_dereference()} functions work
+together to ensure that if a given reader dereferences an RCU-protected pointer to 
+a just-inserted object, the dereference operation will return valid data rather
+than pre-initialization garbage.

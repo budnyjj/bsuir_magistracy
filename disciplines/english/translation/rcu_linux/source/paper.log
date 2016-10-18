@@ -1,0 +1,1068 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Arch Linux) (preloaded format=pdflatex 2016.9.1)  18 OCT 2016 20:53
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**\input paper.tex
+(./paper.tex (./sigplanconf.cls
+Document Class: sigplanconf 2015/12/03 v3.2 ACM SIGPLAN Proceedings
+\@numheaddepth=\count79
+(/usr/share/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+\standardtextwidth=\dimen103
+\standardvspace=\skip43
+
+Using natbib package with 'numbers' citation style.
+(/usr/share/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip44
+\bibsep=\skip45
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count88
+)
+\@sectionaboveskip=\skip46
+\@sectionbelowskip=\skip47
+\@subsectionaboveskip=\skip48
+\@subsectionbelowskip=\skip49
+\@paragraphaboveskip=\skip50
+\@authorcount=\count89
+\@titlenotecount=\count90
+\@titlenotetext=\toks14
+\@fnmark=\toks15
+\@authori=\count91
+\@measbox=\box26
+)
+(/usr/share/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
+(/usr/share/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks16
+\pgfutil@tempdima=\dimen104
+\pgfutil@tempdimb=\dimen105
+
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.tex))
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box27
+
+(/usr/share/texmf-dist/tex/latex/ms/everyshi.sty
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+))
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+Package: pgfrcs 2015/08/07 v3.0.1a (rcs-revision 1.31)
+))
+Package: pgf 2015/08/07 v3.0.1a (rcs-revision 1.15)
+
+(/usr/share/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
+)
+(/usr/share/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2016/07/10 v1.0t Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+
+(/usr/share/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2016/07/10 v0.06j Graphics/color for pdfTeX
+
+(/usr/share/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+(/usr/share/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count92
+))
+\Gin@req@height=\dimen106
+\Gin@req@width=\dimen107
+)
+(/usr/share/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2014/07/09 v3.0.1a (rcs-revision 1.48)
+
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks18
+\pgfkeys@temptoks=\toks19
+
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
+\pgfkeys@tmptoks=\toks20
+))
+\pgf@x=\dimen108
+\pgf@y=\dimen109
+\pgf@xa=\dimen110
+\pgf@ya=\dimen111
+\pgf@xb=\dimen112
+\pgf@yb=\dimen113
+\pgf@xc=\dimen114
+\pgf@yc=\dimen115
+\w@pgf@writea=\write3
+\r@pgf@reada=\read1
+\c@pgf@counta=\count93
+\c@pgf@countb=\count94
+\c@pgf@countc=\count95
+\c@pgf@countd=\count96
+\t@pgf@toka=\toks21
+\t@pgf@tokb=\toks22
+\t@pgf@tokc=\toks23
+
+(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
+)
+Driver file for pgf: pgfsys-pdftex.def
+
+(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2014/10/11  (rcs-revision 1.35)
+
+(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2013/10/10  (rcs-revision 1.13)
+)))
+(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
+\pgfsyssoftpath@smallbuffer@items=\count97
+\pgfsyssoftpath@bigbuffer@items=\count98
+)
+(/usr/share/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
+))
+(/usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/usr/share/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
+
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen116
+\pgfmath@count=\count99
+\pgfmath@box=\box28
+\pgfmath@toks=\toks24
+\pgfmath@stack@operand=\toks25
+\pgfmath@stack@operation=\toks26
+)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code
+.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.te
+x) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics
+.code.tex))) (/usr/share/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count100
+)) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2013/10/07  (rcs-revision 1.27)
+\pgf@picminx=\dimen117
+\pgf@picmaxx=\dimen118
+\pgf@picminy=\dimen119
+\pgf@picmaxy=\dimen120
+\pgf@pathminx=\dimen121
+\pgf@pathmaxx=\dimen122
+\pgf@pathminy=\dimen123
+\pgf@pathmaxy=\dimen124
+\pgf@xx=\dimen125
+\pgf@xy=\dimen126
+\pgf@yx=\dimen127
+\pgf@yy=\dimen128
+\pgf@zx=\dimen129
+\pgf@zy=\dimen130
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2013/10/07  (rcs-revision 1.29)
+\pgf@path@lastx=\dimen131
+\pgf@path@lasty=\dimen132
+) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2014/11/02  (rcs-revision 1.24)
+\pgf@shorten@end@additional=\dimen133
+\pgf@shorten@start@additional=\dimen134
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
+\pgfpic=\box29
+\pgf@hbox=\box30
+\pgf@layerbox@main=\box31
+\pgf@picture@serial@count=\count101
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2014/11/02  (rcs-revision 1.12)
+\pgflinewidth=\dimen135
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.t
+ex
+File: pgfcoretransformations.code.tex 2015/08/07  (rcs-revision 1.20)
+\pgf@pt@x=\dimen136
+\pgf@pt@y=\dimen137
+\pgf@pt@temp=\dimen138
+) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2008/10/09  (rcs-revision 1.3)
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2006/10/11  (rcs-revision 1.2)
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.te
+x
+File: pgfcorepathprocessing.code.tex 2013/09/09  (rcs-revision 1.9)
+) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2015/05/14  (rcs-revision 1.43)
+\pgfarrowsep=\dimen139
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
+\pgf@max=\dimen140
+\pgf@sys@shading@range@num=\count102
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
+
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2014/07/09  (rcs-revision 1.21)
+\pgfexternal@startupbox=\box32
+))
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2013/07/18  (rcs-revision 1.7)
+)
+(/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2013/09/30  (rcs-revision 1.5)
+) (/usr/share/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2013/11/07  (rcs-revision 1.5)
+)))
+(/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2014/03/21  (rcs-revision 1.35)
+\pgfnodeparttextbox=\box33
+)
+(/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2015/08/03  (rcs-revision 1.13)
+)
+(/usr/share/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2007/07/03 v3.0.1a (rcs-revision 1.7)
+\pgf@nodesepstart=\dimen141
+\pgf@nodesepend=\dimen142
+)
+(/usr/share/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2007/07/23 v3.0.1a (rcs-revision 1.1)
+))
+(/usr/share/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex))
+(/usr/share/texmf-dist/tex/latex/pgf/math/pgfmath.sty
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
+(/usr/share/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2013/12/13 v3.0.1a (rcs-revision 1.25)
+
+(/usr/share/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
+\pgffor@iter=\dimen143
+\pgffor@skip=\dimen144
+\pgffor@stack=\toks27
+\pgffor@toks=\toks28
+))
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
+
+(/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.te
+x
+File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
+\pgf@plot@mark@count=\count103
+\pgfplotmarksize=\dimen145
+)
+\tikz@lastx=\dimen146
+\tikz@lasty=\dimen147
+\tikz@lastxsaved=\dimen148
+\tikz@lastysaved=\dimen149
+\tikzleveldistance=\dimen150
+\tikzsiblingdistance=\dimen151
+\tikz@figbox=\box34
+\tikz@figbox@bg=\box35
+\tikz@tempbox=\box36
+\tikz@tempbox@bg=\box37
+\tikztreelevel=\count104
+\tikznumberofchildren=\count105
+\tikznumberofcurrentchild=\count106
+\tikz@fig@count=\count107
+ (/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
+\pgfmatrixcurrentrow=\count108
+\pgfmatrixcurrentcolumn=\count109
+\pgf@matrix@numberofcolumns=\count110
+)
+\tikz@expandcount=\count111
+
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
+topaths.code.tex
+File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
+))) (/usr/share/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
+
+(/usr/share/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
+\captionmargin=\dimen152
+\captionmargin@=\dimen153
+\captionwidth=\dimen154
+\caption@tempdima=\dimen155
+\caption@indent=\dimen156
+\caption@parindent=\dimen157
+\caption@hangindent=\dimen158
+Package caption Info: Unknown document class (or package),
+(caption)             standard defaults will be used.
+)
+
+Package caption Warning: Unsupported document class (or package) detected,
+(caption)                usage of the caption package is not recommended.
+See the caption package documentation for explanation.
+
+Package caption Info: \@makecaption = \long macro:#1#2->\addvspace {4pt} \if \@
+caprule \hrule width \hsize height .33pt \vspace {4pt} \fi \setbox \@tempboxa =
+ \hbox {\@setfigurenumber {#1.}\nut #2}\if \@dimgtrp {\wd \@tempboxa }{\hsize }
+\noindent \@setfigurenumber {#1.}\nut #2\par \else \centerline {\box \@tempboxa
+ }\fi .
+\c@ContinuedFloat=\count112
+) (/usr/share/texmf-dist/tex/latex/pgfplots/pgfplots.sty
+(/usr/share/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
+Package: pgfplots 2016/01/06 v1.13 Data Visualization (1.13)
+
+(/usr/share/texmf-dist/tex/generic/pgfplots/pgfplots.code.tex
+(/usr/share/texmf-dist/tex/generic/pgfplots/pgfplotscore.code.tex
+\t@pgfplots@toka=\toks29
+\t@pgfplots@tokb=\toks30
+\t@pgfplots@tokc=\toks31
+\pgfplots@tmpa=\dimen159
+\c@pgfplots@coordindex=\count113
+\c@pgfplots@scanlineindex=\count114
+
+(/usr/share/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric.code.tex))
+(/usr/share/texmf-dist/tex/generic/pgfplots/libs/pgfplotslibrary.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_l
+oader.code.tex
+(/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.code.tex)
+Package pgfplots: loading complementary arithmetics for your pgf version...
+
+(/usr/share/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_p
+gflibraryfpu.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_p
+gfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count115
+))
+(/usr/share/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.code.tex
+(/usr/share/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsliststructure
+.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsliststructure
+ext.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsarray.code.te
+x
+\c@pgfplotsarray@tmp=\count116
+)
+(/usr/share/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsmatrix.code.t
+ex)
+(/usr/share/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstableshared.code.t
+ex
+\c@pgfplotstable@counta=\count117
+\t@pgfplotstable@a=\toks32
+)
+(/usr/share/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsdeque.code.te
+x) (/usr/share/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.code.tex
+(/usr/share/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.data.code.tex))
+(/usr/share/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.verb.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplots.surfshading
+.code.tex
+\c@pgfplotslibrarysurf@no=\count118
+
+(/usr/share/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots.surfshading.
+pgfsys-pdftex.def)))
+(/usr/share/texmf-dist/tex/generic/pgfplots/util/pgfplotscolormap.code.tex
+(/usr/share/texmf-dist/tex/generic/pgfplots/util/pgfplotscolor.code.tex))
+(/usr/share/texmf-dist/tex/generic/pgfplots/pgfplotsstackedplots.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgfplots/pgfplotsplothandlers.code.tex
+(/usr/share/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplothandler.code.tex
+(/usr/share/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplotimage.code.tex)))
+(/usr/share/texmf-dist/tex/generic/pgfplots/pgfplots.scaling.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgfplots/pgfplotscoordprocessing.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgfplots/pgfplots.errorbars.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgfplots/pgfplots.markers.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgfplots/pgfplotsticks.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgfplots/pgfplots.paths.code.tex)
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
+decorations.code.tex
+(/usr/share/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
+\pgfdecoratedcompleteddistance=\dimen160
+\pgfdecoratedremainingdistance=\dimen161
+\pgfdecoratedinputsegmentcompleteddistance=\dimen162
+\pgfdecoratedinputsegmentremainingdistance=\dimen163
+\pgf@decorate@distancetomove=\dimen164
+\pgf@decorate@repeatstate=\count119
+\pgfdecorationsegmentamplitude=\dimen165
+\pgfdecorationsegmentlength=\dimen166
+)
+\tikz@lib@dec@box=\box38
+)
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
+decorations.pathmorphing.code.tex
+(/usr/share/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorati
+ons.pathmorphing.code.tex))
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
+decorations.pathreplacing.code.tex
+(/usr/share/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorati
+ons.pathreplacing.code.tex))
+\pgfplots@numplots=\count120
+\pgfplots@xmin@reg=\dimen167
+\pgfplots@xmax@reg=\dimen168
+\pgfplots@ymin@reg=\dimen169
+\pgfplots@ymax@reg=\dimen170
+\pgfplots@zmin@reg=\dimen171
+\pgfplots@zmax@reg=\dimen172
+)
+(/usr/share/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrary
+plotmarks.code.tex
+File: tikzlibraryplotmarks.code.tex 2008/01/09 v3.0.1a (rcs-revision 1.1)
+
+(/usr/share/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmarks.code.tex
+File: pgflibraryplotmarks.code.tex 2015/08/03 v3.0.1a (rcs-revision 1.14)
+))) (/usr/share/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/share/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks33
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/share/texmf-dist/tex/latex/psnfss/pifont.sty
+Package: pifont 2005/04/12 PSNFSS-v9.2a Pi font support (SPQR) 
+LaTeX Font Info:    Try loading font information for U+pzd on input line 63.
+
+(/usr/share/texmf-dist/tex/latex/psnfss/upzd.fd
+File: upzd.fd 2001/06/04 font definitions for U/pzd.
+)
+LaTeX Font Info:    Try loading font information for U+psy on input line 64.
+
+(/usr/share/texmf-dist/tex/latex/psnfss/upsy.fd
+File: upsy.fd 2001/06/04 font definitions for U/psy.
+))
+(/usr/share/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip10
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+(/usr/share/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2008/02/07
+
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)
+\FV@CodeLineNo=\count121
+\FV@InFile=\read2
+\FV@TabBox=\box39
+\c@FancyVerbLine=\count122
+\FV@StepNumber=\count123
+\FV@OutFile=\write4
+) (/usr/share/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count124
+\lst@gtempboxa=\box40
+\lst@token=\toks34
+\lst@length=\count125
+\lst@currlwidth=\dimen173
+\lst@column=\count126
+\lst@pos=\count127
+\lst@lostspace=\dimen174
+\lst@width=\dimen175
+\lst@newlines=\count128
+\lst@lineno=\count129
+\lst@maxwidth=\dimen176
+
+(/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\c@lstnumber=\count130
+\lst@skipnumbers=\count131
+\lst@framebox=\box41
+)
+(/usr/share/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2015/06/04 1.6 listings configuration
+))
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
+
+(/usr/share/texmf-dist/tex/latex/paralist/paralist.sty
+Package: paralist 2015/12/30 v2.5 Extended list environments
+\pltopsep=\skip51
+\plpartopsep=\skip52
+\plitemsep=\skip53
+\plparsep=\skip54
+\pl@lab=\toks35
+)
+(/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+(/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+) (./paper.aux)
+\openout1 = `paper.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 25.
+
+(/usr/share/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+ABD: EveryShipout initializing macros
+(/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count132
+\scratchdimen=\dimen177
+\scratchbox=\box42
+\nofMPsegments=\count133
+\nofMParguments=\count134
+\everyMPshowfont=\toks36
+\MPscratchCnt=\count135
+\MPscratchDim=\dimen178
+\MPnumerator=\count136
+\makeMPintoPDFobject=\count137
+\everyMPtoPDFconversion=\toks37
+) (/usr/share/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2016/05/21 v0.22 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+(/usr/share/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/share/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+(/usr/share/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+
+(/usr/share/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+))
+(/usr/share/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+(/usr/share/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+(/usr/share/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+
+(/usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: listings package is loaded.
+Package caption Info: End \AtBeginDocument code.
+
+
+Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
+ick labels; missing features). Consider writing \pgfplotsset{compat=1.13} into 
+your preamble.
+ on input line 25.
+
+\c@lstlisting=\count138
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 82.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 84.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 108.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 108.
+
+Overfull \hbox (2.48727pt too wide) in paragraph at lines 108--110
+ \OT1/ptm/b/it/10 Cat-e-gories and Sub-ject De-scrip-tors \OT1/ptm/m/n/10 [\OT1
+/ptm/m/it/10 D.2.4\OT1/ptm/m/n/10 ]: Soft-ware/Pro-
+ []
+
+
+Overfull \hbox (4.14752pt too wide) in paragraph at lines 112--113
+ \OT1/ptm/b/it/10 Key-words \OT1/ptm/m/n/10 Soft-ware Ver-i-fi-ca-tion, Par-al-
+lel Com-put-ing, Read-
+ []
+
+(./intro.tex
+Underfull \vbox (badness 6526) has occurred while \output is active []
+
+
+
+Package natbib Warning: Citation `LinuxKernel' on page 1 undefined on input lin
+e 2.
+
+
+Package natbib Warning: Citation `McKenneyRCU98' on page 1 undefined on input l
+ine 7.
+
+
+Package natbib Warning: Citation `McKenneyOSR08' on page 1 undefined on input l
+ine 19.
+
+
+Overfull \hbox (3.15749pt too wide) in paragraph at lines 9--20
+\OT1/ptm/m/n/10 core sys-tems must pro-vide ex-cel-lent scal-a-bil-ity, high th
+rough-
+ []
+
+
+Package natbib Warning: Citation `McKenneyOSR08' on page 1 undefined on input l
+ine 23.
+
+
+Package natbib Warning: Citation `McKenneyRCUsageReport13' on page 1 undefined 
+on input line 23.
+
+
+Package natbib Warning: Citation `LinuxServerNum13' on page 1 undefined on inpu
+t line 25.
+
+
+Package natbib Warning: Citation `AndroidNum15' on page 1 undefined on input li
+ne 26.
+
+
+Package natbib Warning: Citation `BurchInfComput92' on page 1 undefined on inpu
+t line 38.
+
+
+Package natbib Warning: Citation `VerificationChallenges' on page 1 undefined o
+n input line 41.
+
+
+Package natbib Warning: Citation `DesnoyersOSR13' on page 1 undefined on input 
+line 41.
+
+
+Package natbib Warning: Citation `VerificationChallenges' on page 1 undefined o
+n input line 42.
+
+
+Package natbib Warning: Citation `ValDyntickNMI' on page 1 undefined on input l
+ine 43.
+
+
+Package natbib Warning: Citation `HolzmannTSE97SPIN' on page 1 undefined on inp
+ut line 49.
+
+
+Package natbib Warning: Citation `YangESOP13RCU' on page 1 undefined on input l
+ine 54.
+
+
+Package natbib Warning: Citation `DreyerPLDI15RCU' on page 1 undefined on input
+ line 54.
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+
+
+]
+
+Package natbib Warning: Citation `KroeningTACAS04CBMC' on page 2 undefined on i
+nput line 72.
+
+) (./background.tex
+
+Package natbib Warning: Citation `McKenneyRCU98' on page 2 undefined on input l
+ine 13.
+
+<rcu_concepts.pdf, id=14, 613.36636pt x 349.61693pt>
+File: rcu_concepts.pdf Graphic file (type pdf)
+ <use rcu_concepts.pdf>
+Package pdftex.def Info: rcu_concepts.pdf used on input line 37.
+(pdftex.def)             Requested size: 214.68144pt x 122.36775pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+(./api_usage.tex
+
+Package natbib Warning: Citation `McKenneyOSR08' on page 2 undefined on input l
+ine 4.
+
+[2 <./rcu_concepts.pdf>])) (./tree_rcu.tex
+Overfull \hbox (19.92714pt too wide) in paragraph at lines 62--1
+\OT1/ptm/m/n/10 re-turns the new value. RCU read-ers can use [][][][][][]
+ []
+
+(./api_impl.tex) (./data_structure.tex
+<tree_rcu_hierarchy.pdf, id=28, 1091.27695pt x 809.42403pt>
+File: tree_rcu_hierarchy.pdf Graphic file (type pdf)
+
+<use tree_rcu_hierarchy.pdf>
+Package pdftex.def Info: tree_rcu_hierarchy.pdf used on input line 9.
+(pdftex.def)             Requested size: 218.25153pt x 161.88193pt.
+LaTeX Font Info:    Try loading font information for U+msa on input line 45.
+ (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 45.
+(/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [3]
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 50.
+
+<rcu_node_array.pdf, id=32, 223.00737pt x 127.61447pt>
+File: rcu_node_array.pdf Graphic file (type pdf)
+
+<use rcu_node_array.pdf>
+Package pdftex.def Info: rcu_node_array.pdf used on input line 54.
+(pdftex.def)             Requested size: 200.70477pt x 114.85194pt.
+
+Underfull \hbox (badness 1796) in paragraph at lines 59--75
+[][][][][][][][][][][]\OT1/ptm/m/n/10 , with [][][][][] struc-tures con-
+ []
+
+
+Package natbib Warning: Citation `LaiJiangshan2008NewClassicAlgorithm' on page 
+4 undefined on input line 177.
+
+[4 <./tree_rcu_hierarchy.pdf> <./rcu_node_array.pdf
+
+pdfTeX warning: pdflatex (file ./rcu_node_array.pdf): PDF inclusion: multiple p
+dfs with page group included in a single page
+>] (./callback.tex <rcu_data_callbacks.pdf, id=70, 867.35542pt x 840.33504pt>
+File: rcu_data_callbacks.pdf Graphic file (type pdf)
+
+<use rcu_data_callbacks.pdf>
+Package pdftex.def Info: rcu_data_callbacks.pdf used on input line 3.
+(pdftex.def)             Requested size: 216.83832pt x 210.08324pt.
+
+
+Package natbib Warning: Citation `LaiJiangshan2008NewClassicAlgorithm' on page 
+5 undefined on input line 15.
+
+
+Underfull \hbox (badness 1014) in paragraph at lines 12--33
+\OT1/ptm/m/n/10 The [][][][][] struc-ture man-ages RCU call-backs us-ing
+ []
+
+
+Overfull \hbox (2.08762pt too wide) in paragraph at lines 34--47
+[][][][][][] \OT1/ptm/m/n/10 el-e-ment ref-er-ences call-back 2's [][][][] poin
+ter,
+ []
+
+
+LaTeX Warning: Reference `sec:update_api_impl' on page 5 undefined on input lin
+e 53.
+
+
+Underfull \hbox (badness 1033) in paragraph at lines 48--103
+\OT1/ptm/m/n/10 oc-ca-sions where low grace-period la-tency is im-por-tant,
+ []
+
+)) (./quiescent_state_detection.tex [5 <./rcu_data_callbacks.pdf>]
+Underfull \hbox (badness 1348) in paragraph at lines 43--55
+[][][][][][][][]\OT1/ptm/m/n/10 , which sets the per-CPU [][][][]
+ []
+
+) (./grace_period_detection.tex
+<grace_period_state_diagram.pdf, id=86, 977.43024pt x 571.6303pt>
+File: grace_period_state_diagram.pdf Graphic file (type pdf)
+
+<use grace_period_state_diagram.pdf>
+Package pdftex.def Info: grace_period_state_diagram.pdf used on input line 18.
+(pdftex.def)             Requested size: 244.35696pt x 142.90721pt.
+
+Overfull \hbox (4.35696pt too wide) in paragraph at lines 18--19
+ [][] 
+ []
+
+
+Underfull \hbox (badness 1953) in paragraph at lines 24--33
+[][][] \OT1/ptm/m/n/10 han-dler func-tion [][][][][][][][],
+ []
+
+
+Overfull \hbox (1.13776pt too wide) in paragraph at lines 109--123
+\OT1/ptm/m/n/10 ture's [][][][]. At any level, if the child struc-ture's [][][]
+[]
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [6 <./grace_period_state_diagram.pdf>]
+Underfull \hbox (badness 1221) in paragraph at lines 130--160
+[]\OT1/ptm/m/n/10 When no grace pe-riod is re-quired, the grace-period
+ []
+
+
+Overfull \hbox (1.50815pt too wide) in paragraph at lines 177--199
+\OT1/ptm/m/n/10 the end of the old grace pe-riod. Func-tion [][][][][][][][]
+ []
+
+) (./running_example.tex
+Overfull \hbox (22.24757pt too wide) in paragraph at lines 31--47
+\OT1/ptm/m/n/10 scheduling-clock in-ter-rupt will in-voke [][][][][][][][],
+ []
+
+
+Overfull \hbox (9.91772pt too wide) in paragraph at lines 31--47
+\OT1/ptm/m/n/10 and bot-tom halves en-abled, calls [][][][][][][][]. 
+ []
+
+
+Overfull \hbox (2.1875pt too wide) in paragraph at lines 48--55
+\OT1/ptm/m/n/10 func-tion [][][][][][][][] first calls [][][][]
+ []
+
+)) (./modeling.tex
+
+Package natbib Warning: Citation `KroeningTACAS04CBMC' on page 7 undefined on i
+nput line 5.
+
+
+Package natbib Warning: Citation `AlglaveCAV13' on page 7 undefined on input li
+ne 16.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [7]
+Overfull \hbox (5.35774pt too wide) in paragraph at lines 161--170
+\OT1/ptm/m/n/10 CBMC's [][][][][][][][][][], [][][][][][]
+ []
+
+
+Underfull \hbox (badness 1117) in paragraph at lines 161--170
+\OT1/ptm/m/n/10 We use GCC atomic builtins for user-space ex-e-cu-tion:
+ []
+
+
+Overfull \hbox (1.6477pt too wide) in paragraph at lines 161--170
+[][][][][][][][][][][][][][][][][][][][][][][][] \OT1/ptm/m/n/10 ac-quires
+ []
+
+[8]) (./experiments.tex
+Overfull \hbox (0.51779pt too wide) in paragraph at lines 176--1
+\OT1/ptm/m/n/10 ex-clud-ing, for ex-am-ple, quiescent-state forc-ing, grace-per
+iod
+ []
+
+(./bug_cases.tex
+
+Package natbib Warning: Citation `DesnoyersTPDS12UserRCU' on page 9 undefined o
+n input line 12.
+
+
+Underfull \hbox (badness 1348) in paragraph at lines 2--19
+\OT1/ptm/m/n/10 in-clud-ing its as-ser-tion [][][][][][][][][][][][][][][][][][
+][][][][][].
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+[] []\OT1/ptm/m/n/8 Source code is avail-able: $\OT1/cmtt/m/n/8 http : / / lxr 
+. free-[]electrons . com /
+ []
+
+
+Underfull \vbox (badness 5119) has occurred while \output is active []
+
+
+Underfull \hbox (badness 1881) in paragraph at lines 31--37
+\OT1/ptm/m/n/10 side prim-i-tive [][][][][][] re-turn im-me-di-ately
+ []
+
+[9]) (./results_run.tex) (./cbmc.tex
+Overfull \hbox (0.89806pt too wide) in paragraph at lines 15--27
+\OT1/ptm/m/n/10 scribed in Sec-tion 5[]. Also, we in-voke [][][][][][][][][][]
+ []
+
+) (./results_cbmc.tex)
+
+Package natbib Warning: Citation `PaulMcKenney2005rcutorture' on page 10 undefi
+ned on input line 99.
+
+[10]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [11]
+Overfull \hbox (3.27774pt too wide) in paragraph at lines 138--144
+[]\OT1/ptm/m/n/10 CBMC proved that grace pe-ri-ods can end (i.e., [][][][]
+ []
+
+(./barchart_sat_constr.tex)
+Overfull \hbox (2.23636pt too wide) in paragraph at lines 56--161
+ [][] 
+ []
+
+(./barchart_sat_var.tex)
+Overfull \hbox (2.23636pt too wide) in paragraph at lines 56--169
+ [][] 
+ []
+
+(./barchart_sat_clause.tex)
+Overfull \hbox (7.93088pt too wide) in paragraph at lines 55--177
+ [][] 
+ []
+
+(./barchart_runtime.tex)
+Overfull \hbox (2.23636pt too wide) in paragraph at lines 56--185
+ [][] 
+ []
+
+(./barchart_memory.tex)
+Overfull \hbox (2.23636pt too wide) in paragraph at lines 56--193
+ [][] 
+ []
+
+) (./related_work.tex [12]
+
+Package natbib Warning: Citation `VerificationChallenges' on page 13 undefined 
+on input line 6.
+
+
+Package natbib Warning: Citation `ValDyntickNMI' on page 13 undefined on input 
+line 8.
+
+
+Package natbib Warning: Citation `DesnoyersOSR13' on page 13 undefined on input
+ line 10.
+
+
+Package natbib Warning: Citation `DesnoyersTPDS12UserRCU' on page 13 undefined 
+on input line 12.
+
+
+Underfull \hbox (badness 1147) in paragraph at lines 5--14
+\OT1/ptm/m/n/10 be-tween dyntick-idle and non-maskable in-ter-rupts [\OT1/ptm/b
+/n/10 ? \OT1/ptm/m/n/10 ].
+ []
+
+
+Package natbib Warning: Citation `AlglaveCAV13' on page 13 undefined on input l
+ine 21.
+
+
+Package natbib Warning: Citation `VerificationChallenges' on page 13 undefined 
+on input line 28.
+
+
+Package natbib Warning: Citation `GroceASE15RCU' on page 13 undefined on input 
+line 31.
+
+
+Package natbib Warning: Citation `JonathanCorbet2014RCU-tasks' on page 13 undef
+ined on input line 38.
+
+
+Package natbib Warning: Citation `YangESOP13RCU' on page 13 undefined on input 
+line 48.
+
+
+Package natbib Warning: Citation `DreyerPLDI15RCU' on page 13 undefined on inpu
+t line 53.
+
+
+Package natbib Warning: Citation `CalcagnoNASA15' on page 13 undefined on input
+ line 66.
+
+) (./concl.tex)
+
+Package natbib Warning: There were undefined citations.
+
+[13] (./paper.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 25526 strings out of 493013
+ 621862 string characters out of 6139318
+ 812051 words of memory out of 5000000
+ 28569 multiletter control sequences out of 15000+600000
+ 30169 words of font info for 65 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 60i,19n,100p,761b,2316s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmmi5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/s
+hare/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmtt10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></
+usr/share/texmf-dist/fonts/type1/public/tex-gyre/qhvr.pfb></usr/share/texmf-dis
+t/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/cou
+rier/ucrr8a.pfb></usr/share/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></us
+r/share/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-dist/font
+s/type1/urw/times/utmbi8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmr
+8a.pfb></usr/share/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on paper.pdf (13 pages, 504554 bytes).
+PDF statistics:
+ 169 PDF objects out of 1000 (max. 8388607)
+ 120 compressed objects within 2 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 38 words of extra memory for PDF output out of 10000 (max. 10000000)
+

@@ -1,0 +1,55 @@
+\begin{tikzpicture}
+\scriptsize
+\begin{axis}[
+  ybar,
+  bar width=0.15cm,
+  height=4.5cm,
+  width=9.5cm,
+  axis lines*=left, % remove lines in the background
+  ymode=log,
+  %ylabel=Number of clauses,
+  symbolic x coords={Prove, Prove-GP, Bug 1, Bug 2, Bug 3, 
+                     Bug 4, Bug 5, Bug 6, Bug 7, Bug 7-2R,
+                    },
+  xtick=data,
+  %nodes near coords, % numbers displayed above the bars
+  %every node near coord/.append style={font=\small, rotate=90, anchor=west},
+  xticklabel style={
+    inner sep=0pt,
+    anchor=north east,
+    rotate=45
+  },
+  %enlargelimits=0.15,
+  enlarge y limits=0.15, % space relative to the height of the plot
+  enlarge x limits=0.05, % space relative to the width of the plot
+  legend style={
+    %anchor=north, at={(0.5, -0.9)}, % legend location
+    legend pos=north west,
+    legend columns=-1,
+    font=\scriptsize},
+]
+
+\addplot % SC
+  coordinates {(Prove, 149758548) (Prove-GP, 152743545)
+               (Bug 1, 56027980) (Bug 2, 149643492) (Bug 3, 174131331)
+               (Bug 4, 138197043) (Bug 5, 146787005) (Bug 6, 63302559)
+               (Bug 7, 145389516) (Bug 7-2R, 359021922)
+              };
+
+\addplot % TSO 
+  coordinates {(Prove, 210708442) (Prove-GP, 210705615)
+               (Bug 1, 83392397) (Bug 2, 210592015) (Bug 3, 245157184)
+               (Bug 4, 192605939) (Bug 5, 206569643) (Bug 6, 84131818)
+               (Bug 7, 200857404) (Bug 7-2R, 456973933)
+              };
+
+\addplot % PSO
+  coordinates {(Prove, 207042629) (Prove-GP, 207039802)
+               (Bug 1, 80481851) (Bug 2, 206926202) (Bug 3, 241237629)
+               (Bug 4, 188940126) (Bug 5, 202933839) (Bug 6, 81485361)
+               (Bug 7, 197287644) (Bug 7-2R, 451611664)
+              };
+
+\legend{SC, TSO, PSO}
+\end{axis}
+\end{tikzpicture}

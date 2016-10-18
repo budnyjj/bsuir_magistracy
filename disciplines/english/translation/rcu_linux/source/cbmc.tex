@@ -1,0 +1,51 @@
+\subsection{Getting CBMC to work on Tree RCU} \label{sec:cbmc_on_rcu}
+
+We have found that getting CBMC to work on our RCU model is non-trivial due
+to Tree RCU's complexity combined with CBMC's bit-precise verification.  In
+fact, early attempts resulted in SAT formulas that were so large that CBMC
+ran out of memory.  After the optimizations described in the remainder of
+this section, the largest formula contained around 90 million variables
+and 450 million clauses, which enabled CBMC to run to completion.
+%
+% \comment{Paul: Do we have formula sizes from before this effort for
+% purposes of comparison? Lihao: we do, but with different versions of the code. 
+% For example, one version has 168 million variables and 738 million clauses. 
+% Not sure which one to use, similar to the situation in the next comment.}
+
+First, instead of placing the scheduling-clock interrupt in its own thread,
+we invoke functions \co{rcu_note_context_switch()} and
+\co{rcu_process_callbacks()} directly, as described in
+Section~\ref{sec:model_irq}.  Also, we invoke
+\co{__note_gp_changes()} from \co{rcu_gp_init()} to notify each CPU of a new
+grace period, instead of invoking \co{rcu_process_callbacks()}.
+%
+%These changes reduced CBMC's common-case runtime from more than 24 hours to less than 10 hours.
+% \comment{Paul: Can we provide this sort of blow-by-blow result for all steps?
+% If not, should we should remove this one?
+% Or give a qualitative comparision: ``Before applying this optimization,
+% CBMC ran out of memory before completing the formula.'' Lihao: let's do the latter.}
+
+Second, the support for linked lists in CBMC version 5.4 is limited,
+resulting in unreachable code in CBMC's symbolic execution. Thus, we
+stubbed all the list-related code in our RCU model, including those for
+callback handling.
+
+Third, CBMC's structure-pointer and array encodings result in large formulas
+and long formula-generation times.  Our focus on the RCU-sched flavor
+allowed us to eliminate RCU-BH's data structures and trivialize the
+\co{for_each_rcu_flavor()} flavor-traversal loops.  Our focus on small
+numbers of CPUs meant that RCU-sched's \co{rcu_node} tree contained only a
+root node, so we also trivialized the \co{rcu_for_each_node_breadth_first()}
+loops traversing this tree.
+
+Fourth, CBMC unwinds each loop to the depth specified in its command line
+option \co{--unwind}, even when the actual loop depth is smaller.  This
+unnecessarily increases formula size, especially for loops containing
+intricate RCU code. Since loops in our model can be decided at compile time, 
+we therefore used the command line option \co{--unwindset} to specify 
+unwinding depths for each individual loop.
+
+Finally, since our test harness only requires one \co{rcu_node} structure
+and two \co{rcu_data} structures, we can use 32-bit encodings for \co{int},
+\co{long}, and pointers by using the command line option \co{--ILP32}.  This
+reduces CBMC's formula size by half compared to the 64-bit default.

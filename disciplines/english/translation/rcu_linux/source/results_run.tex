@@ -1,0 +1,27 @@
+\begin{table*}[tbh]
+\centering
+\scalebox{0.85}{%
+\begin{tabular}{|l|r|r|r|c|r|c|} \hline
+\multicolumn{1}{|c|}{\textbf{Scenario}} &
+%\multicolumn{1}{c|}{\textbf{\#Total Runs}} &
+\multicolumn{1}{c|}{\textbf{\#Successful Runs}} &
+\multicolumn{1}{c|}{\textbf{\#Failing Runs}} &
+\multicolumn{1}{c|}{\textbf{\#Timeouts}} &
+\multicolumn{1}{c|}{\textbf{Max VM}} &
+\multicolumn{1}{c|}{\textbf{Runtime}} &
+\multicolumn{1}{c|}{\textbf{Result}} \\ \hline
+Prove              & 1,000 (100.0\%) &     0 (0.0\%)   &     0 (0.0\%)   & 361.5\,MB & 3mins\,51s  & Safe                      \\ \hline 
+Prove-GP           &     0 (0.0\%)   & 1,000 (100.0\%) &     0 (0.0\%)   & 361.5\,MB & 5mins\,9s   & End of GP Reachable       \\ \hline 
+Bug 1              &   461 (46.1\%)  &   539 (53.9\%)  &     0 (0.0\%)   & 361.5\,MB & 5mins\,26s  & Assertion Violated        \\ \hline
+Bug 2              &     0 (0.0\%)   &     0 (0.0\%)   & 1,000 (100.0\%) & 361.5\,MB & 16h\,40mins & End of GP Unreachable     \\ \hline
+Bug 3              &     0 (0.0\%)   &     0 (0.0\%)   & 1,000 (100.0\%) & 361.5\,MB & 16h\,40mins & End of GP Unreachable     \\ \hline
+Bug 4              &     0 (0.0\%)   &     0 (0.0\%)   & 1,000 (100.0\%) & 361.5\,MB & 16h\,40mins & End of GP Unreachable     \\ \hline
+Bug 5              &     0 (0.0\%)   &     0 (0.0\%)   & 1,000 (100.0\%) & 361.5\,MB & 16h\,40mins & End of GP Unreachable     \\ \hline
+Bug 6              &     0 (0.0\%)   &     0 (0.0\%)   & 1,000 (100.0\%) & 361.5\,MB & 16h\,40mins & End of GP Unreachable     \\ \hline
+Bug 7              &     0 (0.0\%)   &     0 (0.0\%)   & 1,000 (100.0\%) & 361.5\,MB & 16h\,40mins & \mkcol{Safe (Bug Missed)} \\ \hline
+Bug 7 (2 readers)  &   758 (75.8\%)  &   242 (24.2\%)  &     0 (0.0\%)   & 369.7\,MB & 4mins\,40s  & Assertion Violated        \\ \hline 
+\end{tabular}
+}
+\caption{Experimental Results of Testing the RCU Model in User-Space}
+\label{tab:results_run}
+\end{table*}

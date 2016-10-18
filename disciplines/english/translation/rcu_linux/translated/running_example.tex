@@ -1,0 +1,96 @@
+\section{Verification Scenario}
+% \comment{Lihao: alternative titles: A Running Example? Putting Things Together?}
+
+We use the example in Figure~\ref{fig:verify_rcu_gp} to demonstrate how the
+different components of Tree RCU work together to guarantee that all
+pre-existing read-side critical sections finish before RCU allows a grace
+period to end.  This example will drive the verification, which will check
+for violations of the assertion at this end of the code.
+
+We focus on the implementation of the non-preemptible RCU-sched flavor.  We
+further assume there are only two CPUs, and that CPU~0 executes function
+\co{rcu_reader()} and CPU~1 executes \co{rcu_updater()}.  When the system
+boots, the Linux kernel calls \co{rcu_init()} to initialize RCU, which
+includes constructing the combining tree of \co{rcu_node} and \co{rcu_data}
+structures via \co{rcu_init_geometry()} and initializing the fields of the
+nodes in the tree for each RCU flavor via \co{rcu_init_one()}.  In our
+example it will be a one-level tree that has one \co{rcu_node} structure as
+root and two children that are \co{rcu_data} structures for each CPU. 
+Function \co{rcu_spawn_gp_kthread()} is also called to initialize and spawn
+the RCU grace-period kthread for each RCU flavor.
+
+Referring again to Figure~\ref{fig:verify_rcu_gp},
+suppose that \co{rcu_reader()} begins
+execution on CPU~0 while \co{rcu_updater()} concurrently sets \co{x} to 1
+and then invokes \co{synchronize_rcu()} on CPU~1.
+As discussed in Section \ref{sec:api_impl}, \co{synchronize_rcu()}
+invokes \co{wait_rcu_gp()}, which in turn registers an RCU callback
+that will invoke \co{wakeme_after_rcu()} some time after \co{rcu_reader()}
+exits its critical section.
+
+However, this critical-section exit has no immediate effect.
+Instead, a later context switch will invoke
+\co{rcu_note_context_switch()}, which in turn invokes
+\co{rcu_sched_qs()}, recording the quiescent state in the
+CPU's \co{rcu_sched_data} structure's \co{->passed_quiesce} field.
+Later, a scheduling-clock interrupt will invoke
+\co{rcu_check_callbacks()}, which calls \co{rcu_pending()} and 
+notes that the \co{->passed_quiesce} field is set.
+This will cause \co{rcu_pending()} to return \co{true}, which
+in turn causes \co{rcu_check_callbacks()} to invoke
+\co{rcu_process_callbacks()}.
+In its turn, \co{rcu_process_callbacks()} will invoke
+\co{raise_softirq(RCU_SOFTIRQ)}, which,
+once the CPU has interrupts, preemption, and
+bottom halves enabled, %(Section \ref{sec:timer_interrupt}),
+calls \co{rcu_process_callbacks()}.
+
+As discussed in Section \ref{sec:rcu_softirq}, RCU's softirq handler function \co{rcu_process_callbacks()} 
+first calls \co{rcu_check_quiescent_state()} to report any recent quiescent states on the 
+current CPU (CPU~0). Then it checks whether the CPU~0 has passed a quiescent state. Since 
+a quiescent state has been recorded for CPU~0, \co{rcu_report_qs_rnp()} is invoked to traversal
+up the combining tree. It clears the first bit of the root \co{rcu_node} structure's \co{qsmask} 
+field (recall that the RCU combining tree has only one level). Since the second bit for CPU~1 has 
+not been cleared, the function returns.
+
+Since \co{synchronize_rcu()} blocks in CPU~1, it will result in a context switch. 
+This triggers a sequence of events similar to that described above for
+CPU~1, which results in the clearing of the
+second bit of the root \co{rcu_node} structure's \co{->qs_mask} field, the value of which is now 0, indicating the end of the current grace period.
+CPU~1 therefore invokes \co{rcu_report_qs_rsp()} to 
+awaken the grace-period kthread, 
+which will clean up the ended grace period, and, if needed, 
+start a new one (Section \ref{sec:rcu_gp_kthread}).
+
+Lastly, \co{rcu_process_callbacks()} calls \co{invoke_rcu_callbacks()} to invoke any callbacks whose
+grace period has already elapsed, for example, \co{wakeme_after_rcu()},
+which will allow \co{synchronize_rcu()} to return.
+
+%\comment{Lihao: When CPU~1 is waiting for \co{synchronize_rcu()} to return, how does it reach a 
+%quiescent state? Is it via a scheduling-clock interrupt? What kind of quiescent states would it be?}
+%\comment{Paul: Any number of possibilities.
+%	First, \co{synchronize_rcu()} blocks, which results in a context
+%	switch.
+%	This context switch acts as a quiescent state, and a later
+%	scheduling-clock interrupt would notice this and cause
+%	\co{RCU_SOFTIRQ} to run, thus reporting the queiscent state
+%	to the RCU core code.
+%	Second, it is possible that there was nothing else for the
+%	CPU to run, so that it went idle.
+%	In this case, the grace-period kthread might notice that the CPU
+%	was idle before the CPU got around to reporting the context switch
+%	to the RCU core code.
+%	Third, the context switch might result in a task running
+%	in usermode.
+%	In this case, a subsequent scheduling-clock interrupt causing
+%	\co{RCU_SOFTIRQ} to run might
+%	report the userspace-execution quiescent state to the RCU
+%	core code.
+%	Fourth, this might be a \co{CONFIG_NO_HZ_FULL} kernel.
+%	In that case, the RCU grace-period kthread could note
+%	the userspace execution in the same way that it might note
+%	the idle loop.
+%	Hey, you asked!
+%}
+% Lihao: understand when/where in the code \co{wakeme_after_rcu()} gets moved to the head of the 
+% \co{->nxttail} to be invoked

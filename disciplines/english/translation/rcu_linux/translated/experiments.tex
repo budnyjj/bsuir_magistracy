@@ -1,0 +1,228 @@
+\section{Experiments}
+
+In this section we discuss our experiments verifying the Linux-kernel 
+Tree RCU implementation. We first describe several bug-injection
+scenarios used in the experiments. Next, we report results of user-space runs
+of the RCU model. Then we describe how verify our RCU model using CBMC. 
+Finally, we discuss the experimental results.
+%and then compare the results obtained with both approaches.
+We performed our experiments on a 64-bit machine running Linux 3.19.8
+with eight Intel Xeon 3.07\,GHz cores and 48\,GB of memory.
+
+\input{bug_cases.tex}
+
+\subsection{Validating the RCU Model in User-Space}\label{sec:test_model}
+
+\input{results_run.tex}
+
+%Lihao: as pointed out in Paul's recent emails, the bug-injection scenarios
+%are probably a bit unfair to CBMC as they are fairly deterministic. So testing is 
+%able to return the expected result for all of them. For future work, it might be 
+%interesting to try more subtle ones such as removing fences, and compare CBMC 
+%with RCU's regression test suite.
+%To answer the question how difficult is it to detect the bugs we have
+%injected using testing, we have executed our model in user space.  
+To validate our RCU model before performing verification using CBMC, 
+we executed it in user space. We performed 1000 runs for each scenario 
+in Section~\ref{sec:bug_cases} using a 60\,s timeout to wait for the end of a 
+grace period and a random delay between 0 to 1\,s in the RCU reader task.
+
+The results are reported in Table~\ref{tab:results_run}.  Column 1 %and 2 
+gives the verification scenarios. %and the total number of runs for each one of them, respectively.
+Scenario Prove tests our RCU model without bug injection. Scenario Prove-GP 
+tests a weak form of liveness by replacing Figure~\ref{fig:verify_rcu_gp}'s 
+assertion with \co{assert(0)} as described in Section~\ref{sec:bug_cases}.
+The next three columns present the number and the percentage of successful, 
+failing, and timeout runs, respectively. The following two columns give the 
+maximum memory consumption and the total runtime. The last column explains 
+the results. 
+
+As expected, for scenario Prove, the user program ran to completion
+successfully in all runs.  For Prove-GP, it was able to detect the end of a
+grace period by triggering an assertion violation in all the runs.  For
+Bug~1, an assertion violation was triggered in 559 out of 1000 runs.  
+%Thus, Bug~1 can be described as an ``easy'' bug.  By contrast, 
+For Bugs 2--6, the user program timed out in all the runs, 
+thus a grace period did not complete. %these bugs are difficult for testing.  
+%\comment{Lihao: note that timeout is the expected behaviour for bugs 2--6. 
+%See Section \ref{sec:bug_cases} for description of each bug-injection scenario.}
+For Bug 7 with one reader thread, the testing harness failed to
+trigger an assertion violation.  However, we were able to observe a failure in
+242 out of 1000 runs with two reader threads.
+
+% \comment{Lihao: shall we move the following paragraph to a more appropriate place, 
+% e.g.~the end of either the CBMC or the Results and Discussion section.}
+% I moved it to the end of the CBMC modeling section.  Might need to be
+% summarized in results and discussion, definitely in conclusion.
+
+%\comment{Lihao: item 9 in Paul's email}
+%\comment{Lihao: there is a blog post \url{https://lkml.org/lkml/2009/9/1/229} 
+%discussing to remove the timer interrupt and make the Linux kernel completely event-driven. 
+%Paul, is this happening?}
+%\\ \comment{Paul: Most of the motivation for that has been addressed
+%by the \co{NO_HZ_FULL} work.  If it does happen, some of the work that
+%RCU currently does from the scheduling-clock interrupt will need to be
+%instead done by other means, for example, by hrtimer handlers.}
+
+\input{cbmc.tex}
+
+\subsection{Results and Discussion}
+
+Table~\ref{tab:results_cbmc} presents the results of our experiments
+applying CBMC version~5.4 to verify our RCU model.
+Scenario Prove verifies our RCU model without
+bug injection over Sequential Consistency (SC).  We also exercise the model
+over the weak memory models TSO and PSO in scenarios Prove-TSO and Prove-PSO, 
+respectively.  Scenario Prove-GP performs the same reachability check as in 
+Section~\ref{sec:test_model} over SC.
+%by replacing Figure~\ref{fig:verify_rcu_gp}'s assertion with \co{assert(0)} 
+%as described in Section~\ref{sec:bug_cases}, which serves as a reachability check. 
+We perform the same reachability verification over TSO
+and PSO in scenarios Prove-GP-TSO and Prove-GP-PSO, respectively.  Scenarios
+Bug~1--7 are the bug-injection scenarios discussed in
+Section~\ref{sec:bug_cases}, and are verified over SC, TSO and PSO.  Columns
+2--4 give the number of constraints (symbolic program expressions and
+partial orders), variables, and clauses of the generated
+formula.  The next three columns give the maximum (virtual) memory
+consumption, solver runtime, and total runtime of our experiments.  The
+final column gives the verification result.
+
+% \comment{Lihao: the footnote in results.tex for bug 7 with 2 reader threads doesn't display?}
+% I changed the footnote to text following the table.
+% \comment{Lihao: we only use this more powerful machine to run bug 7 with 2 readers, 
+% hence footnote seems more appropriate.}
+% OK, I created a special within-table footnote.  ;-)
+
+\input{results_cbmc.tex}
+
+Since Tree RCU's implementation in the Linux kernel is sophisticated, its test suite
+is non-trivial~\cite{PaulMcKenney2005rcutorture}, comprising several thousand
+lines of code.
+% \comment{Paul, any reference I can cite for Tree RCU testing?} 
+Therefore, it comes as little surprise that its verification is 
+challenging.
+
+In our experiments, CBMC returned all the expected results except
+for Bug~7, for which it failed to report a violation of the
+assertion \co{assert(r2 == 0 || r1 == 1)} with one RCU reader thread running
+over SC.  This failure was due to the approximation of the
+scheduling-clock interrupt by a direct function call,
+as described in Section~\ref{sec:model_rcu}. 
+% \comment{Lihao: should it be 'under-approximation'?  It can happen more
+% frequently than the number of calls in our model.  I suggest we just use the
+% word 'approximation'.}
+However, CBMC did report a violation of the assertion
+either when two RCU reader threads were present or when run over
+TSO or PSO.
+All of these cases decrease determinism,
+which in turn more faithfully model non-deterministic
+scheduling-clock interrupts, allowing the assertion to be violated.
+% \comment{Lihao: shall we briefly explain why it's
+% possible for TSO and PSO to detect bug 7 with one reader thread?}
+%\comment{Lihao: briefly compare CBMC's results with the user-space program.}
+
+CBMC took more than 9 hours to verify our model over SC (scenario Prove). 
+The resulting SAT formulas have more than 5m
+constraints, 30m variables and 149m clauses, and occupy
+23\,GB of memory.  The formulas for scenarios Prove-TSO and
+Prove-PSO are about
+40\% larger than the scenario Prove.  They have more than 40m
+variables and 200m clauses, and took more than 11 hours and 33\,GB
+memory to solve.
+Although this verification consumed considerable memory
+and CPU, it verified all possible executions and
+reorderings permitted by TSO and PSO,
+a tiny subset of which are reached by
+the \co{rcutorture} test suite.
+
+CBMC proved that grace periods can end (i.e., \co{assert(0)} is
+violated), over SC (Prove-GP), TSO (Prove-GP-TSO), and PSO
+(Prove-GP-PSO).  The sizes of resulting formulas and memory consumption
+are similar to those of the three Prove scenarios.
+However, it took CBMC only about 4, 13, and 8.5 hours to find an
+violation of \co{assert(0)} in Prove-GP, Prove-GP-TSO, and Prove-GP-PSO, respectively.
+
+For the bug-injection scenarios described in Section~\ref{sec:bug_cases}, CBMC
+was able to return the expected results in all scenarios over SC except for Bug~7,
+as noted earlier.
+The formula size varies from scenarios to
+scenarios, with 27m--35m variables and 138m--174m
+clauses.  The runtime was 4--9 hours and memory consumption exceeded
+22\,GB.  The exceptions are Bugs~1 and 6, which have fewer than
+14m variables and 64m clauses, and took less than 35 mins and
+about 9\,GB of memory to solve.  This reduction was due to the large amount
+of code removed by the bug injections in these scenarios.
+
+% Lihao: include this in PhD thesis
+\begin{figure}[tbp]
+\centering
+\captionsetup{justification=centering}
+\input{barchart_sat_constr.tex}
+\caption{Number of Constraints in the SAT Formulas}
+\label{fig:barchart_sat_constr}
+\end{figure}
+
+\begin{figure}[tbp]
+\centering
+\captionsetup{justification=centering}
+\input{barchart_sat_var.tex}
+\caption{Number of Variables in the SAT Formulas}
+\label{fig:barchart_sat_var}
+\end{figure}
+
+\begin{figure}[tbp]
+\centering
+\captionsetup{justification=centering}
+\input{barchart_sat_clause.tex}
+\caption{Number of Clauses in the SAT Formulas}
+\label{fig:barchart_sat_clause}
+\end{figure}
+
+\begin{figure}[tbp]
+\centering
+\captionsetup{justification=centering}
+\input{barchart_runtime.tex}
+\caption{Total Runtime in Seconds}
+\label{fig:barchart_runtime}
+\end{figure}
+
+\begin{figure}[tbp]
+\centering
+\captionsetup{justification=centering}
+\input{barchart_memory.tex}
+\caption{Maximum Memory Consumption in Gigabytes}
+\label{fig:barchart_memory}
+\end{figure}
+
+Figures~\ref{fig:barchart_sat_constr}--\ref{fig:barchart_sat_var} 
+compare the formula size between SC, TSO and TSO. Comparison of 
+runtime and memory can be found in Figures~\ref{fig:barchart_runtime} 
+and \ref{fig:barchart_memory}. As we can see,
+%Table~\ref{tab:results_cbmc} also shows that
+the runtime and memory overhead for the TSO and PSO variants of a given experiment 
+are quite similar.
+The overheads of TSO
+are slightly higher than those of PSO in all bug-injection scenarios except
+for Bug 7 on which PSO had longer runtime.
+However, the overhead of TSO and PSO is significantly larger than that of SC,
+with up to 340\% (Bug 6 runtime) and 50\% (Bug 1 memory) increases.
+The runtime was 5--19 hours and memory consumption exceeded
+31\,GB in all scenarios except Bug 1 and 6.  The numbers of variables and
+clauses are 37m--49m and 188m--245m, respectively, around 130\%
+greater than SC.
+
+The two-reader variant of Bug~7 has by far the longest
+runtime, consuming more than 19~hours and
+78~hours over SC and TSO, respectively, comparing to 9~hours and 11~hours
+with one reader.  It also consumed about 75\,GB memory, more than double
+the one-reader variant.  For PSO, with two reader threads CBMC's solver ran
+out of memory after 85~hours whereas with one reader it completed
+in less than 12~hours.  The increased overhead
+is due to the
+additional RCU reader's call to
+\co{rcu_process_callbacks()}.
+This in turn results in
+more than a 125\% increase in the number of constraints, variables, and
+clauses.  For example, the two-reader TSO formula has
+triple the constraints and double the variables and clauses
+of the one-reader case.

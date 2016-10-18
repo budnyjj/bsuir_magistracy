@@ -1,0 +1,165 @@
+\subsection{Quiescent State Detection} \label{sec:quiescent_state}
+RCU has to wait until all pre-existing read-side critical sections have
+finished before it can safely allow a grace period to end.
+The performance and scalability of RCU rely on its ability to efficiently
+detect quiescent states and determine whether the set of quiescent states
+detected thus far allows the grace period to end.
+If each CPU (or, in the case of preemptible RCU, each task)
+has passed through a quiescent state, a grace period has elapsed. 
+
+% Lihao: include this in PhD thesis; also look for 'preemptible RCU contents'
+%Different flavors of RCU use different sets of quiescent states.
+The non-preemptible RCU-sched flavor's quiescent states
+apply to CPUs, and are user-space execution, context switch, idle, and 
+offline state.
+%
+%RCU-bh's quiescent states are those of RCU-sched plus any execution 
+%in which bottom-half (AKA softirq) is enabled, along with transitions
+%from one softirq handler to another.
+%%
+%RCU-preempt's quiescent states are any execution outside of an
+%RCU read-side critical sections.
+%
+Therefore, RCU-sched %and RCU-bh need only
+only needs to track tasks and interrupt handlers that are actually running because
+blocked and preempted tasks are always in quiescent states. Thus, RCU-sched %and RCU-bh 
+needs only track CPU states.
+%By contrast, RCU-preempt must track tasks states. In this section, 
+%we focus on the quiescent-state detection of RCU-sched in a non-preemptible kernel.
+%\comment{Lihao: comment out the following preemptible RCU contents if we need space.}
+%However, there can be a great many tasks, and scanning all of them could
+%result in excessive per-grace-period overheads.
+%However, if a task has been preempted or has blocked outside of an RCU
+%read-side critical section, its state need not be considered.
+%Therefore, a given grace period need only consider tasks that have been
+%preempted (or, in real-time variants of the Linux kernel, blocked)
+%within an RCU read-side critical section that began before the current
+%grace period did.
+%These are exactly the tasks that are tracked by the \co{rcu_node} structure's
+%\co{->blkd_tasks} list and \co{->gp_tasks} pointer, as discussed in
+%Section~\ref{sec:rcu_node}.
+
+\subsubsection{Scheduling-Clock Interrupt} \label{sec:timer_interrupt}
+The \co{rcu_check_callbacks()} is invoked from the sched\-ul\-ing-clock interrupt
+handler, which allows RCU to periodically check whether a given busy CPU
+is in the user-mode or idle-loop quiescent states.
+If the CPU is in one of these quiescent states, \co{rcu_check_callbacks()}
+invokes \co{rcu_sched_qs()}, %and \co{rcu_bh_qs()}, 
+which sets the per-CPU \co{rcu_sched_data.passed_quiesce} %and \co{rcu_bh_data.passed_quiesce}
+fields to 1. %, respectively.
+%In addition, when the scheduling-clock interrupt happens outside of softirq context,
+%that is, outside of the softirq handler and also outside of any
+%bottom-half-disable mode, then the CPU is in an RCU-bh quiescent state,
+%in which case \co{rcu_check_callbacks()} will invoke \co{rcu_bh_qs()}
+%to inform RCU of this quiescent state.
+
+%\comment{Lihao: comment out the following preemptible RCU contents if we need space.}
+%When RCU-preempt is present,
+%\co{rcu_check_callbacks()} invokes
+%\co{rcu_preempt_check_callbacks}, which
+%checks for RCU-preempt quiescent states, which are in effect whenever
+%the per-task \co{->rcu_read_lock_nesting} field is equal to 0.
+%This condition causes \co{rcu_preempt_check_callbacks} to invoke
+%\co{rcu_preempt_qs()}, which in turn records
+%quiescent state for by setting the per-CPU \co{rcu_data_p->passed_quiesce} 
+%field to true.
+%
+The \co{rcu_check_callbacks()} function invokes \co{rcu_pending()}
+to determine whether a recent event or current condition means that
+RCU requires attention from this CPU.
+% so the next outermost \co{rcu_read_unlock()} will announce a quiescent state.
+% http://lxr.free-electrons.com/source/kernel/rcu/tree_plugin.h#L485
+If so, \co{rcu_check_callbacks()} invokes \co{raise_softirq()}, %with a \co{RCU_SOFTIRQ} argument, 
+which will cause \co{rcu_process_callbacks()} to be invoked once the CPU 
+reaches a state where it is safe to do so (roughly speaking, once the CPU 
+has interrupts, preemption, and bottom halves enabled). This function is 
+discussed in detail in Section \ref{sec:grace_period}.
+
+% Paul: Yes, the order is different than the code, but it seems to flow better
+% this way.  Perhaps I should re-order the code.  Except that I don't touch
+% that particular piece of code without an extremely good reason.  ;-)
+
+% Finally, if the scheduling-clock interrupt is raised in the user mode, we perform
+% a context switch.
+% Lihao: voluntary context switch?
+% Paul: This is for Tasks RCU, which is probably out of scope.  That said,
+% This function is not -performing- a voluntary context switch, but rather
+% checking to see if a voluntary context switch has been performed.  In
+% the context of Tasks RCU, executing in user mode is equivalent to having
+% performed a voluntary context switch -- either way, whatever was happening
+% in the kernel beforehand is now well and truly done.
+% Lihao: understand the differences from the tiny RCU version and how the tiny RCU one 
+% is related to cond_resched in synchronize_sched
+% Lihao: understand how it is related to wait_rcu_gp(call_rcu_sched) in synchronize_sched()
+
+\subsubsection{Context-Switch Handling} \label{sec:context_switch}
+The context-switch quiescent state is recorded by invoking
+\co{rcu_note_context_switch()} from \co{__schedule()} (and, for the
+benefit of virtualization, also from \co{rcu_virt_note_context_switch()}).
+% http://lxr.free-electrons.com/source/kernel/sched/core.c#L3057
+%
+The \co{rcu_note_context_switch()} function invokes \co{rcu_sched_qs()}
+to inform RCU of the context switch, which is a quiescent state of the CPU.
+%Note that although quiescent states of RCU-bh include those of RCU-sched,
+%\co{rcu_note_context_switch()} does not invoke \co{rcu_bh_qs()}.
+%This could in theory starve RCU-bh grace periods if a given CPU spent all
+%its time in the kernel in bottom-half-disabled regions, without any
+%calls to \co{schedule()}.
+%No part of the kernel currently does this, but should this pattern arise,
+%RCU-bh's quiescent-state recording strategy will need to be revisited.
+
+%\comment{Lihao: comment out the following preemptible RCU contents if we need space.}
+%It also invokes \co{rcu_preempt_note_context_switch()} to add the current
+%task to the \co{->blkd_tasks} list of the CPU's leaf \co{rcu_node}
+%structure for context switches that occur within an RCU-preempt read-side
+%critical section.
+%To prevent this task from being re-added while within its current
+%RCU-preempt read-side critical section,
+%the first \co{rcu_preempt_note_context_switch()} sets the
+%\co{->rcu_read_unlock_special.b.blocked} field in the task structure.
+%
+%However, if current task has already reported an RCU-preempt
+%quiescent state for the current grace period, and if at least one
+%other task is blocking that grace period on this \co{rcu_node}
+%structure,
+%the task should be added to the head of the \co{->blkd_tasks} list
+%in order to avoid blocking that grace period.
+%In this case, the \co{->gp_tasks} field
+%will be non-\co{NULL} and the current CPU's bit will already be cleared
+%from the \co{->qsmask} field.
+%In all other cases, the task should be added to the tail of the
+%\co{->blkd_tasks} list.
+%If the task is blocking the current RCU-preempt grace period and
+%\co{->gp_tasks} is \co{NULL}, then this is the first task on this
+%leaf \co{rcu_node} structure to block the this grace period, and
+%therefore \co{->gp_tasks} is set to reference the current task.
+%This approach allows RCU to easily identify which tasks are blocking
+%the current grace period.
+%
+%The \co{rcu_preempt_note_context_switch()} function also invokes
+%\co{rcu_preempt_qs()} to note a quiescent state for the current CPU.
+%Nevertheless, any tasks queued on the \co{->gp_tasks} segment of
+%\co{->blkd_tasks} will continue to block the grace period.
+%
+%All of the tasks on the \co{->blkd_tasks} list dequeue themselves
+%during the outermost \co{rcu_read_unlock()}.
+%This of course introduces a race condition where a task is preempted
+%while executing its outermost
+%\co{rcu_read_unlock()}~\cite{PaulEMcKenney2011RCU3.0trainwreck}.
+%\comment{Paul: This citation isn't all that important, so feel free to remove.}
+%This race is detected by having \co{rcu_read_unlock()} set the \co{task_struct}
+%structure's \co{->rcu_read_lock_nesting} field to a negative value.
+%When \co{rcu_preempt_note_context_switch()} sees this negative value,
+%it invokes \co{rcu_read_unlock_special()} to complete the dequeuing
+%of the current task from the \co{->blkd_tasks} list.
+%Interrupt disabling prevents further destructive races.
+%% Lihao: if show code, add the following text
+%% Recall that \co{rcu_read_unlock()} sets \co{rcu_read_lock_nesting} of its  
+%%\co{task_struct} structure to \co{INT_MIN} before invoking 
+%%\co{rcu_read_unlock_special()} 
+%%(and to 0 after \co{rcu_read_unlock_special()} returns)
+%% If the {task_struct}'s \co{rcu_read_unlock_special.s} is not equal to 0,
+%% we have work left to do for \co{rcu_read_unlock_special}, which is then invoked.
+%% http://lxr.free-electrons.com/source/kernel/rcu/tree_plugin.h#L267 
+%% Lihao: may need to explain the code of rcu_read_unlock_special() 
+%% Paul: I did a minimal explanation, which can be expanded if necessary.

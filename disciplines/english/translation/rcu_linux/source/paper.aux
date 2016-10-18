@@ -1,0 +1,106 @@
+\relax 
+\citation{LinuxKernel}
+\citation{McKenneyRCU98}
+\citation{McKenneyOSR08}
+\citation{McKenneyOSR08,McKenneyRCUsageReport13}
+\citation{LinuxServerNum13}
+\citation{AndroidNum15}
+\citation{BurchInfComput92}
+\citation{VerificationChallenges}
+\citation{DesnoyersOSR13}
+\citation{VerificationChallenges}
+\citation{ValDyntickNMI}
+\citation{HolzmannTSE97SPIN}
+\citation{YangESOP13RCU,DreyerPLDI15RCU}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}}
+\citation{KroeningTACAS04CBMC}
+\citation{McKenneyRCU98}
+\citation{McKenneyOSR08}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Background}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}What is RCU?}{2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces RCU Concepts\relax }}{2}}
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:rcu_concepts}{{1}{2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Verifying RCU Grace Periods\relax }}{2}}
+\newlabel{fig:verify_rcu_gp}{{2}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Core RCU API Usage}{2}}
+\newlabel{sec:api_usage}{{2.2}{2}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Implementation of Tree RCU}{3}}
+\newlabel{sec:tree_rcu}{{3}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Overview}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Read/Write-Side Primitives}{3}}
+\newlabel{sec:api_impl}{{3.2}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Data Structures of Tree RCU}{3}}
+\newlabel{sec:data_structure}{{3.3}{3}}
+\citation{LaiJiangshan2008NewClassicAlgorithm}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Tree RCU Hierarchy\relax }}{4}}
+\newlabel{fig:tree_rcu_hierarchy}{{3}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Array Representation for a Tree of \lstinline [breaklines=true,breakatwhitespace=true]{rcu_node} Structures\relax }}{4}}
+\newlabel{fig:rcu_node_array}{{4}{4}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1}\lstinline [breaklines=true,breakatwhitespace=true]{rcu_state} Structure}{4}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2}\lstinline [breaklines=true,breakatwhitespace=true]{rcu_node} Structure}{4}}
+\newlabel{sec:rcu_node}{{3.3.2}{4}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.3}\lstinline [breaklines=true,breakatwhitespace=true]{rcu_data} structure}{4}}
+\newlabel{sec:rcu_data}{{3.3.3}{4}}
+\citation{LaiJiangshan2008NewClassicAlgorithm}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Callback Queuing in \lstinline [breaklines=true,breakatwhitespace=true]{rcu_data}\relax }}{5}}
+\newlabel{fig:rcu_data_callbacks}{{5}{5}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.4}RCU Callbacks}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Quiescent State Detection}{5}}
+\newlabel{sec:quiescent_state}{{3.4}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Grace-Period Detection State Diagram\relax }}{6}}
+\newlabel{fig:grace_period_state_diagram}{{6}{6}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.1}Scheduling-Clock Interrupt}{6}}
+\newlabel{sec:timer_interrupt}{{3.4.1}{6}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.2}Context-Switch Handling}{6}}
+\newlabel{sec:context_switch}{{3.4.2}{6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Grace Period Detection}{6}}
+\newlabel{sec:grace_period}{{3.5}{6}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.1}Softirq Handler for RCU}{6}}
+\newlabel{sec:rcu_softirq}{{3.5.1}{6}}
+\citation{KroeningTACAS04CBMC}
+\citation{AlglaveCAV13}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.2}Grace-Period Kernel Thread}{7}}
+\newlabel{sec:rcu_gp_kthread}{{3.5.2}{7}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Verification Scenario}{7}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Modeling RCU for CBMC}{8}}
+\newlabel{sec:model_rcu}{{5}{8}}
+\newlabel{sec:model_irq}{{5}{8}}
+\citation{DesnoyersTPDS12UserRCU}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Experiments}{9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Bug-Injection Scenarios}{9}}
+\newlabel{sec:bug_cases}{{6.1}{9}}
+\citation{PaulMcKenney2005rcutorture}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Validating the RCU Model in User-Space}{10}}
+\newlabel{sec:test_model}{{6.2}{10}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Getting CBMC to work on Tree RCU}{10}}
+\newlabel{sec:cbmc_on_rcu}{{6.3}{10}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Results and Discussion}{10}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Experimental Results of Testing the RCU Model in User-Space\relax }}{11}}
+\newlabel{tab:results_run}{{1}{11}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Experimental Results of CBMC\relax }}{11}}
+\newlabel{tab:results_cbmc}{{2}{11}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Number of Constraints in the SAT Formulas\relax }}{12}}
+\newlabel{fig:barchart_sat_constr}{{7}{12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Number of Variables in the SAT Formulas\relax }}{12}}
+\newlabel{fig:barchart_sat_var}{{8}{12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Number of Clauses in the SAT Formulas\relax }}{12}}
+\newlabel{fig:barchart_sat_clause}{{9}{12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Total Runtime in Seconds\relax }}{12}}
+\newlabel{fig:barchart_runtime}{{10}{12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Maximum Memory Consumption in Gigabytes\relax }}{12}}
+\newlabel{fig:barchart_memory}{{11}{12}}
+\citation{VerificationChallenges}
+\citation{ValDyntickNMI}
+\citation{DesnoyersOSR13}
+\citation{DesnoyersTPDS12UserRCU}
+\citation{AlglaveCAV13}
+\citation{VerificationChallenges}
+\citation{GroceASE15RCU}
+\citation{JonathanCorbet2014RCU-tasks}
+\citation{YangESOP13RCU}
+\citation{DreyerPLDI15RCU}
+\citation{CalcagnoNASA15}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Related Work}{13}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Conclusion}{13}}
+\newlabel{sigplanconf@finalpage}{{8}{13}}

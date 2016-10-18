@@ -1,0 +1,107 @@
+\subsection{Bug-Injection Scenarios} \label{sec:bug_cases}
+Because we model non-preemptible Tree RCU, each CPU runs exactly one RCU task
+as a separate thread.
+Upon completion, each task increments a global counter \co{thread_cnt},
+enabling the parent thread to verify the completion of all RCU tasks
+using a statement \co{__CPROVER_assume(thread_cnt == 2)}.
+The base case uses the example in Figure~\ref{fig:verify_rcu_gp}, including
+its assertion \co{assert(r2 == 0 || r1 == 1)}.
+This assertion does not hold when
+RCU's fundamental safety guarantee is violated:
+read-side critical sections cannot span grace
+periods~\cite{DesnoyersTPDS12UserRCU}.
+%
+We also verify a \emph{weak form} of liveness by inserting an \co{assert(0)} 
+after the \co{__CPROVER_assume(thread_cnt == 2)} statement.
+This assertion cannot hold, and so it will be violated if at least one grace period completes.
+Such a ``verification failure" is in fact the expected behavior for a correct RCU implementation. 
+On the other hand, if the assertion is not violated, grace periods never complete, which indicates a liveness bug.
+
+To validate our verification, we also run CBMC with the bug-injection scenarios 
+described below,\footnote{Source code is available: \url{http://lxr.free-electrons.com/source/kernel/rcu/?v=4.3}}
+which are simplified versions of bugs encountered in actual practice.
+Bugs~2--6 are liveness checks and thus use the
+aforementioned \co{assert(0)}, and the remaining scenarios are
+safety checks which thus use the base-case assertion in
+Figure~\ref{fig:verify_rcu_gp}.
+% \comment{Lihao: we might explain each bug scenario in greater detail 
+% assuming the readers aren't familiar with the code.}
+
+\paragraph*{Bug 1}
+This bug-injection scenario makes
+the RCU update-side primitive \co{synchronize_rcu()} return immediately 
+(line 523 in \co{tree_plugin.h}).
+With this injected bug, updaters never wait for readers, which should
+result in a safety violation, thus preventing
+Figure~\ref{fig:verify_rcu_gp}'s assertion from holding.
+
+\paragraph*{Bug 2}
+The key idea behind this bug-injection scenario is to prevent individual
+CPUs from realizing that quiescent states are needed, thus preventing
+them from recording quiescent states. As a result, it prevents grace periods
+from completing.
+Specifically, in function \co{rcu_gp_init()}, for each \co{rcu_node}
+structure in the combining tree,
+we set the field \co{rnp->qsmask} to 0 instead of \co{rnp->qsmaskinit} (line 1889 in \co{tree.c}). 
+Then when \co{rcu_process_callbacks()} is called, \co{rcu_check_quiescent_state()} will invoke
+\co{__note_gp_changes()} that sets \co{rdp->qs_pending} to 0. Thus,  
+\co{rcu_check_quiescent_state()} will return without calling \co{rcu_report_qs_rdp()},
+preventing grace periods from completing.
+This liveness violation should fail to trigger a violation of the end-of-execution
+\co{assert(0)}.
+
+\paragraph*{Bug 3}
+This bug-injection scenario is a variation of Bug 2, in
+which each CPU remains aware that quiescent states are required, but
+incorrectly believes that it has already reported a quiescent state
+for the current grace period.
+To accomplish this,
+in \co{__note_gp_changes()}, we clear \co{rnp->qsmask} by adding a statement
+\co{rnp->qsmask &= ~rdp->grpmask;} in the last \co{if} code block (line 1739 in \co{tree.c}). 
+Then function \co{rcu_report_qs_rnp()} never walks up the \co{rcu_node}
+tree, resulting in a liveness violation as in Bug~2.
+
+\paragraph*{Bug 4}
+This bug-injection scenario is an alternative code change that gets the
+same effect as does Bug~2.
+For this alternative,
+in \co{__note_gp_changes()}, we set the \co{rdp->qs_pending} field to 0 directly 
+(line 1749 in \co{tree.c}). This is a variant of Bug 2 and thus also
+a liveness violation.
+
+\paragraph*{Bug 5}
+In this bug-injection scenario, CPUs remain aware of the need for
+quiescent states.
+However, CPUs are prevented from recording their
+quiescent states, thus preventing grace periods from ever completing.
+To accomplish this, we modify
+function \co{rcu_sched_qs()} to return immediately (line 246 in \co{tree.c}),
+so that quiescent states are not recorded.
+Grace periods therefore never complete, which constitutes a liveness
+violation similar to Bug~2.
+
+\paragraph*{Bug 6}
+In this bug-injection scenario, CPUs are aware of the need for quiescent
+states, and they also record them locally.
+However, they are prevented from reporting them up the \co{rcu_node}
+tree, which again prevents grace periods from ever completing.
+This bug modifies
+function \co{rcu_report_qs_rnp()} to return immediately (line 2227 in \co{tree.c}). 
+This prevents RCU from walking up the \co{rcu_node} tree, thus preventing grace
+periods from ending.
+This is again a liveness violation similar to Bug~2.
+
+\paragraph*{Bug 7}
+Where Bug~6 prevents quiescent states from being reported up the
+\co{rcu_node} tree, this bug-injection scenario causes quiescent
+states to be reported up the tree prematurely, before all the
+CPUs covered by a given subtree have all reported quiescent states.
+To this end,
+in \co{rcu_report_qs_rnp()}, we remove the \co{if}-block checking for
+\co{rnp->qsmask != 0 || rcu_preempt_blocked_readers_cgp(rnp)} (line 2251 in \co{tree.c}). 
+Then the tree-walking process will not stop until it reaches the root, resulting in 
+too-short grace periods.
+This is therefore a safety violation similar to Bug~1.
+
+\noindent Bugs~2 and~3 would result in a too-short grace period given quiescent-state forcing, 
+but such forcing falls outside the scope of this paper.

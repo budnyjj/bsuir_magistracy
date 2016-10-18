@@ -1,0 +1,42 @@
+\section{Background}
+
+\subsection{What is RCU?}
+
+Read-copy update (RCU) is a synchronization mechanism
+that is often used to replace reader-writer locking.
+RCU readers run concurrently with updaters,
+and so RCU avoids read-side contention by maintaining multiple versions of
+objects and ensuring 
+they are not freed until all pre-existing readers complete, that is,
+until after a \emph{grace period} elapses.
+The basic idea is to split updates into removal
+and reclamation phases that are separated by a grace period~\cite{McKenneyRCU98}.
+The removal phase removes reader-accessible references 
+to objects, perhaps by replacing them with new versions.
+
+Modern CPUs guarantee that writes to single aligned
+pointers are atomic, so that readers
+see either the old or new version of the data structure.
+These atomic-write semantics enable atomic
+insertions, deletions, and replacements in a linked structure.
+This in turn enables readers to dispense with expensive
+atomic operations, memory barriers, and cache misses.
+In fact, in the most aggressive configurations of Linux-kernel RCU, readers
+can use exactly the same sequence of instructions that would be used in
+a single-threaded implementation, providing
+RCU readers with excellent performance and scalability.
+
+As illustrated in Figure~\ref{fig:rcu_concepts}, grace periods are only
+needed for those readers whose runtime overlaps the removal phase.
+Those that start after the removal 
+phase cannot hold references to the removed objects and thus
+cannot be disrupted by objects being freed during the reclamation phase.
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[scale=0.35]{rcu_concepts.pdf}
+\caption{RCU Concepts}
+\label{fig:rcu_concepts}
+\end{figure}
+
+\input{api_usage.tex}

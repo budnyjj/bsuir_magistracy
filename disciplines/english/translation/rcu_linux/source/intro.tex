@@ -1,0 +1,76 @@
+\section{Introduction}
+The Linux operating system kernel~\cite{LinuxKernel} is widely used 
+in a variety of computing platforms, including servers, safety-critical 
+embedded systems, household appliances, and mobile devices such as 
+smartphones. Over the past 25 years, many technologies 
+have been added to the Linux kernel, one example being Read-Copy 
+Update (RCU)~\cite{McKenneyRCU98}.
+
+RCU is a synchronization mechanism that can be used to replace reader-writer 
+locks in read-mostly scenarios. It allows low-overhead readers
+to run concurrently with updaters. Production-quality RCU implementations 
+for multi-core systems must provide excellent scalability, 
+high throughput, low latency, modest memory footprint, excellent energy 
+efficiency, and reliable response to CPU hotplug operations.
+The implementation must therefore avoid cache misses, lock contention, 
+frequent updates to shared variables, and excessive 
+use of atomic read-modify-write and memory-barrier instructions.
+Finally, the implementation must cope with the extremely diverse
+workloads and platforms of Linux~\cite{McKenneyOSR08}.
+
+RCU is now widely used in the Linux-kernel networking, device-driver, and
+file-storage
+subsystems~\cite{McKenneyOSR08,McKenneyRCUsageReport13}.
+%\url{http://www2.rdrop.com/~paulmck/RCU/linuxusage/linux-4.3.sum}}
+To date, there are at least 75 million Linux servers \cite{LinuxServerNum13} 
+and 1.4 billion Android devices~\cite{AndroidNum15},
+which means that a ``million-year'' bug
+can occur several times per day across the installed base.
+Stringent validation of RCU's complex implementation is thus critically
+important.
+
+Most validation efforts for concurrent software rely on testing, but
+unfortunately there is no cost-effective test strategy that can cover
+all corner cases. %and detect all bugs.
+Worse still, some of errors that testing does detect might be difficult to 
+reproduce, diagnose, and repair. The concurrent nature of RCU and the sheer 
+size of the search space suggest use of formal verification, particularly
+model checking~\cite{BurchInfComput92}.
+
+Formal verification has already been applied to some aspects of RCU design, 
+including Tiny RCU~\cite{VerificationChallenges}, userspace RCU~\cite{DesnoyersOSR13}, 
+sysidle~\cite{VerificationChallenges}, and interactions between
+dyntick-idle and non-maskable interrupts (NMIs)~\cite{ValDyntickNMI}.
+% Lihao: correct citations? Paul: Look good. For a more recent NMI/dyntick example: 
+% \url{https://kernel.googlesource.com/pub/scm/linux/kernel/git/paulmck/linux-rcu/+/andy.2014.11.21a}.}
+%
+But these efforts either validate trivial single-CPU RCU implementations
+in~C (Tiny RCU), or use special-purpose languages such as
+Promela~\cite{HolzmannTSE97SPIN}.  Although special-purpose modeling
+languages do have advantages, a major disadvantage in the context of the
+Linux kernel is the difficult and error-prone translation from source code.
+%
+Other researchers have applied manual proofs in formal logics to simple 
+RCU implementations~\cite{YangESOP13RCU,DreyerPLDI15RCU}. These proofs are %of course
+quite admirable, but require even more manual work, in addition
+to the translation effort.
+
+Worse yet, Linux kernel releases are only about 60 days apart, and RCU
+changes with each release.  Thus, any manual work must be replicated about
+six times a year so that mechanical and manual models or proofs remain
+synchronized with the Linux-kernel RCU implementation.
+%
+Therefore, if formal verification is to be part of Linux-kernel RCU's 
+regression suite, the verification methods must be scalable and automated. 
+% Paul: I say "must be scalable and automated" with the power invested in
+% me in my role as Linux-kernel RCU maintainer.  ;-)
+%, especially if it is to be applied to the full Linux kernel as opposed to 
+% the tiny subset of the kernel that is RCU.
+%
+To this end, this paper describes how to build a model directly from the
+Linux kernel source code, and use the C~Bounded Model Checker
+(CBMC)~\cite{KroeningTACAS04CBMC} to verify RCU's safety and liveness
+properties.
+%
+To the best of our knowledge, this is the first automatic
+verification of a significant part of the Linux-kernel RCU source code.
