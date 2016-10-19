@@ -1,36 +1,36 @@
-\section{Implementation of Tree RCU}\label{sec:tree_rcu}
+\section{Реализация Tree RCU}\label{sec:tree_rcu}
 
-The primary advantage of RCU is that it is able to wait for an arbitrarily
-large number of readers to finish without keeping track every single one of
-them.  The number of readers can be large (up to the number of CPUs in
-non-pre\-emptible implementations and up to the number of tasks in
-preemptible implementations).
-%
-Although RCU's read-side primitives enjoy excellent performance and scalability, 
-update-side primitives must defer the reclamation phase till all pre-existing 
-readers have completed, either by blocking or by registering a callback that is 
-invoked after a grace period. The performance and scalability of RCU relies on 
-efficient mechanisms to detect when a grace period has completed. 
-%
-For example, a simplistic RCU implementation might require each CPU to
-acquire a global lock during each grace period, but this would severely
-limit performance and scalability.
-Such an implementation would be quite unlikely to scale beyond
-a few hundred CPUs.
-This is woefully insufficient because Linux runs on systems with thousands
-of CPUs.
-This has motivated the creation of Tree RCU.
+Основное преимущество RCU заключается в том, что он позволяет
+ожидать выхода весьма большого числа потоков-читателей из своих
+критических секций без необходимости учета каждого из них:
+в ядрах с non-preemptible реализацией многопоточности их число
+ограничено количеством ядер процессора,
+в ядрах с preemptible реализацией --- неограниченно вовсе.
+Несмотря на то, что примитивы чтения RCU обладают замечательными
+показателями производительности и масштабируемости,
+примитивы записи должны оттягивать фазу освобождения до тех пор,
+пока все потоки-читатели не выйдут из своих критических секций,
+за счет блокирования или регистрации callback'а, который должен быть
+вызван по истечении grace-периода.
+Производительность и масштабируемость RCU определяются
+эффективности механизмов обнаружения окончания \emph{grace}-периода.
+Например, простейшая реализация RCU может требовать,
+чтобы каждое ядро процессора использовало глобальную блокировку
+для каждого grace-периода, но этот подход существенно снизит
+производительность и масштабируемость.
+Для реальных систем, имеющих тысячи процессоров и управляемых Linux,
+данный подход неприменим. Этот факт послужил причиной создания Tree RCU.
 
-\subsection{Overview}
-% Lihao: include this in PhD thesis; also look for 'preemptible RCU contents' 
-%There are several flavors of RCU, including RCU-sched, RCU-preempt, 
+\subsection{Обзор}
+% Lihao: include this in PhD thesis; also look for 'preemptible RCU contents'
+%There are several flavors of RCU, including RCU-sched, RCU-preempt,
 %RCU Bot\-tom-Half, and Sleepable RCU (SRCU)~\cite{MckenneyRCUflavors}.
-% Different flavors have different quiescent states, which are 
+% Different flavors have different quiescent states, which are
 % discussed in Section \ref{sec:quiescent_state}.
 %
 % Classic RCU has two implementations: Tiny RCU and Tree RCU. Tiny RCU
 % is only for uni-processor systems; we therefore focus on Tree RCU in this paper.
-% Tree RCU further has non-pre\-emptible and preemptible variants, 
+% Tree RCU further has non-pre\-emptible and preemptible variants,
 % configured by the kernel Kconfig option \co{CONFIG_PREEMPT}.
 % There is no preemptible implementation of Tiny RCU: Instead,
 % preemptible Tree RCU is used in single-CPU preemptible kernel builds.
@@ -40,18 +40,19 @@ This has motivated the creation of Tree RCU.
 % Tiny RCU requires \co{CONFIG_PREEMPT=n}, so it also maps
 % RCU-preempt into RCU-sched.
 %
-We focus on the ``vanilla'' RCU API in a non-preemptible build of
-the Linux kernel, specifically on the \co{rcu_read_lock()},
-\co{rcu_read_unlock()}, and \co{synchronize_rcu()} primitives.
+Будем рассматривать <<стандартный>> программный интерфейс RCU
+в комбинации с non-preemptible версией ядра Linux,
+концентрируясь в основном на примитивах
+\co{rcu_read_lock()}, \co{rcu_read_unlock()} и \co{synchronize_rcu()}.
 %
-%\comment{Lihao: it seems the Tree implementation of Classic RCU also 
+%\comment{Lihao: it seems the Tree implementation of Classic RCU also
 %implements other three flavors: RCU-sched, RCU-bh, and RCU-preempt;
 %and Tiny RCU implements RCU-sched and RCU-bh. Am I right?
-%Conceptually, what is the relationship between flavors Classic RCU and 
-%RCU-sched/RCU-bh? I shall discuss their relationship here otherwise 
-%readers may get confused when we discuss different flavors in the 
+%Conceptually, what is the relationship between flavors Classic RCU and
+%RCU-sched/RCU-bh? I shall discuss their relationship here otherwise
+%readers may get confused when we discuss different flavors in the
 %Tree RCU implementation in later sections.}
-%\comment{Paul: 
+%\comment{Paul:
 %	Yes, Tree RCU implements RCU-sched, RCU-bh, and RCU-preempt,
 %	but only when \co{CONFIG_PREEMPT=y}.
 %	If \co{CONFIG_PREEMPT=n}, then RCU-preempt is mapped into
@@ -74,42 +75,46 @@ the Linux kernel, specifically on the \co{rcu_read_lock()},
 %
 % In a non-pre\-empt\-ible kernel, Tiny and Tree RCU use the same
 % \co{rcu_read_lock()} and \co{rcu_read_unlock()} implementation.
-% Tiny RCU's \co{synchronize_rcu()} implementation is trivial, 
+% Tiny RCU's \co{synchronize_rcu()} implementation is trivial,
 % while preemptible and non-pre\-emptible Tree RCU largely share a rather
 % elaborate implementation.
-% 
-The key idea is that RCU read-side primitives are confined to kernel code and,
-in non-pre\-emptible implementations, do not block.
-Thus, when a CPU is blocking, in the idle loop, or running in user mode,
-all RCU read-side critical sections that were previously running on that CPU
-must have finished. Each of these states is therefore called a \emph{quiescent state}. 
-After each CPU has passed through a quiescent state, the corresponding RCU grace period ends.
+%
+Основная идея заключается в том, что примитивы чтения RCU являются
+частью ядра и поэтому в его non-preemptible конфигурациях не блокируются.
+Поэтому каждый раз, когда ядро процессора простаивает в состоянии бездействия
+или блокируется в процессе выполнения пользовательских программ,
+все критические секции чтения RCU, запущенные ранее на этом ядре,
+оказываются завершенными.
+Поэтому каждое из этих состояний называется \emph{устойчивым состоянием}.
+Каждый такой переход через устойчивое состояние сигнализирует об
+окончании соответствующего grace-периода.
 %\comment{Paul: Shouldn't the definition of quiescent state be before the
 %first use?}
-%\comment{Lihao: move here from the Read-Side Primitives subsection} 
+%\comment{Lihao: move here from the Read-Side Primitives subsection}
 % \comment{Lihao: add an overview and high-level idea of how the implementation of Tree RCU works.}
-The key challenge is to determine when all necessary quiescent
-states have completed for a given grace period---and to do so with
-excellent performance and scalability.
+Основная сложность заключается в том, чтобы определить момент,
+когда все необходимые устойчивые состояния были пройлены для данного
+grace-периода, сохранив при этом высокую производительность и масштабируемость.
 
-For example, if RCU used a single data structure to record each CPU's
-quiescent states, the result would be extreme lock contention on large systems,
-in turn resulting in poor performance and abysmal scalability.
-Tree RCU therefore instead uses a tree hierarchy of data structures, 
-each leaf of which records quiescent states of a single CPU and propagates the information 
-up to the root. When the root is reached, a grace period has ended. Then the grace-period
-information is propagated down from the root to the leaves of the tree.
-Shortly after the leaf data 
-structure of a CPU receives this information, \co{synchronize_rcu()} will return.
+Например, использование единой структуры данных для регистрации устойчивых
+состояний каждого ядра приводит к неприемлемо частому использованию
+блокировок на крупных системах, что в свою очередь приводит к снижению
+производительности.
+Для решения этой проблемы Tree RCU использует иерархическую организацию
+структур данных, каждый узел которой предназначен для учета устойчивых
+состояний отдельного ядра и предоставляет свою информацию более высоким уровням.
+По достижении корня дерева grace-период заканчивается и
+его информация распространяется по всем узлам-потомкам.
+Вскоре после того, как узлы получают данную информацию,
+происходит возврат из \co{synchronize_rcu()}.
 
-In the remainder of this section, we discuss the implementation of the non-pre\-empt\-ible 
-Tree RCU in the Linux kernel version 4.3.6. We first briefly discuss the implementation of 
-read/write-side primitives.
-%how non-pre\-empt\-ible Tree RCU detects quiescent states without individually tracking readers.
-We then explain Tree RCU's hierarchical data structure which records quiescent states while 
-maintaining bounded lock contention. Finally, we discuss how RCU uses this data structure 
-to detect quiescent states and %communicate them among all the CPUs, as well as to detect a 
-grace periods without individually tracking readers.
+В оставшейся части данного раздела мы рассмотрим реализацию Tree RCU
+в non-preemptible конфигурации ядра Linux версии 4.3.6.
+Вначале мы бегло опишем реализацию примитивов чтения и записи,
+затем опишем иерархическую структуру данных, используемую для эффективного
+учета устойчивых состояния, и, наконец, рассмотрим, как RCU использует
+эту структуру данных для фиксации устойчивых состояний и grace-периодов
+без учета отдельных потоков-читателей.
 
 \input{api_impl}
 \input{data_structure}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Arch Linux) (preloaded format=pdflatex 2016.9.1)  18 OCT 2016 23:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Arch Linux) (preloaded format=pdflatex 2016.9.1)  19 OCT 2016 22:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -812,13 +812,7 @@ A/fer/m/n/10 _[][][][]
 
 Underfull \vbox (badness 2452) has occurred while \output is active []
 
- [3 <./rcu_concepts.pdf>]
-Overfull \hbox (22.77014pt too wide) in paragraph at lines 105--113
-[]\T2A/ftm/m/n/10 In the remainder of this section, we discuss the implementati
-on
- []
-
-(./api_impl.tex) (./data_structure.tex
+ [3 <./rcu_concepts.pdf>] (./api_impl.tex) (./data_structure.tex
 <tree_rcu_hierarchy.pdf, id=31, 1091.27695pt x 809.42403pt>
 File: tree_rcu_hierarchy.pdf Graphic file (type pdf)
 
@@ -848,6 +842,9 @@ File: rcu_node_array.pdf Graphic file (type pdf)
 Package pdftex.def Info: rcu_node_array.pdf used on input line 54.
 (pdftex.def)             Requested size: 200.70477pt x 114.85194pt.
 
+Underfull \vbox (badness 1303) has occurred while \output is active []
+
+ [4 <./tree_rcu_hierarchy.pdf>]
 Overfull \hbox (18.00005pt too wide) in paragraph at lines 59--75
 [][][][][][]\T2A/fer/m/n/10 _[]_[][][][]\T2A/ftm/m/n/10 , with []\T2A/fer/m/n/1
 0 _[][][] \T2A/ftm/m/n/10 structures
@@ -859,7 +856,7 @@ Underfull \hbox (badness 1142) in paragraph at lines 76--86
 [][][][][][]
  []
 
-[4 <./tree_rcu_hierarchy.pdf>]
+
 Overfull \hbox (6.92014pt too wide) in paragraph at lines 91--104
 [][][][] \T2A/ftm/m/n/10 to protect its fields. The [][][][] field references
  []
@@ -869,6 +866,9 @@ Overfull \hbox (6.26012pt too wide) in paragraph at lines 105--114
 \T2A/ftm/m/n/10 grace period. As with []\T2A/fer/m/n/10 _[][][]\T2A/ftm/m/n/10 
 , the []\T2A/fer/m/n/10 _[][][] \T2A/ftm/m/n/10 structure
  []
+
+
+Underfull \vbox (badness 3240) has occurred while \output is active []
 
 
 Overfull \hbox (14.49008pt too wide) in paragraph at lines 155--166
@@ -892,7 +892,7 @@ Overfull \hbox (6.07014pt too wide) in paragraph at lines 167--178
 
  []
 
-(./callback.tex <rcu_data_callbacks.pdf, id=58, 867.35542pt x 840.33504pt>
+(./callback.tex <rcu_data_callbacks.pdf, id=57, 867.35542pt x 840.33504pt>
 File: rcu_data_callbacks.pdf Graphic file (type pdf)
 
 <use rcu_data_callbacks.pdf>
@@ -909,11 +909,10 @@ Overfull \hbox (2.11006pt too wide) in paragraph at lines 12--33
 0 (the ``[]\T2A/fer/m/n/10 _
  []
 
-[5 <./rcu_node_array.pdf> <./rcu_data_callbacks.pdf
 
-pdfTeX warning: pdflatex (file ./rcu_data_callbacks.pdf): PDF inclusion: multip
-le pdfs with page group included in a single page
->]
+Underfull \vbox (badness 1558) has occurred while \output is active []
+
+ [5 <./rcu_node_array.pdf>]
 Overfull \hbox (1.56007pt too wide) in paragraph at lines 34--47
 []\T2A/ftm/m/n/10 Back in Figure 5[], the [][][][]\T2A/fer/m/n/10 _[]_[][][][]
  []
@@ -969,11 +968,7 @@ Overfull \hbox (13.55013pt too wide) in paragraph at lines 48--103
 _
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-))
-(./quiescent_state_detection.tex
+)) (./quiescent_state_detection.tex
 Underfull \hbox (badness 1831) in paragraph at lines 12--41
 []\T2A/ftm/m/n/10 The non-preemptible RCU-sched flavor's quiescent
  []
@@ -996,8 +991,11 @@ Overfull \hbox (6.00003pt too wide) in paragraph at lines 96--110
 []
  []
 
-) (./grace_period_detection.tex [6]
-<grace_period_state_diagram.pdf, id=94, 977.43024pt x 571.6303pt>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [6 <./rcu_data_callbacks.pdf>]) (./grace_period_detection.tex
+<grace_period_state_diagram.pdf, id=95, 977.43024pt x 571.6303pt>
 File: grace_period_state_diagram.pdf Graphic file (type pdf)
 
 <use grace_period_state_diagram.pdf>
@@ -1030,9 +1028,6 @@ Underfull \hbox (badness 2735) in paragraph at lines 59--67
 []\T2A/ftm/m/n/10 Next, []\T2A/fer/m/n/10 _[]_[]_[][][][] \T2A/ftm/m/n/10 check
 s
  []
-
-
-Underfull \vbox (badness 3219) has occurred while \output is active []
 
 
 Overfull \hbox (17.63937pt too wide) in paragraph at lines 125--128
@@ -1117,7 +1112,7 @@ Overfull \hbox (6.97011pt too wide) in paragraph at lines 3--17
 \T2A/ftm/m/n/10 analyzer that implements bit-precise bounded model checking
  []
 
-
+[8]
 Overfull \hbox (11.69939pt too wide) in paragraph at lines 18--47
 \T2A/ftm/m/n/10 irrelevant functionality (such as idle-CPU detection), removing
 
@@ -1129,7 +1124,7 @@ Overfull \hbox (16.55013pt too wide) in paragraph at lines 18--47
 .1[]).
  []
 
-[8]
+
 Overfull \hbox (3.6601pt too wide) in paragraph at lines 55--67
 []\T2A/fer/m/n/10 _[][][] \T2A/ftm/m/n/10 tree geometry; (2) []\T2A/fer/m/n/10 
 _[]_[][][] \T2A/ftm/m/n/10 to initialize
@@ -1186,7 +1181,7 @@ Overfull \hbox (6.63002pt too wide) in paragraph at lines 161--170
 er/m/n/10 __[]_
  []
 
-) (./experiments.tex [9] (./bug_cases.tex
+[9]) (./experiments.tex (./bug_cases.tex
 
 Package natbib Warning: Citation `DesnoyersTPDS12UserRCU' on page 10 undefined 
 on input line 12.
@@ -1216,6 +1211,9 @@ Overfull \hbox (6.84015pt too wide) in paragraph at lines 20--29
 Underfull \hbox (badness 1237) in paragraph at lines 20--29
 [][][][]\T2A/ftm/m/n/10 , and the remaining scenarios are safety
  []
+
+
+Underfull \vbox (badness 7851) has occurred while \output is active []
 
 
 Overfull \hbox (0.93939pt too wide) in paragraph at lines 31--37
@@ -1251,12 +1249,12 @@ Overfull \hbox (13.41013pt too wide) in paragraph at lines 73--82
 g
  []
 
-
+[10]
 Overfull \hbox (13.94002pt too wide) in paragraph at lines 95--105
 \T2A/ftm/m/n/10 for [][][][][][][][][][][][][][][]\T2A/fer/m/n/10 _[]_[]_
  []
 
-[10]) (./results_run.tex)
+) (./results_run.tex)
 Overfull \hbox (18.7401pt too wide) in paragraph at lines 30--39
 \T2A/ftm/m/n/10 following two columns give the maximum memory consumption
  []
@@ -1265,6 +1263,9 @@ Overfull \hbox (18.7401pt too wide) in paragraph at lines 30--39
 Overfull \hbox (3.99011pt too wide) in paragraph at lines 3--14
 \T2A/ftm/m/n/10 model is non-trivial due to Tree RCU's complexity combined
  []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Overfull \hbox (13.00003pt too wide) in paragraph at lines 15--27
@@ -1287,13 +1288,14 @@ Overfull \hbox (0.99013pt too wide) in paragraph at lines 71--89
 \T2A/ftm/m/n/10 The next three columns give the maximum (virtual) memory
  []
 
+
+Underfull \vbox (badness 2698) has occurred while \output is active []
+
+ [11]
 (./results_cbmc.tex)
 
-Package natbib Warning: Citation `PaulMcKenney2005rcutorture' on page 11 undefi
+Package natbib Warning: Citation `PaulMcKenney2005rcutorture' on page 12 undefi
 ned on input line 99.
-
-[11]
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Overfull \hbox (13.36942pt too wide) in paragraph at lines 138--144
@@ -1303,7 +1305,7 @@ Overfull \hbox (13.36942pt too wide) in paragraph at lines 138--144
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [12]
+
 (./barchart_sat_constr.tex)
 Overfull \hbox (2.23636pt too wide) in paragraph at lines 56--161
  [][] 
@@ -1329,7 +1331,7 @@ Overfull \hbox (2.23636pt too wide) in paragraph at lines 56--193
  [][] 
  []
 
-) (./related_work.tex [13]
+[12]) (./related_work.tex [13]
 
 Package natbib Warning: Citation `VerificationChallenges' on page 14 undefined 
 on input line 6.
@@ -1401,11 +1403,13 @@ Underfull \hbox (badness 1092) in paragraph at lines 27--35
 \T2A/ftm/m/n/10 structures and a thread-aware slicer will help reduce
  []
 
-)
+[14])
 
 Package natbib Warning: There were undefined citations.
 
-[14] (./paper.aux
+[15
+
+] (./paper.aux
 LaTeX Font Info:    Try loading font information for T1+ftm on input line 5.
  (/usr/share/texmf-dist/tex/latex/pscyr/t1ftm.fd
 File: t1ftm.fd 2004/03/23 Fontinst v1.914 font definitions for T1/ftm.
@@ -1413,14 +1417,11 @@ File: t1ftm.fd 2004/03/23 Fontinst v1.914 font definitions for T1/ftm.
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
  28117 strings out of 493013
  652066 string characters out of 6139318
- 842309 words of memory out of 5000000
+ 855713 words of memory out of 5000000
  31053 multiletter control sequences out of 15000+600000
  28341 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1440,10 +1441,10 @@ xmf-dist/fonts/type1/public/pscyr/timesi.pfb></usr/share/texmf-dist/fonts/type1
 /urw/courier/ucrb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/courier/ucrr8a.p
 fb></usr/share/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf
 -dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on paper.pdf (14 pages, 524272 bytes).
+Output written on paper.pdf (15 pages, 532001 bytes).
 PDF statistics:
- 180 PDF objects out of 1000 (max. 8388607)
- 123 compressed objects within 2 object streams
+ 184 PDF objects out of 1000 (max. 8388607)
+ 126 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  62 words of extra memory for PDF output out of 10000 (max. 10000000)
 
