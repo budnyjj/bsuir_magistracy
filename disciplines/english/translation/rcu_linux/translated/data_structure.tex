@@ -1,116 +1,107 @@
-\subsection{Data Structures of Tree RCU} \label{sec:data_structure}
-% In Section~\ref{sec:rcu_softirq}, we discuss how RCU's softirq handlers walk up the 
-% tree hierarchy of the \co{rcu_node} data structure. In ths section, we explain 
-% in detail how this data structure is implemented in \co{kernel/rcu/tree.h} and used 
+\subsection{Структуры данных Tree RCU} \label{sec:data_structure}
+% In Section~\ref{sec:rcu_softirq}, we discuss how RCU's softirq handlers walk up the
+% tree hierarchy of the \co{rcu_node} data structure. In ths section, we explain
+% in detail how this data structure is implemented in \co{kernel/rcu/tree.h} and used
 % in Tree RCU.
 
 \begin{figure}[tbp]
 \centering
 \includegraphics[scale=0.2]{tree_rcu_hierarchy.pdf}
-\caption{Tree RCU Hierarchy}
+\caption{Иерархия Tree RCU}
 \label{fig:tree_rcu_hierarchy}
 \end{figure}
 
-RCU's global state is recorded in the \co{rcu_state} structure, which consists of 
+Глобальное состояние RCU записывается в структуру \co{rcu_state},
+представляющую собой дерево структур \co{rcu_node} с арностью, равной 64
+(32 на 32-битных системах). Каждый терминальный узел данного дерева
+может иметь ссылки на максимум 64 (32 на 32-битных системах) структуры
+RCU's global state is recorded in the \co{rcu_state} structure, which consists of
 a tree of \co{rcu_node} structures with a child count of up to 64
-(32 in a 32-bit system). Every leaf node can have at most 64 
-\co{rcu_data} structures (again 32 on a 32-bit system), each representing
-a single CPU, as illustrated in
-Figure~\ref{fig:tree_rcu_hierarchy}.
+(32 in a 32-bit system). Every leaf node can have at most 64 \co{rcu_data},
+каждая из которых представляет собой отдельное ядро процессока,
+как показано на рисунке~\ref{fig:tree_rcu_hierarchy}.
 %
-Each \co{rcu_data} structure records its CPU's quiescent states, and
-the \co{rcu_node} tree propagates these states up to the root, and then
-propagates grace-period information back down to the leaves.
+Каждая структура \co{rcu_data} веде учет устойчивых состояний своего ядра,
+а \co{rcu_node}-дерево сначала используется для распространения информации
+об этих состояниях сначала в направлении корня,
+затем --- для распространия информации о grace-периодах в направлении листьев.
 %
-Quiescent-state information does not propagate upwards from a given node
-until a quiescent state has been reported by each CPU covered by the subtree
-headed by that node.
-This propagation scheme dramatically reduces the lock contention experienced
-by the upper levels of the tree.
+Информация об устойчивых состояниях передается на родительский уровень
+в тот момент времени, когда каждый узел-потомок каждого поддерева данного уровня
+уже передал её в корень этого поддерева.
+Эта сзема передачи информации позволяет существенно сократить частоту использования
+блокировок на верхних уровнях дерева.
 %
 % Lihao: include this in PhD thesis and the technical report
-For example, consider a default \co{rcu_node} tree for a 4,096-CPU system,
-which will have have 256 leaf nodes, four internal nodes, and one root node.
-During a given grace period, each CPU will report its quiescent states
-to its leaf node, but there will only be 16 CPUs contending for each of
-those 256 leaf nodes.
-Only 256 of the CPUs will report quiescent states to the internal nodes,
-with only 64 CPUs contending for each of the four internal nodes.
-Only four CPUs will report quiescent states to the root node, resulting
-in extremely low contention on the root node's lock, so that contention
-on any given \co{rcu_node} structure is sharply bounded even in very
-large configurations.
-%
-The current RCU implementation in the Linux kernel supports up to a
-four-level tree, and thus in total $64^4 = 16,777,216$ CPUs in a 64
-bit machine.\footnote{
-	Four-level trees are only used in stress testing,
-	but three-level trees are used in production by 4096-CPU systems.}
+Например, рассмотрим стандартное \co{rcu_node} дерево для системы с
+4{,}096 вычислительными ядрами, имеющее 256 терминальных узлов,
+4 внутренних узлов и один корневой узел. В течение данного grace-периода,
+каждое ядро сообщит информацию о своем устойчивом состоянии в
+соответствующий терминальный узел, но при этом каждому терминальному узлу
+будет соответствовать всего 16 соперничающих ядер.
+Всего 256 ядер будут пытаться сообщить свои устойчивые состояния внутренним узлам,
+при этом всего информация 64 ядер дойдет до каждого из четырех внутренних узов.
+Наконец, информация всего четырех ядер может дойти до корневого узла,
+что сказывается на его очень низкой частоте блокирования.
+Это позволяет использовать данную структуру на очень больших системах.
+В частности, актуальная реализация RCU ядра Linux поддерживает
+четырехуровневые деревья, что позволяет использовать до
+$64^4 = 16{,}777{,}216$ ядрами на 64-битных системах.\footnote{
+  В настоящее время четырехуровневые деревья используются при нагрузочном тестировании,
+  а трехуровневые находят свое применение на промышленных 4096-ядерных системах.}
 
 \subsubsection{\co{rcu_state} Structure}
 
 \begin{figure}[tbp]
 \centering
 \includegraphics[scale=0.9]{rcu_node_array.pdf}
-\caption{Array Representation for a Tree of \co{rcu_node} Structures}
+\caption{Представление дерева структур \co{rcu_node} в виде массива}
 \label{fig:rcu_node_array}
 \end{figure}
 
-Each flavor of RCU has its own global \co{rcu_state} structure. 
-%For example, \co{rcu_state} pointers \co{rcu_sched_state}, 
-%\co{rcu_bh_state} and \co{rcu_state_p} are used by RCU-sched, RCU-bh 
-%and RCU-preempt, respectively. 
-The \co{rcu_state} structure includes
-a array of \co{rcu_node} structures organized as a tree
-\co{struct rcu_node node[NUM_RCU_NODES]}, with
-\co{rcu_data} structures connected to the leaves.
-Given this organization, a breadth-first traversal is 
-simply a linear scan of the array.
-%\comment{Lihao: we may also remove the following sentence and the figure 
-%as it's a bit too technical and the level array is never refered again in the paper}
-% Lihao: include this in the technical report
-Another array \co{struct rcu_node} \co{*level[NUM_RCU_LVLS]} 
-is used to point to the left-most node at each level of the tree,
-as shown in Figure~\ref{fig:rcu_node_array}.
+Кажжый реализация RCU имеет свою собственную структуру \co{rcu_state}.
+Структура \co{rcu_state} включает в себя массив структур \co{rcu_node},
+логически организованных в виде дерева
+\co{struct rcu_node node[NUM_RCU_NODES]},
+со структурами \co{rcu_data}, присоединенными к его терминальным узлам.
+Таким образом, обход этого дерева в ширину сводится линейному проходу по массиву.
+Еще один массив структур \co{rcu_node}, \co{*level[NUM_RCU_LVLS]},
+используется для указания на самый левый узел каждого уровня дерева,
+как показано на рисунке~\ref{fig:rcu_node_array}.
 
-The \co{rcu_state} structure uses \co{unsigned long} fields \co{->gpnum}
-and \co{->completed} to track RCU's grace periods.
-The \co{->gpnum} field records the most recently started grace period,
-whereas \co{->completed} records the most recently ended grace period.
-If the two numbers are equal, then corresponding flavor of RCU is idle.
-If \co{gpnum} is one greater than \co{completed}, then RCU is in the
-middle of a grace period.
-All other combinations are invalid.
-% Which of course means that we could instead use a single counter with an
-% odd/even scheme to track grace periods.
-
-%(Lihao: ignore variables used to force quiescent states by force_quiescent_state())
+Структура \co{rcu_state} использует поля \co{->gpnum} и \co{->completed}
+типа \co{unsigned long} для учета grace-периодов.
+Поле \co{->gpnum} используется для отслеживания начала последнего grace-периода,
+в то время как \co{->completed} отслеживает окончание последнего grace-периода.
+Если значения данных полей одинаковы, то соответствующий RCU находится в состоянии
+по умолчанию. Если же значение \co{gpnum} больше, чем \co{completed},
+то RCU находится в состоянии grace-периода.
+Все прочие комбинации недопустимы.
 
 \subsubsection{\co{rcu_node} Structure}
 \label{sec:rcu_node}
-The tree of \co{rcu_node} structures records and 
-propagates quiescent-state information from the leaves to the root,
-and also propagates grace-period information from the root to the leaves. 
+Дерево структур \co{rcu_node} регистрирует и распространяет
+информацию об устойчивых состояниях от терминальных узлов к корневому,
+а также распространяет информацию о grace-периодах в обратном направлении.
 %
-The \co{rcu_node} structure has a spinlock \co{->lock} to protect its fields.
-The \co{->parent} field references the parent \co{rcu_node} structure,
-and is \co{NULL} for the root.
-The \co{->level} field indicates the level in the tree, counting from zero
-at the root.
-The \co{->grpmask} field identifies this node's bit in the
-\co{->qsmask} field of its parent.
-The \co{->grplo} and \co{->grphi} fields indicates the lowest and highest 
-numbered CPU that are covered by this \co{rcu_node} structure, respectively.
+Структура \co{rcu_node} использует спин-блокировку \co{->lock} для защиты
+своих полей. Поле \co{->parent} содержит указатель на струтуру-родителя,
+при этом значение данного поля у корневого узла равно \co{NULL}.
+Значение поля \co{->level} соответствует, на котором находится данный
+узел в дереве, при этом уровень корневого узла равен нулю.
+Поле \co{->grpmask} описывает номер бита данного узла в значении поля
+\co{->qsmask} узла-родителя.
+Поля \co{->grplo} и \co{->grphi} соответствуют наименьшему и наибольшему
+порядковому номеру вычислительного ядра, учитываемого данной структурой.
 
-The \co{->qsmask} field indicates which of this node's children
-still need to report quiescent states for the current grace period.
+Поле \co{->qsmask} указывает, какие из узлов-потомков еще не сообщили
+о своих устойчивых состояниях на данный момент времени.
 %
-As with \co{rcu_state}, the \co{rcu_node} structure has \co{->gpnum} 
-and \co{->completed} fields that have values identical to those of the
-enclosing \co{rcu_state} structure, except at the beginnings and ends
-of grace periods when the new values are propagated down the tree.
-Each of these fields can be smaller than 
-its \co{rcu_state} counterpart by at most one.
+Как и в случае с \co{rcu_state}, структура \co{rcu_node} имеет поля
+\co{->completed} и \co{->gpnum}, имеющие такие же значения, как и у родительской
+структуры \co{rcu_state}, за исключением начала и конца каждого
+grace-периода, когда данные значения копируются из корневого узла.
+Значения этих полей могут быть равны друг другу, либо отличаться на единицу.
 
 %\comment{Lihao: comment out the following preemptible RCU contents if we need space.}
 %In a preemptible kernel, tasks can be preempted during RCU read-side
@@ -123,58 +114,57 @@ its \co{rcu_state} counterpart by at most one.
 %%
 %When the \co{->gp_tasks} pointer is non-\co{NULL}, it references the first
 %task blocking the current grace period.
-%When a task referenced by \co{gp_tasks} points is removed 
+%When a task referenced by \co{gp_tasks} points is removed
 %from \co{blkd_tasks}, the pointer will be advanced to the next task on the list,
 %or is set to \co{NULL} if there are no more tasks.
 %Note that
 %tasks blocking the current grace period are queued in the reverse time order.
-%Thus, if a task is blocking a grace period, 
+%Thus, if a task is blocking a grace period,
 %all subsequent tasks on the list are blocking the same grace period.
 % Lihao: how the tasks are dequeued is described in quiescent state detection
 % Lihao: we ignore expedited grace period for now
 % Lihao: we don't model priority boosting
 
-\subsubsection{\co{rcu_data} structure} \label{sec:rcu_data}
-The \co{rcu_data} structure detects quiescent states and handles RCU
-callbacks for the corresponding CPU.
-The structure is accessed primarily from the corresponding CPU,
-thus avoiding synchronization overhead.
-As with the \co{rcu_state} structure, different flavors of RCU maintain 
-their own per-CPU \co{rcu_data} structures. %For instance, RCU-sched's 
-%\co{rcu_sched_state}, RCU-bh's \co{rcu_bh_state} and RCU-preempt's 
-%\co{rcu_state_p} structures have \co{rcu_data} structures \co{rcu_sched_data}, 
+\subsubsection{Структура \co{rcu_data}} \label{sec:rcu_data}
+Структурв \co{rcu_data} используется для учета устойчивых состояний и
+вызова callback'ов связанного вычислительного ядра.
+Поскольку доступ к данной структуре осуществляется посредством
+связанного вычислительного ядра, нет необходимости выполнять синхронизацию.
+Как и в случае со структурой \co{rcu_state}, различные реализации RCU поддерживают
+различные виды структур \co{rcu_data}.
+% For instance, RCU-sched's
+%\co{rcu_sched_state}, RCU-bh's \co{rcu_bh_state} and RCU-preempt's
+%\co{rcu_state_p} structures have \co{rcu_data} structures \co{rcu_sched_data},
 %\co{rcu_bh_data}, and \co{rcu_data_p}, respectively.
 %
-The \co{->cpu} field identifies the corresponding CPU, the \co{->rsp}
-field references the corresponding \co{rcu_state} structure, and the
-\co{->mynode} field references the corresponding leaf \co{rcu_node}
-structure.
-The \co{->grpmask} field identifies this \co{rcu_data} structure's bit
-in the \co{->qsmask} field of its leaf \co{rcu_node} structure.
+Поле \co{->cpu} указывает на связанное вычислительное ядро,
+\co{->rsp} --- на связанную структуру \co{rcu_state},
+а \co{->mynode} ссылается на соответсвующую терминальную структуру \co{rcu_node}.
+Значение поля \co{->grpmask} указывает на позицию структуры \co{rcu_data}
+в битовом поле \co{->qsmask} связанной структуры \co{rcu_node}.
 
-The \co{rcu_data} structure's \co{->qs_pending} field indicates that RCU
-needs a quiescent state from the corresponding CPU, and the
-\co{->passed_quiesce} indicates that the CPU has already passed through
-a quiescent state.
+Структура \co{rcu_data} содержит поле \co{->qs_pending}, указывающее,
+что RCU ожидает получения устойчивого состояния от связанного ядра,
+и поле \co{->passed_quiesce}, указывающее на то, что данное ядро уже
+прошло через устойчивое состояние.
 %
-The \co{rcu_data} also has \co{->gpnum} and \co{->completed} fields,
-which can lag arbitrarily behind their counterparts in
-the \co{rcu_state} and \co{rcu_node} structures on idle CPUs.
-However, on the non-idle CPUs that are the focus of this paper,
-they can lag at most one grace period behind their leaf \co{rcu_node} 
-counterparts.
+Кроме этого, данная структура также имеет поля \co{->gpnum} и \co{->completed},
+значения которых могут отставать от соответсвующих им полей структур
+\co{rcu_state} и \co{rcu_node} в нормальном режиме работы ядер процессора.
+С другой стороны, если ядра процессора являются заблокированными,
+их значения могут оставать на один grace-период от соответсвующих значений
+полей структуры \co{rcu_node}.
 
-The \co{rcu_state} structure's \co{->gpnum} and \co{->completed} fields
-represent the most current values, and are tracked closely by those of
-the \co{rcu_node} structure, which allows the \co{->gpnum} and
-\co{->completed} fields in the \co{rcu_data} structures to be
-are compared against their counterparts in the corresponding leaf \co{rcu_node}
-to detect a new grace period. 
-This scheme allows CPUs to detect beginnings and ends of grace periods without
-incurring lock- or memory-contention penalties.
+Поля \co{->gpnum} и \co{->completed} структуры \co{rcu_state} содержат наиболее
+актуальные значения и используются для обновления соответствующих полей родительских
+структур \co{rcu_node}, что позволяет сравнивать значения данных полей со значениями
+этих же полей структур \co{rcu_node} для фиксации факта начала нового grace-периода.
+Эта схема позволяет вычислительным ядрам обнаруживать границы grace-периодов
+без использования блокировок.
 %
-The \co{rcu_data} structure manages RCU callbacks using a 
-four-segment list~\cite{LaiJiangshan2008NewClassicAlgorithm}.
+Структруа \co{rcu_data} управляет RCU callback'ами с помощью
+структуры данных, известной как четырехсегментный
+список~\cite{LaiJiangshan2008NewClassicAlgorithm}.
 
 % Lihao: but we need to carefully manage the numbers of each node as the consequences of
 % using a quiescent state in a wrong grace period can be quite serious.
