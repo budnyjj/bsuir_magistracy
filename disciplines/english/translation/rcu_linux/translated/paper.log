@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Arch Linux) (preloaded format=pdflatex 2016.9.1)  23 OCT 2016 16:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Arch Linux) (preloaded format=pdflatex 2016.9.1)  24 OCT 2016 22:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -934,32 +934,22 @@ Overfull \hbox (11.98924pt too wide) in paragraph at lines 51--108
 Underfull \vbox (badness 3815) has occurred while \output is active []
 
  [6 <./rcu_data_callbacks.pdf>])) (./quiescent_state_detection.tex
-Underfull \hbox (badness 1831) in paragraph at lines 12--41
-[]\T2A/ftm/m/n/10 The non-preemptible RCU-sched flavor's quiescent
+Underfull \hbox (badness 1242) in paragraph at lines 68--84
+[]\T2A/fer/m/n/10 _[]_[][][][] \T2A/ftm/m/n/10 из \T2A/fer/m/n/10 __[][][][] \T
+2A/ftm/m/n/10 (и,
  []
 
 
-Underfull \hbox (badness 1158) in paragraph at lines 43--55
-\T2A/ftm/m/n/10 invokes []\T2A/fer/m/n/10 _[]_[][][][]\T2A/ftm/m/n/10 , which s
-ets the per-CPU
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 68--84
+[]\T2A/fer/m/n/10 _[][][][]\T2A/ftm/m/n/10 ). Функ-ция []\T2A/fer/m/n/10 _[]_[]
+_
  []
 
 
-Underfull \hbox (badness 1394) in paragraph at lines 67--77
-[]\T2A/ftm/m/n/10 The []\T2A/fer/m/n/10 _[]_[][][][] \T2A/ftm/m/n/10 function i
-nvokes
- []
-
-
-Overfull \hbox (6.00003pt too wide) in paragraph at lines 96--110
-[]\T2A/fer/m/n/10 _[]_[]_[][][][] \T2A/ftm/m/n/10 from \T2A/fer/m/n/10 __[][][]
-[]
- []
-
-) (./grace_period_detection.tex
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
+)
+(./grace_period_detection.tex
 <grace_period_state_diagram.pdf, id=95, 977.43024pt x 571.6303pt>
 File: grace_period_state_diagram.pdf Graphic file (type pdf)
 
@@ -969,6 +959,11 @@ Package pdftex.def Info: grace_period_state_diagram.pdf used on input line 18.
 
 Overfull \hbox (4.35696pt too wide) in paragraph at lines 18--19
  [][] 
+ []
+
+
+Underfull \hbox (badness 1048) in paragraph at lines 19--19
+[]\T2A/ftm/m/n/10 Рис. 6: |Диа-гра-ма со-сто-я-ний про-цес-са об-на-ру-же-ния
  []
 
 
@@ -988,13 +983,13 @@ Underfull \hbox (badness 1237) in paragraph at lines 34--58
 rst
  []
 
-
+[7 <./grace_period_state_diagram.pdf>]
 Underfull \hbox (badness 2735) in paragraph at lines 59--67
 []\T2A/ftm/m/n/10 Next, []\T2A/fer/m/n/10 _[]_[]_[][][][] \T2A/ftm/m/n/10 check
 s
  []
 
-[7 <./grace_period_state_diagram.pdf>]
+
 Overfull \hbox (17.63937pt too wide) in paragraph at lines 125--128
 \T2A/ftm/m/n/10 The RCU grace-period kthread invokes []\T2A/fer/m/n/10 _[]_[][]
 [][]\T2A/ftm/m/n/10 ,
@@ -1012,7 +1007,7 @@ Overfull \hbox (21.69012pt too wide) in paragraph at lines 22--30
 n/10 _
  []
 
-
+[8]
 Overfull \hbox (3.34007pt too wide) in paragraph at lines 31--47
 []\T2A/fer/m/n/10 _[]_[][][][]\T2A/ftm/m/n/10 , which in turn invokes []\T2A/fe
 r/m/n/10 _
@@ -1040,7 +1035,7 @@ Overfull \hbox (32.16008pt too wide) in paragraph at lines 31--47
 \T2A/ftm/m/n/10 . 
  []
 
-[8]
+
 Overfull \hbox (17.70009pt too wide) in paragraph at lines 48--55
 []\T2A/fer/m/n/10 _[]_[][][][] \T2A/ftm/m/n/10 to report any recent quiescent
  []
@@ -1107,7 +1102,7 @@ Overfull \hbox (7.81938pt too wide) in paragraph at lines 70--76
 tm/m/n/10 records quiescent
  []
 
-
+[9]
 Underfull \hbox (badness 1019) in paragraph at lines 99--119
 \T2A/ftm/m/n/10 Because our model omits CPU hotplug and callback
  []
@@ -1129,7 +1124,7 @@ Underfull \hbox (badness 1024) in paragraph at lines 99--119
 ]\T2A/ftm/m/n/10 , which
  []
 
-[9]
+
 Underfull \hbox (badness 1052) in paragraph at lines 122--141
 \T2A/ftm/m/n/10 processing in response to state changes. Because we
  []
@@ -1146,11 +1141,7 @@ Overfull \hbox (6.63002pt too wide) in paragraph at lines 161--170
 er/m/n/10 __[]_
  []
 
-) (./experiments.tex
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-(./bug_cases.tex
+) (./experiments.tex (./bug_cases.tex
 
 Package natbib Warning: Citation `DesnoyersTPDS12UserRCU' on page 10 undefined 
 on input line 12.
@@ -1171,7 +1162,7 @@ Underfull \hbox (badness 1242) in paragraph at lines 2--19
 \T2A/fer/m/n/10 _[]_[][][]_[][][][][][][][][] \T2A/ftm/m/n/10 statement.
  []
 
-
+[10]
 Overfull \hbox (6.84015pt too wide) in paragraph at lines 20--29
 \T2A/ftm/m/n/10 Bugs 2--6 are liveness checks and thus use the aforementioned
  []
@@ -1187,7 +1178,7 @@ Overfull \hbox (0.93939pt too wide) in paragraph at lines 31--37
 RCU update-
  []
 
-[10]
+
 Overfull \hbox (11.9501pt too wide) in paragraph at lines 39--52
 \T2A/ftm/m/n/10 the field [][][][][] to 0 instead of [][][][][]
  []
@@ -1231,11 +1222,14 @@ Overfull \hbox (3.99011pt too wide) in paragraph at lines 3--14
  []
 
 
+Underfull \vbox (badness 4927) has occurred while \output is active []
+
+ [11]
 Overfull \hbox (13.00003pt too wide) in paragraph at lines 15--27
 []\T2A/fer/m/n/10 _[][][][] \T2A/ftm/m/n/10 and []\T2A/fer/m/n/10 _[]_[][][][]
  []
 
-[11]
+
 Underfull \hbox (badness 1122) in paragraph at lines 33--40
 []\T2A/fer/m/n/10 _[][][][] \T2A/ftm/m/n/10 flavor-traversal loops. Our focus o
 n
@@ -1247,13 +1241,12 @@ Underfull \hbox (badness 1092) in paragraph at lines 41--47
  []
 
 )
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (0.99013pt too wide) in paragraph at lines 71--89
 \T2A/ftm/m/n/10 The next three columns give the maximum (virtual) memory
  []
-
-
-Underfull \vbox (badness 5741) has occurred while \output is active []
-
 
 (./results_cbmc.tex)
 
@@ -1261,6 +1254,9 @@ Package natbib Warning: Citation `PaulMcKenney2005rcutorture' on page 12 undefi
 ned on input line 99.
 
 
+Underfull \vbox (badness 5741) has occurred while \output is active []
+
+ [12]
 Overfull \hbox (13.36942pt too wide) in paragraph at lines 138--144
 []\T2A/ftm/m/n/10 CBMC proved that grace periods can end (i.e., [][][][]
  []
@@ -1268,7 +1264,7 @@ Overfull \hbox (13.36942pt too wide) in paragraph at lines 138--144
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [12]
+
 (./barchart_sat_constr.tex)
 Overfull \hbox (2.23636pt too wide) in paragraph at lines 56--161
  [][] 
@@ -1294,11 +1290,7 @@ Overfull \hbox (2.23636pt too wide) in paragraph at lines 56--193
  [][] 
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-)
-(./related_work.tex [13]
+[13]) (./related_work.tex
 
 Package natbib Warning: Citation `VerificationChallenges' on page 14 undefined 
 on input line 6.
@@ -1343,12 +1335,13 @@ Overfull \hbox (8.23015pt too wide) in paragraph at lines 31--43
 a falsification-driven verification
  []
 
+[14]
 
-Package natbib Warning: Citation `YangESOP13RCU' on page 14 undefined on input 
+Package natbib Warning: Citation `YangESOP13RCU' on page 15 undefined on input 
 line 48.
 
 
-Package natbib Warning: Citation `DreyerPLDI15RCU' on page 14 undefined on inpu
+Package natbib Warning: Citation `DreyerPLDI15RCU' on page 15 undefined on inpu
 t line 53.
 
 
@@ -1356,7 +1349,6 @@ Overfull \hbox (6.54013pt too wide) in paragraph at lines 48--64
 \T2A/ftm/m/n/10 RCU. By contrast, our work applies an automated verification
  []
 
-[14]
 
 Package natbib Warning: Citation `CalcagnoNASA15' on page 15 undefined on input
  line 66.
@@ -1375,9 +1367,7 @@ Underfull \hbox (badness 1092) in paragraph at lines 27--35
 
 Package natbib Warning: There were undefined citations.
 
-[15
-
-] (./paper.aux
+[15] (./paper.aux
 LaTeX Font Info:    Try loading font information for T1+ftm on input line 5.
  (/usr/share/texmf-dist/tex/latex/pscyr/t1ftm.fd
 File: t1ftm.fd 2004/03/23 Fontinst v1.914 font definitions for T1/ftm.
@@ -1385,14 +1375,11 @@ File: t1ftm.fd 2004/03/23 Fontinst v1.914 font definitions for T1/ftm.
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
  28117 strings out of 493013
  652066 string characters out of 6139318
- 845995 words of memory out of 5000000
+ 845476 words of memory out of 5000000
  31053 multiletter control sequences out of 15000+600000
  28341 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1412,7 +1399,7 @@ xmf-dist/fonts/type1/public/pscyr/timesi.pfb></usr/share/texmf-dist/fonts/type1
 /urw/courier/ucrb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/courier/ucrr8a.p
 fb></usr/share/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf
 -dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on paper.pdf (15 pages, 534565 bytes).
+Output written on paper.pdf (15 pages, 535673 bytes).
 PDF statistics:
  184 PDF objects out of 1000 (max. 8388607)
  126 compressed objects within 2 object streams
