@@ -1,0 +1,33 @@
+\begin{thebibliography}{1}
+\def\selectlanguageifdefined#1{
+\expandafter\ifx\csname date#1\endcsname\relax
+\else\selectlanguage{#1}\fi}
+\providecommand*{\href}[2]{{\small #2}}
+\providecommand*{\url}[1]{{\small #1}}
+\providecommand*{\BibUrl}[1]{\url{#1}}
+\providecommand{\BibAnnote}[1]{}
+\providecommand*{\BibEmph}[1]{#1}
+
+\bibitem{solecity_exist}
+\selectlanguageifdefined{russian}
+Экзистенциализм (философия существования)
+  [{Электронный ресурс}]. "---
+\newblock [{Б.\ м.}~: {б.\ и.}]. "---
+\newblock \cyr\CYRR\cyre\cyrzh\cyri\cyrm\ \cyrd\cyro\cyrs\cyrt\cyru\cyrp\cyra:
+  \BibUrl{http://www.solecity.ru/philosophy/existensialism}.
+
+\bibitem{sartr_nobel}
+\selectlanguageifdefined{russian}
+\BibEmph{Сартр,~Ж.~П.} Почему я отказался от
+  премии [{Текст}]~/ Ж.~П.~Сартр~// \BibEmph{За
+  рубежом}. "---
+\newblock 1964. "---
+\newblock {№}~45.
+
+\bibitem{sartr_exist_human}
+\selectlanguageifdefined{russian}
+\BibEmph{Сартр,~Ж.~П.} Экзистенциализм --- это
+  гуманизм [{Текст}]~/ Ж.~П.~Сартр. "---
+\newblock [{Б.\ м.}]~: Изд-во иностр. лит., 1953.
+
+\end{thebibliography}
