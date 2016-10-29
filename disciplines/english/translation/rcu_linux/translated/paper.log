@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Arch Linux) (preloaded format=pdflatex 2016.9.1)  24 OCT 2016 22:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Arch Linux) (preloaded format=pdflatex 2016.9.1)  29 OCT 2016 12:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -700,13 +700,13 @@ LaTeX Font Info:    Try loading font information for T2A+ftx on input line 89.
 (/usr/share/texmf-dist/tex/latex/pscyr/t2aftx.fd
 File: t2aftx.fd 2004/09/23 Fontinst v1.914 font definitions for T2A/ftx.
 )
-Underfull \hbox (badness 1895) in paragraph at lines 122--123
+Underfull \hbox (badness 1895) in paragraph at lines 123--124
  \T2A/ftm/bx/it/10 Keywords \T2A/ftm/m/n/10 Ве-ри-фи-ка-ция про-грамм-но-го обе
 с-пе-че-ния,
  []
 
 
-Underfull \hbox (badness 1142) in paragraph at lines 122--123
+Underfull \hbox (badness 1142) in paragraph at lines 123--124
 \T2A/ftm/m/n/10 Па-рал-лель-ные вы-чис-ле-ния, Read-Copy Update, яд-ро
  []
 
@@ -717,7 +717,7 @@ ine 7.
 
 
 Package natbib Warning: Citation `McKenneyOSR08' on page 1 undefined on input l
-ine 22.
+ine 24.
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
@@ -725,31 +725,31 @@ ine 22.
 ]
 
 Package natbib Warning: Citation `McKenneyOSR08' on page 2 undefined on input l
-ine 26.
+ine 28.
 
 
 Package natbib Warning: Citation `McKenneyRCUsageReport13' on page 2 undefined 
-on input line 26.
+on input line 28.
 
 
 Package natbib Warning: Citation `BurchInfComput92' on page 2 undefined on inpu
-t line 45.
+t line 48.
 
 
 Package natbib Warning: Citation `VerificationChallenges' on page 2 undefined o
-n input line 49.
+n input line 52.
 
 
 Package natbib Warning: Citation `DesnoyersOSR13' on page 2 undefined on input 
-line 49.
+line 52.
 
 
 Package natbib Warning: Citation `VerificationChallenges' on page 2 undefined o
-n input line 50.
+n input line 53.
 
 
 Package natbib Warning: Citation `ValDyntickNMI' on page 2 undefined on input l
-ine 51.
+ine 54.
 
 
 Package natbib Warning: Citation `HolzmannTSE97SPIN' on page 2 undefined on inp
@@ -757,15 +757,15 @@ ut line 57.
 
 
 Package natbib Warning: Citation `YangESOP13RCU' on page 2 undefined on input l
-ine 63.
+ine 62.
 
 
 Package natbib Warning: Citation `DreyerPLDI15RCU' on page 2 undefined on input
- line 63.
+ line 62.
 
 
 Package natbib Warning: Citation `KroeningTACAS04CBMC' on page 2 undefined on i
-nput line 83.
+nput line 76.
 
 ) (./background.tex
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -778,24 +778,30 @@ ine 17.
 <rcu_concepts.pdf, id=15, 613.36636pt x 349.61693pt>
 File: rcu_concepts.pdf Graphic file (type pdf)
  <use rcu_concepts.pdf>
-Package pdftex.def Info: rcu_concepts.pdf used on input line 44.
+Package pdftex.def Info: rcu_concepts.pdf used on input line 45.
 (pdftex.def)             Requested size: 214.68144pt x 122.36775pt.
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [2]
 (./api_usage.tex
 LaTeX Font Info:    Try loading font information for T2A+fer on input line 3.
  (/usr/share/texmf-dist/tex/latex/pscyr/t2afer.fd
 File: t2afer.fd 2004/09/21 Fontinst v1.914 font definitions for T2A/fer.
 )
 
-Package natbib Warning: Citation `McKenneyOSR08' on page 2 undefined on input l
+Package natbib Warning: Citation `McKenneyOSR08' on page 3 undefined on input l
 ine 4.
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [2]
 Underfull \hbox (badness 1796) in paragraph at lines 6--12
 []\T2A/ftm/m/n/10 Критическая сек-ция RCU-читателя на-чи-на-ет-ся с
+ []
+
+
+Overfull \hbox (1.41995pt too wide) in paragraph at lines 13--19
+[]\T2A/ftm/m/n/10 Функция []\T2A/fer/m/n/10 _[][][][] \T2A/ftm/m/n/10 со-от-вет
+-ству-ет окон-
  []
 
 
@@ -804,40 +810,36 @@ Underfull \hbox (badness 1472) in paragraph at lines 53--59
  []
 
 )) (./tree_rcu.tex
-Overfull \hbox (33.34999pt too wide) in paragraph at lines 60--1
-\T2A/ftm/m/n/10 Функ-ции []\T2A/fer/m/n/10 _[]_[][][][] \T2A/ftm/m/n/10 и []\T2
-A/fer/m/n/10 _[][][][]
+Underfull \hbox (badness 1142) in paragraph at lines 3--23
+\T2A/ftm/m/n/10 де-ля-ют-ся эф-фек-тив-но-стью ме-ха-низ-мов об-на-ру-же-ния
  []
 
 
-Underfull \vbox (badness 2452) has occurred while \output is active []
+Underfull \vbox (badness 7238) has occurred while \output is active []
 
- [3 <./rcu_concepts.pdf>] (./api_impl.tex
-Overfull \hbox (44.8999pt too wide) in paragraph at lines 12--19
+ [3 <./rcu_concepts.pdf>] (./api_impl.tex) (./data_structure.tex
+Overfull \hbox (44.8999pt too wide) in paragraph at lines 10--1
 \T2A/ftm/m/n/10 чис-ли-тель-ных ядер про-цес-со-ра, при-ми-тив за-пи-си []\T2A/
 fer/m/n/10 _
  []
 
 
-Overfull \hbox (13.4599pt too wide) in paragraph at lines 12--19
-\T2A/ftm/m/n/10 внут-рен-ней функ-ци-ей, ис-поль-зу-ю-щей ме-ха-низм callback'о
-в
- []
+Underfull \vbox (badness 2698) has occurred while \output is active []
 
-) (./data_structure.tex
+
 <tree_rcu_hierarchy.pdf, id=31, 1091.27695pt x 809.42403pt>
 File: tree_rcu_hierarchy.pdf Graphic file (type pdf)
 
 <use tree_rcu_hierarchy.pdf>
-Package pdftex.def Info: tree_rcu_hierarchy.pdf used on input line 9.
+Package pdftex.def Info: tree_rcu_hierarchy.pdf used on input line 5.
 (pdftex.def)             Requested size: 218.25153pt x 161.88193pt.
 <<ot1.cmap>><<oml.cmap>><<oms.cmap>><<omx.cmap>>
-LaTeX Font Info:    Try loading font information for U+msa on input line 49.
+LaTeX Font Info:    Try loading font information for U+msa on input line 38.
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 49.
+LaTeX Font Info:    Try loading font information for U+msb on input line 38.
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -846,31 +848,30 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: rcu_node_array.pdf Graphic file (type pdf)
 
 <use rcu_node_array.pdf>
-Package pdftex.def Info: rcu_node_array.pdf used on input line 57.
+Package pdftex.def Info: rcu_node_array.pdf used on input line 46.
 (pdftex.def)             Requested size: 200.70477pt x 114.85194pt.
 
-Underfull \vbox (badness 4819) has occurred while \output is active []
+Underfull \hbox (badness 1496) in paragraph at lines 51--59
+\T2A/ftm/m/n/10 Каждая ре-а-ли-за-ция RCU име-ет свою соб-ствен-ную
+ []
 
 
-Overfull \hbox (7.88997pt too wide) in paragraph at lines 146--157
+Overfull \hbox (7.88997pt too wide) in paragraph at lines 105--115
 []\T2A/ftm/m/n/10 Структура []\T2A/fer/m/n/10 _[][][] \T2A/ftm/m/n/10 со-дер-жи
 т по-ле [][]\T2A/fer/m/n/10 _[][][]\T2A/ftm/m/n/10 ,
  []
 
 
-Overfull \hbox (18.15999pt too wide) in paragraph at lines 146--157
-\T2A/ftm/m/n/10 ная струк-ту-ра так-же име-ет по-ля [][][][] и [][][][],
+Package natbib Warning: Citation `LaiJiangshan2008NewClassicAlgorithm' on page 
+5 undefined on input line 124.
+
+
+Underfull \hbox (badness 1043) in paragraph at lines 116--125
+\T2A/ftm/m/n/10 периодов без ис-поль-зо-ва-ния бло-ки-ро-вок. Струк-труа
  []
 
-
-Underfull \vbox (badness 2698) has occurred while \output is active []
-
- [5 <./rcu_node_array.pdf>]
-
-Package natbib Warning: Citation `LaiJiangshan2008NewClassicAlgorithm' on page 
-6 undefined on input line 167.
-
-(./callback.tex <rcu_data_callbacks.pdf, id=79, 867.35542pt x 840.33504pt>
+[5 <./rcu_node_array.pdf>] (./callback.tex
+<rcu_data_callbacks.pdf, id=79, 867.35542pt x 840.33504pt>
 File: rcu_data_callbacks.pdf Graphic file (type pdf)
 
 <use rcu_data_callbacks.pdf>
@@ -879,118 +880,123 @@ Package pdftex.def Info: rcu_data_callbacks.pdf used on input line 3.
 
 
 Package natbib Warning: Citation `LaiJiangshan2008NewClassicAlgorithm' on page 
-6 undefined on input line 15.
+6 undefined on input line 12.
 
 
-Underfull \hbox (badness 1331) in paragraph at lines 12--35
+Underfull \hbox (badness 1331) in paragraph at lines 9--31
 \T2A/ftm/m/n/10 Структура []\T2A/fer/m/n/10 _[][][] \T2A/ftm/m/n/10 управ-ля-ет
  RCU callback'ами,
  []
 
 
-Underfull \hbox (badness 1484) in paragraph at lines 12--35
+Underfull \hbox (badness 1484) in paragraph at lines 9--31
 \T2A/ftm/m/n/10 ис-поль-зуя ука-за-тель [][][][], ука-зы-ва-ю-щим на
  []
 
 
-Underfull \hbox (badness 1163) in paragraph at lines 12--35
+Underfull \hbox (badness 1163) in paragraph at lines 9--31
 \T2A/ftm/m/n/10 на-конец, фор-ми-ру-ю-щий че-ты-рех-сег-мент-ный спи-сок
  []
 
 
-Overfull \hbox (16.83pt too wide) in paragraph at lines 12--35
+Overfull \hbox (16.83pt too wide) in paragraph at lines 9--31
 \T2A/ftm/m/n/10 callback'ов [\T2A/ftm/bx/n/10 ? \T2A/ftm/m/n/10 ], где каж-дый 
 эле-мент мас-си-ва [][][][][]
  []
 
 
-Underfull \hbox (badness 5077) in paragraph at lines 12--35
+Underfull \hbox (badness 5077) in paragraph at lines 9--31
 [][][][]\T2A/fer/m/n/10 _[]_[][][][] \T2A/ftm/m/n/10 (<<[]\T2A/fer/m/n/10 _[]_[
 ][][]
  []
 
 
-Underfull \hbox (badness 5119) in paragraph at lines 36--50
+Overfull \hbox (26.11002pt too wide) in paragraph at lines 9--31
+[]\T2A/fer/m/n/10 _[][][] \T2A/ftm/m/n/10 и []\T2A/fer/m/n/10 _[]_[]_[][][] \T2
+A/ftm/m/n/10 со-дер-жат callback'и,
+ []
+
+
+Overfull \hbox (5.76996pt too wide) in paragraph at lines 9--31
+\T2A/ftm/m/n/10 периодов, со-от-вет-ствен-но. На-ко-нец, сег-мент []\T2A/fer/m/
+n/10 _[]_
+ []
+
+
+Underfull \hbox (badness 5119) in paragraph at lines 32--46
 \T2A/ftm/m/n/10 мас-си-ва [][][][]\T2A/fer/m/n/10 _[]_[][][][] \T2A/ftm/m/n/10 
 ука-зы-ва-ет
  []
 
 
-Overfull \hbox (2.62001pt too wide) in paragraph at lines 36--50
+Overfull \hbox (2.62001pt too wide) in paragraph at lines 32--46
 [][][][]\T2A/fer/m/n/10 _[]_[][][][] \T2A/ftm/m/n/10 ука-зы-ва-ет на [][][][]-
  []
 
 
 LaTeX Warning: Reference `sec:update_api_impl' on page 6 undefined on input lin
-e 55.
+e 51.
 
 
-Overfull \hbox (11.98924pt too wide) in paragraph at lines 51--108
+Overfull \hbox (11.98924pt too wide) in paragraph at lines 47--64
 \T2A/ftm/m/n/10 ро-ва-ли. На-при-мер, при-ми-тив за-пи-си RCU []\T2A/fer/m/n/10
  _
  []
 
-
-Underfull \vbox (badness 3815) has occurred while \output is active []
-
- [6 <./rcu_data_callbacks.pdf>])) (./quiescent_state_detection.tex
-Underfull \hbox (badness 1242) in paragraph at lines 68--84
+)) (./quiescent_state_detection.tex [6 <./rcu_data_callbacks.pdf>])
+(./grace_period_detection.tex
+Underfull \hbox (badness 1242) in paragraph at lines 43--1
 []\T2A/fer/m/n/10 _[]_[][][][] \T2A/ftm/m/n/10 из \T2A/fer/m/n/10 __[][][][] \T
 2A/ftm/m/n/10 (и,
  []
 
 
-Overfull \hbox (6.79999pt too wide) in paragraph at lines 68--84
+Overfull \hbox (6.79999pt too wide) in paragraph at lines 43--1
 []\T2A/fer/m/n/10 _[][][][]\T2A/ftm/m/n/10 ). Функ-ция []\T2A/fer/m/n/10 _[]_[]
 _
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-)
-(./grace_period_detection.tex
 <grace_period_state_diagram.pdf, id=95, 977.43024pt x 571.6303pt>
 File: grace_period_state_diagram.pdf Graphic file (type pdf)
 
 <use grace_period_state_diagram.pdf>
-Package pdftex.def Info: grace_period_state_diagram.pdf used on input line 18.
+Package pdftex.def Info: grace_period_state_diagram.pdf used on input line 15.
 (pdftex.def)             Requested size: 244.35696pt x 142.90721pt.
 
-Overfull \hbox (4.35696pt too wide) in paragraph at lines 18--19
+Overfull \hbox (4.35696pt too wide) in paragraph at lines 15--16
  [][] 
  []
 
 
-Underfull \hbox (badness 1048) in paragraph at lines 19--19
+Underfull \hbox (badness 1048) in paragraph at lines 16--16
 []\T2A/ftm/m/n/10 Рис. 6: |Диа-гра-ма со-сто-я-ний про-цес-са об-на-ру-же-ния
  []
 
 
-Overfull \hbox (12.66005pt too wide) in paragraph at lines 24--33
+Overfull \hbox (12.66005pt too wide) in paragraph at lines 21--30
 [][][] \T2A/ftm/m/n/10 handler function []\T2A/fer/m/n/10 _[]_[][][][]\T2A/ftm/
 m/n/10 ,
  []
 
 
-Overfull \hbox (16.67006pt too wide) in paragraph at lines 24--33
+Overfull \hbox (16.67006pt too wide) in paragraph at lines 21--30
 \T2A/ftm/m/n/10 This function first calls []\T2A/fer/m/n/10 _[]_[]_[][][][]
  []
 
 
-Underfull \hbox (badness 1237) in paragraph at lines 34--58
+Underfull \hbox (badness 1237) in paragraph at lines 31--55
 []\T2A/ftm/m/n/10 Function []\T2A/fer/m/n/10 _[]_[]_[][][][] \T2A/ftm/m/n/10 fi
 rst
  []
 
 [7 <./grace_period_state_diagram.pdf>]
-Underfull \hbox (badness 2735) in paragraph at lines 59--67
+Underfull \hbox (badness 2735) in paragraph at lines 56--64
 []\T2A/ftm/m/n/10 Next, []\T2A/fer/m/n/10 _[]_[]_[][][][] \T2A/ftm/m/n/10 check
 s
  []
 
 
-Overfull \hbox (17.63937pt too wide) in paragraph at lines 125--128
+Overfull \hbox (17.63937pt too wide) in paragraph at lines 122--125
 \T2A/ftm/m/n/10 The RCU grace-period kthread invokes []\T2A/fer/m/n/10 _[]_[][]
 [][]\T2A/ftm/m/n/10 ,
  []
@@ -1007,7 +1013,10 @@ Overfull \hbox (21.69012pt too wide) in paragraph at lines 22--30
 n/10 _
  []
 
-[8]
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [8]
 Overfull \hbox (3.34007pt too wide) in paragraph at lines 31--47
 []\T2A/fer/m/n/10 _[]_[][][][]\T2A/ftm/m/n/10 , which in turn invokes []\T2A/fe
 r/m/n/10 _
@@ -1162,7 +1171,7 @@ Underfull \hbox (badness 1242) in paragraph at lines 2--19
 \T2A/fer/m/n/10 _[]_[][][]_[][][][][][][][][] \T2A/ftm/m/n/10 statement.
  []
 
-[10]
+
 Overfull \hbox (6.84015pt too wide) in paragraph at lines 20--29
 \T2A/ftm/m/n/10 Bugs 2--6 are liveness checks and thus use the aforementioned
  []
@@ -1172,7 +1181,7 @@ Underfull \hbox (badness 1237) in paragraph at lines 20--29
 [][][][]\T2A/ftm/m/n/10 , and the remaining scenarios are safety
  []
 
-
+[10]
 Overfull \hbox (0.93939pt too wide) in paragraph at lines 31--37
  \T2A/ftm/bx/it/10 Bug 1 \T2A/ftm/m/n/10 This bug-injection scenario makes the 
 RCU update-
@@ -1221,10 +1230,7 @@ Overfull \hbox (3.99011pt too wide) in paragraph at lines 3--14
 \T2A/ftm/m/n/10 model is non-trivial due to Tree RCU's complexity combined
  []
 
-
-Underfull \vbox (badness 4927) has occurred while \output is active []
-
- [11]
+[11]
 Overfull \hbox (13.00003pt too wide) in paragraph at lines 15--27
 []\T2A/fer/m/n/10 _[][][][] \T2A/ftm/m/n/10 and []\T2A/fer/m/n/10 _[]_[][][][]
  []
@@ -1241,12 +1247,13 @@ Underfull \hbox (badness 1092) in paragraph at lines 41--47
  []
 
 )
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 Overfull \hbox (0.99013pt too wide) in paragraph at lines 71--89
 \T2A/ftm/m/n/10 The next three columns give the maximum (virtual) memory
  []
+
+
+Underfull \vbox (badness 5741) has occurred while \output is active []
+
 
 (./results_cbmc.tex)
 
@@ -1254,16 +1261,12 @@ Package natbib Warning: Citation `PaulMcKenney2005rcutorture' on page 12 undefi
 ned on input line 99.
 
 
-Underfull \vbox (badness 5741) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [12]
 Overfull \hbox (13.36942pt too wide) in paragraph at lines 138--144
 []\T2A/ftm/m/n/10 CBMC proved that grace periods can end (i.e., [][][][]
  []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
 
 (./barchart_sat_constr.tex)
 Overfull \hbox (2.23636pt too wide) in paragraph at lines 56--161
@@ -1290,7 +1293,11 @@ Overfull \hbox (2.23636pt too wide) in paragraph at lines 56--193
  [][] 
  []
 
-[13]) (./related_work.tex
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [13])
+(./related_work.tex
 
 Package natbib Warning: Citation `VerificationChallenges' on page 14 undefined 
 on input line 6.
@@ -1335,13 +1342,12 @@ Overfull \hbox (8.23015pt too wide) in paragraph at lines 31--43
 a falsification-driven verification
  []
 
-[14]
 
-Package natbib Warning: Citation `YangESOP13RCU' on page 15 undefined on input 
+Package natbib Warning: Citation `YangESOP13RCU' on page 14 undefined on input 
 line 48.
 
 
-Package natbib Warning: Citation `DreyerPLDI15RCU' on page 15 undefined on inpu
+Package natbib Warning: Citation `DreyerPLDI15RCU' on page 14 undefined on inpu
 t line 53.
 
 
@@ -1349,6 +1355,7 @@ Overfull \hbox (6.54013pt too wide) in paragraph at lines 48--64
 \T2A/ftm/m/n/10 RCU. By contrast, our work applies an automated verification
  []
 
+[14]
 
 Package natbib Warning: Citation `CalcagnoNASA15' on page 15 undefined on input
  line 66.
@@ -1379,7 +1386,7 @@ LaTeX Warning: There were undefined references.
 Here is how much of TeX's memory you used:
  28117 strings out of 493013
  652066 string characters out of 6139318
- 845476 words of memory out of 5000000
+ 846206 words of memory out of 5000000
  31053 multiletter control sequences out of 15000+600000
  28341 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1399,7 +1406,7 @@ xmf-dist/fonts/type1/public/pscyr/timesi.pfb></usr/share/texmf-dist/fonts/type1
 /urw/courier/ucrb8a.pfb></usr/share/texmf-dist/fonts/type1/urw/courier/ucrr8a.p
 fb></usr/share/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf
 -dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on paper.pdf (15 pages, 535673 bytes).
+Output written on paper.pdf (15 pages, 537002 bytes).
 PDF statistics:
  184 PDF objects out of 1000 (max. 8388607)
  126 compressed objects within 2 object streams

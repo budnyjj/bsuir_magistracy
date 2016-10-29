@@ -1,15 +1,12 @@
 \subsection{Обнаружение grace-периодов} \label{sec:grace_period}
 Как только каждое вычислительное ядро прошло через устойчивое состояние,
-grace-период RCU закончился.
+grace-период RCU заканчивается.
 Как было рассмотрено в разделе \ref{sec:data_structure},
 Tree-RCU использует иерархию структур \co{rcu_node} для
 управления информацией об устойчивых состояниях и grace-периодах.
 Информация об устойчивых состояниях распространяется в направлении
 от терминальных узлов к корню, а информация о grace-периодах ---
 от корня к терминальным узлам.
-%
-%The dyntick-idle mechanisms used for idle CPUs and \co{nohz_full} userspace
-%execution are out of scope for this research, as are RCU CPU stall warnings. The focus is instead
 Будем рассматривать процесс обнаружения grace-периодов на загруженных
 вычислительных ядрах, как показано на рисунке~\ref{fig:grace_period_state_diagram}.
 

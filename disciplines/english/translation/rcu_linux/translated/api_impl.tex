@@ -1,49 +1,16 @@
 %\subsection{Read-Side Primitives} \label{sec:read_api_impl}
-\subsection{Read/Write-Side Primitives} \label{sec:api_impl}
-% Change in recent kernels.
+\subsection{Примитивы чтения/записи} \label{sec:api_impl}
 В non-preemptible версии ядра любая область его исходного кода,
-которая не использует добровольных блокировок, является неявной
-критической секцией чтения RCU. В связи с этим, реализации
-\co{rcu_read_lock()} и \co{rcu_read_unlock()} не должны выполнять
-никакой работы. Действительно, в production сборках ядра
+не использующая блокировок, неявно является критической секцией чтения RCU.
+В связи с этим, реализации \co{rcu_read_lock()} и \co{rcu_read_unlock()}
+не должны выполнять никакой работы. Действительно, в production сборках ядра
 с выключенным режимом отладки, эта пара примитивов является
-пустышками.
+заглушками.
 
 В общем случае, когда используется несколько вычислительных ядер процессора,
-примитив записи \co{synchronize_rcu()} вызывает \co{wait_rcu_gp()},
-которая является внутренней функцией, использующей механизм callback'ов
-для отложенного вызова \co{wakeme_after_rcu()} по окончании некоторого grace-периода.
-Как подсказывает название, данная функция повторно предназначена для повторного вызова
-\co{wait_rcu_gp()}, которая на этот раз ничего не делает,
+примитив записи \co{synchronize_rcu()} вызывает функцию \co{wait_rcu_gp()},
+которая является внутренней и использует механизм callback'ов
+для отложенного вызова \co{wakeme_after_rcu()} по окончании grace-периода.
+Как подсказывает название, данная функция предназначена для повторного вызова
+\co{wait_rcu_gp()}, которая на этот раз производит возврат,
 тем самым позволяя \co{synchronize_rcu()} вернуть управление в вызывающий поток.
-
-%\comment{Lihao: comment out the following preemptible RCU contents if we need space.}
-%In a preemptible kernel, \co{synchronize_rcu()} is implemented in
-%\co{kernel/rcu/tree_plugin.h}. It first checks whether the variable
-%\co{rcu_scheduler_active} is zero. If so, the system is so early in boot
-%that there is only one non-preemptible task, again meaning that grace
-%periods complete instantaneously, allowing an immediate return.
-%Otherwise, if the grace period should be expedited,
-%\co{synchronize_rcu_expedited()} is invoked.
-%Otherwise, it passes \co{call_rcu()} to \co{wait_rcu_gp()}, which
-%registers callback \co{wakeme_after_rcu()}, similar to
-%the non-preemptible kernel discussed above.
-%%\comment{Lihao: the source code comments state that \co{rcu_scheduler_active = 0}
-%%allows RCU to optimize \co{synchronize_sched()} to a simple \co{barrier()}.
-%%Where is the code that does this?}
-%%\comment{Paul: The comment is incorrect.
-%%The \co{synchronize_sched()} function instead checks the number of
-%%online CPUs.
-%%I have queued a patch with your
-%%Reported-by changing the comment's \co{synchronize_sched()} to
-%%\co{synchronize_rcu()}.}
-%
-%RCU's callback handling and grace period detection are explained in Sections
-%\ref{sec:rcu_data} and \ref{sec:grace_period}, respectively.
-
-% Lihao: understand how call_rcu_sched works and understand the differences from
-% the Tiny RCU version which only calls the kernel function cond_resched()
-%
-% Lihao: In a preemptible kernel, the implementation of \co{synchronize_rcu()}
-% http://lxr.free-electrons.com/source/kernel/rcu/tree_plugin.h#L539 and
-% understand the differences between preemptible and non-preemptible versions
