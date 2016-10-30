@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Arch Linux) (preloaded format=pdflatex 2016.9.1)  25 OCT 2016 22:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Arch Linux) (preloaded format=pdflatex 2016.9.1)  30 OCT 2016 13:44
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1095,30 +1095,63 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 2.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 2.
-) (./text/content.tex) (./text/conclusion.tex
+) (./text/content.tex
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 1.
+(babel)             in language  on input line 4.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 1.
+(babel)             in language  on input line 4.
  [3
 
 ]
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 2.
+(babel)             in language  on input line 4.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 2.
-) (./text/bibliography.tex
+(babel)             in language  on input line 4.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 1.
+(babel)             in language  on input line 6.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 1.
-
-(./report.bbl
+(babel)             in language  on input line 6.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 1.
+(babel)             in language  on input line 22.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 1.
+(babel)             in language  on input line 22.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 45.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 45.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 51.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 51.
  [4
+
+]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 80.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 80.
+) (./text/conclusion.tex
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 1.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 1.
+ [5]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 2.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 2.
+)
+(./text/bibliography.tex
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 1.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 1.
+ (./report.bbl
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 1.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 1.
+ [6
 
 ]
 Underfull \hbox (badness 5548) in paragraph at lines 13--18
@@ -1139,7 +1172,7 @@ Package babel Info: Redefining russian shorthand "|
 (babel)             in language  on input line 15.
 Package babel Info: Redefining russian shorthand "~
 (babel)             in language  on input line 15.
- [5
+ [7
 
 ]
 
@@ -1164,23 +1197,23 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 17.
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 17.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 17.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: FB4AC16333EF5C568CB487A6D424EE16;529.
+(rerunfilecheck)             Checksum: CDBA2D65050D5FDBFD64CB5BE3CD5630;1634.
  ) 
 Here is how much of TeX's memory you used:
- 27928 strings out of 493013
- 467677 string characters out of 6139318
- 560628 words of memory out of 5000000
- 30914 multiletter control sequences out of 15000+600000
- 11607 words of font info for 31 fonts, out of 8000000 for 9000
+ 27958 strings out of 493013
+ 468108 string characters out of 6139318
+ 562628 words of memory out of 5000000
+ 30934 multiletter control sequences out of 15000+600000
+ 13842 words of font info for 33 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 64i,11n,60p,868b,603s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 64i,12n,60p,868b,603s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/pscyr/t2a.enc}</usr/share/texmf-dist/f
 onts/type1/public/pscyr/times.pfb></usr/share/texmf-dist/fonts/type1/public/psc
-yr/timesbd.pfb>
-Output written on report.pdf (5 pages, 46383 bytes).
+yr/timesbd.pfb></usr/share/texmf-dist/fonts/type1/public/pscyr/timesi.pfb>
+Output written on report.pdf (7 pages, 68712 bytes).
 PDF statistics:
- 70 PDF objects out of 1000 (max. 8388607)
- 54 compressed objects within 1 object stream
- 9 named destinations out of 1000 (max. 500000)
- 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 113 PDF objects out of 1000 (max. 8388607)
+ 94 compressed objects within 1 object stream
+ 16 named destinations out of 1000 (max. 500000)
+ 101 words of extra memory for PDF output out of 10000 (max. 10000000)
 
