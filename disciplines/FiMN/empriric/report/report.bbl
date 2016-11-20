@@ -1,0 +1,27 @@
+\begin{thebibliography}{1}
+\def\selectlanguageifdefined#1{
+\expandafter\ifx\csname date#1\endcsname\relax
+\else\selectlanguage{#1}\fi}
+\providecommand*{\href}[2]{{\small #2}}
+\providecommand*{\url}[1]{{\small #1}}
+\providecommand*{\BibUrl}[1]{\url{#1}}
+\providecommand{\BibAnnote}[1]{}
+\providecommand*{\BibEmph}[1]{#1}
+
+\bibitem{nekrasov2010}
+\selectlanguageifdefined{russian}
+\BibEmph{Некрасов,~С.И.} Философия науки и
+  техники: тематический словарь справочник.
+  Учебное пособие [{Текст}]~/ С.И.~Некрасов,
+  Н.А.~Некрасова. "---
+\newblock Орёл~: ОГУ, 2010.
+
+\bibitem{moiseev2004}
+\selectlanguageifdefined{russian}
+\BibEmph{Моисеев,~В.~И.} Философия и методология
+  науки. Учебное пособие [{Текст}]~/
+  В.~И.~Моисеев. "---
+\newblock Воронеж~: Центрально-Черноземное
+  книжное издательство, 2004.
+
+\end{thebibliography}
