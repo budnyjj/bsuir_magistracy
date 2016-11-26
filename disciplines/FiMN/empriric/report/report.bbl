@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 \def\selectlanguageifdefined#1{
 \expandafter\ifx\csname date#1\endcsname\relax
 \else\selectlanguage{#1}\fi}
@@ -23,5 +23,89 @@
   В.~И.~Моисеев. "---
 \newblock Воронеж~: Центрально-Черноземное
   книжное издательство, 2004.
+
+\bibitem{stepin1999}
+\selectlanguageifdefined{russian}
+\BibEmph{Степин,~В.~С.} Философия науки и техники
+  [{Текст}]~/ В.~С.~Степин, В.~Г.~Горохов,
+  М.~А.~Розов. "---
+\newblock [{Б.\ м.}]~: Гардарики, 1999.
+
+\bibitem{ushakov2008}
+\selectlanguageifdefined{russian}
+\BibEmph{Ушаков,~Е.В.} Введение в философию и
+  методологию науки: учебник для вузов
+  [{Текст}]~/ Е.В.~Ушаков. "---
+\newblock Москва~: КноРус, 2008.
+
+\bibitem{gritsanov2003}
+\selectlanguageifdefined{russian}
+\BibEmph{Грицанов,~А.А.} Новейший философский
+  словарь [{Текст}]~/ А.А.~Грицанов~; Под ред.\
+  М.А.~Можейко, Т.Г.~Румянцева. "---
+\newblock Минск~: Книжный дом, 2003.
+
+\bibitem{ilychev1983}
+\selectlanguageifdefined{russian}
+Философский энциклопедический словарь
+  [{Текст}]~/ Под ред.\ Л.~Ф.~Ильичёв,
+  П.~Н.~Федосеев, С.~М.~Ковалёв, В.~Г.~Панов. "---
+\newblock Москва~: Советская энциклопедия, 1983.
+
+\bibitem{vishnyakova1999}
+\selectlanguageifdefined{russian}
+\BibEmph{Вишнякова,~С.М.} Профессиональное
+  образование. Словарь. Ключевые понятия,
+  термины, актуальная лексика. [{Текст}]~/
+  С.М.~Вишнякова. "---
+\newblock Москва~: НМЦ СПО, 1999.
+
+\bibitem{ivin1997}
+\selectlanguageifdefined{russian}
+Словарь по логике [{Текст}]~/ Под ред.\
+  ~А.А.Ивин, ~А.Л.Никифоров. "---
+\newblock Москва~: Туманит, 1997.
+
+\bibitem{ivin2004}
+\selectlanguageifdefined{russian}
+Философия: Энциклопедический словарь.
+  [{Текст}]~/ Под ред.\ А.~А.~Ивин. "---
+\newblock Москва~: Гардарики, 2004.
+
+\bibitem{psyznayka_test}
+\selectlanguageifdefined{russian}
+Дополнительные методы: тест, опрос, беседа,
+  анализ продуктов деятельности,
+  самооценка [{Электронный ресурс}]. "---
+\newblock [{Б.\ м.}~: {б.\ и.}]. "---
+\newblock \cyr\CYRR\cyre\cyrzh\cyri\cyrm\ \cyrd\cyro\cyrs\cyrt\cyru\cyrp\cyra:
+  \BibUrl{http://psyznaiyka.net/view-metody.html?id=dopolnitelnye-metody}
+  ({дата обращения}: 2016.11.26).
+
+\bibitem{project_psychology}
+\selectlanguageifdefined{russian}
+Проективная психология [{Текст}]. "---
+\newblock Москва~: ЭКСМО-Пресс, 2000.
+
+\bibitem{kasavin2009}
+\selectlanguageifdefined{russian}
+\BibEmph{Касавин,~И.Т.} Энциклопедия
+  эпистемологии и философии науки [{Текст}]~/
+  И.Т.~Касавин. "---
+\newblock Москва~: Канон+, 2009.
+
+\bibitem{volovich1990}
+\selectlanguageifdefined{russian}
+Социологический справочник [{Текст}]~/ Под
+  ред.\ В.~И.~Волович. "---
+\newblock Киев~: Политиздат Украины, 1990.
+
+\bibitem{komarova2014}
+\selectlanguageifdefined{russian}
+\BibEmph{Комарова,~З.~И.} Методология, метод,
+  методика и технология научных
+  исследований в лингвистике: учебное
+  пособие [{Текст}]~/ З.~И.~Комарова. "---
+\newblock Москва~: ФЛИНТА, 2014.
 
 \end{thebibliography}
