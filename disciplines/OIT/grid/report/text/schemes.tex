@@ -1,0 +1,144 @@
+\section[Конечно-разностные схемы]{КОНЕЧНО-РАЗНОСТНЫЕ СХЕМЫ}
+
+Большое разнообразие методов обусловлено возможностью
+по-разному выбирать узыл и квадратурные формулы для апрроксимации интеграла
+в~\eqref{eq:approximation} при получении схемы~\eqref{eq:diff_scheme}.
+
+\subsection{Явная схема первого порядка (Эйлера)}
+
+Заменив интеграл в~\eqref{eq:approximation} по формуле левых прямоугольников:
+\begin{equation*}
+  \dfrac{1}{h} \int^{x_{k+1}}_{x_k} \overline{f}(x, \overline{u}(x) dx \approx
+  \dfrac{\overline{f}(x_k, \overline{y}^k) h}{h} =
+  \overline{f}(x_k, \overline{y}^k),
+\end{equation*}
+получим
+\begin{equation}
+  \dfrac{\overline{y}^{k+1} - \overline{y}^k}{h} =
+  \overline{f}(x_k, \overline{y}^k), \quad
+  k = 0, 1, 2, \ldots, n.
+  \label{eq:scheme_1}
+\end{equation}
+
+Задавая \( \overline{y}^0 = \overline{u}^0 \), с помощью~\eqref{eq:scheme_1}
+можно получить все последующие значения
+\( \overline{y}^k, k = 1, 2, \ldots, n+1 \), так как формула явно разрешается
+относительно \( \overline{y}^{k+1} \).
+Погрешность аппроксимации \( \psi(h) \) и соответственно точность
+\( \varepsilon(h) \) имеют первый порядок в силу того,
+что формула левых прямоульников на интервале
+\( [x_k, x_{k+1}] \) имеет погрешность второго порядка, а схема устойчива.
+
+\subsection{Неявная схема первого порядка}
+
+Используя в~\eqref{eq:approximation} формулу правых прямоугольников, получим
+\begin{equation}
+  \dfrac{\overline{y}^{k+1} - \overline{y}^k}{h} =
+  \overline{f}(x_{k+1}, \overline{y}^{k+1}), \quad
+  k = 0, 1, 2, \ldots, n.
+  \label{eq:scheme_2}
+\end{equation}
+
+Эта схема неразрешима явно относительно \( \overline{y}^{k+1} \),
+поэтому для получения \( \overline{y}^{k+1} \) требуется использовать итерационную
+процедуру решения уравнения~\eqref{eq:scheme_2}:
+\begin{equation}
+  \overline{y}^{k+1, s} = \overline{y}^k +
+  h \overline{f}(x_{k+1}, \overline{y}^{k+1, s-1}), \quad
+  s = 1, 2, \ldots - \text{номер итерации}.
+\end{equation}
+
+В качестве начального приближения берется значение
+\( \overline{y}^{k+1, 0} = \overline{y}^k \) с предыдущего шага.
+Преимущество неявной схемы заключается в том, что у неё константа устойчивости
+\( c_0 \) значительно меньше, чем у явной схемы.
+
+\subsection{Неявная схема второго порядка}
+
+Используя в~\eqref{eq:approximation} формулу трапеций, получим
+\begin{equation}
+  \dfrac{\overline{y}^{k+1} - \overline{y}^k}{h} =
+  \dfrac{
+    \overline{f}(x_{k+1}, \overline{y}^{k+1}) +
+    \overline{f}(x_{k+1}, \overline{y}^{k+1})}{
+    2
+  }, \quad
+  k = 0, 1, 2, \ldots, n.
+  \label{eq:scheme_3}
+\end{equation}
+
+Так как формула трапеций имеет третий порядок точности на интервале
+\( [x_k, x_{k+1}] \), то погрешность аппроксимации \( \psi(h) \) --- второй.
+
+Cхема \eqref{eq:scheme_3} неразрешима явно относительно \( \overline{y}^{k+1} \),
+поэтому требуется использовать итерационную процедуру:
+\begin{equation}
+  \overline{y}^{k+1, s} = \overline{y}^k +
+  \dfrac{h}{2} \bigg(
+  \overline{f}(x_k, \overline{y}^k) +
+  \overline{f}(x_{k+1}, \overline{y}^{k+1, s-1})
+  \bigg),
+\end{equation}
+где \( s = 1, 2, \ldots, \) --- номер итерации, а
+\( \overline{y}^{k+1, 0} = \overline{y}^k \).
+
+\subsection{Схема предиктор-корректор (Рунге-Кутта) второго порядка}
+
+Используя в~\eqref{eq:approximation} формулу средних, получим
+\begin{equation}
+  \dfrac{\overline{y}^{k+1} - \overline{y}^k}{h} =
+  \overline{f}(x_{k+\frac{1}{2}}, \overline{y}^{k+\frac{1}{2}}), \quad
+  k = 0, 1, 2, \ldots, n.
+  \label{eq:scheme_4}
+\end{equation}
+
+Уравнение~\eqref{eq:scheme_4} разрешимо относительно \( \overline{y}^{k+1} \),
+однако в правой части присутствует неизвестное значение
+\( \overline{y}^{k+\frac{1}{2}} \) в середине отрезка \( [x_k, x_{k+1}] \).
+Для решения этого уравнения существует следующий способ.
+Вначале по явной схеме~\eqref{eq:scheme_1} рассчитывают
+\( \overline{y}^{k+\frac{1}{2}} \) (предиктор):
+\begin{equation*}
+  \overline{y}^{k+\frac{1}{2}} = \overline{y}^{k} +
+  \dfrac{h}{2} \overline{f}(x_k, \overline{y}^k),
+\end{equation*}
+а затем с помощью~\eqref{eq:scheme_4} ---
+\( \overline{y}^{k+1} \) (корректор).
+В результате схема оказывается явной и имеет второй порядок.
+Заметим, что данная схема получается из схемы~\eqref{eq:scheme_3},
+если в ней выполнять всего две итерации \( (s = 1, 2) \).
+
+\subsection{Схема Рунге-Кутта четвертого порядка}
+
+Используя в~\eqref{eq:approximation} формулу Симпсона, получим
+\begin{equation}
+  \dfrac{\overline{y}^{k+1} - \overline{y}^k}{h} =
+  \dfrac{1}{6} \bigg(
+  \overline{f}(x_{k}, \overline{y}^{k}) +
+  4 \overline{f}(x_{k+\frac{1}{2}}, \overline{y}^{k+\frac{1}{2}}) +
+  \overline{f}(x_{k+1}, \overline{y}^{k+1}) +
+  \bigg).
+  \label{eq:scheme_5}
+\end{equation}
+Так как формула Симпсона имеет пятый порядок точности, то погрешность
+аппроксимации данной схемы имеет четвертый порядок.
+
+Можно по-разному реализовать расчет неявного по \( \overline{y}^{k+1} \)
+уравнения~\eqref{eq:scheme_5}, однако наибольшее распространение получил
+следующий способ. Делают предиктор вида
+\begin{align*}
+  \overline{y}^{k+\frac{1}{2}, 1} &= \overline{y}^{k} + \dfrac{h}{2} \overline{f}(x_k, \overline{y}^k), \\
+  \overline{y}^{k+\frac{1}{2}, 2} &= \overline{y}^{k} + \dfrac{h}{2} \overline{f}(x_{k+\frac{1}{2}}, \overline{y}^{k+\frac{1}{2}, 1}), \\
+  \overline{y}^{k+1, 1} &= \overline{y}^{k} + \dfrac{h}{2} \overline{f}(x_{k+\frac{1}{2}}, \overline{y}^{k+\frac{1}{2}, 2}),
+\end{align*}
+а затем корректор по формуле
+\begin{equation*}
+  \overline{y}^{k+1} =
+  \overline{y}^k + \dfrac{h}{6}
+  \bigg(
+  f(x_k, \overline{y}^k) +
+  2 f(x_{k + \frac{1}{2}}, \overline{y}^{{k + \frac{1}{2}}, 1}) +
+  2 f(x_{k + \frac{1}{2}}, \overline{y}^{{k + \frac{1}{2}}, 2}) +
+  2 f(x_{k + 1}}, \overline{y}^{{k + 1}, 1})
+  \bigg).
+\end{equation*}
