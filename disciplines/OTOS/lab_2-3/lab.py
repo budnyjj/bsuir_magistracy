@@ -11,54 +11,54 @@ plt.rc('text', usetex=True)
 plt.rc('font', family='serif')
 
 
-def model(avg, disp, alpha, period, num_iter):
-    Fi = math.exp(-alpha*period)
-    sigma = math.sqrt(disp*(1-math.exp(-2*alpha*period)))
+def model(fi, avg, disp, num_iter):
+    sigma = math.sqrt(disp)
     cur_val = avg + random.gauss(0, sigma)
     for _ in range(num_iter):
-        new_val = avg + Fi*(cur_val - avg) + random.gauss(0, sigma)
+        new_val = avg + fi*(cur_val - avg) + random.gauss(0, sigma)
         cur_val = new_val
         yield new_val
 
-def meter(input_value, transform, disp):
-    return transform*input_value + random.gauss(0, math.sqrt(disp))
+def meter(val, transform, disp):
+    return transform*val + random.gauss(0, math.sqrt(disp))
 
-def filter_kalman(vals, model_avg, model_disp, model_alpha, model_period, meter_transform, meter_disp):
+def filter_kalman(vals, model_fi, model_avg, model_disp, meter_transform, meter_disp):
     result = []
-    Fi = math.exp(-model_alpha*model_period)
     est_filtered = model_avg
     disp_filtered = model_disp
     for val in vals:
-        est_extrapolated = Fi * est_filtered
-        disp_extrapolated = model_disp*(1-math.exp(-2*model_alpha*model_period)) + Fi*disp_filtered*Fi
+        est_extrapolated = model_fi * est_filtered
+        disp_extrapolated = model_disp + model_fi*disp_filtered*model_fi
         gain = (disp_extrapolated*meter_transform) / (meter_transform*disp_extrapolated*meter_transform + meter_disp)
+        print("gain:", gain)
         est_filtered = est_extrapolated + gain*(val - meter_transform*est_extrapolated)
         disp_filtered = disp_extrapolated - gain*meter_transform*disp_filtered
-        result.append(est_filtered)
+        result.append(gain)
     return result
 
 NUM_ITER = 10
 # model parameters
 MODEL_AVG = 0
-MODEL_DISP = 8
+MODEL_SIGMA2 = 8
 MODEL_ALPHA = 0.008
 MODEL_PERIOD = 40
 # meter parameters
 METER_TRANSFORM = 1
-METER_DISP = 2
+METER_DISP = 0.1
 
+MODEL_FI = math.exp(-MODEL_ALPHA*MODEL_PERIOD)
+MODEL_DISP = MODEL_SIGMA2*(1-math.exp(-2*MODEL_ALPHA*MODEL_PERIOD))
 
 vals_t = []
 vals_x = []
 vals_m = []
-for i,val_x in enumerate(model(MODEL_AVG, MODEL_DISP,
-                               MODEL_ALPHA, MODEL_PERIOD, NUM_ITER)):
+for i,val_x in enumerate(model(MODEL_FI, MODEL_AVG, MODEL_DISP, NUM_ITER)):
     vals_t.append(i*MODEL_PERIOD)
     vals_x.append(val_x)
     vals_m.append(meter(val_x, METER_TRANSFORM, METER_DISP))
 
 vals_fm = filter_kalman(vals_m,
-                        MODEL_AVG, MODEL_DISP, MODEL_ALPHA, MODEL_PERIOD,
+                        MODEL_FI, MODEL_AVG, MODEL_DISP,
                         METER_TRANSFORM, METER_DISP)
 
 plt.plot(vals_t, vals_x,
