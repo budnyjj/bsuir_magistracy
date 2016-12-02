@@ -19,58 +19,65 @@ def model(fi, avg, disp, num_iter):
         cur_val = new_val
         yield new_val
 
-def meter(val, transform, disp):
-    return transform*val + random.gauss(0, math.sqrt(disp))
+def meter(val, hi, disp):
+    return hi*val + random.gauss(0, math.sqrt(disp))
 
-def filter_kalman(vals, model_fi, model_avg, model_disp, meter_transform, meter_disp):
-    result = []
-    est_filtered = model_avg
-    disp_filtered = model_disp
-    for val in vals:
-        est_extrapolated = model_fi * est_filtered
-        disp_extrapolated = model_disp + model_fi*disp_filtered*model_fi
-        gain = (disp_extrapolated*meter_transform) / (meter_transform*disp_extrapolated*meter_transform + meter_disp)
-        print("gain:", gain)
-        est_filtered = est_extrapolated + gain*(val - meter_transform*est_extrapolated)
-        disp_filtered = disp_extrapolated - gain*meter_transform*disp_filtered
-        result.append(gain)
-    return result
+class FilterKalman:
+    def __init__(self, model_fi, model_avg, model_disp, meter_hi, meter_disp):
+        self.model_fi = model_fi
+        self.model_avg = model_avg
+        self.model_disp = model_disp
+        self.meter_hi = meter_hi
+        self.meter_disp = meter_disp
+        self.est_filtered = model_avg
+        self.disp_filtered = model_disp
 
-NUM_ITER = 10
+    def filter(self, val):
+        est_extrapolated = self.model_fi * self.est_filtered
+        disp_extrapolated = self.model_disp + self.model_fi*self.disp_filtered*self.model_fi
+        gain = disp_extrapolated * self.meter_hi
+        gain /= self.meter_hi*disp_extrapolated*self.meter_hi + self.meter_disp
+        self.est_filtered = est_extrapolated + gain*(val - self.meter_hi*est_extrapolated)
+        self.disp_filtered = disp_extrapolated - gain*self.meter_hi*disp_extrapolated
+        return self.est_filtered
+
+NUM_ITER = 50
 # model parameters
 MODEL_AVG = 0
 MODEL_SIGMA2 = 8
 MODEL_ALPHA = 0.008
 MODEL_PERIOD = 40
 # meter parameters
-METER_TRANSFORM = 1
-METER_DISP = 0.1
+METER_HI = 1
+METER_DISP = 20
 
 MODEL_FI = math.exp(-MODEL_ALPHA*MODEL_PERIOD)
 MODEL_DISP = MODEL_SIGMA2*(1-math.exp(-2*MODEL_ALPHA*MODEL_PERIOD))
 
 vals_t = []
-vals_x = []
-vals_m = []
-for i,val_x in enumerate(model(MODEL_FI, MODEL_AVG, MODEL_DISP, NUM_ITER)):
-    vals_t.append(i*MODEL_PERIOD)
-    vals_x.append(val_x)
-    vals_m.append(meter(val_x, METER_TRANSFORM, METER_DISP))
+vals_model = []
+vals_meter = []
+vals_filter = []
+kalman = FilterKalman(MODEL_FI, MODEL_AVG, MODEL_DISP, METER_HI, METER_DISP)
+for i,val_model in enumerate(model(MODEL_FI, MODEL_AVG, MODEL_DISP, NUM_ITER)):
+    vals_t.append(i)
+    vals_model.append(val_model)
+    vals_meter.append(meter(val_model, METER_HI, METER_DISP))
+    vals_filter.append(kalman.filter(val_model))
 
-vals_fm = filter_kalman(vals_m,
-                        MODEL_FI, MODEL_AVG, MODEL_DISP,
-                        METER_TRANSFORM, METER_DISP)
-
-plt.plot(vals_t, vals_x,
+plt.plot(vals_t, vals_model,
          color='r', linestyle=' ',
-         marker='.', markersize=5)
-plt.plot(vals_t, vals_m,
-         color='g', linestyle='-')
-plt.plot(vals_t, vals_fm,
-         color='b', linestyle='-')
-
+         marker='.', markersize=5,
+         label='real')
+plt.plot(vals_t, vals_meter,
+         color='g', linestyle='-',
+         label='metered')
+plt.plot(vals_t, vals_filter,
+         color='b', linestyle='-',
+         label='filtered')
 
 plt.grid(True)
-plt.xlabel('$ t $')
+plt.xlabel('$ T $')
 plt.ylabel('$ x $')
+plt.legend(loc=2)
 plt.savefig('plot.png', dpi=200)
