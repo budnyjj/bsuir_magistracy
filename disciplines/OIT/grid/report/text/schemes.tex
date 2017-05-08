@@ -82,7 +82,7 @@ Cхема \eqref{eq:scheme_3} неразрешима явно относител
 где \( s = 1, 2, \ldots, \) --- номер итерации, а
 \( \overline{y}^{k+1, 0} = \overline{y}^k \).
 
-\subsection{Схема предиктор-корректор (Рунге-Кутта) второго порядка}
+\subsection{Схема предиктор-корректор второго порядка}
 
 Используя в~\eqref{eq:approximation} формулу средних, получим
 \begin{equation}
@@ -139,6 +139,6 @@ Cхема \eqref{eq:scheme_3} неразрешима явно относител
   f(x_k, \overline{y}^k) +
   2 f(x_{k + \frac{1}{2}}, \overline{y}^{{k + \frac{1}{2}}, 1}) +
   2 f(x_{k + \frac{1}{2}}, \overline{y}^{{k + \frac{1}{2}}, 2}) +
-  2 f(x_{k + 1}}, \overline{y}^{{k + 1}, 1})
+  2 f(x_{k + 1}), \overline{y}^{{k + 1}, 1})
   \bigg).
 \end{equation*}

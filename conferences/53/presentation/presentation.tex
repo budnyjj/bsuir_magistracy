@@ -1,0 +1,192 @@
+\documentclass[hyperref={pdftex,unicode}]{beamer}
+
+\input{packages}
+\input{styles}
+
+\input{info}
+
+\begin{document}
+
+\begin{frame}
+  \maketitle
+\end{frame}
+
+\begin{frame}{Постановка задачи}
+  \centering\input{images/scheme}
+
+  \flushleft{
+    $ \xi, \eta $ --- фактические значения входа и выхода, \\
+    $ \alpha, \beta $ --- параметры объекта, \\
+    $ \varepsilon, \delta $ --- ошибки измерений, \\
+    $ x, y $ --- измеряемые значения входа и выхода, \\
+    $ \hat{\alpha}, \hat{\beta} $ --- оценки параметров объекта.
+  }
+\end{frame}
+
+\begin{frame}{Постановка задачи}
+  \begin{minipage}[h]{0.45\linewidth}
+    \centering классическая \\ аппроксимация
+
+    \input{images/classic}
+
+    \( \rho_{\text{к}} = \sum \rho_{\text{к}_i} \rightarrow \min \)
+  \end{minipage}
+  \hfill
+  \begin{minipage}[h]{0.45\linewidth}
+    \centering симметричная \\ аппроксимация
+
+    \input{images/symmetric}
+
+    \bigskip
+    \( \rho_{\text{с}} = \sum \rho_{\text{с}_i} \rightarrow \min \)
+  \end{minipage}
+\end{frame}
+
+\begin{frame}{Постановка задачи}
+  Выполнить сравнение точности:
+  \begin{itemize}
+  \item оценивания значений параметров объекта;
+  \item прогнозирования измеряемых значений выхода по измеряемым значениям входа.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Моделирование}
+  Значения \( \xi \) выбирались из \( U(0, 10) \). \\
+  Оценивание параметров \( \alpha, \beta \) производилось по измерениям
+  \begin{align*}
+    x_i &= \xi_i + \varepsilon_i, \varepsilon_i \in N(0, \sigma_{\varepsilon}), \\
+    y_i &= \eta_i + \delta_i, \delta_i \in N(0, \sigma_{\delta}), \\
+    i &= \overline{1, n}, \: n = 100.
+  \end{align*}
+  Расчеты производились в узлах сетки значений \( \sigma_{\varepsilon}, \sigma_{\delta} \) в \\
+  прямоугольнике  \( [0, 2] \times [0, 2] \) с шагом 0{,}1. \\
+  В каждом узле сетки вычислялось \( k = 100 \) оценок.
+\end{frame}
+
+\begin{frame}{Точность оценивания параметров объекта}
+  \begin{center}\large
+    \( d = \dfrac{1}{k} \sum_{j=1}^k \sqrt{(\hat{\alpha}_j - \alpha)^2 + (\hat{\beta}_j - \beta)^2} \).
+
+    \bigskip
+    \( D = d_{\text{к}} - d_{\text{с}}:
+    \begin{cases}
+      < 0, & \text{если классическая аппр. точнее}, \\
+      = 0, & \text{если методы равноточные}, \\
+      > 0, & \text{если симметричная аппр. точнее}.
+    \end{cases} \)
+
+    \bigskip
+    \( D(\sigma_{\varepsilon}, \sigma_{\delta}) \) --- ?
+  \end{center}
+\end{frame}
+
+\begin{frame}{Точность оценивания параметров объекта}
+  \begin{minipage}[h]{0.49\linewidth}\centering
+    \includegraphics[width=\linewidth]{beta-0,5_param.png}
+
+    \bigskip
+    \scriptsize\( D(\sigma_{\varepsilon}, \sigma_{\delta}), \: \beta = 0{,}5 \)
+  \end{minipage}
+  \hfill
+  \begin{minipage}[h]{0.49\linewidth}\centering
+    \includegraphics[width=\linewidth]{beta-2_param.png}
+
+    \bigskip
+    \scriptsize\( D(\sigma_{\varepsilon}, \sigma_{\delta}), \: \beta = 2 \)
+  \end{minipage}
+\end{frame}
+
+\begin{frame}{Точность оценивания параметров объекта}
+  \begin{minipage}[h]{0.49\linewidth}\centering
+    \includegraphics[width=\linewidth]{beta-0,5_param-accs-diff-approx.png}
+
+    \bigskip
+    \scriptsize\( D(\sigma_{\varepsilon}, \sigma_{\delta}), \: \beta = 0{,}5 \)
+  \end{minipage}
+  \hfill
+  \begin{minipage}[h]{0.49\linewidth}\centering
+    \includegraphics[width=\linewidth]{beta-2_param-accs-diff-approx.png}
+
+    \bigskip
+    \scriptsize\( D(\sigma_{\varepsilon}, \sigma_{\delta}), \: \beta = 2 \)
+  \end{minipage}
+\end{frame}
+
+\begin{frame}{Точность оценивания параметров объекта}
+  \begin{enumerate}
+  \item Значения \( \alpha \) не влияют на точность оценивания.
+  \item Если \( \sigma_{\delta} < (0,7 + |\beta|)\sigma_{\varepsilon} \),
+    то оценки параметров, полученные методом симметричной аппроксимации,
+    являются более точными, чем у классической \\
+    линейной регрессии.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Точность прогнозирования значений выхода}
+  \begin{center}\large
+    \( p = \dfrac{1}{k} \sum_{j=1}^k \sum_{i=1}^n |y_{ji} - (\hat{\alpha}_{j} + \hat{\beta}_{j} x_{ji})| \),
+
+    \bigskip
+    \( x_{ji}, y_{ji} \) --- контрольные измерения.
+
+    \bigskip
+    \( P = p_{\text{к}} - p_{\text{с}}:
+    \begin{cases}
+      < 0, & \text{если классическая аппр. точнее}, \\
+      = 0, & \text{если методы равноточные}, \\
+      > 0, & \text{если симметричная аппр. точнее}.
+    \end{cases} \)
+
+    \bigskip
+    \( P(\sigma_{\varepsilon}, \sigma_{\delta}) \) --- ?
+  \end{center}
+\end{frame}
+
+\begin{frame}{Точность прогнозирования значений выхода}
+  \begin{minipage}[h]{0.49\linewidth}\centering
+    \includegraphics[width=\linewidth]{beta-0,5_predict-measured.png}
+
+    \bigskip
+    \scriptsize\( P(\sigma_{\varepsilon}, \sigma_{\delta}), \: \beta = 0{,}5 \)
+  \end{minipage}
+  \hfill
+  \begin{minipage}[h]{0.49\linewidth}\centering
+    \includegraphics[width=\linewidth]{beta-2_predict-measured.png}
+
+    \bigskip
+    \scriptsize\( P(\sigma_{\varepsilon}, \sigma_{\delta}), \: \beta = 2 \)
+  \end{minipage}
+\end{frame}
+
+\begin{frame}{Выводы}
+  \begin{itemize}
+  \item Точность оценивания параметров объекта рассматриваемыми
+    методами зависит от значения \( \beta \). \\
+    С ростом величины \( \beta \) оценки параметров,
+    полученные методом симметричной аппроксимации, оказываются более точными.
+    В противном случае, оценки, полученные классической аппроксимацией,
+    имеют большую точность.
+  \item Для определения того, какой из методов дает более точные оценки параметров,
+    можно использовать следующее эмпирическое правило:
+    \begin{center}
+      \( \sigma_{\delta} < (0,7 + |\beta|)\sigma_{\varepsilon} \).
+    \end{center}
+  \item Классическая аппроксимация дает более точные прогнозы измеряемых
+    значений выхода по измеряемым значениям входа для любых
+    \( \beta, \sigma_{\varepsilon}, \sigma_{\delta} \).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Список литературы}
+  \begin{enumerate}
+  \item Рао, С. Р. Линейные статистические методы и их применение /
+    С. Р. Рао. --- М.: Наука, 1968. --- 548 с.
+  \item Pearson, K. On lines and planes of closest fit to systems of points in space /
+    K. Pearson / Philosophical Magazine. --- 1901. --- V. VI. --- №2. --- P. 559 --- 572.
+  \item Муха В. С.
+    <<Симметричная аппроксимация векторных статистических данных линейными многообразиями>> //
+    Весцi Нац. акад. навук Беларусi. Сер. фiз.-мат. навук. --- 2016. --- №4. --- С. 23--31.
+  \end{enumerate}
+\end{frame}
+
+\end{document}
