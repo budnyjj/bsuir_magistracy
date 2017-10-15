@@ -1,1 +1,1 @@
-../../common/ugost2003.bst
+../../../templates/dissertation_magistracy/sys/ugost2003.bst
