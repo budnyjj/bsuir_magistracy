@@ -2,8 +2,16 @@
 \renewcommand{\thetable}{\Asbuk{section}.\arabic{table}}
 \renewcommand{\thelstlisting}{\Asbuk{section}.\arabic{lstlisting}}
 
-\chapter*{Приложение А}
-\addcontentsline{toc}{chapter}{Приложение А}
+\chapter*{%
+  Приложение А \hspace{10cm}
+  Точность оценивания параметров
+  линейной стохастической системы второго типа
+}
+\addcontentsline{toc}{chapter}{%
+  Приложение А
+  Точность оценивания параметров линейной \\
+  \hspace*{2.8cm} стохастической системы второго типа
+}
 
 \setcounter{section}{1}
 \setcounter{figure}{0}
@@ -11,50 +19,50 @@
 \setcounter{lstlisting}{0}
 
 На приведенных ниже рисунках показана зависимость разности
-величин~\eqref{eq:dst_param},
+величин~\eqref{eq:dst_linear_param},
 полученных классической линейной регрессией и методом симметричной аппроксимации,
 от с.к.о. ошибок наблюдений \( \sigma_{\varepsilon_x}, \sigma_{\varepsilon_y} \) при
-различных фактических значениях коэффициента усиления \( beta \)
+различных фактических значениях коэффициента усиления \( \beta \)
 линейной стохастической системы второго типа.
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=150mm]{fig/linear/param/beta-0,125_param.png}
-  \caption{Точность оценивания параметров модели при \( \beta = 0{,}125 \)}
+  \caption{Точность оценивания параметров при \( \beta = 0{,}125 \)}
 \end{figure}
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=150mm]{fig/linear/param/beta-0,2_param.png}
-  \caption{Точность оценивания параметров модели при \( \beta = 0{,}2 \)}
+  \caption{Точность оценивания параметров при \( \beta = 0{,}2 \)}
 \end{figure}
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=150mm]{fig/linear/param/beta-0,5_param.png}
-  \caption{Точность оценивания параметров модели при \( \beta = 0{,}5 \)}
+  \caption{Точность оценивания параметров при \( \beta = 0{,}5 \)}
 \end{figure}
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=150mm]{fig/linear/param/beta-1_param.png}
-  \caption{Точность оценивания параметров модели при \( \beta = 1\)}
+  \caption{Точность оценивания параметров при \( \beta = 1\)}
 \end{figure}
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=150mm]{fig/linear/param/beta-2_param.png}
-  \caption{Точность оценивания параметров модели при \( \beta = 2 \)}
+  \caption{Точность оценивания параметров при \( \beta = 2 \)}
 \end{figure}
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=150mm]{fig/linear/param/beta-5_param.png}
-  \caption{Точность оценивания параметров модели при \( \beta = 5 \)}
+  \caption{Точность оценивания параметров при \( \beta = 5 \)}
 \end{figure}
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=150mm]{fig/linear/param/beta-8_param.png}
-  \caption{Точность оценивания параметров модели при \( \beta = 8 \)}
+  \caption{Точность оценивания параметров при \( \beta = 8 \)}
 \end{figure}
