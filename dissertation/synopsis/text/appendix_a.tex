@@ -4,13 +4,15 @@
 
 \chapter*{%
   Приложение А \hspace{10cm}
-  Точность оценивания параметров
-  линейной стохастической системы второго типа
+  Точность прогнозирования наблюдений выхода
+  линейной стохастической  \hspace{10cm}
+  системы второго типа \hspace{12cm}
+  (к подразделу~2.3.2)
 }
 \addcontentsline{toc}{chapter}{%
   Приложение А
-  Точность оценивания параметров линейной \\
-  \hspace*{2.8cm} стохастической системы второго типа
+  Точность прогнозирования наблюдений выхода \\
+  \hspace*{2.8cm} линейной стохастической системы второго типа
 }
 
 \setcounter{section}{1}
@@ -18,51 +20,25 @@
 \setcounter{table}{0}
 \setcounter{lstlisting}{0}
 
-На приведенных ниже рисунках показана зависимость разности
-величин~\eqref{eq:dst_linear_param},
-полученных классической линейной регрессией и методом симметричной аппроксимации,
+На приведенных ниже рисунках показана зависимость величины~\eqref{eq:dst_linear_predict}
 от с.к.о. ошибок наблюдений \( \sigma_{\varepsilon_x}, \sigma_{\varepsilon_y} \) при
 различных фактических значениях коэффициента усиления \( \beta \)
 линейной стохастической системы второго типа.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=150mm]{fig/linear/param/beta-0,125_param.png}
-  \caption{Точность оценивания параметров при \( \beta = 0{,}125 \)}
+  \includegraphics[width=135mm]{fig/linear/predict/beta-0,2_predict-measured.png}
+  \caption{Точность прогнозирования наблюдений выхода при \( \beta = 0{,}2 \)}
 \end{figure}
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=150mm]{fig/linear/param/beta-0,2_param.png}
-  \caption{Точность оценивания параметров при \( \beta = 0{,}2 \)}
+  \includegraphics[width=135mm]{fig/linear/predict/beta-1_predict-measured.png}
+  \caption{Точность прогнозирования наблюдений выхода при \( \beta = 1\)}
 \end{figure}
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=150mm]{fig/linear/param/beta-0,5_param.png}
-  \caption{Точность оценивания параметров при \( \beta = 0{,}5 \)}
-\end{figure}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=150mm]{fig/linear/param/beta-1_param.png}
-  \caption{Точность оценивания параметров при \( \beta = 1\)}
-\end{figure}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=150mm]{fig/linear/param/beta-2_param.png}
-  \caption{Точность оценивания параметров при \( \beta = 2 \)}
-\end{figure}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=150mm]{fig/linear/param/beta-5_param.png}
-  \caption{Точность оценивания параметров при \( \beta = 5 \)}
-\end{figure}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=150mm]{fig/linear/param/beta-8_param.png}
-  \caption{Точность оценивания параметров при \( \beta = 8 \)}
+  \includegraphics[width=135mm]{fig/linear/predict/beta-5_predict-measured.png}
+  \caption{Точность прогнозирования наблюдений выхода при \( \beta = 5 \)}
 \end{figure}
