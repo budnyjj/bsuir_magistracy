@@ -4,7 +4,8 @@
 
 \section{Математическая модель идентифицируемой системы}
 
-Для обеспечения наглядности сравнения рассматривался случай идентификации скалярной системы.
+Для обеспечения наглядности сравнения рассматривался случай
+идентификации линейной скалярной системы.
 В этом случае функция регрессии принимает простой вид:
 \begin{equation}
   \psi = \alpha + \beta \xi,
@@ -134,7 +135,7 @@
 в зависимости от c.~к.~о. ошибок наблюдений \( \sigma_{\varepsilon_x}, \sigma_{\varepsilon_y} \).
 
 В качестве величины, характеризующей сравнительную точность оценивания параметров,
-использовалась разность средних Евклидовых расстояний в пространстве параметров
+использовалась разность средних Евклидовых расстояний
 между точными значениями параметров модели и их оценками,
 полученными классической линейной регрессией и методом симметриченой аппроксимации:
 \begin{equation}
@@ -178,7 +179,10 @@
   \end{subfigure}
 
   \vspace{\baselineskip}
-  \caption{Точность оценивания параметров моделей с \\ малыми коэффициентами усиления}\label{fig:comparison_linear_params_beta-small}
+  \caption{%
+    Точность оценивания параметров моделей с \\
+    малыми коэффициентами усиления
+  }\label{fig:comparison_linear_params_beta-small}
 \end{figure}
 
 На рисунке~\ref{fig:comparison_linear_params_beta-0,5}
@@ -196,7 +200,10 @@
 \begin{figure}[t]
   \centering
   \includegraphics[width=135mm]{fig/linear/param/beta-0,5_param.png}
-  \caption{Точность оценивания параметров модели с \\ коэффициентом усиления \( \beta = 0{,}5 \)}\label{fig:comparison_linear_params_beta-0,5}
+  \caption{%
+    Точность оценивания параметров модели с \\
+    коэффициентом усиления \( \beta = 0{,}5 \)
+  }\label{fig:comparison_linear_params_beta-0,5}
 \end{figure}
 
 На рисунках~\ref{fig:comparison_linear_params_beta--1},~\ref{fig:comparison_linear_params_beta-1}
@@ -238,7 +245,10 @@
   \end{subfigure}
 
   \vspace{\baselineskip}
-  \caption{Точность оценивания параметров моделей с \\ единичным коэффициентом усиления}
+  \caption{%
+    Точность оценивания параметров моделей с \\
+    единичным коэффициентом усиления
+  }
 \end{figure}
 
 \newpage
@@ -256,7 +266,10 @@
 \begin{figure}[h]
   \centering
   \includegraphics[width=135mm]{fig/linear/param/beta-2_param.png}
-  \caption{Точность оценивания параметров модели с \\ коэффициентом усиления \( \beta = 2 \)}\label{fig:comparison_linear_params_beta-2}
+  \caption{%
+    Точность оценивания параметров модели с \\
+    коэффициентом усиления \( \beta = 2 \)
+  }\label{fig:comparison_linear_params_beta-2}
 \end{figure}
 
 Следует отметить, что в рассмотренном случае область предпочтительного использования
@@ -292,7 +305,10 @@
   \end{subfigure}
 
   \vspace{\baselineskip}
-  \caption{Точность оценивания параметров моделей с \\ большим коэффициентом усиления}\label{fig:comparison_linear_params_beta-big}
+  \caption{%
+    Точность оценивания параметров моделей с \\
+    большими коэффициентами усиления
+  }\label{fig:comparison_linear_params_beta-big}
 \end{figure}
 
 На основании изложенного можно сделать следуюшие выводы:
@@ -318,7 +334,7 @@
 \end{enumerate}
 
 \newpage
-\subsection{Точность прогнозирования наблюдений выхода}\label{subsec:linear_predict}
+\subsection{Точность прогнозирования наблюдений выхода}
 
 Было выполнено сравнение точности прогнозирования наблюдений выхода по наблюдениям входа
 системы~\eqref{eq:model_linear_scalar} со оценками параметров,
@@ -345,11 +361,31 @@
 Для получения каждой оценки \( \hat{\alpha}, \hat{\beta} \) использовались результаты
 ста наблюдений \( ( x_i, y_i ), i = \overline{1, n}, n = 100 \).
 
-Анализ зависимости величины~\eqref{eq:dst_linear_predict},
-от с.к.о. ошибок наблюдений \( \sigma_{\varepsilon_x}, \sigma_{\varepsilon_y} \) показал, что
-классическая линейная регрессия дает более точные оценки наблюдаений выхода по
-наблюдениям входа системы, чем метод симметричной аппроксимации
+На рисунке~\ref{fig:comparison_linear_predict} представлены графики зависимости
+величины~\eqref{eq:dst_linear_predict},
+от с.к.о. ошибок наблюдений \( \sigma_{\varepsilon_x}, \sigma_{\varepsilon_y} \) и
+значений коэффициента усиления модели \( \beta \).
+Нетрудно убедиться, что классическая линейная регрессия дает более точные оценки наблюдаений
+выхода по наблюдениям входа системы, чем метод симметричной аппроксимации
 во всем рассмотренном диапазоне значений коэффициента усиления и с.~к.~о. ошибок наблюдений.
 
-Графики данной функции \( d(\sigma_{\varepsilon_x}, \sigma_{\varepsilon_y}) \)
-при различных значениях коэффициента усиления \( \beta \) приведены в приложении~А.
+\begin{figure}[h]
+  \begin{subfigure}[b]{\linewidth}
+    \centering
+    \includegraphics[width=135mm]{fig/linear/predict/beta-0,2_predict-measured.png}
+    \caption{\( \beta = 0{,}2 \)}
+  \end{subfigure}
+
+  \vspace{2\baselineskip}
+  \begin{subfigure}[b]{\linewidth}
+    \centering
+    \includegraphics[width=135mm]{fig/linear/predict/beta-5_predict-measured.png}
+    \caption{\( \beta = 5 \)}
+  \end{subfigure}
+
+  \vspace{\baselineskip}
+  \caption{%
+    Точность прогнозирования \\
+    наблюдений выхода линейной модели
+  }\label{fig:comparison_linear_predict}
+\end{figure}

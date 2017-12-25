@@ -1,13 +1,12 @@
-\chapter[Идентификация нелинейных стохастических систем]{%
-  Идентификация нелинейных \hspace{2cm}
-  стохастических систем
+\chapter[Идентификация нелинейных стохастических систем второго типа]{%
+  Идентификация нелинейных стохастических систем второго типа
 }
 
 \section{Математическая модель идентифицируемой системы}
 
 Для обеспечения наглядности сравнения рассматривался случай идентификации скалярной системы:
 \begin{equation}
-  \label{eq:model_nonlinear_scalar}
+  \label{eq:nonlinear_model_scalar}
   \begin{aligned}
   h &= \psi(\theta, \xi), \\
   x &= \xi + \varepsilon_x, \\
@@ -15,6 +14,7 @@
   \end{aligned}
 \end{equation}
 где \( \xi, h \) "--- фактические значения входной и выходной переменной, \par
+\( \psi \) "--- скалярно-векторная функция регрессии, \par
 \( \theta = (\theta_1, \theta_2, \dotsc, \theta_m) \) "--- вектор фактических значений параметров объекта, \par
 \( x, y \) "--- измеренные значения входной и выходной переменной, \par
 \( \varepsilon_x, \varepsilon_y \) "--- независимые ошибки измерений значений входной и
@@ -28,19 +28,19 @@
 на основании которых были получены оценки её параметров методами на основе
 классического и симметричного критериев аппроксимации.
 Значения \( \xi_i \) выбирались из равномерного в \( [0, 10] \) распределения.
-Для получения каждой оценки \( \hat{\alpha}, \hat{\beta} \) использовались результаты
+Для получения каждой оценки \( \hat{\theta} \) использовались результаты
 ста наблюдений \( ( x_i, y_i ), i = \overline{1, n}, n = 100 \).
 
 \section{Алгоритмы методов идентификации}
 
 \subsection{Нелинейный метод наименьших квадратов}
 
-Один из подходов к оценке параметров системы~\eqref{eq:model_nonlinear_scalar} состоит в следующем.
+Один из подходов к оценке параметров системы~\eqref{eq:nonlinear_model_scalar} состоит в следующем.
 Можно <<закрыть глаза>> на существование ошибок измерений
-эндогенной переменной, то есть считать, что \( \varepsilon_x = 0 \),
+входной переменной, то есть считать, что \( \varepsilon_x = 0 \),
 и вместо данной модели рассматривать модель
 \begin{equation}
-  \label{eq:model_nonlinear_lse}
+  \label{eq:nonlinear_model_lse}
   \begin{aligned}
   x &= \psi(\theta, \xi), \\
   y &= x + \varepsilon_y.
@@ -50,64 +50,181 @@
 Тогда оценка вектора параметров объекта определяется выражением~\cite{mukha_2009}
 \begin{equation}
   \label{eq:nonlinear_lse}
-  \hat{\Theta}_{\text{НМНК}} =
-  \Theta_0 + (Q^T R^{-1}_{\Xi} Q)^{-1} Q^T R^{-1}_{\Xi} (y - \psi(\Theta_0, x)),
+  \hat{\theta}_{\text{НМНК}} =
+  \theta_0 + (Q^T R^{-1}_{\Xi} Q)^{-1} Q^T R^{-1}_{\Xi} (y - \psi(\theta_0, x)),
 \end{equation}
-где \( \Theta_0 \) --- опорная точка,
-\( Q = \dfrac{\partial \psi(\Theta_0, x) }{ \partial \Theta_0 } \).
+где \( \theta_0 \) --- опорная точка,
+\( Q = \dfrac{\partial \psi(\theta_0, x) }{ \partial \theta_0 } \).
 
 Эту оценку будем называть оценкой, полученной нелинейным
 методом наименьших квадратов (НМНК).
-В качестве опорной точки \( \Theta_0 \) можно использовать значение
+В качестве опорной точки \( \theta_0 \) можно использовать значение
 \( \theta_1, \dotsc, \theta_m \),
 полученное в результате численного решения системы уравнений
 \begin{equation}
-  \label{eq:basic}
-  (y_j - \psi( \Theta, x_j )) = 0, \: j = \overline{1,m}.
+  \label{eq:nonlinear_basic}
+  (y_j - \psi( \theta, x_j )) = 0, \: j = \overline{1,m}.
 \end{equation}
+
+{\color{red} Написать про способы выбора опорных наблюдений}.
+
 Для уточнения оценки, полученной по формуле~\eqref{eq:nonlinear_lse}, можно
 организовать итерационную процедуру, заменяя опорную точку полученной оценкой.
 
-\newpage
+\vspace{2\baselineskip}
 \subsection{Метод рядов Тейлора}
 
 Применение метода рядов Тейлора (МРТ)~\cite{mukha_2000}
-требует иной формулировки задачи, допускаемой формулировкой \eqref{eq:model_nonlinear_scalar}.
-Следует предположить, что \( j \)-е наблюдение вектора параметров \( \Theta_j \)
+требует иной формулировки задачи, допускаемой формулировкой \eqref{eq:nonlinear_model_scalar}.
+Следует предположить, что \( j \)-е наблюдение вектора параметров \( \theta_j \)
 определяется как векторная функция показаний приборов:
 \begin{equation}
-  \label{eq:mrt_phi}
-  \Theta_j = \phi( \overline{z}_{j} ), \: j = \overline{1, n},
+  \label{eq:nonlinear_mrt_phi}
+  \theta_j = \phi( \overline{z}_{j} ), \: j = \overline{1, n},
 \end{equation}
 где вектор
 \( \overline{z}^{\text{T}}_{j} =
 ( \overline{x}^{\text{T}}_{j}, \overline{y}^{\text{T}}_{j}) \)
 имеет нормальное распределение \( N(A_{z,j}, R_{z,j}) \)
-и оцениваемый векторный параметр \( \Theta \) определяется как
-\( \Theta = \Phi(A_{z,j}), \forall i = \overline{1, n} \).
-
-В этом случае МРТ-оценка \( \hat{\Theta}_{\text{МРТ}} \) векторного параметра \( \Theta \)
+и оцениваемый векторный параметр \( \theta \) определяется как
+\( \theta = \phi(A_{z,j}), \forall i = \overline{1, n} \).
+В этом случае МРТ-оценка \( \hat{\theta}_{\text{МРТ}} \) векторного параметра \( \theta \)
 определяется выражением
 \begin{equation}
   \label{eq:nonlinear_mrt}
-  \hat{\Theta}_{\text{МРТ}} =
-  \Bigg( \sum^{n}_{i=1} R^{-1}_{\Theta,i} \Bigg)^{-1}
-  \sum^{n}_{j=1} R^{-1}_{\Theta,j} \Theta_j,
+  \hat{\theta}_{\text{МРТ}} =
+  \Bigg( \sum^{n}_{i=1} R^{-1}_{\theta,i} \Bigg)^{-1}
+  \sum^{n}_{j=1} R^{-1}_{\theta,j} \theta_j,
 \end{equation}
-\hspace{1.6mm} где
-\( R_{\Theta,i} = G_i R_{z,i} G^T_i \),
+где
+\( R_{\theta,i} = G_i R_{z,i} G^T_i \),
 \( G_i =
 \dfrac{\partial \phi( \overline{z}_{i} ) }{ \partial \overline{z}_{i} } \).
 
-Численное значение наблюдения \( \Theta_j \)~\eqref{eq:mrt_phi} может определяться как
-решение системы уравнений~\eqref{eq:basic}.
+Численное значение наблюдения \( \theta_j \)~\eqref{eq:nonlinear_mrt_phi} может определяться как
+решение системы уравнений~\eqref{eq:nonlinear_basic}.
 
 
-\section{Численный анализ точности оценивания параметров систем}
+\section{Численный анализ точности оценивания параметров}
 
+\subsection{Методика сравнения}
+
+Было выполнено сравнение точности оценок,
+полученных нелинейным методом наименьших квадратов и методом рядов Тейлора,
+для функций регрессии различного вида,
+в зависимости от с.~к.~о ошибок измеряемых значений
+\( \sigma_{\varepsilon_x}, \sigma_{\varepsilon_y} \).
+
+В качестве величины, характеризующей сравнительную точность оценивания параметров,
+использовалась разность средних Евклидовых расстояний
+между точными значениями параметров модели и их оценками, полученными
+с помощью НМНК и МРТ:
+\begin{equation}
+  \begin{aligned}
+    d &= d_{\text{НМНК}} - d_{\text{МРТ}}, \\
+    d_{\text{НМНК}} &=
+    \frac{1}{k} \sum_{j=1}^k
+    \sqrt{\sum_{\text{i=1}}^m (\hat{\theta}_{\text{НМНК}_{ij}} - \theta_{ij})^2}, \\
+    d_{\text{МРТ}} &=
+    \frac{1}{k} \sum_{j=1}^k
+    \sqrt{\sum_{\text{i=1}}^m (\hat{\theta}_{\text{МРТ}_{ij}} - \theta_{ij})^2}.
+  \end{aligned}
+  \label{eq:dst_nonlinear_param}
+\end{equation}
+
+Расчеты величины \( d \) производились в узлах сетки значений
+\( \sigma_{\varepsilon_x}, \sigma_{\varepsilon_y} \) в прямоугольнике
+\( [0, 2] \times [0, 2] \) с шагом 0{,}1.
+В каждом узле сетки вычислялось \( k = 100 \) оценок.
+В качестве значений НМНК-оценки \( \theta_{\text{НМНК}} \)
+использованы значения, полученные на первой итерации метода.
+
+\vspace{2\baselineskip}
 \subsection{Линейная функция регрессии}
 
-\( \alpha = 1 \)
+Частным случаем нелинейной модели~\eqref{eq:nonlinear_model_scalar} является линейная,
+то есть такая, функция регрессии которой имеет вид \( \psi = \theta_1 + \theta_2 \xi \).
+
+На рисунке~\ref{fig:comparison_nonlinear_linear}
+представлены графики функции \( d(\sigma_{\varepsilon_x}, \sigma_{\varepsilon_y}) \)
+при различных значениях параметра \( \theta_2 \).
+Нетрудно заметить, что оценки параметров линейных моделей,
+полученные с помощью НМНК, являются более точными во всем диапазоне
+величин параметров \( \theta \).
+
+\begin{figure}[p]
+  \begin{subfigure}[b]{\linewidth}
+    \centering
+    \includegraphics[width=135mm]{fig/nonlinear/linear/beta-0,2.png}
+    \caption{\( \theta_2 = 0{,}2 \)}
+  \end{subfigure}
+
+  \vspace{2\baselineskip}
+  \begin{subfigure}[b]{\linewidth}
+    \centering
+    \includegraphics[width=135mm]{fig/nonlinear/linear/beta-5.png}
+    \caption{\( \theta_2 = 5 \)}
+  \end{subfigure}
+
+  \vspace{\baselineskip}
+  \caption{%
+    Точность оценивания \\
+    параметров линейной модели
+  }\label{fig:comparison_nonlinear_linear}
+\end{figure}
+
+\subsection{Параболическая функция регрессии}
+
+фывафавп
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=135mm]{fig/nonlinear/quadratic/alpha-0_beta-1.png}
+  \caption{
+    Точность оценивания параметров \\
+    параболической модели при \( \theta_1 = 0, \theta_2 = 1 \)
+  }\label{fig:comparison_nonlinear_quadratic_alpha-0_beta-1}
+\end{figure}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=135mm]{fig/nonlinear/quadratic/alpha--5_beta-1.png}
+  \caption{
+    Точность оценивания параметров \\
+    параболической модели при \( \theta_1 = -5, \theta_2 = 1 \)
+  }\label{fig:comparison_nonlinear_quadratic_alpha--5_beta-1}
+\end{figure}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=135mm]{fig/nonlinear/quadratic/alpha-5_beta-1.png}
+  \caption{
+    Точность оценивания параметров \\
+    параболической модели при \( \theta_1 = 5, \theta_2 = 1 \)
+  }\label{fig:comparison_nonlinear_quadratic_alpha-5_beta-1}
+\end{figure}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=135mm]{fig/nonlinear/quadratic/alpha-0_beta--5.png}
+  \caption{
+    Точность оценивания параметров \\
+    параболической модели при \( \theta_1 = 0, \theta_2 = -5 \)
+  }\label{fig:comparison_nonlinear_quadratic_alpha-0_beta--5}
+\end{figure}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=135mm]{fig/nonlinear/quadratic/alpha-0_beta-5.png}
+  \caption{
+    Точность оценивания параметров \\
+    параболической модели при \( \theta_1 = 0, \theta_2 = 5 \)
+  }\label{fig:comparison_nonlinear_quadratic_alpha-0_beta-5}
+\end{figure}
+
+
+
+\subsection{Кубическая функция регрессии}
 
 \subsection{Экспоненциальная функция регрессии}
 
