@@ -275,13 +275,83 @@
   }\label{fig:comparison_nonlinear_quadratic_beta-1}
 \end{figure}
 
+\subsection{Гиперболическая функция регрессии}
+
+Рассматривались функции регрессии вида
+\begin{equation*}
+  \psi = \theta_1 + \dfrac{1}{\theta_2(\xi+1)}.
+\end{equation*}
+
+На рисунках~\ref{fig:comparison_nonlinear_hyperbolic_alpha-0_beta-0,001}--\ref{fig:comparison_nonlinear_hyperbolic_alpha-0_beta-1}
+представлены графики функции \( d(\sigma_{\varepsilon_x}, \sigma_{\varepsilon_y}) \)
+для гиперболической функции регрессии \( \psi \) при
+различных значениях параметра \( \theta_2 \).
+Во всех описанных случаях оценивания параметров
+МРТ-оценки являются более точными.
+Кроме этого, отдельные оценки, полученные НМНК,
+являются совершенно неудовлетворительными,
+о чем свидетельствуют "пики" на приведенных графиках.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=135mm]{fig/nonlinear/hyperbolic/alpha-0_beta-0,001.png}
+  \caption{
+    Точность оценивания параметров \\
+    гиперболической модели при \( \theta_2 = 0,001 \)
+  }\label{fig:comparison_nonlinear_hyperbolic_alpha-0_beta-0,001}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=135mm]{fig/nonlinear/hyperbolic/alpha-0_beta-1.png}
+  \caption{
+    Точность оценивания параметров \\
+    гиперболической модели при \( \theta_2 = 1 \)
+  }\label{fig:comparison_nonlinear_hyperbolic_alpha-0_beta-1}
+\end{figure}
 
 
-
-\subsection{Кубическая функция регрессии}
-
-\subsection{Экспоненциальная функция регрессии}
+% \subsection{Экспоненциальная функция регрессии}
+% гиперболическая функция регрессии
+% степенная и экпоненциальные функции
 
 \subsection{Синусоидальная функция регрессии}
 
-Эмпирические выводы о точности.
+Рассматривались функции регрессии вида
+\begin{equation*}
+  \begin{aligned}
+    \psi_1 &= \theta_1 \sin{0{,}2 \xi}, \\
+    \psi_2 &= \theta_1 \sin{\xi}, \\
+    \psi_3 &= \theta_1 \sin{5 \xi}.
+  \end{aligned}
+\end{equation*}
+
+На рисунках~\ref{fig:comparison_nonlinear_sinusoidal}
+представлены графики функции \( d(\sigma_{\varepsilon_x}, \sigma_{\varepsilon_y}) \)
+для синусоидальной функции регрессии \( \psi_2 \) при
+различных значениях параметра \( \theta_1 \).
+Во всех описанных случаях оценивания параметров
+НМНК-оценки являются более точными.
+Следует отметить, что при малых ошибках измерений выходной переменной
+нелинейный метод наименьших квадратов дает значительно более точные оценки.
+
+\begin{figure}[b]
+  \begin{subfigure}[b]{\linewidth}
+    \centering
+    \includegraphics[width=135mm]{fig/nonlinear/sinusoidal/alpha-0_beta-0,2.png}
+    \caption{\( \theta_1 = 0,2 \)}
+  \end{subfigure}
+
+  \vspace{2\baselineskip}
+  \begin{subfigure}[b]{\linewidth}
+  \centering
+  \includegraphics[width=135mm]{fig/nonlinear/sinusoidal/alpha-0_beta-5.png}
+  \caption{\( \theta_1 = 5 \)}
+\end{subfigure}
+
+\vspace{\baselineskip}
+  \caption{
+    Точность оценивания параметров \\
+    синусоидальной модели
+  }\label{fig:comparison_nonlinear_sinusoidal}
+\end{figure}
