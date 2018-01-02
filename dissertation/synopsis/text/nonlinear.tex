@@ -8,14 +8,16 @@
 \begin{equation}
   \label{eq:nonlinear_model_scalar}
   \begin{aligned}
-  h &= \psi(\theta, \xi), \\
+  h &= \psi(\overline{\theta}, \xi), \\
   x &= \xi + \varepsilon_x, \\
   y &= h + \varepsilon_y,
   \end{aligned}
 \end{equation}
 где \( \xi, h \) "--- фактические значения входной и выходной переменной, \par
 \( \psi \) "--- скалярно-векторная функция регрессии, \par
-\( \theta = (\theta_1, \theta_2, \dotsc, \theta_m) \) "--- вектор фактических значений параметров объекта, \par
+\(
+\overline{\theta} = (\theta_1, \theta_2, \dotsc, \theta_m)
+\) "--- вектор фактических значений параметров объекта, \par
 \( x, y \) "--- измеренные значения входной и выходной переменной, \par
 \( \varepsilon_x, \varepsilon_y \) "--- независимые ошибки измерений значений входной и
 выходной переменной, распределенные по нормальному закону:
@@ -24,9 +26,13 @@
 \varepsilon_y = N(0, \sigma_{\varepsilon_y})
 \).
 
+{\color{red}
 Данная модель использовалась для генерации наблюдений входа и выхода системы,
 на основании которых были получены оценки её параметров методами на основе
 классического и симметричного критериев аппроксимации.
+}
+
+
 Значения \( \xi_i \) выбирались из равномерного в \( [0, 10] \) распределения.
 Для получения каждой оценки \( \hat{\theta} \) использовались результаты
 ста наблюдений \( ( x_i, y_i ), i = \overline{1, n}, n = 100 \).
@@ -42,7 +48,7 @@
 \begin{equation}
   \label{eq:nonlinear_model_lse}
   \begin{aligned}
-  x &= \psi(\theta, \xi), \\
+  x &= \psi(\overline{\theta}, \xi), \\
   y &= x + \varepsilon_y.
   \end{aligned}
 \end{equation}
@@ -50,38 +56,33 @@
 Тогда оценка вектора параметров объекта определяется выражением~\cite{mukha_2009}
 \begin{equation}
   \label{eq:nonlinear_lse}
-  \hat{\theta}_{\text{НМНК}} =
-  \theta_0 + (Q^T R^{-1}_{\Xi} Q)^{-1} Q^T R^{-1}_{\Xi} (y - \psi(\theta_0, x)),
+  \hat{\overline{\theta}}_{\text{НМНК}} =
+  \overline{\theta}_0 + (Q^T R^{-1}_{\Xi} Q)^{-1} Q^T R^{-1}_{\Xi} (y - \psi(\overline{\theta}_0, x)),
 \end{equation}
-где \( \theta_0 \) --- опорная точка,
-\( Q = \dfrac{\partial \psi(\theta_0, x) }{ \partial \theta_0 } \).
+где \( \overline{\theta}_0 \) --- опорная точка,
+\( Q = \dfrac{\partial \psi(\overline{\theta}_0, x) }{ \partial \overline{\theta}_0 } \).
 
 Эту оценку будем называть оценкой, полученной нелинейным
 методом наименьших квадратов (НМНК).
-В качестве опорной точки \( \theta_0 \) можно использовать значение
+В качестве опорной точки \( \overline{\theta}_0 \) можно использовать значения
 \( \theta_1, \dotsc, \theta_m \),
-полученное в результате численного решения системы уравнений
+полученные в результате численного решения системы уравнений
 \begin{equation}
   \label{eq:nonlinear_basic}
-  (y_j - \psi( \theta, x_j )) = 0, \: j = \overline{1,m},
+  (y_j - \psi( \overline{\theta}, x_j )) = 0, \: j = \overline{1,m},
 \end{equation}
 где \( x_j, y_j \) --- опорные наблюдения входа и выхода системы соответственно.
 
-В качестве опорных могут выступать, например:
+В качестве опорных значений могут выступать, например:
 \begin{itemize}
-\item первые пары наблюдений:
+\item первые наблюдения:
   \[ (x_1, y_1), (x_2, y_2), \dotsc , (x_m, y_m); \]
-\item равноотстоящие пары наблюдений:
+\item равноотстоящие наблюдения:
   \[
     (x_{k}, y_{k}), (x_{2k}, y_{2k}) , \dotsc , (x_{mk}, y_{mk}), \:
     k = \lfloor \dfrac{n}{m} \rfloor;
   \]
-\item крайние пары наблюдений:
-  \[
-    (x_{1}, y_{1}), (x_{1 + k}, y_{1 + k}) , \dotsc , (x_{n}, y_{n}), \:
-    k = \lfloor \dfrac{n-1}{m-2} \rfloor;
-  \]
-\item усредненные наблюдения:
+\item <<средние>> наблюдения:
   \begin{gather*}
     ( \overline{x}_{k}, \overline{y}_{k} ),
     ( \overline{x}_{2k}, \overline{y}_{2k} ),
@@ -101,25 +102,25 @@
 
 Применение метода рядов Тейлора (МРТ)~\cite{mukha_2000}
 требует иной формулировки задачи, допускаемой формулировкой \eqref{eq:nonlinear_model_scalar}.
-Следует предположить, что \( j \)-е наблюдение вектора параметров \( \theta_j \)
+Следует предположить, что \( j \)-е наблюдение вектора параметров \( \overline{theta}_j \)
 определяется как векторная функция показаний приборов:
 \begin{equation}
   \label{eq:nonlinear_mrt_phi}
-  \theta_j = \phi( \overline{z}_{j} ), \: j = \overline{1, n},
+  \overline{\theta}_j = \phi( \overline{z}_{j} ), \: j = \overline{1, n},
 \end{equation}
 где вектор
 \( \overline{z}^{\text{T}}_{j} =
 ( \overline{x}^{\text{T}}_{j}, \overline{y}^{\text{T}}_{j}) \)
 имеет нормальное распределение \( N(A_{z,j}, R_{z,j}) \)
-и оцениваемый векторный параметр \( \theta \) определяется как
-\( \theta = \phi(A_{z,j}), \forall i = \overline{1, n} \).
-В этом случае МРТ-оценка \( \hat{\theta}_{\text{МРТ}} \) векторного параметра \( \theta \)
+и оцениваемый векторный параметр \( \overline{\theta} \) определяется как
+\( \overline{\theta} = \phi(A_{z,j}), \forall i = \overline{1, n} \).
+В этом случае МРТ-оценка \( \hat{\overline{\theta}}_{\text{МРТ}} \) векторного параметра \( \overline{\theta} \)
 определяется выражением
 \begin{equation}
   \label{eq:nonlinear_mrt}
-  \hat{\theta}_{\text{МРТ}} =
+  \hat{\overline{\theta}}_{\text{МРТ}} =
   \Bigg( \sum^{n}_{i=1} R^{-1}_{\theta,i} \Bigg)^{-1}
-  \sum^{n}_{j=1} R^{-1}_{\theta,j} \theta_j,
+  \sum^{n}_{j=1} R^{-1}_{\theta,j} \overline{\theta}_j,
 \end{equation}
 где
 \( R_{\theta,i} = G_i R_{z,i} G^T_i \),
@@ -161,197 +162,217 @@
 \( \sigma_{\varepsilon_x}, \sigma_{\varepsilon_y} \) в прямоугольнике
 \( [0, 2] \times [0, 2] \) с шагом 0{,}1.
 В каждом узле сетки вычислялось \( k = 100 \) оценок.
-Для расчтеа оценок использовались крайние опорные наблюдения.
+Для расчета оценок использовались средние опорные наблюдения.
 В качестве значений НМНК-оценки \( \theta_{\text{НМНК}} \)
 использованы значения, полученные на первой итерации метода.
 
+% \vspace{2\baselineskip}
+% \subsection{Линейная функция регрессии}
+
+% Частным случаем нелинейной модели~\eqref{eq:nonlinear_model_scalar} является линейная,
+% то есть такая, функция регрессии которой имеет вид \( \psi = \theta_0 + \theta_1 \xi \).
+
+% На рисунке~\ref{fig:comparison_nonlinear_linear}
+% представлены графики функции \( d(\sigma_{\varepsilon_x}, \sigma_{\varepsilon_y}) \)
+% при различных значениях параметра \( \theta_1 \).
+% По результатам сравнения можно заключить, что точность оценивания параметров линейных моделей
+% не зависят от постоянной составляющей \( \theta_0 \), и что оценки, полученные с помощью НМНК,
+% являются более точными во всем диапазоне величин \( \theta_1 \).
+
+% \begin{figure}[p]
+%   \begin{subfigure}[b]{\linewidth}
+%     \centering
+%     \includegraphics[width=135mm]{fig/nonlinear/linear/a-0_b-0,2.png}
+%     \caption{\( \theta_1 = 0{,}2 \)}
+%   \end{subfigure}
+
+%   \vspace{2\baselineskip}
+%   \begin{subfigure}[b]{\linewidth}
+%     \centering
+%     \includegraphics[width=135mm]{fig/nonlinear/linear/a-0_b-5.png}
+%     \caption{\( \theta_1 = 5 \)}
+%   \end{subfigure}
+
+%   \vspace{\baselineskip}
+%   \caption{%
+%     Точность оценивания \\
+%     параметров линейной модели
+%   }\label{fig:comparison_nonlinear_linear}
+% \end{figure}
+
 \vspace{2\baselineskip}
-\subsection{Линейная функция регрессии}
-
-Частным случаем нелинейной модели~\eqref{eq:nonlinear_model_scalar} является линейная,
-то есть такая, функция регрессии которой имеет вид \( \psi = \theta_1 + \theta_2 \xi \).
-
-На рисунке~\ref{fig:comparison_nonlinear_linear}
-представлены графики функции \( d(\sigma_{\varepsilon_x}, \sigma_{\varepsilon_y}) \)
-при различных значениях параметра \( \theta_2 \).
-По результатам сравнения можно заключить, что точность оценивания параметров линейных моделей
-не зависят от постоянной составляющей \( \theta_1 \), и что оценки, полученные с помощью НМНК,
-являются более точными во всем диапазоне величин \( \theta_2 \).
-
-\begin{figure}[p]
-  \begin{subfigure}[b]{\linewidth}
-    \centering
-    \includegraphics[width=135mm]{fig/nonlinear/linear/beta-0,2.png}
-    \caption{\( \theta_2 = 0{,}2 \)}
-  \end{subfigure}
-
-  \vspace{2\baselineskip}
-  \begin{subfigure}[b]{\linewidth}
-    \centering
-    \includegraphics[width=135mm]{fig/nonlinear/linear/beta-5.png}
-    \caption{\( \theta_2 = 5 \)}
-  \end{subfigure}
-
-  \vspace{\baselineskip}
-  \caption{%
-    Точность оценивания \\
-    параметров линейной модели
-  }\label{fig:comparison_nonlinear_linear}
-\end{figure}
-
 \subsection{Параболическая функция регрессии}
 
+{\color{red}
 Параболическая функция регрессии является, пожалуй, наиболее <<популярной>> из нелинейных.
 Поскольку ранее было установлено, что постоянная составляющая не влияет на точность оценивания,
-рассматривалась функция вида \( \psi = \theta_1 \xi + \theta_2 \xi^2 \).
+рассматривалась функция вида \( \psi = \theta_0 + \theta_1 \xi + \theta_2 \xi^2 \).
+}
 
-На рисунке~\ref{fig:comparison_nonlinear_quadratic_alpha-0_beta-1}
+На рисунке~\ref{fig:comparison_nonlinear_quadratic_a-0_b-0_c-1}
 представлен график функции \( d(\sigma_{\varepsilon_x}, \sigma_{\varepsilon_y}) \)
-для параболической функции регрессии при \( \theta_1 = 0, \theta_2 = 1 \).
+для параболической функции регрессии при \( \theta_0 = 0, \theta_1 = 0, \theta_2 = 1 \).
+{\color{red}
 Видно, что в данном случае МРТ-оценки параметров, являются более точными,
 чем оценки, полученные с помощью НМНК.
+}
 
 \begin{figure}[h!]
   \centering
-  \includegraphics[width=135mm]{fig/nonlinear/quadratic/alpha-0_beta-1.png}
+  \includegraphics[width=135mm]{fig/nonlinear/quadratic/a-0_b-0_c-1.png}
   \caption{
     Точность оценивания параметров \\
-    параболической модели при \( \theta_1 = 0, \theta_2 = 1 \)
-  }\label{fig:comparison_nonlinear_quadratic_alpha-0_beta-1}
+    параболической модели при \( \theta_0 = 0, \theta_1 = 0, \theta_2 = 1 \)
+  }\label{fig:comparison_nonlinear_quadratic_a-0_b-0_c-1}
 \end{figure}
 
-На рисунке~\ref{fig:comparison_nonlinear_quadratic_alpha-0}
+На рисунке~\ref{fig:comparison_nonlinear_quadratic_a-0_b-0}
 представлены графики функции \( d(\sigma_{\varepsilon_x}, \sigma_{\varepsilon_y}) \)
-при \( \theta_1 = 0 \). В обоих случаях МРТ-оценки оказались более точными.
+при \( \theta_0 = 0, \theta_1 = 0 \).
+{\color{red}
+В обоих случаях МРТ-оценки оказались более точными.
+}
 
 \begin{figure}[p]
   \begin{subfigure}[b]{\linewidth}
     \centering
-    \includegraphics[width=135mm]{fig/nonlinear/quadratic/alpha-0_beta--5.png}
+    \includegraphics[width=135mm]{fig/nonlinear/quadratic/a-0_b-0_c--5.png}
     \caption{\( \theta_2 = -5 \)}
   \end{subfigure}
 
   \vspace{2\baselineskip}
   \begin{subfigure}[b]{\linewidth}
     \centering
-    \includegraphics[width=135mm]{fig/nonlinear/quadratic/alpha-0_beta-5.png}
+    \includegraphics[width=135mm]{fig/nonlinear/quadratic/a-0_b-0_c-5.png}
     \caption{\( \theta_2 = 5 \)}
   \end{subfigure}
 
   \vspace{\baselineskip}
     \caption{
       Точность оценивания параметров \\
-      параболической модели при \( \theta_1 = 0 \)
-    }\label{fig:comparison_nonlinear_quadratic_alpha-0}
+      параболической модели при \( \theta_0 = 0, \theta_1 = 0 \)
+    }\label{fig:comparison_nonlinear_quadratic_a-0_b-0}
 \end{figure}
 
-На рисунке~\ref{fig:comparison_nonlinear_quadratic_beta-1}
+На рисунке~\ref{fig:comparison_nonlinear_quadratic_a-0_c-1}
 представлены графики функции \( d(\sigma_{\varepsilon_x}, \sigma_{\varepsilon_y}) \)
-при \( \theta_2 = 1 \).
-В первом случае (рисунок~\ref{fig:comparison_nonlinear_quadratic_alpha--5_beta-1})
+при \( \theta_0 = 0, \theta_2 = 1 \).
+{\color{red}
+В первом случае (рисунок~\ref{fig:comparison_nonlinear_quadratic_a-0_b--5_c-1})
 МРТ-оценки оказались более точными, чем НМНК, а во втором
-(рисунок~\ref{fig:comparison_nonlinear_quadratic_alpha-5_beta-1}) --- наоборот.
+(рисунок~\ref{fig:comparison_nonlinear_quadratic_a-0_b-5_c-1}) --- наоборот.
 Это связано, по-видимому, с тем, что выражение \( -5 \xi + \xi^2 \)
 обладает более ярко выраженной <<нелинейностью>>, чем \( 5 \xi + \xi^2 \).
+}
 
 \begin{figure}[p]
   \begin{subfigure}[b]{\linewidth}
     \centering
-    \includegraphics[width=135mm]{fig/nonlinear/quadratic/alpha--5_beta-1.png}
-    \caption{\( \theta_1 = -5 \)}\label{fig:comparison_nonlinear_quadratic_alpha--5_beta-1}
+    \includegraphics[width=135mm]{fig/nonlinear/quadratic/a-0_b--5_c-1.png}
+    \caption{\( \theta_1 = -5 \)}\label{fig:comparison_nonlinear_quadratic_a-0_b--5_c-1}
   \end{subfigure}
 
   \vspace{2\baselineskip}
   \begin{subfigure}[b]{\linewidth}
     \centering
-    \includegraphics[width=135mm]{fig/nonlinear/quadratic/alpha-5_beta-1.png}
-    \caption{\( \theta_1 = 5 \)}\label{fig:comparison_nonlinear_quadratic_alpha-5_beta-1}
+    \includegraphics[width=135mm]{fig/nonlinear/quadratic/a-0_b-5_c-1.png}
+    \caption{\( \theta_1 = 5 \)}\label{fig:comparison_nonlinear_quadratic_a-0_b-5_c-1}
   \end{subfigure}
 
   \vspace{\baselineskip}
   \caption{
     Точность оценивания параметров \\
-    параболической модели при \( \theta_2 = 1 \)
-  }\label{fig:comparison_nonlinear_quadratic_beta-1}
+    параболической модели при \( \theta_0 = 0, \theta_2 = 1 \)
+  }\label{fig:comparison_nonlinear_quadratic_a-0_c-1}
 \end{figure}
 
-\subsection{Гиперболическая функция регрессии}
+% \subsection{Обратная функция регрессии}
 
-Рассматривались функции регрессии вида
-\begin{equation*}
-  \psi = \theta_1 + \dfrac{1}{\theta_2(\xi+1)}.
-\end{equation*}
+% Рассматривались функции регрессии вида
+% \begin{equation*}
+%   \psi = \theta_0 + \dfrac{1}{\theta_1 + \theta_2 \xi}.
+% \end{equation*}
 
-На рисунках~\ref{fig:comparison_nonlinear_hyperbolic_alpha-0_beta-0,001}--\ref{fig:comparison_nonlinear_hyperbolic_alpha-0_beta-1}
-представлены графики функции \( d(\sigma_{\varepsilon_x}, \sigma_{\varepsilon_y}) \)
-для гиперболической функции регрессии \( \psi \) при
-различных значениях параметра \( \theta_2 \).
-Во всех описанных случаях оценивания параметров
-МРТ-оценки являются более точными.
-Кроме этого, отдельные оценки, полученные НМНК,
-являются совершенно неудовлетворительными,
-о чем свидетельствуют "пики" на приведенных графиках.
+% На рисунках~\ref{fig:comparison_nonlinear_hyperbolic_a-0_b-0,001}--\ref{fig:comparison_nonlinear_hyperbolic_a-0_b-1}
+% представлены графики функции \( d(\sigma_{\varepsilon_x}, \sigma_{\varepsilon_y}) \)
+% для обратной функции регрессии \( \psi \) при
+% различных значениях параметра \( \theta_2 \).
+% {\color{red}Во всех описанных случаях оценивания параметров
+% МРТ-оценки являются более точными.
+% Кроме этого, отдельные оценки, полученные НМНК,
+% являются совершенно неудовлетворительными,
+% о чем свидетельствуют "пики" на приведенных графиках.
+% }
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=135mm]{fig/nonlinear/hyperbolic/alpha-0_beta-0,001.png}
-  \caption{
-    Точность оценивания параметров \\
-    гиперболической модели при \( \theta_2 = 0,001 \)
-  }\label{fig:comparison_nonlinear_hyperbolic_alpha-0_beta-0,001}
-\end{figure}
+% \begin{figure}[h]
+%   \centering
+%   \includegraphics[width=135mm]{fig/nonlinear/hyperbolic/a-0_b-0,001.png}
+%   \caption{
+%     Точность оценивания параметров \\
+%     гиперболической модели при \( \theta_1 = 0,001 \)
+%   }\label{fig:comparison_nonlinear_hyperbolic_a-0_b-0,001}
+% \end{figure}
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=135mm]{fig/nonlinear/hyperbolic/alpha-0_beta-1.png}
-  \caption{
-    Точность оценивания параметров \\
-    гиперболической модели при \( \theta_2 = 1 \)
-  }\label{fig:comparison_nonlinear_hyperbolic_alpha-0_beta-1}
-\end{figure}
+% \begin{figure}[h]
+%   \centering
+%   \includegraphics[width=135mm]{fig/nonlinear/hyperbolic/a-0_b-1.png}
+%   \caption{
+%     Точность оценивания параметров \\
+%     гиперболической модели при \( \theta_1 = 1 \)
+%   }\label{fig:comparison_nonlinear_hyperbolic_a-0_b-1}
+% \end{figure}
 
 
-% \subsection{Экспоненциальная функция регрессии}
-% гиперболическая функция регрессии
-% степенная и экпоненциальные функции
+% % \subsection{Экспоненциальная функция регрессии}
+% % гиперболическая функция регрессии
+% % степенная и показательная функции
 
-\subsection{Синусоидальная функция регрессии}
+% % \subsection{Степенная функция регрессии}
 
-Рассматривались функции регрессии вида
-\begin{equation*}
-  \begin{aligned}
-    \psi_1 &= \theta_1 \sin{0{,}2 \xi}, \\
-    \psi_2 &= \theta_1 \sin{\xi}, \\
-    \psi_3 &= \theta_1 \sin{5 \xi}.
-  \end{aligned}
-\end{equation*}
+% % Рассматривались функции регрессии вида
+% % \begin{equation*}
+% %   \psi = \theta_1 \xi^{\theta_2}.
+% % \end{equation*}
 
-На рисунках~\ref{fig:comparison_nonlinear_sinusoidal}
-представлены графики функции \( d(\sigma_{\varepsilon_x}, \sigma_{\varepsilon_y}) \)
-для синусоидальной функции регрессии \( \psi_2 \) при
-различных значениях параметра \( \theta_1 \).
-Во всех описанных случаях оценивания параметров
-НМНК-оценки являются более точными.
-Следует отметить, что при малых ошибках измерений выходной переменной
-нелинейный метод наименьших квадратов дает значительно более точные оценки.
 
-\begin{figure}[b]
-  \begin{subfigure}[b]{\linewidth}
-    \centering
-    \includegraphics[width=135mm]{fig/nonlinear/sinusoidal/alpha-0_beta-0,2.png}
-    \caption{\( \theta_1 = 0,2 \)}
-  \end{subfigure}
+% % нелинейным регрессиям по оцениваемым параметрам
+% \subsection{Синусоидальная функция регрессии}
 
-  \vspace{2\baselineskip}
-  \begin{subfigure}[b]{\linewidth}
-  \centering
-  \includegraphics[width=135mm]{fig/nonlinear/sinusoidal/alpha-0_beta-5.png}
-  \caption{\( \theta_1 = 5 \)}
-\end{subfigure}
+% Рассматривались функции регрессии вида
+% \begin{equation*}
+%   \begin{aligned}
+%     \psi_1 &= \theta_0 + \theta_1 \sin{0{,}2 \xi}, \\
+%     \psi_2 &= \theta_0 + \theta_1 \sin{\xi}, \\
+%     \psi_3 &= \theta_0 + \theta_1 \sin{5 \xi}.
+%   \end{aligned}
+% \end{equation*}
 
-\vspace{\baselineskip}
-  \caption{
-    Точность оценивания параметров \\
-    синусоидальной модели
-  }\label{fig:comparison_nonlinear_sinusoidal}
-\end{figure}
+% На рисунках~\ref{fig:comparison_nonlinear_sinusoidal}
+% представлены графики функции \( d(\sigma_{\varepsilon_x}, \sigma_{\varepsilon_y}) \)
+% для синусоидальной функции регрессии \( \psi_2 \) при
+% различных значениях параметра \( \theta_1 \).
+% Во всех описанных случаях оценивания параметров
+% НМНК-оценки являются более точными.
+% Следует отметить, что при малых ошибках измерений выходной переменной
+% нелинейный метод наименьших квадратов дает значительно более точные оценки.
+
+% \begin{figure}[b]
+%   \begin{subfigure}[b]{\linewidth}
+%     \centering
+%     \includegraphics[width=135mm]{fig/nonlinear/sinusoidal/a-0_b-0,2.png}
+%     \caption{\( \theta_1 = 0,2 \)}
+%   \end{subfigure}
+
+%   \vspace{2\baselineskip}
+%   \begin{subfigure}[b]{\linewidth}
+%   \centering
+%   \includegraphics[width=135mm]{fig/nonlinear/sinusoidal/a-0_b-5.png}
+%   \caption{\( \theta_1 = 5 \)}
+% \end{subfigure}
+
+% \vspace{\baselineskip}
+%   \caption{
+%     Точность оценивания параметров \\
+%     синусоидальной модели
+%   }\label{fig:comparison_nonlinear_sinusoidal}
+% \end{figure}
