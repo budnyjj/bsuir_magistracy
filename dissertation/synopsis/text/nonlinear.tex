@@ -26,17 +26,6 @@
 \varepsilon_y = N(0, \sigma_{\varepsilon_y})
 \).
 
-{\color{red}
-Данная модель использовалась для генерации наблюдений входа и выхода системы,
-на основании которых были получены оценки её параметров методами на основе
-классического и симметричного критериев аппроксимации.
-}
-
-
-Значения \( \xi_i \) выбирались из равномерного в \( [0, 10] \) распределения.
-Для получения каждой оценки \( \hat{\theta} \) использовались результаты
-ста наблюдений \( ( x_i, y_i ), i = \overline{1, n}, n = 100 \).
-
 \section{Алгоритмы методов идентификации}
 
 \subsection{Нелинейный метод наименьших квадратов}
@@ -158,6 +147,10 @@
   \label{eq:dst_nonlinear_param}
 \end{equation}
 
+Значения \( \xi_i \) выбирались из равномерного в \( [0, 10] \) распределения.
+Для получения каждой оценки \( \hat{\overline{\theta}} \) использовались результаты
+ста наблюдений \( ( x_i, y_i ), i = \overline{1, n}, n = 100 \).
+
 Расчеты величины \( d \) производились в узлах сетки значений
 \( \sigma_{\varepsilon_x}, \sigma_{\varepsilon_y} \) в прямоугольнике
 \( [0, 2] \times [0, 2] \) с шагом 0{,}1.
@@ -200,24 +193,29 @@
 %   }\label{fig:comparison_nonlinear_linear}
 % \end{figure}
 
-\vspace{2\baselineskip}
+\pagebreak
 \subsection{Параболическая функция регрессии}
 
-{\color{red}
-Параболическая функция регрессии является, пожалуй, наиболее <<популярной>> из нелинейных.
-Поскольку ранее было установлено, что постоянная составляющая не влияет на точность оценивания,
-рассматривалась функция вида \( \psi = \theta_0 + \theta_1 \xi + \theta_2 \xi^2 \).
-}
+Параболическая функция регрессии вида
+\( \psi = \theta_0 + \theta_1 \xi + \theta_2 \xi^2 \)
+является, пожалуй, наиболее <<популярной>> из нелинейных.
 
-На рисунке~\ref{fig:comparison_nonlinear_quadratic_a-0_b-0_c-1}
-представлен график функции \( d(\sigma_{\varepsilon_x}, \sigma_{\varepsilon_y}) \)
-для параболической функции регрессии при \( \theta_0 = 0, \theta_1 = 0, \theta_2 = 1 \).
-{\color{red}
-Видно, что в данном случае МРТ-оценки параметров, являются более точными,
-чем оценки, полученные с помощью НМНК.
-}
+На рисунках~\ref{fig:comparison_nonlinear_quadratic_a-0_b-0_c-1}--\ref{fig:comparison_nonlinear_quadratic_a-0_c-1} представлен ряд графиков зависимости \( d(\sigma_{\varepsilon_x}, \sigma_{\varepsilon_y}) \)
+для параболической функции регрессии при различных значениях её параметров.
+По результатам анализа данных графиков можно сделать следующие выводы:
+\begin{enumerate}
+\item Точность оценивания не зависит от фактического значения постоянной составляющей \( \theta_0 \).
+\item Если функция регрессии на промежутке аппроксимации является монотонной,
+  точность оценивания зависит главным образом от абсолютного значения параметра \( \theta_2 \)
+  (рисунки~\ref{fig:comparison_nonlinear_quadratic_a-0_b-0_c-1},~\ref{fig:comparison_nonlinear_quadratic_a-0_b-0},~\ref{fig:comparison_nonlinear_quadratic_a-0_b-5_c-1}).
+  При больших значениях данного параметра оценки, полученные НМНК,
+  являются более точными, чем МРТ-оценки.
+\item В случае, когда функция регрессии на промежутке аппроксимации является немонотонной,
+  метод рядов Тейлора оценивает параметры модели более точно, чем НМНК
+  (рисунок~\ref{fig:comparison_nonlinear_quadratic_a-0_b--5_c-1}).
+\end{enumerate}
 
-\begin{figure}[h!]
+\begin{figure}[b]
   \centering
   \includegraphics[width=135mm]{fig/nonlinear/quadratic/a-0_b-0_c-1.png}
   \caption{
@@ -225,13 +223,6 @@
     параболической модели при \( \theta_0 = 0, \theta_1 = 0, \theta_2 = 1 \)
   }\label{fig:comparison_nonlinear_quadratic_a-0_b-0_c-1}
 \end{figure}
-
-На рисунке~\ref{fig:comparison_nonlinear_quadratic_a-0_b-0}
-представлены графики функции \( d(\sigma_{\varepsilon_x}, \sigma_{\varepsilon_y}) \)
-при \( \theta_0 = 0, \theta_1 = 0 \).
-{\color{red}
-В обоих случаях МРТ-оценки оказались более точными.
-}
 
 \begin{figure}[p]
   \begin{subfigure}[b]{\linewidth}
@@ -253,17 +244,6 @@
       параболической модели при \( \theta_0 = 0, \theta_1 = 0 \)
     }\label{fig:comparison_nonlinear_quadratic_a-0_b-0}
 \end{figure}
-
-На рисунке~\ref{fig:comparison_nonlinear_quadratic_a-0_c-1}
-представлены графики функции \( d(\sigma_{\varepsilon_x}, \sigma_{\varepsilon_y}) \)
-при \( \theta_0 = 0, \theta_2 = 1 \).
-{\color{red}
-В первом случае (рисунок~\ref{fig:comparison_nonlinear_quadratic_a-0_b--5_c-1})
-МРТ-оценки оказались более точными, чем НМНК, а во втором
-(рисунок~\ref{fig:comparison_nonlinear_quadratic_a-0_b-5_c-1}) --- наоборот.
-Это связано, по-видимому, с тем, что выражение \( -5 \xi + \xi^2 \)
-обладает более ярко выраженной <<нелинейностью>>, чем \( 5 \xi + \xi^2 \).
-}
 
 \begin{figure}[p]
   \begin{subfigure}[b]{\linewidth}
