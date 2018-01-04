@@ -64,23 +64,32 @@
 
 В качестве опорных значений могут выступать, например:
 \begin{itemize}
-\item первые наблюдения:
-  \[ (x_1, y_1), (x_2, y_2), \dotsc , (x_m, y_m); \]
-\item равноотстоящие наблюдения:
+\item первые \( m \) порядковых статистик из множества наблюдений:
+  \[
+    (x_1, y_1), (x_2, y_2), \dotsc , (x_m, y_m), \:
+    x_i < x_{i+1}, \;
+    i = \overline{1, n};
+  \]
+\item \( m \) равноотстоящих порядковых статистик:
   \[
     (x_{k}, y_{k}), (x_{2k}, y_{2k}) , \dotsc , (x_{mk}, y_{mk}), \:
-    k = \lfloor \dfrac{n}{m} \rfloor;
+    k = \lfloor \dfrac{n}{m} \rfloor, \:
+    x_i < x_{i+1}, \;
+    i = \overline{1, n};
   \]
-\item усредненные наблюдения:
-  \begin{gather*}
+\item \( m \) средних значений, рассчитанных на основе
+  упорядоченного набора наблюдений:
+  \begin{gather}
     ( \overline{x}_{k}, \overline{y}_{k} ),
     ( \overline{x}_{2k}, \overline{y}_{2k} ),
     \dotsc ,
     ( \overline{x}_{mk}, \overline{y}_{mk}), \\
-    \overline{x}_{ik} = \dfrac{1}{m} \sum_{j = 1+(i-1)k}^{ik} x_j, \quad
-    \overline{y}_{ik} = \dfrac{1}{m} \sum_{j = 1+(i-1)k}^{ik} y_j, \quad
-    k = \lfloor \dfrac{n}{m} \rfloor.
-  \end{gather*}
+    \overline{x}_{ik} = \dfrac{1}{m} \sum_{j = 1+(i-1)k}^{ik} x_j, \:
+    \overline{y}_{ik} = \dfrac{1}{m} \sum_{j = 1+(i-1)k}^{ik} y_j, \\
+    k = \lfloor \dfrac{n}{m} \rfloor \:
+    x_i < x_{i+1}, \; i = \overline{1, n}.
+    \label{eq:nonlinear_base_values}
+  \end{gather}
 \end{itemize}
 
 Для уточнения оценки, полученной по формуле~\eqref{eq:nonlinear_lse}, можно
@@ -158,9 +167,10 @@
 \( \sigma_{\varepsilon_x}, \sigma_{\varepsilon_y} \) в прямоугольнике
 \( [0, 2] \times [0, 2] \) с шагом 0{,}1.
 В каждом узле сетки вычислялось \( k = 100 \) оценок.
-Для расчета оценок использовались средние опорные наблюдения.
+Для расчета оценок использовались опорные значения,
+рассчитанные по алгоритму~\eqref{eq:nonlinear_base_values}.
 В качестве значений НМНК-оценки \( \theta_{\text{НМНК}} \)
-использованы значения, полученные на первой итерации метода.
+были использованы значения, полученные на первой итерации метода.
 
 % \vspace{2\baselineskip}
 % \subsection{Линейная функция регрессии}
