@@ -3,16 +3,15 @@
 \renewcommand{\thelstlisting}{\Asbuk{section}.\arabic{lstlisting}}
 
 \chapter*{%
-  Приложение А \hspace{10cm}
-  Точность прогнозирования наблюдений выхода
-  линейной стохастической  \hspace{10cm}
-  системы второго типа \hspace{12cm}
-  (к подразделу~2.3.2)
+  ПРИЛОЖЕНИЕ А \hspace{10cm}
+  ПРОГРАММНЫЕ РЕАЛИЗАЦИИ МЕТОДОВ \hspace{10cm}
+  ИДЕНТИФИКАЦИИ ЛИНЕЙНЫХ СИСТЕМ  \hspace{10cm}
+  (к подразделу~???)
 }
 \addcontentsline{toc}{chapter}{%
   Приложение А
-  Точность прогнозирования наблюдений выхода \\
-  \hspace*{2.8cm} линейной стохастической системы второго типа
+  Программные реализации методов идентификации \\
+  \hspace*{2.9cm} линейных систем
 }
 
 \setcounter{section}{1}
@@ -20,25 +19,14 @@
 \setcounter{table}{0}
 \setcounter{lstlisting}{0}
 
-На приведенных ниже рисунках показана зависимость величины~\eqref{eq:dst_linear_predict}
-от с.к.о. ошибок наблюдений \( \sigma_{\varepsilon_x}, \sigma_{\varepsilon_y} \) при
-различных фактических значениях коэффициента усиления \( \beta \)
-линейной стохастической системы второго типа.
+\vspace{-\baselineskip}
+\lstinputlisting[
+caption=Программная реализация линейного \\ метода наименьших квадратов,
+language={Python}
+]{lst/linear_lse.py}
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=135mm]{fig/linear/predict/beta-0,2_predict-measured.png}
-  \caption{Точность прогнозирования наблюдений выхода при \( \beta = 0{,}2 \)}
-\end{figure}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=135mm]{fig/linear/predict/beta-1_predict-measured.png}
-  \caption{Точность прогнозирования наблюдений выхода при \( \beta = 1\)}
-\end{figure}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=135mm]{fig/linear/predict/beta-5_predict-measured.png}
-  \caption{Точность прогнозирования наблюдений выхода при \( \beta = 5 \)}
-\end{figure}
+\vspace{0.5\baselineskip}
+\lstinputlisting[
+caption=Программная реализация метода \\ симметричной аппроксимации,
+language={Python}
+]{lst/linear_msa.py}
