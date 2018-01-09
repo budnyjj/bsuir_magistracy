@@ -1,7 +1,8 @@
 \chapter[Идентификация нелинейных стохастических систем второго типа]{%
-  ИДЕНТИФИКАЦИЯ НЕЛИНЕЙНЫХ СТОХАСТИЧЕСКИХ
-  СИСТЕМ ВТОРОГО ТИПА
+  ИДЕНТИФИКАЦИЯ НЕЛИНЕЙНЫХ СТОХАСТИЧЕСКИХ СИСТЕМ
 }
+
+{\color{red} Пояснение, почему будем рассматривать системы второго типа.}
 
 \section{Математическая модель идентифицируемой системы}
 
@@ -10,9 +11,9 @@
 \begin{equation}
   \label{eq:nonlinear_model_scalar}
   \begin{aligned}
-  h &= \psi(\overline{\theta}, \xi), \\
-  x &= \xi + \varepsilon_x, \\
-  y &= h + \varepsilon_y,
+    h &= \psi(\overline{\theta}, \xi), \\
+    x &= \xi + \varepsilon_x, \\
+    y &= h + \varepsilon_y,
   \end{aligned}
 \end{equation}
 где \( \xi, h \) "--- фактические значения входной и выходной переменной, \\
@@ -46,8 +47,8 @@
 и вместо данной модели рассматривать модель
 \begin{equation*}
   \begin{aligned}
-  x &= \psi(\overline{\theta}, \xi), \\
-  y &= x + \varepsilon_y.
+    x &= \psi(\overline{\theta}, \xi), \\
+    y &= x + \varepsilon_y.
   \end{aligned}
 \end{equation*}
 
@@ -136,6 +137,7 @@
 Численное значение наблюдения \( \theta_j \)~\eqref{eq:nonlinear_mrt_phi} может определяться как
 решение системы уравнений~\eqref{eq:nonlinear_basic}.
 
+\subsection{Программная реализация алгоритмов}
 
 \section{Численный анализ точности оценивания параметров}
 
@@ -185,7 +187,7 @@
 \[ \psi = \theta_0 + \theta_1 \xi. \]
 
 На рисунке~\ref{fig:comparison_nonlinear_linear}
-представлен график зависимости \( d(\sigma_{\varepsilon_x}, \sigma_{\varepsilon_y}) \)
+представлены линии равного уровня зависимости \( d(\sigma_{\varepsilon_x}, \sigma_{\varepsilon_y}) \)
 при \( \theta_1 = 1 \).
 Видно, что точность оценок параметров модели, полученных с помощью МНК,
 превосходит точность МРТ-оценок.
@@ -216,14 +218,15 @@
 Параболическая функция регрессии имеет следующий вид:
 \[ \psi = \theta_0 + \theta_1 \xi + \theta_2 \xi^2. \]
 
-На рисунках~\ref{fig:comparison_nonlinear_quadratic_b-0_c-1}--\ref{fig:comparison_nonlinear_quadratic_c-1} представлен ряд графиков зависимости
+На рисунках~\ref{fig:comparison_nonlinear_quadratic_b-0_c-1}--\ref{fig:comparison_nonlinear_quadratic_c-1} представлены линии равного уровня зависимости
 \( d(\sigma_{\varepsilon_x}, \sigma_{\varepsilon_y}) \)
 для параболической функции регрессии при различных значениях её параметров.
-По данным графикам можно сделать следующие выводы:
+По данным рисункам можно сделать следующие выводы:
 \begin{enumerate}
 \item Точность оценивания параметров параболической модели не зависит
   от фактического значения постоянной составляющей \( \theta_0 \).
-\item Если функция регрессии на промежутке аппроксимации является монотонной,
+\item Если функция регрессии на промежутке аппроксимации является монотонно
+  возрастающей или монотонно убывающей,
   то точность оценивания её параметров зависит главным образом от
   абсолютного значения её параметра \( \theta_2 \)
   (рисунок~\ref{fig:comparison_nonlinear_quadratic_b-5_c-1}).
@@ -231,7 +234,8 @@
   тем более точными являются оценки, полученные МНК,
   по сравнению с МРТ-оценками
   (рисунки~\ref{fig:comparison_nonlinear_quadratic_b-0_c-1},~\ref{fig:comparison_nonlinear_quadratic_b-0},~\ref{fig:comparison_nonlinear_quadratic_b-5_c-1}).
-\item В случае, когда функция регрессии на промежутке аппроксимации является немонотонной,
+\item В случае, когда функция регрессии на промежутке аппроксимации не является
+  монотонно возрастающей или убывающей,
   метод рядов Тейлора оценивает параметры модели более точно, чем МНК
   (рисунок~\ref{fig:comparison_nonlinear_quadratic_b--5_c-1}).
 \end{enumerate}
@@ -281,142 +285,10 @@
   \end{subfigure}
 
   \vspace{\baselineskip}
-    \caption{
-      Сравнительная точность оценивания \\
-      параметров параболической модели при \( \theta_1 = 0 \)
-    }\label{fig:comparison_nonlinear_quadratic_b-0}
-\end{figure}
-
-\vspace{2\baselineskip}
-\subsection{Экспоненциальная функция регрессии}
-
-Рассматривалась экспоненциальная функция регрессии вида
-\[ \psi = e^{\theta_0 + \theta_1 \xi}, \; \theta_0 > 0, \theta_1 > 0. \]
-
-На основании графиков зависимости \( d(\sigma_{\varepsilon_x}, \sigma_{\varepsilon_y}) \)
-при различных значениях параметра \( \theta_1 \)
-(рисунки~\ref{fig:comparison_nonlinear_exponential_a-2_b-0,3}--~\ref{fig:comparison_nonlinear_exponential_a-2_b-0,5}) можно сделать следующие выводы:
-\begin{enumerate}
-\item МРТ даёт в среднем более точные оценки параметров экспоненциальной модели, чем МНК,
-  во всем диапазоне рассматриваемых значений параметров \( \theta_0, \theta_1 \).
-\item Чем большее значение имеют параметры модели \( \theta_0, \theta_1 \),
-  тем более точными являются оценки, полученные МРТ, по сравнению с МНК-оценками.
-\end{enumerate}
-
-\vspace{2\baselineskip}
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=135mm]{fig/nonlinear/exponential/a-2_b-0,3.png}
   \caption{
     Сравнительная точность оценивания \\
-    параметров экспоненциальной модели при \( \theta_0 = 2, \theta_1 = 0{,}3 \)
-  }\label{fig:comparison_nonlinear_exponential_a-2_b-0,3}
-\end{figure}
-
-\begin{figure}[p]
-  \centering
-  \includegraphics[width=135mm]{fig/nonlinear/exponential/a-2_b-0,4.png}
-  \caption{
-    Сравнительная точность оценивания \\
-    параметров экспоненциальной модели при \( \theta_0 = 2, \theta_1 = 0{,}4 \)
-  }\label{fig:comparison_nonlinear_exponential_a-2_b-0,4}
-\end{figure}
-
-\begin{figure}[p]
-  \centering
-  \includegraphics[width=135mm]{fig/nonlinear/exponential/a-2_b-0,5.png}
-  \caption{
-    Сравнительная точность оценивания \\
-    параметров экспоненциальной модели при \( \theta_0 = 2, \theta_1 = 0{,}5 \)
-  }\label{fig:comparison_nonlinear_exponential_a-2_b-0,5}
-\end{figure}
-
-\vspace{2\baselineskip}
-\subsection{Обратная функция регрессии}
-
-Под обратной функцией регрессии понимается выражение вида
-\[ \psi = \theta_0 + \dfrac{1}{\theta_1 + \theta_2 x}. \]
-
-Значения параметров \( \theta_1, \theta_2 \) выбирались таким образом, чтобы
-их оценивание производилось по наблюдениям, соответствующим правой ветви функции \( \psi \).
-В условиях моделирования, описанных в подразделе~\ref{subsec:nonlinear_comparison_conditions},
-этого можно добиться, если принять
-\[ c = \dfrac{\theta_1}{\theta_2} > 3 \max{(\sigma_{\varepsilon_x})} = 6. \]
-Для того, чтобы исключить влияние горизонтального смещения функции регрессии,
-необходимо, чтобы значение величины \( c \) сохранялось неизменным во всех экспериментах.
-
-В таблице~\ref{tbl:comparison_nonlinear_inverse} приведены средние значения
-величины \( d \) при различных значениях параметров \( \theta_1, \theta_2 \).
-Нетрудно заметить, что во всех рассмотренных случаях средняя точность МНК-оценок
-является неудовлетворительной.
-В этих же условиях МРТ даёт оценки приемлемой точности.
-
-На рисунке~\ref{fig:comparison_nonlinear_inverse} представлены графики зависимости
-\( d(\sigma_{\varepsilon_x}, \sigma_{\varepsilon_y}) \) при <<крайних>> значениях параметров
-\( \theta_1, \theta_2 \), взятых из таблицы.
-Видно, что при больших значениях ошибок с.~к.~о. наблюдений
-МРТ позволяет получить значительно более точные оценки параметров, чем МНК.
-Данная тенденция проявляется тем сильнее,
-чем менее пологой является функция регрессии при данных значениях параметров.
-Кроме этого, следует отметить ряд пиковых значений на данных графиках,
-сотвествующих случаям, когда опорные оценки параметров для МНК оказались
-особенно неудачными.
-
-\begin{table}[b]
-  \caption{%
-    Средняя точность оценивания параметров обратной модели в
-    зависимости от фактических значений параметров \( \theta_1, \theta_2 \)
-  }\label{tbl:comparison_nonlinear_inverse}
-  \small
-  \begin{tabular}{| m{4cm} | M{3.7cm} | M{3.7cm} | M{3.7cm} |}
-    \hline
-    \( \theta_1, \theta_2 \)
-    & \( \overline{d_{\text{МНК}}} \)
-    & \( \overline{d_{\text{МРТ}}} \)
-    & \( \overline{d_{\text{МНК}} - d_{\text{МРТ}}} \) \\
-    \hline
-    \( \theta_1 = 0{,}035, \theta_2 = 0{,}005 \)
-    & 1621{,}9
-    & 14{,}8
-    & 1607{,}1 \\
-    \hline
-    \( \theta_1 = 0{,}07, \theta_2 = 0{,}01 \)
-    & 2533{,}9
-    & 8
-    & 2525{,}9 \\
-    \hline
-    \( \theta_1 = 0{,}14, \theta_2 = 0{,}02 \)
-    & 2189
-    & 4{,}3
-    & 2184{,}7 \\
-    \hline
-    \( \theta_1 = 0{,}28, \theta_2 = 0{,}04 \)
-    & 3358{,}1
-    & 2{,}3
-    & 3355{,}8 \\
-    \hline
-    \end{tabular}
-\end{table}
-
-\begin{figure}[p]
-  \begin{subfigure}[b]{\linewidth}
-    \centering
-    \includegraphics[width=135mm]{fig/nonlinear/inverse/a-0_b-0,035_c-0,005.png}
-    \caption{\( \theta_1 = 0{,}035, \theta_2 = 0{,}05 \)}
-  \end{subfigure}
-
-  \vspace{2\baselineskip}
-  \begin{subfigure}[b]{\linewidth}
-    \centering
-    \includegraphics[width=135mm]{fig/nonlinear/inverse/a-0_b-0,28_c-0,04.png}
-    \caption{\( \theta_1 = 0{,}28, \theta_2 = 0{,}4 \)}
-  \end{subfigure}
-
-  \vspace{\baselineskip}
-    \caption{
-      Сравнительная точность оценивания \\
-      параметров обратной модели
-    }\label{fig:comparison_nonlinear_inverse}
+    параметров параболической модели при \( \theta_1 = 0 \)
+  }\label{fig:comparison_nonlinear_quadratic_b-0}
 \end{figure}
 
 \vspace{2\baselineskip}
@@ -424,7 +296,7 @@
 
 Рассматривалось семейство функций регрессии вида
 \[ \psi_{\varphi} = \theta_0 + \theta_1 \sin{(\varphi \xi)}, \:
-\varphi \in \{ 0{,}2, 1, 5 \}. \]
+  \varphi \in \{ 0{,}2, 1, 5 \}. \]
 
 В таблице~\ref{tbl:comparison_nonlinear_sinusoidal} приведены средние значения
 величин \( d \) при различных значениях параметров \( \theta_1 \).
@@ -435,7 +307,7 @@
 (с ростом \( \theta_1 \) точность МНК-оценивания снижается медленнее, чем МРТ).
 
 На рисунке~\ref{fig:comparison_nonlinear_sinusoidal}
-представлены графики функции \( d(\sigma_{\varepsilon_x}, \sigma_{\varepsilon_y}) \)
+представлены линии равного уровня функции \( d(\sigma_{\varepsilon_x}, \sigma_{\varepsilon_y}) \)
 для синусоидальной функции регрессии \( \psi_{1} \) при
 различных значениях параметра \( \theta_1 \).
 Видно, что точность оценок, полученных с помощью МНК, оказывается выше,
@@ -500,7 +372,7 @@
     & 7{,}44
     & -0{,}57 \\
     \hline
-    \end{tabular}
+  \end{tabular}
 \end{table}
 
 \begin{figure}[p]
@@ -524,130 +396,138 @@
   }\label{fig:comparison_nonlinear_sinusoidal}
 \end{figure}
 
+\vspace{2\baselineskip}
+\subsection{Экспоненциальная функция регрессии}
 
-% Рассматривались функции регрессии вида
-% \begin{equation*}
-%   \psi = \theta_0 + \dfrac{1}{\theta_1 + \theta_2 \xi}.
-% \end{equation*}
+Рассматривалась экспоненциальная функция регрессии вида
+\[ \psi = e^{\theta_0 + \theta_1 \xi}, \; \theta_0 > 0, \theta_1 > 0. \]
 
-% На рисунках~\ref{fig:comparison_nonlinear_hyperbolic_a-0_b-0,001}--\ref{fig:comparison_nonlinear_hyperbolic_a-0_b-1}
-% представлены графики функции \( d(\sigma_{\varepsilon_x}, \sigma_{\varepsilon_y}) \)
-% для обратной функции регрессии \( \psi \) при
-% различных значениях параметра \( \theta_2 \).
-% {\color{red}Во всех описанных случаях оценивания параметров
-% МРТ-оценки являются более точными.
-% Кроме этого, отдельные оценки, полученные МНК,
-% являются совершенно неудовлетворительными,
-% о чем свидетельствуют "пики" на приведенных графиках.
-% }
+На основании линий равного уровня зависимости \( d(\sigma_{\varepsilon_x}, \sigma_{\varepsilon_y}) \)
+при различных значениях параметра \( \theta_1 \)
+(рисунки~\ref{fig:comparison_nonlinear_exponential_a-2_b-0,3}--~\ref{fig:comparison_nonlinear_exponential_a-2_b-0,5}) можно сделать следующие выводы:
+\begin{enumerate}
+\item МРТ даёт в среднем более точные оценки параметров экспоненциальной модели, чем МНК,
+  во всем диапазоне рассматриваемых значений параметров \( \theta_0, \theta_1 \).
+\item Чем большее значение имеют параметры модели \( \theta_0, \theta_1 \),
+  тем более точными являются оценки, полученные МРТ, по сравнению с МНК-оценками.
+\end{enumerate}
 
-% \begin{figure}[h]
-%   \centering
-%   \includegraphics[width=135mm]{fig/nonlinear/hyperbolic/a-0_b-0,001.png}
-%   \caption{
-%     Точность оценивания параметров \\
-%     гиперболической модели при \( \theta_1 = 0,001 \)
-%   }\label{fig:comparison_nonlinear_hyperbolic_a-0_b-0,001}
-% \end{figure}
+\vspace{2\baselineskip}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=135mm]{fig/nonlinear/exponential/a-2_b-0,3.png}
+  \caption{
+    Сравнительная точность оценивания \\
+    параметров экспоненциальной модели при \( \theta_0 = 2, \theta_1 = 0{,}3 \)
+  }\label{fig:comparison_nonlinear_exponential_a-2_b-0,3}
+\end{figure}
 
-% \begin{figure}[h]
-%   \centering
-%   \includegraphics[width=135mm]{fig/nonlinear/hyperbolic/a-0_b-1.png}
-%   \caption{
-%     Точность оценивания параметров \\
-%     гиперболической модели при \( \theta_1 = 1 \)
-%   }\label{fig:comparison_nonlinear_hyperbolic_a-0_b-1}
-% \end{figure}
+\begin{figure}[p]
+  \centering
+  \includegraphics[width=135mm]{fig/nonlinear/exponential/a-2_b-0,4.png}
+  \caption{
+    Сравнительная точность оценивания \\
+    параметров экспоненциальной модели при \( \theta_0 = 2, \theta_1 = 0{,}4 \)
+  }\label{fig:comparison_nonlinear_exponential_a-2_b-0,4}
+\end{figure}
 
+\begin{figure}[p]
+  \centering
+  \includegraphics[width=135mm]{fig/nonlinear/exponential/a-2_b-0,5.png}
+  \caption{
+    Сравнительная точность оценивания \\
+    параметров экспоненциальной модели при \( \theta_0 = 2, \theta_1 = 0{,}5 \)
+  }\label{fig:comparison_nonlinear_exponential_a-2_b-0,5}
+\end{figure}
 
-% % \subsection{Экспоненциальная функция регрессии}
-% % гиперболическая функция регрессии
-% % степенная и показательная функции
+\vspace{2\baselineskip}
+\subsection{Обратная функция регрессии}
 
-% % \subsection{Степенная функция регрессии}
+Под обратной функцией регрессии понимается выражение вида
+\[ \psi = \theta_0 + \dfrac{1}{\theta_1 + \theta_2 x}. \]
 
-% % Рассматривались функции регрессии вида
-% % \begin{equation*}
-% %   \psi = \theta_1 \xi^{\theta_2}.
-% % \end{equation*}
+Значения параметров \( \theta_1, \theta_2 \) выбирались таким образом, чтобы
+их оценивание производилось по наблюдениям, соответствующим правой ветви функции \( \psi \).
+В условиях моделирования, описанных в подразделе~\ref{subsec:nonlinear_comparison_conditions},
+этого можно добиться, если принять
+\[ c = \dfrac{\theta_1}{\theta_2} > 3 \max{(\sigma_{\varepsilon_x})} = 6. \]
+Для того, чтобы исключить влияние горизонтального смещения функции регрессии,
+необходимо, чтобы значение величины \( c \) сохранялось неизменным во всех экспериментах.
 
+В таблице~\ref{tbl:comparison_nonlinear_inverse} приведены средние значения
+величины \( d \) при различных значениях параметров \( \theta_1, \theta_2 \).
+Нетрудно заметить, что во всех рассмотренных случаях средняя точность МНК-оценок
+является неудовлетворительной.
+В этих же условиях МРТ даёт оценки приемлемой точности.
 
-% % нелинейным регрессиям по оцениваемым параметрам
-% \subsection{Синусоидальная функция регрессии}
+На рисунке~\ref{fig:comparison_nonlinear_inverse} представлены линии равного уровня зависимости
+\( d(\sigma_{\varepsilon_x}, \sigma_{\varepsilon_y}) \) при <<крайних>> значениях параметров
+\( \theta_1, \theta_2 \), взятых из таблицы.
+Видно, что при больших значениях ошибок с.~к.~о. наблюдений
+МРТ позволяет получить значительно более точные оценки параметров, чем МНК.
+Данная тенденция проявляется тем сильнее,
+чем менее пологой является функция регрессии при данных значениях параметров.
+Кроме этого, следует отметить ряд пиковых значений на данных рисунках,
+сотвествующих случаям, когда опорные оценки параметров для МНК оказались
+особенно неудачными.
 
-% Рассматривались функции регрессии вида
-% \begin{equation*}
-%   \begin{aligned}
-%     \psi_1 &= \theta_0 + \theta_1 \sin{0{,}2 \xi}, \\
-%     \psi_2 &= \theta_0 + \theta_1 \sin{\xi}, \\
-%     \psi_3 &= \theta_0 + \theta_1 \sin{5 \xi}.
-%   \end{aligned}
-% \end{equation*}
+\begin{table}[b]
+  \caption{%
+    Средняя точность оценивания параметров обратной модели в
+    зависимости от фактических значений параметров \( \theta_1, \theta_2 \)
+  }\label{tbl:comparison_nonlinear_inverse}
+  \small
+  \begin{tabular}{| m{4cm} | M{3.7cm} | M{3.7cm} | M{3.7cm} |}
+    \hline
+    \( \theta_1, \theta_2 \)
+    & \( \overline{d_{\text{МНК}}} \)
+    & \( \overline{d_{\text{МРТ}}} \)
+    & \( \overline{d_{\text{МНК}} - d_{\text{МРТ}}} \) \\
+    \hline
+    \( \theta_1 = 0{,}035, \theta_2 = 0{,}005 \)
+    & 1621{,}9
+    & 14{,}8
+    & 1607{,}1 \\
+    \hline
+    \( \theta_1 = 0{,}07, \theta_2 = 0{,}01 \)
+    & 2533{,}9
+    & 8
+    & 2525{,}9 \\
+    \hline
+    \( \theta_1 = 0{,}14, \theta_2 = 0{,}02 \)
+    & 2189
+    & 4{,}3
+    & 2184{,}7 \\
+    \hline
+    \( \theta_1 = 0{,}28, \theta_2 = 0{,}04 \)
+    & 3358{,}1
+    & 2{,}3
+    & 3355{,}8 \\
+    \hline
+  \end{tabular}
+\end{table}
 
-% На рисунках~\ref{fig:comparison_nonlinear_sinusoidal}
-% представлены графики функции \( d(\sigma_{\varepsilon_x}, \sigma_{\varepsilon_y}) \)
-% для синусоидальной функции регрессии \( \psi_2 \) при
-% различных значениях параметра \( \theta_1 \).
-% Во всех описанных случаях оценивания параметров
-% МНК-оценки являются более точными.
-% Следует отметить, что при малых ошибках измерений выходной переменной
-% нелинейный метод наименьших квадратов дает значительно более точные оценки.
+\begin{figure}[p]
+  \begin{subfigure}[b]{\linewidth}
+    \centering
+    \includegraphics[width=135mm]{fig/nonlinear/inverse/a-0_b-0,035_c-0,005.png}
+    \caption{\( \theta_1 = 0{,}035, \theta_2 = 0{,}05 \)}
+  \end{subfigure}
 
-% \begin{figure}[b]
-%   \begin{subfigure}[b]{\linewidth}
-%     \centering
-%     \includegraphics[width=135mm]{fig/nonlinear/sinusoidal/a-0_b-0,2.png}
-%     \caption{\( \theta_1 = 0,2 \)}
-%   \end{subfigure}
+  \vspace{2\baselineskip}
+  \begin{subfigure}[b]{\linewidth}
+    \centering
+    \includegraphics[width=135mm]{fig/nonlinear/inverse/a-0_b-0,28_c-0,04.png}
+    \caption{\( \theta_1 = 0{,}28, \theta_2 = 0{,}4 \)}
+  \end{subfigure}
 
-%   \vspace{2\baselineskip}
-%   \begin{subfigure}[b]{\linewidth}
-%   \centering
-%   \includegraphics[width=135mm]{fig/nonlinear/sinusoidal/a-0_b-5.png}
-%   \caption{\( \theta_1 = 5 \)}
-% \end{subfigure}
+  \vspace{\baselineskip}
+  \caption{
+    Сравнительная точность оценивания \\
+    параметров обратной модели
+  }\label{fig:comparison_nonlinear_inverse}
+\end{figure}
 
-% \vspace{\baselineskip}
-%   \caption{
-%     Точность оценивания параметров \\
-%     синусоидальной модели
-%   }\label{fig:comparison_nonlinear_sinusoidal}
-% \end{figure}
+\section{Выводы}
 
-%
-% Точность МНК существенным образом зависит от того, насколько удачной оказалась опорная оценка.
-% В некоторых случаях получить хорошую опорную оценку проблематично.
-% МРТ не зависит от опорных оценок и дает хорошие результаты там, где МНК дает осечку.
-% Предлагается использовать МРТ-оценку в качестве опорной для МНК.
-%
-
-% \begin{table}[h!]
-%   \caption{%
-%     Средняя точность оценивания параметров экспоненциальной модели в
-%     зависимости от фактических значений параметра \( \theta_1 \)
-%   }
-%   \small
-%   \begin{tabular}{| m{3.75cm} | m{3.75cm} | m{3.75cm} | m{3.75cm} |}
-%     \hline
-%     \( \theta_1 \)
-%     & \( avg(d_{\text{МНК}}) \)
-%     & \( avg(d_{\text{МРТ}}) \)
-%     & \( avg(d_{\text{МНК}} - d_{\text{МРТ}}) \) \\
-%     \hline
-%     0{,}3
-%     &
-%     &
-%     & \\
-%     \hline
-%     0{,}4
-%     &
-%     &
-%     & \\
-%     \hline
-%     0{,}5
-%     &
-%     &
-%     & \\
-%     \hline
-%     \end{tabular}
-% \end{table}
+Выводы по главе 3.
