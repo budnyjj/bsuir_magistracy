@@ -1,13 +1,14 @@
+\pagebreak
+
 \renewcommand{\thefigure}{\Asbuk{section}.\arabic{figure}}
 \renewcommand{\thetable}{\Asbuk{section}.\arabic{table}}
 \renewcommand{\thelstlisting}{\Asbuk{section}.\arabic{lstlisting}}
 
-\chapter*{%
-  ПРИЛОЖЕНИЕ А \hspace{10cm}
-  ПРОГРАММНЫЕ РЕАЛИЗАЦИИ МЕТОДОВ \hspace{10cm}
-  ИДЕНТИФИКАЦИИ ЛИНЕЙНЫХ СИСТЕМ  \hspace{10cm}
-  (к подразделу~???)
-}
+\begin{flushright}
+  ПРИЛОЖЕНИЕ А \\
+  ПРОГРАММНЫЕ РЕАЛИЗАЦИИ МЕТОДОВ \\
+  ИДЕНТИФИКАЦИИ ЛИНЕЙНЫХ СИСТЕМ
+\end{flushright}
 \addcontentsline{toc}{chapter}{%
   Приложение А
   Программные реализации методов идентификации \\
@@ -19,13 +20,12 @@
 \setcounter{table}{0}
 \setcounter{lstlisting}{0}
 
-\vspace{-\baselineskip}
 \lstinputlisting[
-caption=Программная реализация линейного \\ метода наименьших квадратов,
+caption=Программная реализация классического \\ метода наименьших квадратов,
 language={Python}
 ]{lst/linear_lse.py}
 
-\vspace{0.5\baselineskip}
+\vspace{\baselineskip}
 \lstinputlisting[
 caption=Программная реализация метода \\ симметричной аппроксимации,
 language={Python}
