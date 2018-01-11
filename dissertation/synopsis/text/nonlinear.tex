@@ -2,11 +2,180 @@
   ИДЕНТИФИКАЦИЯ НЕЛИНЕЙНЫХ СТОХАСТИЧЕСКИХ СИСТЕМ
 }
 
-{\color{red} Пояснение, почему будем рассматривать системы второго типа.}
+Как было отмечено в подразделе~\ref{ssec:state_nonlinear},
+тема идентификации нелинейных стохастических систем разработана
+в значительно меньшей степени, чем идентификация линейных систем. Это
+вызвано большим видовым разнообразием нелинейных систем, для успешной
+идентификации которых необходимо располагать априорной информацией.
+
+Для решения задачи идентификации можно адаптировать нелинейный метод
+наименьших квадратов и метод рядов Тейлора, предложенные в~\cite{mukha_2009, mukha_2000}.
+
+По аналогии с линейным случаем, данная глава посвящена выявлению
+условий предпочтительного использования МНК и МРТ при идентификации
+нелинейных стохастических систем второго типа.
+
+\section{Методы и алгоритмы идентификации}
+
+\subsection{Нелинейный метод наименьших квадратов}\label{ssec:nonlinear_method_lse}
+
+Один из подходов к оцениванию параметров системы~\eqref{eq:model_general}
+состоит в следующем.
+Можно <<закрыть глаза>> на существование ошибок измерений
+входной переменной, то есть считать, что \( \varepsilon_x = 0 \),
+и вместо данной модели рассматривать модель
+\begin{equation*}
+  \overline{y} = \psi(\overline{\theta}, \overline{x}) + \overline{\varepsilon}_y,
+\end{equation*}
+где \( \overline{x}, \overline{y} \)
+"--- векторы наблюдаемых значений входной и выходной переменной, \\
+\hspace*{7mm} \( \overline{\theta} \)
+"--- вектор фактических значений параметров, \\
+\hspace*{7mm} \( \psi \)
+"--- векторная функция регрессии, \\
+\hspace*{7mm} \( \overline{\varepsilon_y} \)
+"--- вектор независимых ошибок наблюдений выхода,
+распределенных по нормальному закону \( N(0, R_y) \).
+
+Тогда оценка вектора параметров объекта определяется выражением
+\begin{equation}
+  \label{eq:nonlinear_lse}
+  \hat{\overline{\theta}}_{\text{МНК}} =
+  \overline{\theta}_0 + (Q^T R^{-1}_{y} Q)^{-1} Q^T R^{-1}_{y} (y - \psi(\overline{\theta}_0, x)),
+\end{equation}
+где \( \overline{\theta}_0 \) --- опорная точка,
+\( Q = \dfrac{\partial \psi(\overline{\theta}_0, \overline{x}) }{ \partial \overline{\theta}_0 } \).
+
+В качестве опорной точки \( \overline{\theta}_0 \) можно использовать значения
+\( \theta_1, \dotsc, \theta_m \),
+полученные в результате численного решения системы уравнений
+\begin{equation}
+  \label{eq:nonlinear_basic}
+  (y_j - \psi( \overline{\theta}, x_j )) = 0, \: j = \overline{1,m},
+\end{equation}
+где \( x_j, y_j \) --- опорные наблюдения входа и выхода системы соответственно.
+
+В качестве опорных значений могут выступать, например:
+\begin{itemize}
+\item первые \( m \) элементов множества пар наблюдений,
+  отсортированного по возрастанию измеренных значений входа:
+  \[
+    (x_1, y_1), (x_2, y_2), \dotsc , (x_m, y_m), \:
+    x_i < x_{i+1}, \;
+    i = \overline{1, n};
+  \]
+\item \( m \) равноотстоящих элементов множества пар наблюдений,
+  отсортированного по возрастанию измеренных значений входа:
+  \[
+    (x_{k}, y_{k}), (x_{2k}, y_{2k}) , \dotsc , (x_{mk}, y_{mk}), \:
+    k = \lfloor \dfrac{n}{m} \rfloor, \:
+    x_i < x_{i+1}, \;
+    i = \overline{1, n};
+  \]
+\item \( m \) средних значений подмножеств множества пар наблюдений,
+  отсортированного по возрастанию измеренных значений входа:
+  \begin{equation}
+    \begin{gathered}
+      ( \overline{x_{k}}, \overline{y_{k}} ),
+      ( \overline{x_{2k}}, \overline{y_{2k}} ),
+      \dotsc ,
+      ( \overline{x_{mk}}, \overline{y_{mk}}), \\
+      \overline{x_{ik}} = \dfrac{1}{m} \sum_{j = 1+(i-1)k}^{ik} x_j, \:
+      \overline{y_{ik}} = \dfrac{1}{m} \sum_{j = 1+(i-1)k}^{ik} y_j, \\
+      k = \lfloor \dfrac{n}{m} \rfloor \:
+      x_i < x_{i+1}, \; i = \overline{1, n}.
+    \end{gathered}
+    \label{eq:nonlinear_base_values}
+  \end{equation}
+\end{itemize}
+
+Для уточнения оценки, полученной по формуле~\eqref{eq:nonlinear_lse}, можно
+организовать итерационную процедуру, заменяя опорную точку полученной оценкой.
+
+\vspace{2\baselineskip}
+\subsection{Метод рядов Тейлора}\label{ssec:nonlinear_method_mrt}
+
+Применение метода рядов Тейлора (МРТ) требует иной формулировки задачи,
+допускаемой формулировкой~\eqref{eq:model_general}.
+Следует предположить, что \( j \)-е наблюдение вектора параметров \( \overline{\theta}_j \)
+определяется как векторная функция показаний приборов:
+\begin{equation}
+  \label{eq:nonlinear_mrt_phi}
+  \overline{\theta}_j = \phi( \overline{z}_{j} ), \: j = \overline{1, n},
+\end{equation}
+где вектор
+\( \overline{z}^{\text{T}}_{j} =
+( \overline{x}^{\text{T}}_{j}, \overline{y}^{\text{T}}_{j}) \)
+имеет нормальное распределение \( N(\overline{a}_{z,j}, R_{z,j}) \)
+и оцениваемый векторный параметр \( \overline{\theta} \) определяется как
+\( \overline{\theta} = \phi(\overline{a}_{z,j}), \forall i = \overline{1, n} \).
+В этом случае МРТ-оценка \( \hat{\overline{\theta}}_{\text{МРТ}} \) векторного параметра \( \overline{\theta} \)
+определяется выражением
+\begin{equation*}
+  \hat{\overline{\theta}}_{\text{МРТ}} =
+  \Bigg( \sum^{n}_{i=1} R^{-1}_{\theta,i} \Bigg)^{-1}
+  \sum^{n}_{j=1} R^{-1}_{\theta,j} \overline{\theta}_j,
+\end{equation*}
+где
+\( R_{\theta,i} = G_i R_{z,i} G^T_i \),
+\( G_i =
+\dfrac{\partial \phi( \overline{z}_{i} ) }{ \partial \overline{z}_{i} } \).
+
+Численное значение наблюдения \( \theta_j \)~\eqref{eq:nonlinear_mrt_phi} может определяться как
+решение системы уравнений~\eqref{eq:nonlinear_basic}.
+
+\vspace{2\baselineskip}
+\subsection{Программные реализации алгоритмов}
+
+Были разработаны программные реализации алгоритмов, описанных в
+подразделах~\ref{ssec:nonlinear_method_lse},~\ref{ssec:nonlinear_method_mrt},
+представляющие собой функции языка программирования Python.
+Они используют модуль для работы с многомерными данными NumPy,
+а также модуль для работы с символическими выражениями SymPy.
+
+На рисунке~\ref{lst:nonlinear_api_lse} представлен пример использования
+программной реализации нелинейного метода наименьших квадратов для
+нахождения оценок параметров \( \hat{\alpha}, \hat{\beta} \)
+функции регрессии \( y = \alpha + \beta \sin{x} \).
+\lstinputlisting[
+caption={Использование программной реализации нелинейного метода наименьших квадратов},
+language={Python},
+label=lst:nonlinear_api_lse,
+]{lst/nonlinear_api_lse.py}
+
+Здесь переменная \texttt{sym\_expression} обозначает функцию регрессии,
+\texttt{sym\_alpha} и \texttt{sym\_beta} соответствуют оцениваемым параметрам,
+а \texttt{sym\_x} и \texttt{sym\_y} --- входу и выходу системы.
+Переменной \texttt{measured\_vals\_x} обозначены измеренные значения входа системы,
+а \texttt{measured\_vals\_y} соответствует значениям наблюдений выхода.
+Расчет оценок параметров \texttt{lse\_alpha} и \texttt{lse\_beta} производится по
+результатам двух итераций метода, в качестве опорных оценок используются нулевые значения.
+
+На рисунке~\ref{lst:nonlinear_api_mrt} представлен пример использования
+программной реализации метода рядов Тейлора для
+нахождения оценок параметров \( \hat{\alpha}, \hat{\beta} \)
+функции регрессии \( y = \alpha + \beta \sin{x} \).
+\lstinputlisting[
+caption={Использование программной реализации \\ метода рядов Тейлора},
+language={Python},
+label=lst:nonlinear_api_mrt,
+]{lst/nonlinear_api_mrt.py}
+
+Здесь переменная \texttt{sym\_expression\_delta} обозначает функцию регрессии,
+\texttt{sym\_alpha} и \texttt{sym\_beta} соответствуют оцениваемым параметрам,
+а \texttt{sym\_x} и \texttt{sym\_y} --- входу и выходу системы.
+Переменной \texttt{measured\_vals\_x} обозначены измеренные значения входа системы,
+а \texttt{measured\_vals\_y} соответствует значениям наблюдений выхода.
+Расчет оценок параметров \texttt{mrt\_alpha} и \texttt{mrt\_beta} производится
+с учетом предположения, что с.~к.~о. ошибок входных и выходных измерений составляют
+\( \sigma_{\varepsilon_x } = 1, \sigma_{\varepsilon_y } = 1 \).
+
+Исходный текст программных реализаций приведен в приложении Б.
+
 
 \section{Математическая модель идентифицируемой системы}
 
-Для обеспечения наглядности сравнения будем также рассматривать случай
+Для обеспечения наглядности сравнения будем рассматривать случай
 идентификации скалярной системы:
 \begin{equation}
   \label{eq:nonlinear_model_scalar}
@@ -36,119 +205,13 @@
 Для получения каждой оценки \( \hat{\alpha}, \hat{\beta} \) использовались результаты
 ста наблюдений \( ( x_i, y_i ), i = \overline{1, n}, n = 100 \).
 
-\section{Алгоритмы методов идентификации}
-
-\subsection{Нелинейный метод наименьших квадратов}
-
-Один из подходов к оцениванию параметров системы~\eqref{eq:nonlinear_model_scalar}
-состоит в следующем.
-Можно <<закрыть глаза>> на существование ошибок измерений
-входной переменной, то есть считать, что \( \varepsilon_x = 0 \),
-и вместо данной модели рассматривать модель
-\begin{equation*}
-  \begin{aligned}
-    x &= \psi(\overline{\theta}, \xi), \\
-    y &= x + \varepsilon_y.
-  \end{aligned}
-\end{equation*}
-
-Тогда оценка вектора параметров объекта определяется выражением~\cite{mukha_2009}
-\begin{equation}
-  \label{eq:nonlinear_lse}
-  \hat{\overline{\theta}}_{\text{МНК}} =
-  \overline{\theta}_0 + (Q^T R^{-1}_{\Xi} Q)^{-1} Q^T R^{-1}_{\Xi} (y - \psi(\overline{\theta}_0, x)),
-\end{equation}
-где \( \overline{\theta}_0 \) --- опорная точка,
-\( Q = \dfrac{\partial \psi(\overline{\theta}_0, x) }{ \partial \overline{\theta}_0 } \).
-
-В качестве опорной точки \( \overline{\theta}_0 \) можно использовать значения
-\( \theta_1, \dotsc, \theta_m \),
-полученные в результате численного решения системы уравнений
-\begin{equation}
-  \label{eq:nonlinear_basic}
-  (y_j - \psi( \overline{\theta}, x_j )) = 0, \: j = \overline{1,m},
-\end{equation}
-где \( x_j, y_j \) --- опорные наблюдения входа и выхода системы соответственно.
-
-В качестве опорных значений могут выступать, например:
-\begin{itemize}
-\item первые \( m \) порядковых статистик из множества наблюдений:
-  \[
-    (x_1, y_1), (x_2, y_2), \dotsc , (x_m, y_m), \:
-    x_i < x_{i+1}, \;
-    i = \overline{1, n};
-  \]
-\item \( m \) равноотстоящих порядковых статистик из множества наблюдений:
-  \[
-    (x_{k}, y_{k}), (x_{2k}, y_{2k}) , \dotsc , (x_{mk}, y_{mk}), \:
-    k = \lfloor \dfrac{n}{m} \rfloor, \:
-    x_i < x_{i+1}, \;
-    i = \overline{1, n};
-  \]
-\item \( m \) средних значений, рассчитанных на основе
-  упорядоченного набора наблюдений:
-  \begin{equation}
-    \begin{gathered}
-      ( \overline{x_{k}}, \overline{y_{k}} ),
-      ( \overline{x_{2k}}, \overline{y_{2k}} ),
-      \dotsc ,
-      ( \overline{x_{mk}}, \overline{y_{mk}}), \\
-      \overline{x_{ik}} = \dfrac{1}{m} \sum_{j = 1+(i-1)k}^{ik} x_j, \:
-      \overline{y_{ik}} = \dfrac{1}{m} \sum_{j = 1+(i-1)k}^{ik} y_j, \\
-      k = \lfloor \dfrac{n}{m} \rfloor \:
-      x_i < x_{i+1}, \; i = \overline{1, n}.
-    \end{gathered}
-    \label{eq:nonlinear_base_values}
-  \end{equation}
-\end{itemize}
-
-Для уточнения оценки, полученной по формуле~\eqref{eq:nonlinear_lse}, можно
-организовать итерационную процедуру, заменяя опорную точку полученной оценкой.
-
-\vspace{2\baselineskip}
-\subsection{Метод рядов Тейлора}
-
-Применение метода рядов Тейлора (МРТ) требует иной формулировки задачи,
-допускаемой формулировкой \eqref{eq:nonlinear_model_scalar}.
-Следует предположить, что \( j \)-е наблюдение вектора параметров \( \overline{\theta}_j \)
-определяется как векторная функция показаний приборов:
-\begin{equation}
-  \label{eq:nonlinear_mrt_phi}
-  \overline{\theta}_j = \phi( \overline{z}_{j} ), \: j = \overline{1, n},
-\end{equation}
-где вектор
-\( \overline{z}^{\text{T}}_{j} =
-( \overline{x}^{\text{T}}_{j}, \overline{y}^{\text{T}}_{j}) \)
-имеет нормальное распределение \( N(\overline{a}_{z,j}, R_{z,j}) \)
-и оцениваемый векторный параметр \( \overline{\theta} \) определяется как
-\( \overline{\theta} = \phi(\overline{a}_{z,j}), \forall i = \overline{1, n} \).
-В этом случае МРТ-оценка \( \hat{\overline{\theta}}_{\text{МРТ}} \) векторного параметра \( \overline{\theta} \)
-определяется выражением
-\begin{equation*}
-  \hat{\overline{\theta}}_{\text{МРТ}} =
-  \Bigg( \sum^{n}_{i=1} R^{-1}_{\theta,i} \Bigg)^{-1}
-  \sum^{n}_{j=1} R^{-1}_{\theta,j} \overline{\theta}_j,
-\end{equation*}
-где
-\( R_{\theta,i} = G_i R_{z,i} G^T_i \),
-\( G_i =
-\dfrac{\partial \phi( \overline{z}_{i} ) }{ \partial \overline{z}_{i} } \).
-
-Численное значение наблюдения \( \theta_j \)~\eqref{eq:nonlinear_mrt_phi} может определяться как
-решение системы уравнений~\eqref{eq:nonlinear_basic}.
-
-\vspace{2\baselineskip}
-\subsection{Программная реализация алгоритмов}
-
-фыва
-
 \section{Численный анализ точности оценивания параметров}
 
 \subsection{Методика сравнения}\label{subsec:nonlinear_comparison_conditions}
 
 Было выполнено сравнение точности оценивания параметров \( \overline{\theta} \)
 модели~\eqref{eq:nonlinear_model_scalar}
-нелинейным методом наименьших квадратов и методом рядов Тейлора,
+нелинейным методом наименьших квадратов и методом рядов Тейлора
 с функциями регрессии различного вида,
 в зависимости от с.~к.~о ошибок измеряемых значений
 \( \sigma_{\varepsilon_x}, \sigma_{\varepsilon_y} \).
@@ -206,7 +269,7 @@
   коэффициента усиления \( \theta_1 \).
 \end{enumerate}
 
-\begin{figure}[b]
+\begin{figure}[h]
   \centering
   \includegraphics[width=135mm]{fig/nonlinear/linear/a-0_b-1.png}
   \caption{
@@ -226,8 +289,6 @@
 для параболической функции регрессии при различных значениях её параметров.
 По данным рисункам можно сделать следующие выводы:
 \begin{enumerate}
-\item Точность оценивания параметров параболической модели не зависит
-  от фактического значения постоянной составляющей \( \theta_0 \).
 \item Если функция регрессии на промежутке аппроксимации является монотонно
   возрастающей или монотонно убывающей,
   то точность оценивания её параметров зависит главным образом от
@@ -479,6 +540,7 @@
     Средняя точность оценивания параметров обратной модели в
     зависимости от фактических значений параметров \( \theta_1, \theta_2 \)
   }\label{tbl:comparison_nonlinear_inverse}
+  \small
   \begin{tabular}{| m{5cm} | M{3.3cm} | M{3.3cm} | M{3.5cm} |}
     \hline
     \( \theta_1, \theta_2 \)

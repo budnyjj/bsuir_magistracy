@@ -1,33 +1,31 @@
 \pagebreak
 
-\renewcommand{\thefigure}{\Asbuk{section}.\arabic{figure}}
-\renewcommand{\thetable}{\Asbuk{section}.\arabic{table}}
-\renewcommand{\thelstlisting}{\Asbuk{section}.\arabic{lstlisting}}
-
 \begin{flushright}
-  ПРИЛОЖЕНИЕ А \\
-  ПРОГРАММНЫЕ РЕАЛИЗАЦИИ \\
-  МЕТОДОВ ИДЕНТИФИКАЦИИ \\
-  ЛИНЕЙНЫХ СИСТЕМ
+  ПРИЛОЖЕНИЕ А.1 \\
+  Программная реализация \\
+  метода симметричной \\
+  аппроксимации
 \end{flushright}
 \addcontentsline{toc}{chapter}{%
-  Приложение А
-  Программные реализации методов идентификации \\
-  \hspace*{2.9cm} линейных систем
+  Приложение А.1
+  Программная реализация метода симметричной \\
+  \hspace*{3.2cm} аппроксимации
 }
 
-\setcounter{section}{1}
-\setcounter{figure}{0}
-\setcounter{table}{0}
-\setcounter{lstlisting}{0}
+\lstinputlisting[language={Python}]{lst/linear_msa.py}
 
-\lstinputlisting[
-caption=Программная реализация классического \\ метода наименьших квадратов,
-language={Python}
-]{lst/linear_lse.py}
+\pagebreak
 
-\vspace{\baselineskip}
-\lstinputlisting[
-caption=Программная реализация метода \\ симметричной аппроксимации,
-language={Python}
-]{lst/linear_msa.py}
+\begin{flushright}
+  ПРИЛОЖЕНИЕ А.2 \\
+  Программная реализация \\
+  классического метода  \\
+  наименьших квадратов
+\end{flushright}
+\addcontentsline{toc}{chapter}{%
+  Приложение А.2
+  Программная реализация классического метода \\
+  \hspace*{3.2cm} наименьших квадратов
+}
+
+\lstinputlisting[language={Python}]{lst/linear_lse.py}
