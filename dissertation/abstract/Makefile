@@ -1,10 +1,7 @@
 default: compile
 
 compile:
-	pdflatex synopsis.tex
-
-bib:
-	bibtex8 -B synopsis.aux
+	pdflatex abstract.tex
 
 clean:
 	$(RM) *.log
