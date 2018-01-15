@@ -200,7 +200,7 @@ label=lst:nonlinear_api_mrt,
 на основании которых были получены оценки её параметров
 методом наименьших квадратов и методом рядов Тейлора.
 Значения \( \xi_i \) выбирались из равномерного в \( [0, 10] \) распределения.
-Для получения каждой оценки \( \hat{\alpha}, \hat{\beta} \) использовались результаты
+Для получения каждой оценки \( \hat{\overline{\theta}} \) использовались результаты
 ста наблюдений \( ( x_i, y_i ), i = \overline{1, n}, n = 100 \).
 
 \section{Численный анализ точности оценивания параметров}
@@ -222,10 +222,10 @@ label=lst:nonlinear_api_mrt,
   \begin{aligned}
     d &= d_{\text{МНК}} - d_{\text{МРТ}}, \\
     d_{\text{МНК}} &=
-    \frac{1}{k} \sum_{j=1}^k
+    \dfrac{1}{k} \sum_{j=1}^k
     \sqrt{\sum_{\text{i=1}}^m (\hat{\theta}_{\text{МНК}_{ij}} - \theta_{ij})^2}, \\
     d_{\text{МРТ}} &=
-    \frac{1}{k} \sum_{j=1}^k
+    \dfrac{1}{k} \sum_{j=1}^k
     \sqrt{\sum_{\text{i=1}}^m (\hat{\theta}_{\text{МРТ}_{ij}} - \theta_{ij})^2},
   \end{aligned}
 \end{equation*}
