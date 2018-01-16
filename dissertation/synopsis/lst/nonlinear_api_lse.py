@@ -3,7 +3,7 @@ import sympy as sp
 
 from stats.methods import search_lse
 
-sym_expression = sp.sympify('a + b*x')
+sym_expression = sp.sympify('a + b*sin(x)')
 sym_alpha, sym_beta = sp.symbols('a b')
 sym_x, sym_y = sp.symbols('x y')
 measured_vals_x = np.array([...])
