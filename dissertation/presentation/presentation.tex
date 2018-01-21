@@ -1,0 +1,215 @@
+\documentclass[hyperref={pdftex,unicode}]{beamer}
+
+\input{sys/packages}
+\input{sys/styles}
+
+\input{info}
+
+\begin{document}
+
+\begin{frame}
+  \maketitle
+\end{frame}
+
+\setbeamertemplate{headline}{%
+  \vspace{2mm}
+  \hfill \insertframenumber{}\hspace*{2mm}}
+\addtocounter{framenumber}{-1}
+
+\begin{frame}{Задача идентификации стохастических систем}
+  \begin{align*}
+    \overline{\eta} &= \psi (\overline{\theta}, \overline{\xi}), \\
+    \overline{x} &= \overline{\xi} + \overline{\varepsilon_x}, \\
+    \overline{y} &= \overline{\eta} + \overline{\varepsilon_y},
+  \end{align*}
+  где \( \overline{\xi}, \overline{\eta} \)
+  "--- векторы фактических значений входа и выхода, \\
+  \hspace{10.5mm}\( \overline{\theta} \)
+  "--- вектор фактических значений параметров, \\
+  \hspace{10mm}\( \psi \)
+  "--- векторная функция регрессии, \\
+  \hspace{7mm}\( \overline{x}, \overline{y} \)
+  "--- векторы набл. значений вх. и вых. переменной, \\
+  \hspace{4mm}\( \overline{\varepsilon_x}, \overline{\varepsilon_y} \)
+  "--- векторы независимых ошибок набл. вх. и вых.
+
+  \bigskip
+  Требуется, считая вид функции \( \psi \) известным и \\
+  располагая измеренными значениями входа и выхода \( \overline{x}, \overline{y} \), \\
+  найти оценку \( \hat{\overline{\theta}} \) параметров системы \( \overline{\theta} \).
+\end{frame}
+
+\begin{frame}{Классификация стохастических систем}
+  \emph{Полустохастический объект} "--- \\
+  объект с детерминированным входом и случайным выходом.
+
+  \bigskip
+  \emph{Стохастический объект первого типа} "--- \\
+  объект со случайным входом и выходом. \\
+
+  \bigskip
+  \emph{Стохастический объект второго типа} "--- \\
+  детерминированный объект с ошибками в измерениях входных и выходных переменных.
+\end{frame}
+
+\begin{frame}{Критерии идентификации стохастических систем}
+  \begin{minipage}{0.45\linewidth}
+    \centering
+    \input{fig/classic}
+    Классический: \\
+    \( \sum_i \rho_{\text{к}_i} \rightarrow \min \)
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.45\linewidth}
+    \centering
+    \input{fig/symmetric}
+    Симметричный: \\
+    \( \sum_i \rho_{\text{с}_i} \rightarrow \min \)
+  \end{minipage}
+\end{frame}
+
+\begin{frame}{Задачи исследования}
+  \begin{itemize}
+  \item Выполнить численный анализ точности
+    методов идентификации стохастических систем второго типа.
+  \item Описать условия предпочтительного использования
+    сравниваемых методов для оценивания параметров систем.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{%
+    Идентификация линейных стохастических систем \\
+    \small{Методы идентификации}
+  }
+  \begin{itemize}
+  \item Классический метод наименьших квадратов (МНК). \\
+    Основан на классическом критерии идентификации.
+  \item Метод симметричной аппроксимации (МСА). \\
+    Основан на симметричном критерии идентификации.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{%
+    Идентификация линейных стохастических систем \\
+    \small{Математическая модель идентифицируемой системы}
+  }
+
+  \begin{align*}
+  h &= \alpha + \beta \xi, \\
+  x &= \xi + \varepsilon_x, \\
+  y &= h + \varepsilon_y,
+  \end{align*}
+  где \( \xi, h \)
+  "--- фактические значения вх. и вых. переменной, \\
+  \hspace*{4.5mm} \( \alpha, \beta \)
+  "--- фактические значения параметров объекта, \\
+  \hspace*{5.5mm} \( x, y \)
+  "--- наблюдаемые значения вх. и вых. переменной, \\
+  \hspace*{2.5mm} \( \varepsilon_x, \varepsilon_y \)
+  "--- независимые ошибки наблюдений вх. и вых. переменной:
+\(
+\varepsilon_x = N(0, \sigma_{\varepsilon_x}),
+\varepsilon_y = N(0, \sigma_{\varepsilon_y})
+\).
+
+\bigskip
+\scriptsize{%
+  Значения \( \xi_i \) выбирались из \( U(0, 10) \).
+  Для получения каждой оценки \( \hat{\alpha}, \hat{\beta} \) использовались результаты
+  ста наблюдений \( ( x_i, y_i ), i = \overline{1, n}, n = 100 \).
+}
+\end{frame}
+
+\begin{frame}{%
+    Идентификация линейных стохастических систем \\
+    \small{Численный анализ точности методов идентификации}
+  }
+  Сравнительная точность оценивания параметров:
+  \small{
+    \begin{equation*}
+      d =
+      \frac{1}{k} \sum_{j=1}^k
+      \Bigg(
+      \sqrt{(\hat{\alpha}_{\text{МНК}_j} - \alpha)^2 + (\hat{\beta}_{\text{МНК}_j} - \beta)^2} -
+      \sqrt{(\hat{\alpha}_{\text{МСА}_j} - \alpha)^2 + (\hat{\beta}_{\text{МСА}_j} - \beta)^2}
+      \Bigg).
+    \end{equation*}
+  }
+
+  Сравнительная точность прогнозирования наблюдений выхода:
+  \small{
+    \begin{equation*}
+      p =
+      \frac{1}{k} \sum_{j=1}^k
+      \Bigg(
+      \sqrt{ \sum_{i=1}^n (\hat{\alpha}_{\text{МНК}_j} + \hat{\beta}_{\text{МНК}_j} x_{ij} - y_{ij})^2} -
+      \sqrt{ \sum_{i=1}^n (\hat{\alpha}_{\text{МСА}_j} + \hat{\beta}_{\text{МСА}_j} x_{ij} - y_{ij})^2}
+      \Bigg).
+    \end{equation*}
+  }
+
+  Исследовались зависимости
+  \( d(\alpha, \beta, \sigma_{\varepsilon_x}, \sigma_{\varepsilon_y}) \) и
+  \( p(\alpha, \beta, \sigma_{\varepsilon_x}, \sigma_{\varepsilon_y}) \).
+
+\bigskip
+\scriptsize{%
+  Расчеты величин \( d, p \) производились в узлах сетки значений
+  \( \sigma_{\varepsilon_x}, \sigma_{\varepsilon_y} \) в прямоугольнике
+  \( [0, 2] \times [0, 2] \) с шагом 0{,}1. \\
+  В каждом узле сетки вычислялось сто оценок (\( k = 100 \)).
+}
+\end{frame}
+
+\begin{frame}{Идентификация линейных стохастических систем \\
+    \small{Результаты численного анализа точности методов идентификации}
+  }
+  \begin{enumerate}
+\item Точность оценивания параметров зависит от \( |\beta| \)
+  и соотношения между \( \sigma_{\varepsilon_x}, \sigma_{\varepsilon_y} \).
+  При больших значениях \( |\beta|, \sigma_{\varepsilon_x} \)
+  МСА оценивает параметры системы значительно более точно, чем МНК.
+\item Если эмпирическое условие
+  \( \sigma_{\varepsilon_y} > (0{,}7 + |\beta|) \sigma_{\varepsilon_x} \)
+  выполняется, то МНК оценивает параметры системы более точно, чем МСА.
+  В противном случае МСА даёт более точные оценки, чем МНК.
+\item МНК прогнозирует наблюдения выхода по наблюдениям входа более точно, чем МСА.
+\end{enumerate}
+\end{frame}
+
+% \begin{frame}{Идентификация линейных стохастических систем \\
+%     \small{Результаты численного анализа точности методов идентификации}
+%   }
+% \end{frame}
+
+  % \bigskip
+  % Области предпочтительного использования указанных критериев
+  % для идентификации линейных стохастических систем второго типа
+  % определены недостаточно четко.
+
+  % \flushleft{
+  %   Метод наименьших квадратов (МНК):
+  %   \( \sum_i \rho_{\text{к}_i} \rightarrow \min \)
+
+  %   Метод симметричной аппроксимации (МСА):
+  %   \( \sum_i \rho_{\text{с}_i} \rightarrow \min \)
+  % }
+
+% \begin{frame}{%
+%     Идентификация нелинейных стохастических систем
+%   }
+%   Проблема идентификации нелинейных стохастических систем разработана
+%   в недостаточной степени:
+%   \begin{itemize}
+%   \item отсутствует обоснование используемых критериев,
+%   \item не приводится сравнительный численный анализ различных алгоритмов,
+%   \item отсутствуют рекомендации по применению того или иного алгоритма.
+%   \end{itemize}
+
+%   \bigskip
+%   Для идентификации нелинейных систем предлагается использовать \\
+%   \emph{нелинейный метод наименьших квадратов} (НМНК) и \\
+%   \emph{метод рядов Тейлора} (МРТ).
+% \end{frame}
+
+\end{document}
