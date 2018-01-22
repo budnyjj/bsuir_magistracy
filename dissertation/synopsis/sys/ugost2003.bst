@@ -1,1 +1,0 @@
-../../../templates/magistracy_dissertation_synopsis/sys/ugost2003.bst
